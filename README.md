@@ -1,2 +1,3 @@
-# e-learning
-Repository to share and plan E-Learning material related to OGC Standards
+# R-Learning for OGC
+
+This repository is used to share and plan E-Learning material related to OGC Standards
