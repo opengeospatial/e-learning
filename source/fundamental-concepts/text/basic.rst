@@ -98,7 +98,7 @@ Service
 ^^^^^^^
 
 A Service is a set of interfaces provided by an entity. The service provides a 
-functionality that distinguishes the entity from other entities [ISO19119]_. 
+functionality that distinguishes the entity from other entities [ISO19119:2015]_. 
 In this context, an entity is a server on the web,
 that provides a service, in most cases via HTTP.
 
