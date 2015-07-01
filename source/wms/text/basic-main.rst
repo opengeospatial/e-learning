@@ -28,6 +28,8 @@ using this standard. Other large organizations use this standard to enable indep
 to interact more easily internally. Anybody using this standard can use it to overlay map data 
 from many different sources regardless of the underlying software.
 
+WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another as they actually would be in reality.  Numerous servers and clients support WMS.
+
 
 Relation to other OGC Standards
 -------------------------------
@@ -38,8 +40,8 @@ Relation to other OGC Standards
 - Symbology Encoding: This standard describes hwo to define map symbology and is used modify the cartographic appearance of map images. It is an optional feature of the OGC WMS and SLD standards.
 
 
-WMS Operations
---------------
+Overview WMS Operations
+---------------------------
 
 WMS specifies a number of different request types, two of which are required by any WMS server:
 
@@ -94,3 +96,12 @@ Client Usage
 ------------
 
 To use a WMS service in a client you need the end point of the service. For example this GetCapabilities request: http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3
+
+
+References
+------------
+
+`GeoServer  WMS reference <http://docs.geoserver.org/stable/en/user/services/wms/reference.html>`_ - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
+
+
+
