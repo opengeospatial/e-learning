@@ -1,10 +1,10 @@
 Style Layer Descriptor (SLD)
-=================================
+============================
 
 Introduction
 ------------
 
-Geospatial data (vector and raster) have no intrinsic visual component. In order to see data, it must be styled. Styling specifies color, thickness, and other visible attributes used to render data on a map. The Styled Layer Descriptor (SLD) is a standard that allows to configure in an XML how to properly portray layers and legends in a WMS. It uses on Symbology Ending (SE) to specify styling of features and coverages. The SLD Profile of WMS, enhances a WMS with additional operations to support styling of features and coverages.
+Geospatial data (vector and raster) have no intrinsic visual component. In order to see data, it must be styled. Styling specifies color, thickness, and other visible attributes used to render data on a map. A WMS provides a set of style options for each data set; however these are preconfigured by the server, and the user cannot create, inspect, modify a style. The Styled Layer Descriptor (SLD) is a standard that allows to configure in an XML how to properly portray layers and legends in a WMS. It uses Symbology Ending (SE) to specify styling of features and coverages. The SLD Profile of WMS, enhances a WMS with additional operations to support styling of features from WFS and coverages from WCS.
 
 
 History
@@ -18,11 +18,11 @@ History
 
 
 
-Versions
-	1.1 - `OGC 05-078r4 <http://portal.opengeospatial.org/files/?artifact_id=22364>`_ is the latest version.
+Versions 1.1 - `OGC 05-078r4 <http://portal.opengeospatial.org/files/?artifact_id=22364>`_ is the latest version.
 
-Test Suite
-	No test suite exists for SLD.
+Test Suite 
+
+   No test suite exists for SLD.
 
 Implementations
    Implementations can be found at the OGC database. `here <http://www.opengeospatial.org/resource/products/byspec>`_
@@ -31,7 +31,7 @@ Implementations
 Usage
 -----
 - Communities that have WMS, WFS and WCS and want to configure how the data looks can use SLD. It can be used to configure layers or to configure the styles of features based on an attribute. 
--  It is require to create an XML following the  `SLD XML Schema <http://schemas.opengis.net/sld/1.1/>`_. Most servers that support WMS provide a user interface or a mechanism to create SLDs. an SLD is the glue between a Symbology Encoding and WMS Layers
+- It is require to create an XML following the `SLD XML Schema <http://schemas.opengis.net/sld/1.1/>`_. Most servers that support WMS provide a user interface or a mechanism to create SLDs. an SLD is the glue between a Symbology Encoding and WMS Layers
 
 
 Relation to other OGC Standards
@@ -43,7 +43,7 @@ Relation to other OGC Standards
 - Symbology Encoding (SE): 
 
 Basic Example
-----------------
+-------------
 
 A basic example of an SLD XML document describing how point data can be styled as blue circles with a diameter of 5 pixels is given below 
 
@@ -51,7 +51,7 @@ A basic example of an SLD XML document describing how point data can be styled a
       :width: 70%
 
 Advance Examples
------------------
+----------------
 
  `GeoServer SLD Cookbook  <http://docs.geoserver.org/stable/en/user/styling/sld-cookbook/index.html>`_ provides example of SLD for points, lines, polygons and raster.
 

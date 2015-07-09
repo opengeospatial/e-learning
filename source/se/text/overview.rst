@@ -1,5 +1,5 @@
 SE - Overview
-==============
+=============
 
 Audience
 --------
@@ -29,10 +29,11 @@ The following modules are prerequisites:
 - :doc:`../../wms/text/index`
 
 Resources
------------
+---------
 - `OGC 05-077r4 <http://portal.opengeospatial.org/files/?artifact_id=16700>`_, Symbology Encoding Implementation Specification 1.1.0 (revision 4), 2006-07-21.
 - `Landmap Geoknowledge <http://learningzone.rspsoc.org.uk/index.php/Learning-Materials/Introduction-to-OGC-Standards/3.6-Style-Layer-Descriptor-SLD>`_ - `CC BY-NC-SA 3.0 <http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US>`_
-- `GeoServer - SLD Cookbook <http://docs.geoserver.org/stable/en/user/styling/sld-cookbook/index.html>`_ - `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
+- `GeoServer - SLD Cookbook <http://docs.geoserver.org/stable/en/user/styling/sld-cookbook/index.html>`_
+  - `CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
 
 
 

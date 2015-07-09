@@ -7,3 +7,4 @@ Introduction to OGC Standards
 
    overview.rst
    intro-ogc.rst
+   services-ogc.rst

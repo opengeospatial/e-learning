@@ -14,5 +14,6 @@ This is the official documentation for OGC standards.
    fundamental-concepts/text/index.rst
    ogc/text/index.rst
    ogc-standards/text/index.rst
+   visualization-standards/basic-index.rst
    references.rst
 

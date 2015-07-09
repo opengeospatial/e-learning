@@ -3,10 +3,7 @@ WMS - Introduction
 
 Introduction
 ------------
-The OGC Web Map Server (WMS) defines a set of interfaces for requesting map images over Internet. 
-WMS makes it easy for a client to request images on demand changing parameters such as size and
-coordinate reference systems. A WMS Server provides information about what maps can the service
-provides, produces a map and answers queries about content of a Map.
+The OGC Web Map Server (WMS) defines a set of interfaces for requesting map images over Internet. WMS makes it easy for a client to request images on demand changing parameters such as size and coordinate reference systems. A WMS Server provides information about what maps can the service provides, produces a map and answers queries about content of a Map.
 
 
 History
@@ -22,11 +19,7 @@ Implementations
 
 Usage
 -----
-The standard makes map images available and accessible through a highly configurable interface 
-in standard image formats. Government agencies publish all kinds of official map cartography 
-using this standard. Other large organizations use this standard to enable independent departments 
-to interact more easily internally. Anybody using this standard can use it to overlay map data 
-from many different sources regardless of the underlying software.
+The standard makes map images available and accessible through a highly configurable interface in standard image formats. Government agencies publish all kinds of official map cartography using this standard. Other large organizations use this standard to enable independent departments to interact more easily internally. Anybody using this standard can use it to overlay map data from many different sources regardless of the underlying software.
 
 WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another as they actually would be in reality.  Numerous servers and clients support WMS.
 
@@ -41,7 +34,7 @@ Relation to other OGC Standards
 
 
 Overview WMS Operations
----------------------------
+-----------------------
 
 WMS specifies a number of different request types, two of which are required by any WMS server:
 
@@ -74,19 +67,7 @@ The ``GetMap`` request queries the server with a set of parameters describing th
 
 *The URL of this link has been truncated for better readability.*::
 
-  http://metaspatial.net/cgi-bin/ogc-wms.xml?
-  VERSION=1.3.0&
-  REQUEST=GetMap&
-  SERVICE=WMS&
-  LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&
-  STYLES=,,,,,,&
-  CRS=EPSG:27700&
-  BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&
-  WIDTH=400&
-  HEIGHT=300&
-  FORMAT=image/png&
-  BGCOLOR=0xffffff&
-  TRANSPARENT=TRUE&
+  http://metaspatial.net/cgi-bin/ogc-wms.xml? VERSION=1.3.0& REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700& BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300& FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE&
 
 Use the link: `GetMap <http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap&SERVICE=WMS&LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&STYLES=,,,,,,&CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&WIDTH=400&HEIGHT=300&FORMAT=image/png&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=XML>`_ to retrieve the map image form the Demo Server. It will be rendered dynamically each time you request the image (given that no proxy interferes and delivers an earlier graphic rendition of the map data).
 
@@ -99,7 +80,7 @@ To use a WMS service in a client you need the end point of the service. For exam
 
 
 References
-------------
+----------
 
 `GeoServer  WMS reference <http://docs.geoserver.org/stable/en/user/services/wms/reference.html>`_ - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
 

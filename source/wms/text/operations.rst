@@ -1,5 +1,5 @@
 WMS - Operations
-==================
+================
 
 The following are the WMS operations
 
@@ -86,15 +86,10 @@ A example GetCapabilities request is:
    version=1.1.1&
    request=GetCapabilities
     
-There are three parameters being passed to the WMS server, ``service=wms``, ``version=1.1.1``, and ``request=GetCapabilities``.  
-The ``service`` parameter tells the WMS server that a WMS request is forthcoming.  
-The ``version`` parameter refers to which version of WMS is being requested.  
-The ``request`` parameter specifies the GetCapabilities operation.
-The WMS standard requires that requests always includes these three parameters.  
+There are three parameters being passed to the WMS server, ``service=wms``, ``version=1.1.1``, and ``request=GetCapabilities``.  The ``service`` parameter tells the WMS server that a WMS request is forthcoming.  The ``version`` parameter refers to which version of WMS is being requested.  The ``request`` parameter specifies the GetCapabilities operation. The WMS standard requires that requests always includes these three parameters.  
 
 
-The response is a Capabilities XML document that is a detailed description of the WMS service.  
-It contains three main sections:
+The response is a Capabilities XML document that is a detailed description of the WMS service.  It contains three main sections:
 
 .. list-table::
    :widths: 20 80
@@ -110,15 +105,44 @@ It contains three main sections:
 
 .. _wms_getmap:
 
+
+Get Capabilities Layer Style Section
+------------------------------------
+
+The GetCapabilites response contains a *Layer* section, which contains details about the style available to that layer. In the example bellow the available style is *default*.
+
+
+.. code-block:: xml
+
+
+      <Layer queryable="0" opaque="0" cascaded="0">
+        <Name>nationalparks</Name>
+        <Title>National Parks</Title>
+        <EX_GeographicBoundingBox>
+          <westBoundLongitude>-4.43064</westBoundLongitude>
+          <eastBoundLongitude>1.99728</eastBoundLongitude>
+          <southBoundLatitude>50.3532</southBoundLatitude>
+          <northBoundLatitude>55.5917</northBoundLatitude>
+        </EX_GeographicBoundingBox>
+        <BoundingBox CRS="EPSG:27700" minx="246828" miny="56378.4" maxx="652374" maxy="633117"/>
+        <Style>
+          <Name>default</Name>
+          <Title>default</Title>
+          <LegendURL width="110" height="22">
+            <Format>image/png</Format>
+            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple"
+              xlink:href="..."/>
+          </LegendURL>
+        </Style>
+      </Layer>
+
+
+
+
 GetMap
 ------
 
-The **GetMap** operation requests that the server generate a map.  
-The core parameters specify one or more layers and styles to appear on the map,
-a bounding box for the map extent,
-a target spatial reference system,
-and a width, height, and format for the output.
-The information needed to specify values for parameters such as ``layers``, ``styles`` and ``srs`` can be obtained from the Capabilities document.  
+The **GetMap** operation requests that the server generate a map.  The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output. The information needed to specify values for parameters such as ``layers``, ``styles`` and ``srs`` can be obtained from the Capabilities document.  
 
 The response is a map image, or other map output artifact, depending on the format requested.
 
@@ -238,12 +262,12 @@ Example WMS request using a GetMap XML document is:
    </ogc:GetMap>
 
 Time
-....
+^^^^
 
 This parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering. The TIME attribute for WMS GetMap requests is described in version 1.3 of the WMS specification.
 
 Specifying a time
-+++++++++++++++++++
+"""""""""""""""""
 
 The format used for specifying a time in the WMS TIME parameter is based on `ISO-8601 <http://en.wikipedia.org/wiki/ISO_8601>`_. The precision might varied depending on the server. 
 
@@ -282,7 +306,7 @@ Layers without a temporal component will be served normally, allowing clients to
      - ``1993-05-05T11:34:00.0Z``
 
 Specifying an absolute interval
-++++++++++++++++++++++++++++++++
+"""""""""""""""""""""""""""""""
 
 A client may request information over a continuous interval instead of a single instant by specifying a start and end time, separated by a ``/`` character.
 
@@ -299,7 +323,7 @@ In this scenario the start and end are *inclusive*; that is, samples from exactl
      - ``2010-12-25T00:00:00.0Z/2010-12-25T23:59:59.999Z``
 
 Specifying a relative interval
-+++++++++++++++++++++++++++++++
+""""""""""""""""""""""""""""""
 
 A client may request information over a relative time interval instead of a set time range by specifying a start or end time with an associated duration, separated by a ``/`` character.
 
@@ -324,7 +348,7 @@ One end of the interval must be a time value, but the other may be a duration va
    The final example could be paired with the KML service to provide a :ref:`google_earth` network link which is always updated with the last 36 hours of data.
 
 Reduced accuracy times
-+++++++++++++++++++++++++++++++
+""""""""""""""""""""""
 
 The WMS specification also allows time specifications to be truncated by omitting some of the time string. usually servers will treat the time as a range whose length is equal to the *most precise unit specified* in the time string. For example, if the time specification omits all fields except year, it identifies a range one year long starting at the beginning of that year.
 
@@ -342,7 +366,7 @@ The WMS specification also allows time specifications to be truncated by omittin
      - ``2010-12-25T00:00:00.0Z/2010-12-25T23:59:59.999Z``
 
 Reduced accuracy times with ranges
-+++++++++++++++++++++++++++++++++++++
+""""""""""""""""""""""""""""""""""
 
 Reduced accuracy times are also allowed when specifying ranges. Some servers (e.g GeoServer) effectively expands the start and end times as described above, and then includes any samples from after the beginning of the start interval and before the end of the end interval.
 
@@ -364,7 +388,7 @@ Reduced accuracy times are also allowed when specifying ranges. Some servers (e.
 .. note:: In the last example, note that the result may not be intuitive, as it includes all times from 6PM to 6:59PM.
 
 Specifying a list of times
-+++++++++++++++++++++++++++++++
+""""""""""""""""""""""""""
 
 GooServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame. 
 
@@ -386,7 +410,7 @@ If the list is evenly spaced (for example, daily or hourly samples) then the lis
      - ``TIME=1999-09-01T00:00:00.0Z/1999-11-01T00:00:00.0Z/P1M``
 
 Specifying a periodicity
-+++++++++++++++++++++++++++++++
+""""""""""""""""""""""""
 
 The periodicity is also specified in ISO-8601 format: a capital P followed by one or more interval lengths, each consisting of a number and a letter identifying a time unit:
 
@@ -448,12 +472,9 @@ For example, the multiple representations listed below are all equivalent.
 GetFeatureInfo
 --------------
 
-The **GetFeatureInfo** operation requests the spatial and attribute data for the features
-at a given location on a map.  
-It is similar to the WFS GetFeature operation, but less flexible in both input and output.
+The **GetFeatureInfo** operation requests the spatial and attribute data for the features at a given location on a map.  It is similar to the WFS GetFeature operation, but less flexible in both input and output.
  
-The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.  
-This is easier to use for a naive client that is not able to perform true geographic referencing.
+The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.  This is easier to use for a naive client that is not able to perform true geographic referencing.
 
 The standard parameters for the GetFeatureInfo operation are:
 
@@ -660,9 +681,7 @@ The result will be:
 DescribeLayer
 -------------
 
-The **DescribeLayer** operation is used primarily by clients that understand SLD-based WMS.  
-In order to make an SLD one needs to know the structure of the data.  
-WMS and WFS both have operations to do this, so the **DescribeLayer** operation just routes the client to the appropriate service.
+The **DescribeLayer** operation is used primarily by clients that understand SLD-based WMS.  In order to make an SLD one needs to know the structure of the data.  WMS and WFS both have operations to do this, so the **DescribeLayer** operation just routes the client to the appropriate service.
 
 The standard parameters for the DescribeLayer operation are:
 
@@ -776,15 +795,16 @@ The result will be:
 GetLegendGraphic
 ----------------
 
-The **GetLegendGraphic** operation provides a mechanism for generating legend graphics as images, beyond the LegendURL reference of WMS Capabilities.  
-It generates a legend based on the style defined on the server, or alternatively based on a user-supplied SLD.  
+The **GetLegendGraphic** operation provides a mechanism for generating legend graphics as images, beyond the LegendURL reference of WMS Capabilities.  It generates a legend based on the style defined on the server, or alternatively based on a user-supplied SLD.  
 
 
 References
-------------
+----------
 
-- `GeoServer WMS reference <http://docs.geoserver.org/stable/en/user/services/wms/reference.html>`_ - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
-- `GeoServer  Time Support in GeoServer WMS  <http://docs.geoserver.org/stable/en/user/_sources/services/wms/time.txt>`_ - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
+- `GeoServer WMS reference <http://docs.geoserver.org/stable/en/user/services/wms/reference.html>`_
+  - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
+- `GeoServer  Time Support in GeoServer WMS  <http://docs.geoserver.org/stable/en/user/_sources/services/wms/time.txt>`_
+  - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
 
 
 

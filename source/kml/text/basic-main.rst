@@ -38,9 +38,7 @@ KML is used for:
 Relation to other OGC Standards
 -------------------------------
 
-KML is an encoding. Services such as Web Map Service (WMS) and Web Feature Service (WFS) 
-can publish images and features as KML. The reason is that KML is a combination of visualization 
-and data encoding. As seen in the example bellow coordinates and styles are defined in one file.
+KML is an encoding. Services such as Web Map Service (WMS) and Web Feature Service (WFS) can publish images and features as KML. The reason is that KML is a combination of visualization and data encoding. As seen in the example bellow coordinates and styles are defined in one file.
 
 
 Example
@@ -81,7 +79,7 @@ Details:
     
 - The root element is *kml*   
 - Then a *Document* element is declared
-- A *Document* contains *Placemark*s that provide the details of the features. It can contains various elements such as:
+- A *Document* contains *Placemarks* that provide the details of the features. It can contains various elements such as:
    - name
    - styleURL
    - Point

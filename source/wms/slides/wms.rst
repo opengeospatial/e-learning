@@ -1,8 +1,7 @@
 WEB Map Service (WMS)
 =====================
 
-This tutorial provides a practical introduction to OGC Web Map Service (WMS) 
-Interface standard.
+This tutorial provides a practical introduction to OGC Web Map Service (WMS) Interface standard.
 
 Goals
 -----
@@ -29,14 +28,14 @@ WMS Operations
 - **GetLegendGraphic** (Optional) - gets the legend for a map
 
 WMS Exceptions
-----------------
+--------------
 
 What if something goes wrong?
 
 How will the service let me know?
 
 WMS Exceptions
-----------------
+--------------
 
 XML
     EXCEPTIONS=application/vnd.ogc.se_xml
@@ -50,8 +49,7 @@ JSON
 
 WMS Examples
 ------------
-The examples are based on a local installation of GeoServer
-http://geoserver.org/
+The examples are based on a local installation of GeoServer http://geoserver.org/
 
 Instructions `here <http://live.osgeo.org/en/quickstart/geoserver_quickstart.html>`_
 
@@ -81,7 +79,7 @@ Provides information about:
 -  List of layers
 
 WMS GetMap Parameters
------------------------
+---------------------
 service
     *WMS*
 version
@@ -95,7 +93,7 @@ styles
     
     
 WMS GetMap Parameters
------------------------
+---------------------
 srs or crs
     Value is in form EPSG:nnn. crs is the parameter key used in WMS 1.3.0.
 bbox
@@ -106,7 +104,7 @@ height
     Height of map output, in pixels.            
 
 WMS GetMap Parameters
------------------------
+---------------------
 format
     Format for the map output. 
     
@@ -119,7 +117,7 @@ format
       - format=kmz
 
 Optional WMS GetMap Parameters
--------------------------------
+------------------------------
 transparent
     true or false
 bgcolor
