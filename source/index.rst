@@ -15,5 +15,6 @@ This is the official documentation for OGC standards.
    ogc/text/index.rst
    ogc-standards/text/index.rst
    visualization-standards/basic-index.rst
+   metadata-catalogue/index.rst
    references.rst
 
