@@ -19,4 +19,7 @@ At the completion of the module students will be able to:
 
 Prerequisites
 -------------
-None.
+
+The following module is a  prerequisites:
+ 
+- :doc:`../../fundamental-concepts/text/index`
