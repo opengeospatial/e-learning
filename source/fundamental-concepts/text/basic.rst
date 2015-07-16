@@ -113,18 +113,18 @@ Operation
 ^^^^^^^^^
 
 In the context of Web services, an operation is a request to a server. For example, 
-an HTTP GET request. An operation is define by a service interface.
+an HTTP GET request. An operation is defined by a service interface.
 
 Vacuum Cleaning Robot Analogy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If we look at a vacuum cleaning robot, will see it provides a service, 
+A good analogy to a service is a vacuum cleaning robot. It provides a service, 
 with a set of interfaces and a set of operations.
 
 .. image:: ../img/roomba-service.jpg
    :width: 50%  
 
-We can depict the following:   
+The following can be depicted:
 
 Service
    The robot provides the functionality to clean a room, via a set of interfaces.
