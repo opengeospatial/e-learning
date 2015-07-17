@@ -4,7 +4,30 @@ Introduction to OGC Standards
 Definition of a Standard
 ------------------------
 
-A standard is a formal agreement that provides the rules and guidelines between suppliers and consumers about how to implement a technology. For example, the following image provides a fragment WMS 1.3 standard.
+A standard is a formal agreement that provides the rules and guidelines between suppliers and consumers of data and services about how to implement a technology. Geospatial software vendors, developers and users collaborate in the OGC's consensus process to develop and agree on standards that enable information systems to exchange geospatial information and instructions for geoprocessing. The result of these efforts are Open Standards. 
+
+Open Standards
+------------------
+
+The OGC defines Open Standards as standards that are:
+
+1. Freely and publicly available – They are available free of charge and unencumbered by patents and other intellectual property.
+2. Non discriminatory – They are available to anyone, any organization, any time, anywhere with no restrictions.
+3. No license fees - There are no charges at any time for their use.
+4. Vendor neutral - They are vendor neutral in terms of their content and implementation concept and do not favor any vendor over another.
+5. Data neutral – The standards are independent of any data storage model or format.
+6. Based on Consensus - They are defined, documented, and approved by a formal, member driven consensus process. The consensus group remains in charge of changes and no single entity controls the standard.
+
+
+An "Open Standard" is not the same as "Open Source". "Open Source" refers to "Free and Open Source Software", which has been made available under a free software license with the rights to run the program for any purpose, to study how the program works, to adapt it, and to redistribute copies, including modifications. These freedoms enable Open Source software development, a public, collaborative model that promotes early publishing and frequent releases. Most open source software products implement open standards, such as OGC standards. Some are also reference implementations of OGC. 
+
+
+
+Example of a rule in a standard
+-----------------------------------
+
+
+For example, the following image provides a fragment WMS 1.3 standard.
 
 .. image:: ../img/standard-wms.jpg
    :width: 80%
