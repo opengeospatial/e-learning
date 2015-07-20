@@ -1,4 +1,4 @@
-Introduction to OGC Standards
+Introduction to OGC
 =============================
 
 

@@ -1,5 +1,5 @@
-OGC
-===
+Introduction to OGC Standards
+=================================
 
 
 .. toctree::
