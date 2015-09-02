@@ -10,7 +10,7 @@ Catalogue services support the ability to publish and search collections of desc
 History and Versions
 
   - CSW 2.0.2 `07-006r1  <http://portal.opengeospatial.org/files/?artifact_id=20555>`_was released in 2007-02-23
-  - CSW 3.0 (will be released in 2015-2016). It adds open search support.
+  - CSW 3.0 (will be released in 2015-2016). It adds OpenSearch support.
 
 Test suites exist for: 
 
@@ -37,7 +37,7 @@ Profiles
 There are several profiles of OGC CSW. These include:
 
 - `ISO 19115/19139 Metadata  <http://www.iso.org/iso/catalogue_detail.htm?csnumber=32557>`_ : This document specifies an application profile for ISO metadata with support for XML encoding per `ISO 19139 <http://www.iso.org/iso/catalogue_detail.htm?csnumber=32557>`_  and HTTP protocol binding. This CSW profile is widely implemented in Europe, such as in the Spatial Data Infrastructure for North Rhine Westphalia (federal state of Germany).
-- `CSW-ebRIM Registry Service  <http://portal.opengeospatial.org/files/?artifact_id=31137>`_:  This profile applies the CSW interfaces to the OASIS ebXML registry information model (ebRIM 3.0) so as to provide a general and flexible web-based registry service that enables users—human or software agents—to locate, access, and make use of resources in an open, distributed system; it provides facilities for retrieving, storing, and managing many kinds of resource descriptions. An extension mechanism permits registry content to be tailored for more specialized application domains.
+- `CSW-ebRIM Registry Service  <http://portal.opengeospatial.org/files/?artifact_id=31137>`_:  This profile applies the CSW interfaces to the OASIS ebXML registry information model (ebRIM 3.0) so as to provide a general and flexible web-based registry service that enables users—human or software agents—to locate, access, and make use of resources in an open, distributed system; it provides facilities for retrieving, storing, and managing many kinds of resource descriptions. An extension mechanism permits registry content to be tailored for more specialized application domains
 - CSW 39.50: The Z39.50 Protocol binding uses a message-based client server architecture implemented using the ANSI/NISO Z39.50 Application Service Definition and Protocol Specification. This protocol binding maps each of the general model operations to a corresponding service specified in the `ANSI/NISO/ISO standard  <http://lcweb.loc.gov/z3950/agency/document.html>`_. Much of the current work on this standard has to do with restructuring the catalogue standard so that there is a well defined, easy to implement core coupled with a well defined mechanism for expressing a variety of extensions (previously known as application profiles).
 
 Relation to other OGC Standards
@@ -68,5 +68,5 @@ Harvest (Optional)
 Example
 -------
 
-Example of operations for  `PyCSW - CSW Data.gov <https://gist.github.com/kalxas/5ab6237b4163b0fdc930>`_
+Example of operations for `pycsw - Data.gov CSW <https://gist.github.com/kalxas/5ab6237b4163b0fdc930>`_
 
