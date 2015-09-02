@@ -3,24 +3,33 @@ CSW
 
 Introduction
 ------------
-Catalogue services support the ability to publish and search collections of descriptive information (metadata) for data, services, and related information objects. Metadata in catalogues represent resource characteristics that can be queried and presented for evaluation and further processing by both humans and software. Catalogue services are required to support the discovery and binding to registered information resources within an information community. 
+Catalogue services support the ability to publish and search collections of descriptive information (metadata) for data, services, and related information objects. Metadata in catalogues represent can be queried and presented for evaluation and further processing by both humans and software. Catalogue services are required to support the discovery and binding to registered information resources within an information community. 
 
 
 
 History and Versions
-  CSW 2.0.2 `07-006r1  <http://portal.opengeospatial.org/files/?artifact_id=20555>`_was released 2007-02-23
-  CSW 3.0 (will be released in 2015-2016). It adds open search support
-Test Suite
 
-  Test suites exist for: 
+  - CSW 2.0.2 `07-006r1  <http://portal.opengeospatial.org/files/?artifact_id=20555>`_was released in 2007-02-23
+  - CSW 3.0 (will be released in 2015-2016). It adds open search support.
+
+Test suites exist for: 
+
       - `CSW 2.0.2 <https://github.com/opengeospatial/ets-csw202>`_ 
       - `CAT 3.0 <https://github.com/opengeospatial/ets-cat30>`_
-Implementations
-   Implementations can be found at the OGC database. `here <http://www.opengeospatial.org/resource/products/byspec>`_
+
+Implementations can be found at the `OGC database <http://www.opengeospatial.org/resource/products/byspec>`_.
 
 Usage
 -----
-Providers of resources, such as content providers, use catalogues to register metadata that conform to the provider’s choice of an information model; such models include descriptions of spatial references and thematic information. Client applications can then search for geospatial data and services in very efficient ways to discover services or data
+
+Providers of resources (data and services), use catalogues to register metadata that conform to the provider’s choice of an information model; such models include descriptions of spatial references and thematic information. Client applications can then search for geospatial data and services in very efficient ways to discover services or data.
+
+Usage examples:
+
+-  `Technical Guidance to Implement INSPIRE Discovery Services <http://inspire.ec.europa.eu/documents/Network_Services/Technical_Guidance_Discovery_Services_v2.12.pdf>`_
+- `GEOSS CSW <http://geossregistries.info/portaldeveloper.html>`_ 
+- `Data.gov search via pycsw <https://gist.github.com/kalxas/5ab6237b4163b0fdc930>`_
+
 
 Profiles
 -----------
