@@ -1,6 +1,9 @@
 Symbology Encoding
 ==================
 
+Introduction
+------------
+
 Geospatial data (vector and raster) have no intrinsic visual component. In order to see data, it must be styled. Styling specifies color, thickness, and other visible attributes used to render data on a map. The Symbology Encoding (SE) standard defines the language to formally encode the rules of how to portray features and coverages.
 
 Encoding a style for a feature
