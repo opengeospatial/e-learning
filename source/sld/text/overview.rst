@@ -3,14 +3,14 @@ SLD - Overview
 
 Audience
 --------
-Students that are familiar with web services and WMS and want to improve understanding on SLD.
+Students that are familiar with web services and WMS and want to improve their understanding of SLD.
 
 Learning Objectives
 -------------------
 
 At the completion of the module students will be able to:
 
-- Explain what is a Style Layer Descriptor (SLD)
+- Explain what a Style Layer Descriptor (SLD) is
 - Describe what can be done with an SLD
 - Be able to use an SLD in an OGC request
 

@@ -9,12 +9,12 @@ Learning Objectives
 
 At the completion of the module students will be able to:
 
-- Explain what is KML
+- Explain what KML is
 - Describe what can be done with KML
 - Create a KML
 - Visualize a KML
 - Describe how external standards can be brought to OGC
-- Demonstrate the relation with WMS
+- Demonstrate KML relation with WMS
 
 Prerequisites
 -------------

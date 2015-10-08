@@ -8,13 +8,13 @@ Learning Objectives
 -------------------
 At the completion of the module students will be able to:
 
-- Explain what is the OGC
+- Explain what OGC is
 - Describe why interoperability is important
-- Define what is a standard
+- Define what a standard is
 - Explain the publish/find/bind pattern 
 - Define the different types of standards 
 - Explain the difference between an encoding standard versus an interface standard
-- Explain what is OWS Common and its importance
+- Explain what OWS Common is and its importance
 
 
 Prerequisites

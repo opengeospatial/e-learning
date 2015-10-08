@@ -6,7 +6,7 @@
 OGC E-learning
 ==============
 
-This is the official documentation for OGC standards.
+This is an official OGC tutorial module.
 
 .. toctree::
    :maxdepth: 2

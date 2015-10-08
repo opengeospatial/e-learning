@@ -3,50 +3,49 @@ Introduction to Web Services
 
 Maps and the web
 ----------------
-The first map of the world was probably created 6,200 BC in what today is South East Turkey.
+One of the first maps of the world was probably created 6,200 BC in what today is South East Turkey.
 
 .. image:: ../img/first-map.jpg
       :width: 70%
 
-We evolve from making maps in caverns, to making maps in rocks, wood, paper and finally electronically. Maps now days are created on demand, most of the times using mobile phones.
+We advanced from making maps in caverns, to making maps in rocks, wood, paper and finally electronically. Today, maps can be easily be  created on demand, most of the times using mobile phones.
 
 .. image:: ../img/mobile-map.jpg
       :width: 70%  
 
-The World Wide Web or Web, refers to all the interlinked information from computers in the Internet. Internet is a network of connected computers that 
-enable computers to talk each other using protocols like TCP/IP. Billions of computers and devices are connected today to the Internet.
-Each of these devices can be distinguished uniquely from each other via  URL.
+The World Wide Web or Web, refers to a vast collection of interlinked information on the Internet. The Internet is a network of connected computers that 
+enable computers to talk to each other using protocols like TCP/IP. Billions of computers and devices are connected today to the Internet.
+Each of these devices can be distinguished from all others via a unique URL.
 
 URL
 ---
-The Uniform Resource Locator or hyperlink is a string that provides a reference to a resource on the Web. A Web resource can be anything: a page, file, image, or as previously saw a HTTP GET request. Some examples are as follows:
+The Uniform Resource Locator (URL) or hyperlink is a string that provides a reference to a resource on the Web. A Web resource can be anything: a page, file, image, or as explained bellow an HTTP GET request. Some examples are as follows:
 
 - http://www.opengeospatial.org
 - ftp://ftp.funet.fi/pub/standards/RFC/rfc959.txt
 - Mailto: bermud@me.com
 
-The first identifies and reference to OGC. The second is a reference identifying a document,  and the third identifies the email address of a person.
+The first identifies and provides access to the OGC website. The second identifies and provides access to a text-only document and the third one identifies and provides access to an email address
 
 
 
 Encodings
 ---------
-Encodings provide the format and syntax of the messages, or data send to and by the server. 
-Messages are file or a data streams.  For example text encoding standards are based on UTF-8, 
-XML and ASCII. The format identifies and determines what type of computer program can be use to read 
-or interact with the file or data stream. For example:
-   
-   - A file in XML ** ** requires a program that can read and write XML.
-   - An image in JPG ** ** requires a program that can read and write images to JPG.
-   - A temporary binary object ** ** JAVA, requires a Java program that can understand this object.
+Encodings provide the format (arrangement of data elements) and syntax of the data and messages, or data send to and by a server. 
 
-Web Services defines interfaces and operations that allow the exchange of information with certain encodings.
+Messages are files or data streams. The format identifies and determines what type of computer program can be used to read or interact with the file or data stream. For example:
+   
+   - A file in XML requires a program that can read XML.
+   - An image in JPG requires a program that can read JPG images.
+   - A temporary binary object in JAVA, requires a Java program that can understand this type of object.
+
+Web Services operate through interfaces and operations that allow the exchange of information with certain encodings.
 
 
 HTTP
 ----
-World Wide Web Consortium (W3C) defines protocols for exchanging information on the Web. OGC relies on W3C protocols 
-to develop interfaces for Geospatial Web Services. The two most common ones are as follows:
+The World Wide Web Consortium (W3C) defines protocols for exchanging information on the Web. OGC relies on W3C protocols 
+to develop interfaces for Geospatial Web services. The two most common ones are as follows:
 
 HTTP GET
 ^^^^^^^^
@@ -66,14 +65,17 @@ The above request sends  the key/value pairs of *name1=value1* and *name2=value2
 HTTP POST
 ^^^^^^^^^
 
-HTTP POST involves submission of data to be processed (usually from an HTML form).
+An HTTP POST is a request that submits data (usually from an HTML form) to be processed by a server.
 
 POST requests involves custom clients and sending of XML encoded data to a server. It is more verbose than HTTP GET. Every GET request here has an equivalent POST request, but the opposite is not true.
-The following example provides an HTTP request represented as a URL (HTTP GET):
+
+The following two example provide an equivalent HTTP request represented as an HTTP GET and as an HTTP POST.
+
+HTTP GET:
 
     http://localhost:8080/geoserver/wfs?request=GetCapabilities&VERSION=1.0.0&SERVICE=WFS
 
-Same request as an XML (HTTP POST).
+HTTP POST:
 
 .. code-block:: xml
 
@@ -89,8 +91,9 @@ Same request as an XML (HTTP POST).
    />  
 
 
-Service, Interface and Operations
----------------------------------
+Service, Interfaces and Operations
+-----------------------------------
+
 It is important to distinguish between service interfaces and operations, 
 as many of OGC standards are based on these concepts.
 
@@ -113,7 +116,7 @@ Operation
 ^^^^^^^^^
 
 In the context of Web services, an operation is a request to a server. For example, 
-an HTTP GET request. An operation is defined by a service interface.
+an HTTP GET request is a specific operation. An operation is defined by a service interface.
 
 Vacuum Cleaning Robot Analogy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -130,7 +133,7 @@ Service
    The robot provides the functionality to clean a room, via a set of interfaces.
    
 Interface
-   The robot provides two interfaces: 1) to select the room, 2) an electric interface.  
+   The robot provides two interfaces: 1) to select the room, 2) an electrical interface.  
    
 Operation
    The interface room selection provides three operations to set how the robot will move around a room:
@@ -142,7 +145,7 @@ Operation
 In an OGC Web Service
 ^^^^^^^^^^^^^^^^^^^^^
 
-A WFS service is a service that provides the functionality to retrieve features. For example if we were interested in data about points of interest, each point of interest  can have a  location,  name and other properties. 
+A WFS service is a service that provides the functionality to retrieve geospatial features. For example if we were interested in data about points of interest, each point of interest  can have a location,  name and other properties. 
 
 We can depict the following:   
 

@@ -1,98 +1,106 @@
 WMS - Operations
 ================
 
-The following are the WMS operations
+This section provides detailed information about the types of WMS requests a client is able to perform to a WMS server.
 
-
-WMS requests can perform the following operations: 
-
-.. list-table::
-   :widths: 20 80
+.. list-table:: WMS Operations
+   :widths: 30 80
+   :header-rows: 1
 
    * - **Operation**
      - **Description**
-   * - ``Exceptions``
-     - If an exception occur
    * - ``GetCapabilities``
-     - Retrieves metadata about the service, including supported operations and parameters, and a list of the available layers
+     - Retrieves metadata about the service, including supported operations and parameters, and a list of the available layers.
    * - ``GetMap``
-     - Retrieves a map image for a specified area and content
+     - Retrieves a map image for a specified area and content.
    * - ``GetFeatureInfo`` (optional)
-     - Retrieves the underlying data, including geometry and attribute values, for a pixel location on a map
+     - Retrieves the underlying data, including geometry and attribute values, for a pixel location on a map.
    * - ``DescribeLayer`` (optional)
      - Indicates the WFS or WCS to retrieve additional information about the layer.
    * - ``GetLegendGraphic`` (optional)
-     - Retrieves a generated legend for a map 
+     - Retrieves a legend for a map. 
 
 Exceptions
 ----------
 
-Formats in which WMS can report exceptions. The supported values for exceptions are:
+When a request from a client to a WMS Server is not performed properly, a Server needs to report an exception. 
+Formats in which a WMS Server can report exceptions are shown in the table bellow.
 
-.. list-table::
-   :widths: 15 35 50
+.. list-table:: Exceptions
+   :widths: 15 50 35
+   :header-rows: 1
    
    * - **Format**
      - **Syntax**
      - **Notes**
    * - XML
-     - ``EXCEPTIONS=application/vnd.ogc.se_xml``
-     - Xml output. (The default format)
+     - ``application/vnd.ogc.se_xml``
+     - The error is described in XML.
    * - PNG
-     - ``EXCEPTIONS=application/vnd.ogc.se_inimage``
-     - Generates an image
+     - ``application/vnd.ogc.se_inimage``
+     - The error is return as an image.
    * - Blank
-     - ``EXCEPTIONS=application/vnd.ogc.se_blank``
-     - Generates a blank image
+     - ``application/vnd.ogc.se_blank``
+     - A blank image is returned. 
    * - JSON
-     - ``EXCEPTIONS=application/json``
-     - Simple Json representation.
-   * - JSONP
-     - ``EXCEPTIONS=text/javascript``
-     - Return a JsonP in the form: paddingOutput(...jsonp...). See :ref:`wms_vendor_parameters` to change the callback name. Note that this format is disabled by default (See :ref:`wms_global_variables`).
-
+     - ``application/json``
+     - The error is reported as a simple JSON representation.
+  
 .. _wms_getcap:
 
 GetCapabilities
 ---------------
 
-The **GetCapabilities** operation requests metadata about the operations, services, and data ("capabilities") that are offered by a WMS server. 
+Request
+^^^^^^^
 
-The parameters for the GetCapabilities operation are:
+A WMS server responding to a **GetCapabilities** request returns metadata about the service, including supported operations and parameters, and a list of the available layers.
 
-.. list-table::
-   :widths: 20 10 70
+An example of a GetCapabilities request is:
+
+.. code-block:: properties
+  
+  http://metaspatial.net/cgi-bin/ogc-wms.xml?
+  SERVICE=WMS&
+  VERSION=1.3
+  REQUEST=GetCapabilities&
+
+  
+`This is a link to a GetCapabilities request. <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ 
+    
+There are three parameters (and values) being passed to the WMS server, ``SERVICE=WMS``, ``VERSION=1.3``, and ``REQUEST=GetCapabilities``.  
+
+- The ``SERVICE`` parameter tells the server that a WMS request is forthcoming.  
+- The ``VERSION`` parameter tells the server what version of the WMS is being requested.  
+- The ``REQUEST`` parameter tells the server that the operation requested is the `GetCapabilities` operation. 
+
+The WMS standard requires that requests always includes these three parameters.  
+The table bellow summarizes the parameters and values required to perform the request.
+
+.. list-table:: Parameters of the GetCapabilities Operation
+   :widths: 15 15 70
+   :header-rows: 1  
    
    * - **Parameter**
-     - **Required?**
+     - **Required**
      - **Description**
-   * - ``service``
+   * - ``SERVICE``
      - Yes
      - Service name. Value is ``WMS``.
-   * - ``version``
+   * - ``VERSION``
      - Yes
      - Service version. Value is one of ``1.0.0``, ``1.1.0``, ``1.1.1``, ``1.3``.
-   * - ``request``
+   * - ``REQUEST``
      - Yes
      - Operation name. Value is ``GetCapabilities``.
 
+Response
+^^^^^^^^
+The response is a Capabilities XML document with a detailed description of the WMS service.  It contains three main sections:
 
-A example GetCapabilities request is:
-
-.. code-block:: xml
- 
-   http://localhost:8080/geoserver/wms?
-   service=wms&
-   version=1.1.1&
-   request=GetCapabilities
-    
-There are three parameters being passed to the WMS server, ``service=wms``, ``version=1.1.1``, and ``request=GetCapabilities``.  The ``service`` parameter tells the WMS server that a WMS request is forthcoming.  The ``version`` parameter refers to which version of WMS is being requested.  The ``request`` parameter specifies the GetCapabilities operation. The WMS standard requires that requests always includes these three parameters.  
-
-
-The response is a Capabilities XML document that is a detailed description of the WMS service.  It contains three main sections:
-
-.. list-table::
+.. list-table:: Sections Capabilities Document
    :widths: 20 80
+   :header-rows: 1  
    
    * - **Service**
      - Contains service metadata such as the service name, keywords, and contact information for the organization operating the server.
@@ -106,10 +114,11 @@ The response is a Capabilities XML document that is a detailed description of th
 .. _wms_getmap:
 
 
-Get Capabilities Layer Style Section
-------------------------------------
+GetCapabilities Layer Style Section
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The GetCapabilites response contains a *Layer* section, which contains details about the style available to that layer. In the example bellow the available style is *default*.
+The GetCapabilites response contains a *Layer* section, which details about the style available to that layer. 
+In the example bellow the available style is *default*.
 
 
 .. code-block:: xml
@@ -124,14 +133,16 @@ The GetCapabilites response contains a *Layer* section, which contains details a
           <southBoundLatitude>50.3532</southBoundLatitude>
           <northBoundLatitude>55.5917</northBoundLatitude>
         </EX_GeographicBoundingBox>
-        <BoundingBox CRS="EPSG:27700" minx="246828" miny="56378.4" maxx="652374" maxy="633117"/>
+        <BoundingBox CRS="EPSG:27700" 
+               minx="246828" miny="56378.4" maxx="652374" maxy="633117"/>
         <Style>
           <Name>default</Name>
           <Title>default</Title>
           <LegendURL width="110" height="22">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" xlink:type="simple"
-              xlink:href="..."/>
+            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" 
+               xlink:type="simple"
+               xlink:href="..."/>
           </LegendURL>
         </Style>
       </Layer>
@@ -142,14 +153,57 @@ The GetCapabilites response contains a *Layer* section, which contains details a
 GetMap
 ------
 
-The **GetMap** operation requests that the server generate a map.  The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output. The information needed to specify values for parameters such as ``layers``, ``styles`` and ``srs`` can be obtained from the Capabilities document.  
+Request
+^^^^^^^
 
-The response is a map image, or other map output artifact, depending on the format requested.
+A WMS server responding to a **GetMap** request returns a map image for a specified area and content.
 
-The standard parameters for the GetMap operation are:
+The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output. 
+The information needed to specify values for parameters such as ``layers``, ``styles`` and ``Spatial Reference Systems (SRS)`` can be obtained from the Capabilities document.  
 
-.. list-table::
-   :widths: 20 10 70
+The response is a map image, or other map output artifact, depending on the format requested. 
+
+An example of a GetMap request is:
+
+.. code-block:: properties
+
+      http://metaspatial.net/cgi-bin/ogc-wms.xml?
+      VERSION=1.3.0& 
+      REQUEST=GetMap& 
+      SERVICE=WMS& 
+      LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& 
+      STYLES=,,,,,,& 
+      CRS=EPSG:27700& 
+      BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& 
+      WIDTH=400& 
+      HEIGHT=300& 
+      FORMAT=image/png&
+      BGCOLOR=0xffffff& 
+      TRANSPARENT=TRUE&
+      EXCEPTIONS=XML
+  
+
+`This is a link to a GetMaprequest. <ttp://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
+
+The getMap request accesses a server with data from Great Britain. 
+The request specifies a set of layers with no particular style (STYLES=,,,,,,). This server has seven map layers:
+   
+   1. DTM (Digital Terrain Model)
+   2. Overview (Overview 1:1m)
+   3. Raster_250K (Raster 1:250k)
+   4. Topography (selection of topographical data derived from OS VectorMap District 1:50k)
+   5. National Parks (The national parks of Great Britain)
+   6. Infrastructure (selection of topographical data derived from OS VectorMap District 1:50k)
+   7. Named Places (selection of topographical data derived from OS VectorMap District 1:50k)
+
+The coordinate reference system (CRS) is EPSG:27700, which is the Ordnance Survey National Grid reference system. 
+The image is returned in a PNG transparent format with width 400 and height 300 pixels.The background color is white (Hex code=0xffffff).
+
+The table bellow summarizes the parameters and values.
+
+.. list-table:: Standard Parameters for the GetMap Operation
+   :widths: 20 15 65
+   :header-rows: 1   
    
    * - **Parameter**
      - **Required?**
@@ -191,7 +245,6 @@ The standard parameters for the GetMap operation are:
    * - ``format``
      - Yes
      - Format for the map output.  
-       See :ref:`wms_output_formats` for supported values.
    * - ``transparent``
      - No
      - Whether the map background should be transparent.
@@ -211,18 +264,18 @@ The standard parameters for the GetMap operation are:
      - Time value or range for map data.
    * - ``sld``
      - No
-     - A URL referencing a :ref:`StyledLayerDescriptor <styling>` XML file
+     - A URL referencing a StyledLayerDescriptor XML file
        which controls or enhances map layers and styling
    * - ``sld_body``
      - No
-     - A URL-encoded :ref:`StyledLayerDescriptor <styling>` XML document
+     - A URL-encoded StyledLayerDescriptor XML document
        which controls or enhances map layers and styling     
 
 
 
-Example WMS request for ``topp:states`` layer to be output as a PNG map image in SRS EPGS:4326 and using default styling is:
+Another WMS request examples is as follows:
 
-.. code-block:: xml
+.. code-block:: properties
 
    http://localhost:8080/geoserver/wms?
    request=GetMap
@@ -237,7 +290,10 @@ Example WMS request for ``topp:states`` layer to be output as a PNG map image in
    &format=image%2Fpng
 
 
-Example WMS request using a GetMap XML document is:
+The request specifies the ``topp:states`` layer to be output as a PNG map image in SRS EPGS:4326 and using default styling `population`.
+
+
+A WMS request can also be sent via HTTP POST as an XML document, as follows:
 
 .. code-block:: xml
 
@@ -260,16 +316,29 @@ Example WMS request using a GetMap XML document is:
          <Size><Width>550</Width><Height>250</Height></Size>
       </Output>
    </ogc:GetMap>
+   
+   
+Response
+^^^^^^^^
 
+The response of a GetMap request is an image.
+   
+.. image:: ../img/getmap-demo.png
+      :width: 70%
+      
+If the request is wrong the server will return an error message.
+      
 Time
 ^^^^
 
-This parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering. The TIME attribute for WMS GetMap requests is described in version 1.3 of the WMS specification.
+The ``TIME`` parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering. 
+The TIME attribute for WMS GetMap requests is described in version 1.3 of the WMS specification.
 
 Specifying a time
 """""""""""""""""
 
-The format used for specifying a time in the WMS TIME parameter is based on `ISO-8601 <http://en.wikipedia.org/wiki/ISO_8601>`_. The precision might varied depending on the server. 
+The format used for specifying a time in the WMS TIME parameter is based on `ISO-8601 <http://en.wikipedia.org/wiki/ISO_8601>`_. 
+The precision might varied depending on the server. 
 
 The parameter is::
 
@@ -289,13 +358,15 @@ where:
 * ``ss``: 2-digit second
 * ``SSS``: 3-digit millisecond
 
-The day and intraday values are separated with a capital ``T``, and the entire thing is suffixed with a ``Z``, indicating `UTC <http://en.wikipedia.org/wiki/Coordinated_Universal_Time>`_ for the time zone. (The WMS specification does not provide for other time zones.)
+The day and intraday values are separated with a capital ``T``, and the entire string is suffixed with a ``Z``, indicating `UTC <http://en.wikipedia.org/wiki/Coordinated_Universal_Time>`_ for the time zone. (The WMS specification does not provide for other time zones.)
 
 WMS Servers will apply the ``TIME`` value to all temporally enabled layers in the ``LAYERS`` parameter of the GetMap request.
 
 Layers without a temporal component will be served normally, allowing clients to include reference information like political boundaries along with temporal data.
 
-.. list-table::
+
+
+.. list-table:: Examples of Time Values for the TIME parameter in GetMap requests
    :header-rows: 1
 
    * - Description
@@ -312,7 +383,8 @@ A client may request information over a continuous interval instead of a single 
 
 In this scenario the start and end are *inclusive*; that is, samples from exactly the endpoints of the specified range will be included in the rendered tile.
 
-.. list-table::
+.. list-table:: Examples of Time Values for Absolute Intervals
+   :widths: 30 70
    :header-rows: 1
 
    * - Description
@@ -329,7 +401,7 @@ A client may request information over a relative time interval instead of a set 
 
 One end of the interval must be a time value, but the other may be a duration value as defined by the ISO 8601 standard.  The special keyword ``PRESENT`` may be used to specify a time relative to the present server time.
 
-.. list-table::
+.. list-table:: Examples of Time Values for Relative Intervals
    :header-rows: 1
 
    * - Description
@@ -343,18 +415,16 @@ One end of the interval must be a time value, but the other may be a duration va
    * - 36 hours preceding the current time
      - ``PT36H/PRESENT``
 
-.. note::
-   
-   The final example could be paired with the KML service to provide a :ref:`google_earth` network link which is always updated with the last 36 hours of data.
-
 Reduced accuracy times
 """"""""""""""""""""""
 
-The WMS specification also allows time specifications to be truncated by omitting some of the time string. usually servers will treat the time as a range whose length is equal to the *most precise unit specified* in the time string. For example, if the time specification omits all fields except year, it identifies a range one year long starting at the beginning of that year.
+The WMS specification also allows time specifications to be truncated by omitting some of the time string. Usually servers will treat the time as a range whose length is equal to the *most precise unit specified* in the time string. 
+For example, if the time specification omits all fields except year, it identifies a range one year long starting at the beginning of that year.
 
-.. list-table::
+.. list-table:: Examples of Time Values for Reduced Accuracy Times
    :header-rows: 1
-
+   :widths: 15 15 70
+   
    * - Description
      - Reduced Accuracy Time
      - Equivalent Range
@@ -368,46 +438,45 @@ The WMS specification also allows time specifications to be truncated by omittin
 Reduced accuracy times with ranges
 """"""""""""""""""""""""""""""""""
 
-Reduced accuracy times are also allowed when specifying ranges. Some servers (e.g GeoServer) effectively expands the start and end times as described above, and then includes any samples from after the beginning of the start interval and before the end of the end interval.
+Reduced accuracy times are also allowed when specifying ranges. The ranges are inclusive.
+Some servers (e.g GeoServer) effectively expands the start and end times as described above, and then includes any samples from after the beginning of the start interval and before the end of the end interval.
 
-.. note:: Again, the ranges are inclusive.
-
-.. list-table::
+.. list-table:: Examples of Time Values for Reduced Accuracy Times with Ranges
    :header-rows: 1
-
+   :widths: 20 35 45
+   
    * - Description
      - Reduced Accuracy Time
      - Equivalent Range
    * - The months of September through December 2002
-     - ``2002-09/2002-12``
-     - ``2002-09-01T00:00:00.0Z/2002-12-31T23:59:59.999Z``
+     - 2002-09/2002-12
+     - 2002-09-01T00:00:00.0Z/ 2002-12-31T23:59:59.999Z
    * - 12PM through 6PM, December 25, 2010
-     - ``2010-12-25T12/2010-12-25T18``
-     - ``2010-12-25T12:00:00.0Z/2010-12-25T18:59:59.999Z``
-
-.. note:: In the last example, note that the result may not be intuitive, as it includes all times from 6PM to 6:59PM.
+     - 2010-12-25T12/ 2010-12-25T18
+     - 2010-12-25T12:00:00.0Z/ 2010-12-25T18:59:59.999Z
 
 Specifying a list of times
 """"""""""""""""""""""""""
 
-GooServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame. 
+Some Servers, such a GeoServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame. 
 
 The elements of a list are separated by commas.
 
 If the list is evenly spaced (for example, daily or hourly samples) then the list may be specified as a range, using a start time, end time, and period separated by slashes.
 
-.. list-table::
+.. list-table:: Examples of List with Time Values
    :header-rows: 1
+   :widths: 20 40 40
 
    * - Description
      - List notation
      - Equivalent range notation
    * - Noon every day for August 12-14, 2012
-     - ``TIME=2012-08-12T12:00:00.0Z,2012-08-13T12:00:00.0Z,2012-08-14T12:00:00.0Z``
-     - ``TIME=2012-08-12T12:00:00.0Z/2012-08-18:T12:00:00.0Z/P1D``
+     - TIME=2012-08-12T12:00:00.0Z, 2012-08-13T12:00:00.0Z, 2012-08-14T12:00:00.0Z
+     - TIME=2012-08-12T12:00:00.0Z/ 2012-08-18:T12:00:00.0Z/ P1D
    * - Midnight on the first of September, October, and November 1999
-     - ``TIME=1999-09-01T00:00:00.0Z,1999-10-01T00:00:00.0Z,1999-11-01T00:00:00.0Z``
-     - ``TIME=1999-09-01T00:00:00.0Z/1999-11-01T00:00:00.0Z/P1M``
+     - TIME=1999-09-01T00:00:00.0Z, 1999-10-01T00:00:00.0Z, 1999-11-01T00:00:00.0Z
+     - TIME=1999-09-01T00:00:00.0Z/ 1999-11-01T00:00:00.0Z/ P1M
 
 Specifying a periodicity
 """"""""""""""""""""""""
@@ -436,108 +505,71 @@ The Year/Month/Day group of values must be separated from the Hours/Minutes/Seco
 
 Fractional values are permitted, but only for the most specific value that is included.
 
-.. note:: The period must divide evenly into the interval defined by the start/end times. So if the start/end times denote 12 hours, a period of 1 hour would be allowed, but a period of 5 hours would not. 
+The period must divide evenly into the interval defined by the start/end times. So if the start/end times denote 12 hours, a period of 1 hour would be allowed, but a period of 5 hours would not. 
 
 For example, the multiple representations listed below are all equivalent.
 
-* One hour::
-
-        P0Y0M0DT1H0M0S
-
-        PT1H0M0S
-
-        PT1H
-
-* 90 minutes::
-
-        P0Y0M0DT1H30M0S
-
-        PT1H30M
-
-        P90M
-
-* 18 months::
-
-        P1Y6M0DT0H0M0S
-
-        P1Y6M0D
-
-        P0Y18M0DT0H0M0S
-
-        P18M
-
-  .. note:: ``P1.25Y3M`` would not be acceptable, because fractional values are only permitted in the most specific value given, which in this case would be months. 
-
+* One hour: P0Y0M0DT1H0M0S, PT1H0M0S or PT1H
+* 90 minutes: P0Y0M0DT1H30M0S, PT1H30M or P90M
+* 18 months: P1Y6M0DT0H0M0S, P1Y6M0D, P0Y18M0DT0H0M0S or P18M
 
 GetFeatureInfo
 --------------
 
-The **GetFeatureInfo** operation requests the spatial and attribute data for the features at a given location on a map.  It is similar to the WFS GetFeature operation, but less flexible in both input and output.
- 
-The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.  This is easier to use for a naive client that is not able to perform true geographic referencing.
+Request
+^^^^^^^
+
+A WMS server responding to a **GetFeatureInfo** request returns the underlying data, including geometry and attribute values, for a pixel location on a map.
+It is similar to the WFS GetFeature operation, but less flexible in both input and output.
+The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.  
+This is easier to use for a naive client that is not able to perform true geographic referencing.
 
 The standard parameters for the GetFeatureInfo operation are:
 
-.. list-table::
-   :widths: 20 10 70
-   
+.. list-table:: Parameters for the GetFeatureInfo Operation
+   :widths: 20 20 60
+   :header-rows: 1
+      
    * - **Parameter**
-     - **Required?**
+     - **Required**
      - **Description**
-   * - ``service``
+   * - ``SERVICE``
      - Yes
      - Service name. Value is ``WMS``.
-   * - ``version``
+   * - ``VERSION``
      - Yes
      - Service version. Value is one of ``1.0.0``, ``1.1.0``, ``1.1.1``, ``1.3``.
-   * - ``request``
+   * - ``REQUEST``
      - Yes
      - Operation name. Value is ``GetFeatureInfo``.
-   * - ``layers``
+   * - ``QUERY_LAYERS``
      - Yes
-     - See :ref:`wms_getmap`
-   * - ``styles``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``srs`` *or* ``crs``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``bbox``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``width``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``height``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``query_layers``
-     - Yes
-     - Comma-separated list of one or more layers to query.
-   * - ``info_format``
+     - Comma separated list of layers to be queried`
+   * - ``INFO_FORMAT``
      - No
-     - Format for the feature information response.  See below for values.
-   * - ``feature_count``
+     - Format for the feature information response (MIME type).
+   * - ``FEATURE_COUNT``
      - No
      - Maximum number of features to return.
        Default is 1.
-   * - ``x`` or ``i``
+   * - ``i``
      - Yes
-     - X ordinate of query point on map, in pixels. 0 is left side.
-       ``i`` is the parameter key used in WMS 1.3.0.
-   * - ``y`` or ``j``
+     - Pixel column point on the map. 0 is left side.
+       ``x`` is the parameter key used in WMS 1.1.0.
+   * - ``j``
      - Yes
-     - Y ordinate of query point on map, in pixels. 0 is the top.
-       ``j`` is the parameter key used in WMS 1.3.0.
-   * - ``exceptions``
+     - Pixel row on the map. 0 is the top.
+       ``y`` is the parameter key used in WMS 1.1.0.
+   * - ``EXCEPTIONS``
      - No
      - Format in which to report exceptions.
        The default value is ``application/vnd.ogc.se_xml``.
 
 Example formats are as follows:
 
-.. list-table::
-   :widths: 15 35 50
+.. list-table:: Formats for ``INFO_FORMAT`` parameter in a the GetFeatureInfo Request
+   :widths: 10 60 30
+   :header-rows: 1
    
    * - **Format**
      - **Syntax**
@@ -547,42 +579,21 @@ Example formats are as follows:
      - Simple text output. (The default format)
    * - GML 2
      - ``info_format=application/vnd.ogc.gml`` 
-     - Works only for Simple Features (see :ref:`app-schema.complex-features`)
+     - Works only for Simple Features
    * - GML 3
      - ``info_format=application/vnd.ogc.gml/3.1.1``
-     - Works for both Simple and Complex Features (see :ref:`app-schema.complex-features`)
+     - Works for both Simple and Complex Features
    * - HTML
      - ``info_format=text/html``
-     - Uses HTML templates that are defined on the server. See :ref:`tutorials_getfeatureinfo` for information on how to template HTML output. 
+     - Uses HTML templates that are defined on the server. 
    * - JSON
      - ``info_format=application/json``
-     - Simple Json representation.
-   * - JSONP
-     - ``info_format=text/javascript``
-     - Returns a JsonP in the form: ``parseResponse(...json...)``. See :ref:`wms_vendor_parameters` to change the callback name. Note that this format is disabled by default (See :ref:`wms_global_variables`).
-
-.. list-table::
-   :widths: 20 10 70
-   
-   * - **Parameter**
-     - **Required?**
-     - **Description**
-   * - ``buffer``
-     - No
-     - width of search radius around query point.
-   * - ``cql_filter``
-     - No
-     - Filter for returned data, in ECQL format
-   * - ``filter``
-     - No
-     - Filter for returned data, in OGC Filter format
-   * - ``propertyName``
-     - No
-     - Feature properties to be returned
+     - Simple JSON representation.
+  
 
 An example request for feature information from the ``topp:states`` layer in HTML format is:
 
-.. code-block:: xml
+.. code-block:: properties
 
    http://localhost:8080/geoserver/wms?
    request=GetFeatureInfo
@@ -604,7 +615,7 @@ An example request for feature information from the ``topp:states`` layer in HTM
 
 An example request for feature information in GeoJSON format is:
 
-.. code-block:: xml
+.. code-block:: properties
 
    http://localhost:8080/geoserver/wms?
    &INFO_FORMAT=application/json
@@ -619,7 +630,7 @@ An example request for feature information in GeoJSON format is:
 
 The result will be:
 
-.. code-block:: xml
+.. code-block:: properties
    
    {
    "type":"FeatureCollection",
@@ -677,125 +688,6 @@ The result will be:
 
 
 .. _wms_describelayer:
-
-DescribeLayer
--------------
-
-The **DescribeLayer** operation is used primarily by clients that understand SLD-based WMS.  In order to make an SLD one needs to know the structure of the data.  WMS and WFS both have operations to do this, so the **DescribeLayer** operation just routes the client to the appropriate service.
-
-The standard parameters for the DescribeLayer operation are:
-
-.. list-table::
-   :widths: 20 10 70
-   
-   * - **Parameter**
-     - **Required?**
-     - **Description**
-   * - ``service``
-     - Yes
-     - Service name. Value is ``WMS``.
-   * - ``version``
-     - Yes
-     - Service version. Value is ``1.1.1``.
-   * - ``request``
-     - Yes
-     - Operation name. Value is ``DescribeLayer``.
-   * - ``layers``
-     - Yes
-     - See :ref:`wms_getmap`
-   * - ``exceptions``
-     - No
-     - Format in which to report exceptions.
-       The default value is ``application/vnd.ogc.se_xml``.
-
-
-A server can be configured to support any format for `DescribeLayer`` response. Here are some examples from GeoServer:
-
-.. list-table::
-   :widths: 15 35 50
-   
-   * - **Format**
-     - **Syntax**
-     - **Notes**
-   * - TEXT
-     - ``output_format=text/xml``
-     - Same as default.
-   * - GML 2
-     - ``output_format=application/vnd.ogc.wms_xml``
-     - The default format.
-   * - JSON
-     - ``output_format=application/json``
-     - Simple Json representation.
-   * - JSONP
-     - ``output_format=text/javascript``
-     - Return a JsonP in the form: paddingOutput(...jsonp...). See :ref:`wms_vendor_parameters` to change the callback name.  Note that this format is disabled by default (See :ref:`wms_global_variables`).
-     
-
-An example request in XML (default) format on a layer is:
-
-.. code-block:: xml
-
-   http://localhost:8080/geoserver/topp/wms?service=WMS
-   &version=1.1.1
-   &request=DescribeLayer
-   &layers=topp:coverage
-
-.. code-block:: xml
-
-   <?xml version="1.0" encoding="UTF-8"?>
-   <!DOCTYPE WMS_DescribeLayerResponse SYSTEM "http://localhost:8080/geoserver/schemas/wms/1.1.1/WMS_DescribeLayerResponse.dtd">
-   <WMS_DescribeLayerResponse version="1.1.1">
-      <LayerDescription name="topp:coverage" owsURL="http://localhost:8080/geoserver/topp/wcs?" owsType="WCS">
-         <Query typeName="topp:coverage"/>
-      </LayerDescription>
-   </WMS_DescribeLayerResponse>
-
-An example request for feature description in JSON format on a layer group is:
-
-.. code-block:: xml
-
-   http://localhost:8080/geoserver/wms?service=WMS
-   &version=1.1.1
-   &request=DescribeLayer
-   &layers=sf:roads,topp:tasmania_roads,nurc:mosaic
-   &outputFormat=application/json
-   
-
-The result will be:
-
-.. code-block:: xml
-
-   {
-   version: "1.1.1",
-   layerDescriptions: [
-   {
-      layerName: "sf:roads",
-      owsURL: "http://localhost:8080/geoserver/wfs/WfsDispatcher?",
-      owsType: "WFS",
-      typeName: "sf:roads"
-   },
-   {
-      layerName: "topp:tasmania_roads",
-      owsURL: "http://localhost:8080/geoserver/wfs/WfsDispatcher?",
-      owsType: "WFS",
-      typeName: "topp:tasmania_roads"
-   },
-   {
-      layerName: "nurc:mosaic",
-      owsURL: "http://localhost:8080/geoserver/wcs?",
-      owsType: "WCS",
-      typeName: "nurc:mosaic"
-   }
-   ]
-   }
-
-
-.. _wms_getlegendgraphic:
-
-GetLegendGraphic
-----------------
-
-The **GetLegendGraphic** operation provides a mechanism for generating legend graphics as images, beyond the LegendURL reference of WMS Capabilities.  It generates a legend based on the style defined on the server, or alternatively based on a user-supplied SLD.  
 
 
 References

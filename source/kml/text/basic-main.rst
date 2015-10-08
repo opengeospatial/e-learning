@@ -1,10 +1,10 @@
-Key Hole Markup Language (KML)
+KML
 ==============================
 
 Introduction
 ------------
 
-Keyhole Markup Language (KML) is an XML language for expressing geographic annotation and visualization for two-dimensional and three-dimensional representations of the Earth. Examples of what can be done in KML are represented bellow.
+KML, formally known as Key Hole Markup Language, is an XML language for expressing geographic annotation and visualization for two-dimensional and three-dimensional representations of the Earth. Examples of what can be done in KML are represented bellow.
 
 .. image:: ../img/kml.jpg
       :height: 850
@@ -25,7 +25,7 @@ Usage
 
 KML is used for:
 
-* Annotate the Earth 
+* Annotate Earth features
 * Specify icons and labels to identify locations on the surface of the planet 
 * Create different camera positions to define unique views for KML features 
 * Define image overlays to attach to the ground or screen 

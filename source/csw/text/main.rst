@@ -22,7 +22,7 @@ Implementations can be found at the `OGC database <http://www.opengeospatial.org
 Usage
 -----
 
-Providers of resources (data and services), use catalogues to register metadata that conform to the provider’s choice of an information model; such models include descriptions of spatial references and thematic information. Client applications can then search for geospatial data and services in very efficient ways to discover services or data.
+Providers of resources (data and services), use catalogues to register metadata that conform to the provider’s choice of an information model.  Such models include descriptions of spatial references and thematic information. Client applications can then search for geospatial data and services in very efficient ways to discover services or data.
 
 Usage examples:
 
@@ -37,16 +37,16 @@ Profiles
 There are several profiles of OGC CSW. These include:
 
 - `ISO 19115/19139 Metadata  <http://www.iso.org/iso/catalogue_detail.htm?csnumber=32557>`_ : This document specifies an application profile for ISO metadata with support for XML encoding per `ISO 19139 <http://www.iso.org/iso/catalogue_detail.htm?csnumber=32557>`_  and HTTP protocol binding. This CSW profile is widely implemented in Europe, such as in the Spatial Data Infrastructure for North Rhine Westphalia (federal state of Germany).
-- `CSW-ebRIM Registry Service  <http://portal.opengeospatial.org/files/?artifact_id=31137>`_:  This profile applies the CSW interfaces to the OASIS ebXML registry information model (ebRIM 3.0) so as to provide a general and flexible web-based registry service that enables users—human or software agents—to locate, access, and make use of resources in an open, distributed system; it provides facilities for retrieving, storing, and managing many kinds of resource descriptions. An extension mechanism permits registry content to be tailored for more specialized application domains.
+- `CSW-ebRIM Registry Service  <http://portal.opengeospatial.org/files/?artifact_id=31137>`_:  This profile applies the CSW interfaces to the OASIS ebXML registry information model (ebRIM 3.0) so as to provide a general and flexible web-based registry service that enables users—human or software agents—to locate, access, and make use of resources in an open, distributed system. It provides facilities for retrieving, storing, and managing many kinds of resource descriptions. An extension mechanism permits registry content to be tailored for more specialized application domains.
 - CSW 39.50: The Z39.50 Protocol binding uses a message-based client server architecture implemented using the ANSI/NISO Z39.50 Application Service Definition and Protocol Specification. This protocol binding maps each of the general model operations to a corresponding service specified in the `ANSI/NISO/ISO standard  <http://lcweb.loc.gov/z3950/agency/document.html>`_. Much of the current work on this standard has to do with restructuring the catalogue standard so that there is a well defined, easy to implement core coupled with a well defined mechanism for expressing a variety of extensions (previously known as application profiles).
 
 Relation to other OGC Standards
 -------------------------------
 
-Any implementation supporting any standard can be register into the a CSW registry. The GetCapabilities of services (e.g WFS, WMS) is most of the times harvest to populate or augment the description of the service record in the registry. The content model returned by the catalog is also based on a standard (e.g. ISO 19115.1939, Dublin Core or other)
+Any implementation supporting any standard can be registered into a CSW registry. Usually the information retrieved from the GetCapabilities of services (e.g WFS, WMS) is most of the times harvested to populate or augment the description of the service record in the registry. The content model returned by the catalog is also based on a standard (e.g. ISO 19115.1939, Dublin Core or other)
 
 
-Overview CSW Operations
+Overview of CSW Operations
 -----------------------
 
 A CSW Server provides the following operations:
@@ -58,7 +58,7 @@ DescribeRecord
 GetRecordById
 	Retrieves the default representation of catalogue records using an identifier
 GetRecords
-	Searched for records given a set of criteria
+	Searches for records given a set of criteria
 GetDomain (Optional)
 	Used to obtain the range of values of a metadata property
 Harvest (Optional)

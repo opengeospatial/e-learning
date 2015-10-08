@@ -2,7 +2,7 @@ Overview
 ========
 Audience
 --------
-Students that do not have the background in web technologies
+This tutorial is designed for students who do not have a technical background in Web technologies.
 
 Learning Objectives
 -------------------
@@ -10,10 +10,10 @@ At the completion of the module students will be able to:
 
 - Explain the difference between the Web and Internet
 - Describe how web clients and servers interact
-- Explain what is a URL
+- Explain what a URL is
 - Demonstrate how HTTP GET and POST works
-- Explain what is an encoding
-- Explain what is a service, protocol and interface
+- Explain what an encoding is
+- Explain what a service, protocol and interface is
 
 Prerequisites
 -------------

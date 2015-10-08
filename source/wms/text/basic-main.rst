@@ -3,7 +3,7 @@ WMS - Introduction
 
 Introduction
 ------------
-The OGC Web Map Server (WMS) defines a set of interfaces for requesting map images over Internet. WMS makes it easy for a client to request images on demand changing parameters such as size and coordinate reference systems. A WMS Server provides information about what maps can the service provides, produces a map and answers queries about content of a Map.
+The OGC Web Map Service Interface Standard (WMS) defines a set of interfaces for requesting map images over the Internet. WMS makes it easy for a client to request images on demand changing parameters such as size and coordinate reference systems. A WMS server (i.e. a service that implements the WMS standard) provides information about what maps the service provides, and it produces a map and answers queries about content the content of a map.
 
 
 History
@@ -11,7 +11,7 @@ History
 Versions
   1.3 is the current latest version 
 Test Suite
-  Test suites exist for: 
+  Test suites are available for: 
       - `WMS 1.1.1 <http://cite.opengeospatial.org/teamengine/>`_ 
       - `WMS 1.3.0 <http://cite.opengeospatial.org/teamengine/>`_
 Implementations
@@ -19,45 +19,45 @@ Implementations
 
 Usage
 -----
-The standard makes map images available and accessible through a highly configurable interface in standard image formats. Government agencies publish all kinds of official map cartography using this standard. Other large organizations use this standard to enable independent departments to interact more easily internally. Anybody using this standard can use it to overlay map data from many different sources regardless of the underlying software.
+Through a highly configurable interface the WMS standard makes map images (but not source data) available in standard image formats. Government agencies publish all kinds of official map cartography using this standard. Other large organizations use this standard to enable independent departments to interact more easily internally. Anybody using this standard can use it to overlay map images from many different sources regardless of the underlying software.
 
-WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another as they actually would be in reality.  Numerous servers and clients support WMS.
+WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another using a common geospatial coordinate reference system.  Numerous servers and clients support WMS.
 
 
 Relation to other OGC Standards
 -------------------------------
 
-- Web Map Tile Server (WMTS): For highly scalable systems which only need static maps the WMTS standard is a better fit. It complements the WMS standard with cachable static map tiles. WMS server can be used as data sources / rendering engines for WMTS.
-- Web Feature Service (WFS): For extended query functionality of map content the WFS standard is a better fit. It complements the WMS by giving access to geographic features of the same map. WMS and WFS often go together. Having two separate endpoints allows to easily separate map and feature access to different user groups.
-- Styled Layer Descriptor: This standard allows the user to modify the cartographic appearance of a map image. It is an optional feature of the OGC WMS standard.
-- Symbology Encoding: This standard describes hwo to define map symbology and is used modify the cartographic appearance of map images. It is an optional feature of the OGC WMS and SLD standards.
+- OGC Web Map Tile Service Interface Standard (WMTS): The WMTS standard is a better fit For highly scalable systems (many simultaneous requests) that only need static maps. It complements the WMS standard with cachable static map tiles. WMS servers can be used as data sources or rendering engines for WMTS services.
+- OGC Web Feature Service (WFS): The WFS standard is a better fit for extended query functionality of spatial data. It provides programmatic access to the geographic feature data. WMS and WFS often go together. An organization publishing both WMS and WFS often use the same data source.
+- OGC Styled Layer Descriptor Interface Standard (SLD): The SLD standard allows the user to modify the cartographic appearance of a map image. It is an optional feature of the OGC WMS standard.
+- OGC Symbology Encoding (SE): The SE standard describes how to define map symbology. It is used to modify the cartographic appearance of map images. It is an optional feature of the OGC WMS and SLD standards.
 
 
-Overview WMS Operations
------------------------
+Overview of WMS Operations
+----------------------------
 
 WMS specifies a number of different request types, two of which are required by any WMS server:
 
 GetCapabilities
-   returns metadata about the WMS request and parameters (such as map image format and WMS version compatibility) and the available layers (map bounding box, coordinate reference systems, URI of the data and whether the layer is mostly opaque or not)
+   Returns metadata about a WMS server, including how to generate WMS requests and what parameters can be used. The metadata includes supported image formats and the availability of layers. Metadata for each layer include: bounding box, coordinate reference system, URI of the data and whether the layer is mostly opaque or not.
 GetMap
-   returns a map image. Parameters include: width and height of the map, coordinate reference system, rendering style, image format
+   Returns a map image. Parameters specified in the GetMap request include: width and height of the map, coordinate reference system, rendering style and image format.
 
-Request types that WMS providers may optionally support include:
+Optional WMS operations include:
 
 GetFeatureInfo
-   if a layer is marked as 'queryable' then you can request data about a coordinate of the map image.
+   Returns information (e.g. data) associated to a coordinate of the map image. The layer supporting this operation is marked as 'queryable'.
 DescribeLayer
-   gets corresponding WFS to retrieve additional information about the layer
+   Returns additional information about the requested layer.
 GetLegendGraphic
-   return an image of the map's legend image, giving a visual guide to map elements
+   Returns a legend, as an image, for the map image, providing a visual guide to the map elements.
    
    
 
 Example
 -------
 
-This `OGC WMS Demo server <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ provides data from Great Britain and provide by the Ordnance Survey.
+This `OGC WMS Demo server <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ publishes data from Great Britain provided by the Ordnance Survey.
 
 The ``GetMap`` request queries the server with a set of parameters describing the map image. The values of the parameters are taken from the Capabilities document. A correctly formulated ``GetMap`` request will create the image shown below. 
 
@@ -65,18 +65,43 @@ The ``GetMap`` request queries the server with a set of parameters describing th
       :width: 70%
 
 
-*The URL of this link has been truncated for better readability.*::
+The URL of this link has been truncated for better readability.
+  
 
-  http://metaspatial.net/cgi-bin/ogc-wms.xml? VERSION=1.3.0& REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700& BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300& FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE&
+.. code-block:: properties
 
-Use the link: `GetMap <http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap&SERVICE=WMS&LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&STYLES=,,,,,,&CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&WIDTH=400&HEIGHT=300&FORMAT=image/png&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=XML>`_ to retrieve the map image form the Demo Server. It will be rendered dynamically each time you request the image (given that no proxy interferes and delivers an earlier graphic rendition of the map data).
+      http://metaspatial.net/cgi-bin/ogc-wms.xml?
+      VERSION=1.3.0& 
+      REQUEST=GetMap& 
+      SERVICE=WMS& 
+      LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& 
+      STYLES=,,,,,,& 
+      CRS=EPSG:27700& 
+      BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& 
+      WIDTH=400& 
+      HEIGHT=300& 
+      FORMAT=image/png&
+      BGCOLOR=0xffffff& 
+      TRANSPARENT=TRUE
+  
+
+`Get Map Link <ttp://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
 
 
 
 Client Usage
 ------------
 
-To use a WMS service in a client you need the end point of the service. For example this GetCapabilities request: http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3
+A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is the URI for the GetCapabilities request. For example: 
+
+.. code-block:: properties
+  
+  http://metaspatial.net/cgi-bin/ogc-wms.xml?
+  REQUEST=GetCapabilities&
+  SERVICE=WMS&
+  VERSION=1.3
+
+`Link <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_  
 
 
 References

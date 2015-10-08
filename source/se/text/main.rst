@@ -36,12 +36,12 @@ The following code provides an example of how to encode a style for a feature
 
 Explanation:
 
-- **line 9** provides the name of the feature type. Note that the name has a base URL (http://www.myurl.net/oceansea) and a local name (Foundation) 
+- **line 9** provides the name of the feature type. Note that the name has a base URL (http://www.myurl.net/oceansea) and a local name (Foundation). 
 
 - **line 12-16** provide the details of how to portray the line of the polygon, which is color 96C3F5 (light blue)
 
 
-The following is another example, with version 1.0.0 and provide the details of how to portray a circle (size and fill color) 
+The following is another example, with version 1.0.0. It provides the details of how to portray a circle (size and fill color) 
 
 .. code-block:: xml
       

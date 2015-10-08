@@ -10,11 +10,11 @@ Learning Objectives
 
 At the completion of the module students will be able to:
 
-- Explain what is WMS
+- Explain what WMS is
 - Describe what can be done with WMS
 - Understand the main operations of WMS
 - Understand how to issue a GetMap request
-- Be able to find a WMS end point and loaded in a client
+- Be able to find a WMS end point and use it in a client
 
 
 Prerequisites
