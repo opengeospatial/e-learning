@@ -10,10 +10,10 @@ Learning Objectives
 
 At the completion of the module students will be able to:
 
-- Explain what is wmts
-- Describe what can be done with wmts
-- Use wmts to ...
-- Use wmts to ...
+- Explain what is WMTS
+- Describe what can be done with WMTS
+- Use WMTS to ...
+- Use WMTS to ...
 
 
 

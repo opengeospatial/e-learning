@@ -19,7 +19,7 @@ Implementations
 
 Usage
 -----
-The wmts ...
+The WMTS operations are ...
 
 Relation to other OGC Standards
 -------------------------------
