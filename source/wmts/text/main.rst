@@ -60,7 +60,7 @@ A WMTS abstract specification describes the semantics of the resources offered b
 
 Client-server exchange mechanisms are specified under two distinct architectural styles. Under the first "procedural-oriented" style, the GetCapabilities, GetTile and optional GetFeatureInfo operations use the encodings of Key-Value Pairs (KVP), "plain-old XML" (POX) messages, or XML messages embedded in SOAP envelopes. Under the second "resource-oriented" style, request mechanisms and an endpoint publishing strategy are specified to enable an style more closely resembling that of `REpresentational State Transfer (REST) <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`_, particularly `Richardson Maturity Model Level 1 <http://docs.opengeospatial.org/guides/16-057r1.html#_rest_and_open_geospatial_resources>`_. This approach is based on web URL endpoints that enable clients to simply request the ServiceMetadata, Tile, and FeatureInfo resources as documents.
 
-It should be noted that while KVP, POX, and SOAP are more commonly found under the procedural-oriented style, they `could theoretically also be utilized in resource-oriented approach <https://www.innoq.com/blog/st/2006/11/soap-vs.-pox-vs.-rest/>`_.
+It should be noted that while KVP, POX, and SOAP are more commonly found under the procedural-oriented style, they `could theoretically also be utilized in resource-oriented approach <https://www.innoq.com/blog/st/2006/11/soap-vs.-pox-vs.-rest/>'_.
 
 Under a resource-oriented pattern, a scalable WMTS service could be created using no image processing logic at all by pre-rendering images and relying only on an ordinary web server to return the static ServiceMetadata XML document and provide the image tile files. The images are considered by the HTTP protocol to be standard web resources, and providers could leverage their existing technologies to improve the flow of those resources to requesting clients.
 
@@ -99,7 +99,7 @@ GetTile
    The GetTile operation in procedural-oriented style allows WMTS clients to take the information from the GetCapabilities response and request a particular Tile of a particular TileMatrixSet in a predefined format. Under the resource-oriented style, the client merely requests the representation of any offered Tile resource by performing a request to the address following the standard semantics of the transport protocol.
 
 (Optional) GetFeatureInfo
-   GetFeatureInfo requests may be made about the features at or near a particular pixel location. Requests must specify the tile along with a pixel location on that tile, and the WMTS server may choose which information to provide about nearby features. `WMTS Clause 7.3.1 <http://www.opengeospatial.org/standards/wmts>`_ recommends Level 0 of the `Geography Markup Language (GML) Simple Features Profile <http://portal.opengeospatial.org/files/?artifact_id=42729>`_ as a supported document format for FeatureInfo resources.
+   GetFeatureInfo requests may be made about the features at or near a particular pixel location. Requests must specify the tile along with a pixel location on that tile, and the WMTS server may choose which information to provide about nearby features. `WMTS Clause 7.3.1 <http://www.opengeospatial.org/standards/wmts>`_ recommends Level 0 of the `Geography Markup Language (GML) Simple Features Profile <http://portal.opengeospatial.org/files/?artifact_id=42729>'_ as a supported document format for FeatureInfo resources.
 
 
 
@@ -107,11 +107,11 @@ GetTile
 
 GetCapabilities
 
-   GetCapabilities operations using KVP with HTTP GET
+   NSG Requirement 2: An NSG WMTS server shall declare its support for GetCapabilities operations using KVP with HTTP GET
 
-   ServiceMetadata document in response to a procedural-oriented SOAP encoded GetCapabilities request
+   NSG Requirement 3: An NSG WMTS server shall generate a ServiceMetadata document in response to a SOAP encoded GetCapabilities request
 
-   ServiceMetadata document in response to a GetResourceRepresentation request in REST architecture
+   NSG Requirement 4: An NSG WMTS server shall generate a ServiceMetadata document in response to a GetResourceRepresentation request in REST architecture
 
 
 GetTile Requests
