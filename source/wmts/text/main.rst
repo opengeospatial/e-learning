@@ -12,21 +12,11 @@ WMTS complements the OGC `Web Map Service interface standard (WMS) http://www.op
 History and Versions
 --------------------
 
-WMTS built on earlier efforts to develop scalable, high performance services for web based distribution of cartographic maps. WMTS was inspired by the `OSGeo Tile Map Service Specification <http://wiki.osgeo.org/index.php/Tile_Map_Service_Specification>`_. Similar initiatives such as Google maps and NASA OnEarth were also considered. The standard included both a resource (RESTful approach) and procedure oriented architectural styles (KVP and SOAP encoding) in an effort to harmonize this interface standard with the OSGeo specification.
-
-While developing a profile of WMS was initially considered, limiting a WMS in the ways important to allow efficient access to cacheable tiles proved awkward while forcing implementors to read both a standard and a profile seemed less efficient than developing a standalone specification.
+WMTS was built to assist in developing scalable, high performance services for web based distribution of cartographic maps. It can accommodate both resource-oriented (REST-like) and procedural-oriented architectural styles (KVP and SOAP encoding). While developing a profile of WMS was initially considered, limiting a WMS in the ways important to allow efficient access to cacheable tiles proved awkward while forcing implementors to read both a standard and a profile seemed less efficient than developing a standalone specification.
 
 WMTS version 1.0.0 (Document reference number OGC 07-057r7) was released in 2007, and the Web Map Tile Service Simple Profile was released in 2013.
 
-
-Test Suite
-----------
-
 A beta version of the `OGC Web Map Tile Service 1.0.0 - Executable Test Suite <http://cite.opengeospatial.org/te2/about/wmts/1.0.0/site>`_ was available as of July 2017. Updates can be found at the `OGC Compliance Program Available Tests and Roadmap <http://cite.opengeospatial.org/roadmap>`_.
-
-
-Implementations
----------------
 
 Information regarding WMTS implementations can be found under `OGC Implementation Statistics <http://www.opengeospatial.org/resource/products/byspec>`_.
 
@@ -60,7 +50,7 @@ A WMTS abstract specification describes the semantics of the resources offered b
 
 Client-server exchange mechanisms are specified under two distinct architectural styles. Under the first "procedural-oriented" style, the requests and responses for GetCapabilities, GetTile and (optional) GetFeatureInfo operations use the encodings of Key-Value Pairs (KVP), "plain-old XML" (POX) messages, or XML messages embedded in SOAP envelopes. Under the second "resource-oriented" style, request mechanisms and an endpoint publishing strategy are specified to enable an approach more closely resembling that of `REpresentational State Transfer (REST) <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`_, particularly `Richardson Maturity Model Level 1 <http://docs.opengeospatial.org/guides/16-057r1.html#_rest_and_open_geospatial_resources>`_. This approach is based on web URL endpoints that enable clients to directly access the ServiceMetadata, Tile, and FeatureInfo resources as documents (i.e., the request is implicit in the URL itself).
 
-Under a resource-oriented pattern, a scalable WMTS service could be created using no image processing logic at all by pre-rendering images and relying only on an ordinary web server to return the static ServiceMetadata XML document and provide the image tile files. The images are considered by the HTTP protocol to be standard web resources, and providers could leverage their existing technologies to improve the flow of those resources to requesting clients.
+Under a resource-oriented style, a scalable WMTS service could be created using no image processing logic at all by pre-rendering images and relying only on an ordinary web server to return the static ServiceMetadata XML document and provide the image tile files. The images are considered by the HTTP protocol to be standard web resources, and providers could leverage their existing technologies to improve the flow of those resources to requesting clients.
 
 Whichever style is used, WMTS-enabled services can generally offer advantages in performance and scalability by dividing maps into individual tiles that can be returned quickly. Performance can be enhanced by utilizing locally stored, pre-rendered tiles that will not require any image manipulation or geoprocessing. With tile-based mapping, it is important that servers be able to handle asynchronous access to tiles, as most clients will simultaneously request multiple tiles to fill a single view.
 
@@ -103,7 +93,7 @@ GetTile
 Example GetCapabilities Requests
 --------------------------------
 
-Under the procedural-oriented style, a WMTS client can request a ServiceMetadata document using KVP with HTTP GET in the following manner. This example was adapted from the WMTS 1.0.0 Reference Implementation at the OGC `Compliance Testing GitHub Wiki <https://github.com/opengeospatial/cite/wiki/Reference-Implementations>`. The URL was wrapped to improve readability.
+Under the procedural-oriented style, a WMTS client can request a ServiceMetadata document using KVP with HTTP GET in the following manner. This example was adapted from the WMTS 1.0.0 Reference Implementation at the OGC `Compliance Testing GitHub Wiki <https://github.com/opengeospatial/cite/wiki/Reference-Implementations>`. The URL has been wrapped to improve readability.
 
 .. code-block:: properties
 
@@ -111,209 +101,217 @@ Under the procedural-oriented style, a WMTS client can request a ServiceMetadata
       service=WMTS&
       request=GetCapabilities
 
-The same request submitted using XML with HTTP POST would have the following form:
+The same request using SOAP would have the following form:
 
 .. code-block:: properties
 
       <?xml version="1.0" encoding="UTF-8"?>
-      <ows:GetCapabilities
-      xmlns:ows="http://www.opengis.net/ows/1.1"
-      xmlns:wps="http://www.opengis.net/wps/1.0.0"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.opengis.net/ows/1.1 ..\wpsGetCapabilities_request.xsd"
-      language="en-CA" service="WPS">
-      <ows:AcceptVersions>
-            <ows:Version>1.0.0</ows:Version>
-      </ows:AcceptVersions>
-      </ows:GetCapabilities>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      	xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
+      	<soap:Body>
+      		<GetCapabilities xmlns="http://www.opengis.net/wmts/1.0"
+      			xmlns:ows="http://www.opengis.net/ows/1.1"
+      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_request.xsd"
+      			service="WMTS">
+      			<ows:AcceptVersions>
+      				<ows:Version>1.0.0</ows:Version>
+      			</ows:AcceptVersions>
+      			<ows:AcceptFormats>
+      				<ows:OutputFormat>application/xml</ows:OutputFormat>
+      			</ows:AcceptFormats>
+      		</GetCapabilities>
+      	</soap:Body>
+      </soap:Envelope>
 
-
-Under the resource-oriented style, the WMTS Specification contains no normative requirements to constrain the "request" for the GetCapabilities resource. But a representative example can be adapted from the `OSGeo WMTS Guide <https://svn.osgeo.org/tilecache/branches/wmts/docs/WMTSGuide.txt>`_:
+Under a resource-oriented style, a representative example would be:
 
 .. code-block:: properties
 
-      http://your.domain.com/tilecache.py/1.0.0/WMTSCapabilities.xml
+      http://your.domain.com/1.0.0/WMTSCapabilities.xml
 
 
 Example GetCapabilities Response: POX
 -------------------------------------
 
-An example of a compliant WMTS service's POX response to a procedural-oriented GetCapabilities request operation is presented below.
+An example of a compliant WMTS service's POX response to a procedural-oriented GetCapabilities KVP request operation is presented below.
 
 The following figure provides a summary-level depiction of the major content blocks:
 
 .. image:: ../img/GetCapabilities-POX.png
       :width: 70%
 
-This response declares the service's support for GetCapabilities operations using KVP with HTTP GET. The corresponding XML schema can be found in the normative `WMTS Schemas <http://schemas.opengis.net/wmts/>`_ (narrative description in Clause 7.1.1.2 of the WMTS Specification). This example was adapted from the WMTS 1.0.0 Reference Implementation at the OGC `Compliance Testing GitHub Wiki <https://github.com/opengeospatial/cite/wiki/Reference-Implementations>`.
+This response declares the service's support for GetCapabilities operations using KVP with HTTP GET. WMTS services in practice might contain many more Layers, TileMatrixSets, and Themes than just the several shown here.
+
+This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
 
 .. code-block:: properties
 
-      <?xml version='1.0' encoding='UTF-8'?>
-      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0.0" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd">
-        <ows:ServiceIdentification>
-          <ows:Title>deegree 3 CITE Demonstration Suite</ows:Title>
-          <ows:Abstract>deegree CITE Demonstration Suite</ows:Abstract>
-          <ows:ServiceType>WMTS</ows:ServiceType>
-          <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-        </ows:ServiceIdentification>
-        <ows:ServiceProvider>
-          <ows:ProviderName>lat/lon GmbH</ows:ProviderName>
-          <ows:ProviderSite xlink:href="http://www.lat-lon.de"/>
-          <ows:ServiceContact>
-            <ows:IndividualName>Dirk Stenger</ows:IndividualName>
-            <ows:PositionName>Software developer</ows:PositionName>
-            <ows:ContactInfo>
-              <ows:Phone>
-                <ows:Voice>0228/18496-0</ows:Voice>
-                <ows:Facsimile>0228/18496-29</ows:Facsimile>
-              </ows:Phone>
-              <ows:Address>
-                <ows:DeliveryPoint>Aennchenstr. 19</ows:DeliveryPoint>
-                <ows:City>Bonn</ows:City>
-                <ows:AdministrativeArea>NRW</ows:AdministrativeArea>
-                <ows:PostalCode>53177</ows:PostalCode>
-                <ows:Country>Germany</ows:Country>
-                <ows:ElectronicMailAddress>info@lat-lon.de</ows:ElectronicMailAddress>
-              </ows:Address>
-              <ows:OnlineResource xlink:href="http://www.deegree.org"/>
-              <ows:HoursOfService>24x7</ows:HoursOfService>
-              <ows:ContactInstructions>Do not hesitate to call</ows:ContactInstructions>
-            </ows:ContactInfo>
-            <ows:Role>PointOfContact</ows:Role>
-          </ows:ServiceContact>
-        </ows:ServiceProvider>
-        <ows:OperationsMetadata>
-          <ows:Operation name="GetCapabilities">
-            <ows:DCP>
-              <ows:HTTP>
-                <ows:Get xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?"/>
-              </ows:HTTP>
-            </ows:DCP>
-            <ows:Constraint name="GetEncoding">
-              <ows:AllowedValues>
-                <ows:Value>KVP</ows:Value>
-              </ows:AllowedValues>
-            </ows:Constraint>
-          </ows:Operation>
-          <ows:Operation name="GetTile">
-            <ows:DCP>
-              <ows:HTTP>
-                <ows:Get xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?"/>
-              </ows:HTTP>
-            </ows:DCP>
-            <ows:Constraint name="GetEncoding">
-              <ows:AllowedValues>
-                <ows:Value>KVP</ows:Value>
-              </ows:AllowedValues>
-            </ows:Constraint>
-          </ows:Operation>
-          <ows:Operation name="GetFeatureInfo">
-            <ows:DCP>
-              <ows:HTTP>
-                <ows:Get xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?"/>
-              </ows:HTTP>
-            </ows:DCP>
-            <ows:Constraint name="GetEncoding">
-              <ows:AllowedValues>
-                <ows:Value>KVP</ows:Value>
-              </ows:AllowedValues>
-            </ows:Constraint>
-          </ows:Operation>
-          <ows:Constraint name="GetEncoding">
-            <ows:AllowedValues>
-              <ows:Value>KVP</ows:Value>
-            </ows:AllowedValues>
-          </ows:Constraint>
-        </ows:OperationsMetadata>
-        <Contents>
-          <Layer>
-            <ows:Title>cite</ows:Title>
-            <ows:WGS84BoundingBox>
-              <ows:LowerCorner>-180.000000 -90.000000</ows:LowerCorner>
-              <ows:UpperCorner>180.000000 90.000000</ows:UpperCorner>
-            </ows:WGS84BoundingBox>
-            <ows:Identifier>cite</ows:Identifier>
-            <Style>
-              <ows:Identifier>default</ows:Identifier>
-            </Style>
-            <Format>image/png</Format>
-            <InfoFormat>application/vnd.ogc.gml</InfoFormat>
-            <InfoFormat>text/xml</InfoFormat>
-            <InfoFormat>text/plain</InfoFormat>
-            <InfoFormat>text/html</InfoFormat>
-            <InfoFormat>application/gml+xml; version=2.1</InfoFormat>
-            <InfoFormat>application/gml+xml; version=3.0</InfoFormat>
-            <InfoFormat>application/gml+xml; version=3.1</InfoFormat>
-            <InfoFormat>application/gml+xml; version=3.2</InfoFormat>
-            <InfoFormat>text/xml; subtype=gml/2.1.2</InfoFormat>
-            <InfoFormat>text/xml; subtype=gml/3.0.1</InfoFormat>
-            <InfoFormat>text/xml; subtype=gml/3.1.1</InfoFormat>
-            <InfoFormat>text/xml; subtype=gml/3.2.1</InfoFormat>
-            <TileMatrixSetLink>
-              <TileMatrixSet>InspireCrs84Quad</TileMatrixSet>
-            </TileMatrixSetLink>
-          </Layer>
-          <!-- [ ... other layers ... ] -->
-          <TileMatrixSet>
-            <!-- optional bounding box of data in this CRS -->
-            <ows:Identifier>InspireCrs84Quad</ows:Identifier>
-            <ows:SupportedCRS>urn:ogc:def:crs:OGC:1.3:CRS84</ows:SupportedCRS>
-            <TileMatrix>
-              <ows:Identifier>0</ows:Identifier>
-              <ScaleDenominator>2.795411320143589E8</ScaleDenominator>
-              <!-- top left point of tile matrix bounding box -->
-              <TopLeftCorner>-180.0 90.0</TopLeftCorner>
-              <!-- width and height of each tile in pixel units -->
-              <TileWidth>256</TileWidth>
-              <TileHeight>256</TileHeight>
-              <!-- width and height of matrix in tile units -->
-              <MatrixWidth>2</MatrixWidth>
-              <MatrixHeight>1</MatrixHeight>
-            </TileMatrix>
-            <TileMatrix>
-              <ows:Identifier>1</ows:Identifier>
-              <ScaleDenominator>1.397705660071794E8</ScaleDenominator>
-              <TopLeftCorner>-180.0 90.0</TopLeftCorner>
-              <TileWidth>256</TileWidth>
-              <TileHeight>256</TileHeight>
-              <MatrixWidth>4</MatrixWidth>
-              <MatrixHeight>2</MatrixHeight>
-            </TileMatrix>
-            <!-- ***************************************** -->
-            <!-- [... TileMatrix entries 2-16 removed ...] -->
-            <!-- ***************************************** -->
-            <TileMatrix>
-              <ows:Identifier>17</ows:Identifier>
-              <ScaleDenominator>2132.729583849784</ScaleDenominator>
-              <TopLeftCorner>-180.0 90.0</TopLeftCorner>
-              <TileWidth>256</TileWidth>
-              <TileHeight>256</TileHeight>
-              <MatrixWidth>262144</MatrixWidth>
-              <MatrixHeight>131072</MatrixHeight>
-            </TileMatrix>
-          </TileMatrixSet>
-        </Contents>
-        <Themes>
-          <Theme>
-            <ows:Title>Root theme</ows:Title>
-            <ows:Identifier>base</ows:Identifier>
-            <Theme>
-              <ows:Title>cite</ows:Title>
-              <ows:Identifier>cite</ows:Identifier>
-              <LayerRef>cite</LayerRef>
-            </Theme>
-          </Theme>
-        </Themes>
+      <?xml version="1.0" encoding="UTF-8"?>
+      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" version="1.0.0">
+      	<ows:ServiceIdentification>
+      		<ows:Title>Web Map Tile Service</ows:Title>
+      		<ows:Abstract>Service that constrains the map access interface to some TileMatrixSets</ows:Abstract>
+      		<ows:Keywords>
+      			<ows:Keyword>tile</ows:Keyword>
+      			<ows:Keyword>tile matrix set</ows:Keyword>
+      			<ows:Keyword>map</ows:Keyword>
+      		</ows:Keywords>
+      		<ows:ServiceType>OGC WMTS</ows:ServiceType>
+      		<ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+      		<ows:Fees>none</ows:Fees>
+      		<ows:AccessConstraints>none</ows:AccessConstraints>
+      	</ows:ServiceIdentification>
+      	<ows:ServiceProvider>
+      		<ows:ProviderName>MiraMon</ows:ProviderName>
+      		<ows:ProviderSite xlink:href="http://www.creaf.uab.es/miramon"/>
+      		<ows:ServiceContact>
+      			<ows:IndividualName>Joan Maso Pau</ows:IndividualName>
+      			<ows:PositionName>Senior Software Engineer</ows:PositionName>
+      			<ows:ContactInfo>
+      				<ows:Phone>
+      					<ows:Voice>+34 93 581 1312</ows:Voice>
+      					<ows:Facsimile>+34 93 581 4151</ows:Facsimile>
+      				</ows:Phone>
+      				<ows:Address>
+      					<ows:DeliveryPoint>Fac Ciencies UAB</ows:DeliveryPoint>
+      					<ows:City>Bellaterra</ows:City>
+      					<ows:AdministrativeArea>Barcelona</ows:AdministrativeArea>
+      					<ows:PostalCode>08193</ows:PostalCode>
+      					<ows:Country>Spain</ows:Country>
+      					<ows:ElectronicMailAddress>joan.maso@uab.es</ows:ElectronicMailAddress>
+      				</ows:Address>
+      			</ows:ContactInfo>
+      		</ows:ServiceContact>
+      	</ows:ServiceProvider>
+      	<ows:OperationsMetadata>
+      		<ows:Operation name="GetCapabilities">
+      			<ows:DCP>
+      				<ows:HTTP>
+      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?">
+      						<ows:Constraint name="GetEncoding">
+      							<ows:AllowedValues>
+      								<ows:Value>KVP</ows:Value>
+      							</ows:AllowedValues>
+      						</ows:Constraint>
+      					</ows:Get>
+      				</ows:HTTP>
+      			</ows:DCP>
+      		</ows:Operation>
+      		<ows:Operation name="GetTile">
+      			<ows:DCP>
+      				<ows:HTTP>
+      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?"/>
+      				</ows:HTTP>
+      			</ows:DCP>
+      		</ows:Operation>
+      		<ows:Operation name="GetFeatureInfo">
+      			<ows:DCP>
+      				<ows:HTTP>
+      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?"/>
+      				</ows:HTTP>
+      			</ows:DCP>
+      		</ows:Operation>
+      	</ows:OperationsMetadata>
+      	<Contents>
+      		<Layer>
+      			<ows:Title>Coastlines</ows:Title>
+      			<ows:Abstract>Coastline/shorelines (BA010)</ows:Abstract>
+      			<ows:WGS84BoundingBox>
+      				<ows:LowerCorner>-180 -90</ows:LowerCorner>
+      				<ows:UpperCorner>180 90</ows:UpperCorner>
+      			</ows:WGS84BoundingBox>
+      			<ows:Identifier>coastlines</ows:Identifier>
+      			<Style isDefault="true">
+      				<ows:Title>Dark Blue</ows:Title>
+      				<ows:Identifier>DarkBlue</ows:Identifier>
+      				<LegendURL format="image/png" xlink:href="http://www.miramon.uab.es/wmts/Coastlines/coastlines_darkBlue.png"/>
+      			</Style>
+      			<Style>
+      				<ows:Title>Thick And Red</ows:Title>
+      				<ows:Abstract>Specify this style if you want your maps to have thick red coastlines.
+      				</ows:Abstract>
+      				<ows:Identifier>thickAndRed</ows:Identifier>
+      			</Style>
+      			<Format>image/png</Format>
+      			<Format>image/gif</Format>
+      			<Dimension>
+      				<ows:Title>Time</ows:Title>
+      				<ows:Abstract>Monthly datasets</ows:Abstract>
+      				<ows:Identifier>TIME</ows:Identifier>
+      				<Value>2007-05</Value>
+      				<Value>2007-06</Value>
+      				<Value>2007-07</Value>
+      			</Dimension>
+      			<TileMatrixSetLink>
+      				<TileMatrixSet>BigWorld</TileMatrixSet>
+      			</TileMatrixSetLink>
+      		</Layer>
+      		<!-- [ ... other layers ... ] -->
+      		<TileMatrixSet>
+      			<!-- optional bounding box of data in this CRS -->
+      			<ows:Identifier>BigWorld</ows:Identifier>
+      			<ows:SupportedCRS>urn:ogc:def:crs:OGC:1.3:CRS84</ows:SupportedCRS>
+      			<TileMatrix>
+      				<ows:Identifier>1e6</ows:Identifier>
+      				<ScaleDenominator>1e6</ScaleDenominator>
+      				<!-- top left point of tile matrix bounding box -->
+      				<TopLeftCorner> -180 84</TopLeftCorner>
+      				<!-- width and height of each tile in pixel units -->
+      				<TileWidth>256</TileWidth>
+      				<TileHeight>256</TileHeight>
+      				<!-- width and height of matrix in tile units -->
+      				<MatrixWidth>60000</MatrixWidth>
+      				<MatrixHeight>50000</MatrixHeight>
+      			</TileMatrix>
+      			<TileMatrix>
+      				<ows:Identifier>2.5e6</ows:Identifier>
+      				<ScaleDenominator>2.5e6</ScaleDenominator>
+      				<TopLeftCorner>-180 84</TopLeftCorner>
+      				<TileWidth>256</TileWidth>
+      				<TileHeight>256</TileHeight>
+      				<MatrixWidth>9000</MatrixWidth>
+      				<MatrixHeight>7000</MatrixHeight>
+      			</TileMatrix>
+      		</TileMatrixSet>
+      	</Contents>
+      	<Themes>
+      		<Theme>
+      			<ows:Title>Foundation</ows:Title>
+      			<ows:Abstract>"Digital Chart Of The World" data</ows:Abstract>
+      			<ows:Identifier>Foundation</ows:Identifier>
+      			<Theme>
+      				<ows:Title>Boundaries</ows:Title>
+      				<ows:Identifier>Boundaries</ows:Identifier>
+      				<LayerRef>coastlines</LayerRef>
+      				<LayerRef>politicalBoundaries</LayerRef>
+      				<LayerRef>depthContours</LayerRef>
+      			</Theme>
+      			<Theme>
+      				<ows:Title>Transportation</ows:Title>
+      				<ows:Identifier>Transportation</ows:Identifier>
+      				<LayerRef>roads</LayerRef>
+      				<LayerRef>railroads</LayerRef>
+      				<LayerRef>airports</LayerRef>
+      			</Theme>
+      		</Theme>
+      		<Theme>
+      			<ows:Title>World Geology</ows:Title>
+      			<ows:Identifier>World Geology</ows:Identifier>
+      			<LayerRef>worldAgeRockType</LayerRef>
+      			<LayerRef>worldFaultLines</LayerRef>
+      			<LayerRef>felsicMagmatic</LayerRef>
+      			<LayerRef>maficMagmatic</LayerRef>
+      		</Theme>
+      	</Themes>
       </Capabilities>
-
 
 
 Example GetCapabilities Response: SOAP
 --------------------------------------
 
-An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
+An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
 .. code-block:: properties
 
@@ -332,7 +330,7 @@ An example of a compliant WMTS service's ServiceMetadata document in response to
       			version="1.0.0">
     			<ows:ServiceIdentification>
     				<ows:Title>World example Web Map Tile Service</ows:Title>
-    				<ows:Abstract>Example service that contrains some world layers
+    				<ows:Abstract>Example service that constrains some world layers
     					in the urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel Well-known
     					scale set</ows:Abstract>
     				<ows:Keywords>
@@ -509,18 +507,15 @@ An example of a compliant WMTS service's ServiceMetadata document in response to
 Example GetCapabilities Response: Resource-Oriented
 ---------------------------------------------------
 
-An example of a compliant WMTS service's ServiceMetadata document in response to a resource-oriented request for a resource representation is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
+An example of a compliant WMTS service's ServiceMetadata document in response to a resource-oriented request for a resource representation is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
 .. code-block:: properties
-
-      <?xml version="1.0" encoding="UTF-8"?>
-        <soap:Envelope >
 
       <?xml version="1.0" encoding="UTF-8"?>
       <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" version="1.0.0">
       	<ows:ServiceIdentification>
       		<ows:Title>World example Web Map Tile Service</ows:Title>
-      		<ows:Abstract>Example service that contrains some world layers in the
+      		<ows:Abstract>Example service that constrains some world layers in the
       				urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel Well-known scale set</ows:Abstract>
       		<ows:Keywords>
       			<ows:Keyword>World</ows:Keyword>
@@ -597,25 +592,226 @@ An example of a compliant WMTS service's ServiceMetadata document in response to
       </Capabilities>
 
 
-- - -
-- - -
-LEFT OFF
-- - -
-- - -
+Example GetTile Requests
+------------------------
 
-Client Usage
-------------
-
-A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is the URI for the GetCapabilities request. For example:
+Under the procedural-oriented style, a WMTS client can issue a GetTile request using KVP with HTTP GET in the following manner. The URL has been wrapped to improve readability.
 
 .. code-block:: properties
 
-  http://metaspatial.net/cgi-bin/ogc-wms.xml?
-  REQUEST=GetCapabilities&
-  SERVICE=WMS&
-  VERSION=1.3
+      http://your.domain.com/services/wmts100?
+      service=WMTS&
+      request=GetTile&
+      version=1.0.0&
+      Layer=coastlines&
+      Style=blue&
+      Format=image/png&
+      TileMatrixSet=coastlinesInCrs84&
+      TileMatrix=5e6&
+      TileRow=42&
+      TileCol=112
 
-`Link <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_
+The same request using SOAP would have the following form:
+
+.. code-block:: properties
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      	xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
+      	<soap:Body>
+      		<GetTile xmlns="http://www.opengis.net/wmts/1.0"
+      			xmlns:ows="http://www.opengis.net/ows/1.1"
+      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetTile_request.xsd"
+      			service="WMTS" version="1.0.0">
+      			<Layer>coastlines</Layer>
+      			<Style>blue</Style>
+      			<Format>image/png</Format>
+      			<DimensionNameValue name="TIME">2007-06</DimensionNameValue>
+      			<TileMatrixSet>coastlinesInCrs84</TileMatrixSet>
+      			<TileMatrix>5e6</TileMatrix>
+      			<TileRow>42</TileRow>
+      			<TileCol>112</TileCol>
+      		</GetTile>
+      	</soap:Body>
+      </soap:Envelope>
+
+Under a resource-oriented style, a representative example would be:
+
+.. code-block:: properties
+
+      http://your.domain.com/coastlines/blue/2007-06/coastlinesInCrs84/5e6/42/112.png
+
+
+Example GetTiles Response: KVP Request and Resource-Oriented
+------------------------------------------------------------
+
+In response to a URL containing KVPs, a requested tile map that complies with the requested parameters would be returned.
+
+Under a resource-oriented style, a representation of the requested tile resource would be returned.
+
+
+Example GetTiles Response: SOAP
+-------------------------------
+
+An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetTiles request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
+
+.. code-block:: properties
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      	xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
+      	<soap:Body>
+      		<BinaryPayload xmlns="http://www.opengis.net/wmts/1.0"
+      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsPayload_response.xsd">
+      			<Format>image/png</Format>
+      			<BinaryContent>
+      				<![CDATA[iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABGdBTUEAALGP
+      C/xhBQAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9YGARc5KB0XV+IA
+      AAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAF1J
+      REFUGNO9zL0NglAAxPEfdLTs4BZM4DIO4C7OwQg2JoQ9LE1exdlYvBBeZ7jq
+      ch9//q1uH4TLzw4d6+ErXMMcXuHWxId3KOETnnXXV6MJpcq2MLaI97CER3N0
+      vr4MkhoXe0rZigAAAABJRU5ErkJggg==]]>
+      			</BinaryContent>
+      		</BinaryPayload>
+      	</soap:Body>
+      </soap:Envelope>
+
+
+Example GetFeatureInfo Requests
+-------------------------------
+
+Under the procedural-oriented style, a WMTS client can issue a GetFeatureInfo request using KVP with HTTP GET in the following manner. The URL has been wrapped to improve readability.
+
+.. code-block:: properties
+
+      http://your.domain.com/services/wmts100?
+      service=WMTS&
+      request=GetFeatureInfo&
+      version=1.0.0&
+      Layer=coastlines&
+      Style=blue&
+      Format=image/png&
+      TileMatrixSet=coastlinesInCrs84&
+      TileMatrix=5e6&
+      TileRow=42&
+      TileCol=112
+      J=23
+      I=35
+      InfoFormat=text/html
+
+
+The same request using SOAP would have the following form. Note that the following tagged content is identical to that under the GetTile request above: <Layer>, <Style>, <Format>, <DimensionNameValue name="TIME">, <TileMatrixSet>, <TileMatrix>, <TileRow>, and <TileCol>.
+
+.. code-block:: properties
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      	xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
+      	<soap:Body>
+      		<GetFeatureInfo  xmlns="http://www.opengis.net/wmts/1.0"
+      			xmlns:ows="http://www.opengis.net/ows/1.1"
+      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetFeatureInfo_request.xsd"
+      			service="WMTS" version="1.0.0">
+      			<GetTile service="WMTS" version="1.0.0">
+      				<Layer>coastlines</Layer>
+      				<Style>blue</Style>
+      				<Format>image/png</Format>
+      				<DimensionNameValue name="TIME">2007-06</DimensionNameValue>
+      				<TileMatrixSet>coastlinesInCrs84</TileMatrixSet>
+      				<TileMatrix>5e6</TileMatrix>
+      				<TileRow>42</TileRow>
+      				<TileCol>112</TileCol>
+      			</GetTile>
+      			<J>23</J>
+      			<I>35</I>
+      			<InfoFormat>text/html</InfoFormat>
+      		</GetFeatureInfo>
+      	</soap:Body>
+      </soap:Envelope>
+
+
+Under a resource-oriented style, a representative example would be:
+
+.. code-block:: properties
+
+      http://your.domain.com/coastlines/blue/2007-06/coastlinesInCrs84/5e6/42/112/23/35.png
+
+
+Example GetFeatureInfo Response: POX
+-------------------------------------
+
+An example of a compliant WMTS service's POX response to a procedural-oriented GetFeatureInfo KVP request operation is presented below. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
+
+.. code-block:: properties
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <ReguralGridedElevations xmlns="http://www.opengis.uab.es/SITiled/world/etopo2" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.uab.es/SITiled/world/etopo2 wmtsGetFeatureInfo_response_GML.xsd">
+      	<gml:featureMember>
+      		<GridPoint_etopo2>
+      			<elevation>503.0</elevation>
+      			<TileRow>1</TileRow>
+      			<TileCol>2</TileCol>
+      			<J>86</J>
+      			<I>132</I>
+      			<Geometry>
+      				<gml:Point srsDimension="2" srsName="urn:ogc:def:crs:OGC:1.3:CRS84">
+      					<gml:pos>2.50 42.22</gml:pos>
+      				</gml:Point>
+      			</Geometry>
+      		</GridPoint_etopo2>
+      	</gml:featureMember>
+      </ReguralGridedElevations>
+
+
+Example GetFeatureInfo Response: SOAP
+-------------------------------------
+
+An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetFeatureInfo request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
+
+.. code-block:: properties
+
+      <?xml version="1.0" encoding="UTF-8"?>
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      	xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
+      	<soap:Body>
+      		<FeatureInfoResponse xmlns="http://www.opengis.net/wmts/1.0"
+      			xmlns:gml="http://www.opengis.net/gml"
+      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetFeatureInfo_response.xsd">
+      			<ReguralGridedElevations xmlns="http://www.opengis.uab.es/SITiled/world/etopo2"
+      				xmlns:gml="http://www.opengis.net/gml"
+      				xsi:schemaLocation="http://www.opengis.uab.es/SITiled/world/etopo2 wmtsGetFeatureInfo_response_GML.xsd">
+      				<gml:featureMember>
+      					<GridPoint_etopo2>
+      						<elevation>503.0</elevation>
+      						<TileRow>42</TileRow>
+      						<TileCol>112</TileCol>
+      						<J>23</J>
+      						<I>35</I>
+      					</GridPoint_etopo2>
+      				</gml:featureMember>
+      			</ReguralGridedElevations>
+      		</FeatureInfoResponse>
+      	</soap:Body>
+      </soap:Envelope>
+
+
+Example GetFeatureInfo Response:Resource-Oriented
+-------------------------------------------------
+
+Under a resource-oriented style, a representation of the requested feature information would be returned.
+
+
+
+
+... ... LEFT OFF ... ...
 
 
 References
