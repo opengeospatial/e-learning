@@ -103,7 +103,7 @@ Under the procedural-oriented style, a WMTS client can request a ServiceMetadata
 
 The same request using SOAP would have the following form:
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -146,10 +146,13 @@ This response declares the service's support for GetCapabilities operations usin
 
 This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
-      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" version="1.0.0">
+      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" 
+      version="1.0.0">
       	<ows:ServiceIdentification>
       		<ows:Title>Web Map Tile Service</ows:Title>
       		<ows:Abstract>Service that constrains the map access interface to some TileMatrixSets</ows:Abstract>
@@ -313,7 +316,7 @@ Example GetCapabilities Response: SOAP
 
 An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
         <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -509,7 +512,7 @@ Example GetCapabilities Response: Resource-Oriented
 
 An example of a compliant WMTS service's ServiceMetadata document in response to a resource-oriented request for a resource representation is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" version="1.0.0">
@@ -613,7 +616,7 @@ Under the procedural-oriented style, a WMTS client can issue a GetTile request u
 
 The same request using SOAP would have the following form:
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -657,7 +660,7 @@ Example GetTiles Response: SOAP
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetTiles request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -706,7 +709,7 @@ Under the procedural-oriented style, a WMTS client can issue a GetFeatureInfo re
 
 The same request using SOAP would have the following form. Note that the following tagged content is identical to that under the GetTile request above: <Layer>, <Style>, <Format>, <DimensionNameValue name="TIME">, <TileMatrixSet>, <TileMatrix>, <TileRow>, and <TileCol>.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
@@ -748,7 +751,7 @@ Example GetFeatureInfo Response: POX
 
 An example of a compliant WMTS service's POX response to a procedural-oriented GetFeatureInfo KVP request operation is presented below. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <ReguralGridedElevations xmlns="http://www.opengis.uab.es/SITiled/world/etopo2" xmlns:gml="http://www.opengis.net/gml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.uab.es/SITiled/world/etopo2 wmtsGetFeatureInfo_response_GML.xsd">
@@ -774,7 +777,7 @@ Example GetFeatureInfo Response: SOAP
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetFeatureInfo request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
-.. code-block:: properties
+.. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
       <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
