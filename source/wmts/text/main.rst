@@ -6,7 +6,7 @@ Introduction
 ------------
 The OGC `Web Map Tile Service Implementation Standard (WMTS) <http://www.opengeospatial.org/standards/wmts>`_ defines a set of interfaces for making web-based requests of map tiles of spatially referenced data using tile images with predefined content, extent, and resolution.
 
-WMTS complements the OGC `Web Map Service interface standard (WMS) http://www.opengeospatial.org/standards/wms>`_ for the web based distribution of cartographic maps. While WMS focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps, particularly when combined with the OGC `Styled Layer Descriptor (SLD) standard <http://www.opengeospatial.org/standards/sld>`_, WMTS trades the flexibility of custom map rendering for the scalability made possible by serving static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a WMTS service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
+WMTS complements the OGC `Web Map Service interface standard (WMS) <http://www.opengeospatial.org/standards/wms>`_ for the web based distribution of cartographic maps. While WMS focuses on rendering custom maps and is an ideal solution for dynamic data or custom styled maps, particularly when combined with the OGC `Styled Layer Descriptor (SLD) standard <http://www.opengeospatial.org/standards/sld>`_, WMTS trades the flexibility of custom map rendering for the scalability made possible by serving static data (base maps) where the bounding box and scales have been constrained to discrete tiles. The fixed set of tiles allows for the implementation of a WMTS service using a web server that simply returns existing files. The fixed set of tiles also enables the use of standard network mechanisms for scalability such as distributed cache systems.
 
 
 History and Versions
@@ -144,455 +144,302 @@ The following figure provides a summary-level depiction of the major content blo
 
 This response declares the service's support for GetCapabilities operations using KVP with HTTP GET. WMTS services in practice might contain many more Layers, TileMatrixSets, and Themes than just the several shown here.
 
-This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
+This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
 .. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
-      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" 
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" 
-      version="1.0.0">
-      	<ows:ServiceIdentification>
-      		<ows:Title>Web Map Tile Service</ows:Title>
-      		<ows:Abstract>Service that constrains the map access interface to some TileMatrixSets</ows:Abstract>
-      		<ows:Keywords>
-      			<ows:Keyword>tile</ows:Keyword>
-      			<ows:Keyword>tile matrix set</ows:Keyword>
-      			<ows:Keyword>map</ows:Keyword>
-      		</ows:Keywords>
-      		<ows:ServiceType>OGC WMTS</ows:ServiceType>
-      		<ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-      		<ows:Fees>none</ows:Fees>
-      		<ows:AccessConstraints>none</ows:AccessConstraints>
-      	</ows:ServiceIdentification>
-      	<ows:ServiceProvider>
-      		<ows:ProviderName>MiraMon</ows:ProviderName>
-      		<ows:ProviderSite xlink:href="http://www.creaf.uab.es/miramon"/>
-      		<ows:ServiceContact>
-      			<ows:IndividualName>Joan Maso Pau</ows:IndividualName>
-      			<ows:PositionName>Senior Software Engineer</ows:PositionName>
-      			<ows:ContactInfo>
-      				<ows:Phone>
-      					<ows:Voice>+34 93 581 1312</ows:Voice>
-      					<ows:Facsimile>+34 93 581 4151</ows:Facsimile>
-      				</ows:Phone>
-      				<ows:Address>
-      					<ows:DeliveryPoint>Fac Ciencies UAB</ows:DeliveryPoint>
-      					<ows:City>Bellaterra</ows:City>
-      					<ows:AdministrativeArea>Barcelona</ows:AdministrativeArea>
-      					<ows:PostalCode>08193</ows:PostalCode>
-      					<ows:Country>Spain</ows:Country>
-      					<ows:ElectronicMailAddress>joan.maso@uab.es</ows:ElectronicMailAddress>
-      				</ows:Address>
-      			</ows:ContactInfo>
-      		</ows:ServiceContact>
-      	</ows:ServiceProvider>
-      	<ows:OperationsMetadata>
-      		<ows:Operation name="GetCapabilities">
-      			<ows:DCP>
-      				<ows:HTTP>
-      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?">
-      						<ows:Constraint name="GetEncoding">
-      							<ows:AllowedValues>
-      								<ows:Value>KVP</ows:Value>
-      							</ows:AllowedValues>
-      						</ows:Constraint>
-      					</ows:Get>
-      				</ows:HTTP>
-      			</ows:DCP>
-      		</ows:Operation>
-      		<ows:Operation name="GetTile">
-      			<ows:DCP>
-      				<ows:HTTP>
-      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?"/>
-      				</ows:HTTP>
-      			</ows:DCP>
-      		</ows:Operation>
-      		<ows:Operation name="GetFeatureInfo">
-      			<ows:DCP>
-      				<ows:HTTP>
-      					<ows:Get xlink:href="http://www.miramon.uab.es/cgi-bin/MiraMon5_0.cgi?"/>
-      				</ows:HTTP>
-      			</ows:DCP>
-      		</ows:Operation>
-      	</ows:OperationsMetadata>
-      	<Contents>
-      		<Layer>
-      			<ows:Title>Coastlines</ows:Title>
-      			<ows:Abstract>Coastline/shorelines (BA010)</ows:Abstract>
-      			<ows:WGS84BoundingBox>
-      				<ows:LowerCorner>-180 -90</ows:LowerCorner>
-      				<ows:UpperCorner>180 90</ows:UpperCorner>
-      			</ows:WGS84BoundingBox>
-      			<ows:Identifier>coastlines</ows:Identifier>
-      			<Style isDefault="true">
-      				<ows:Title>Dark Blue</ows:Title>
-      				<ows:Identifier>DarkBlue</ows:Identifier>
-      				<LegendURL format="image/png" xlink:href="http://www.miramon.uab.es/wmts/Coastlines/coastlines_darkBlue.png"/>
-      			</Style>
-      			<Style>
-      				<ows:Title>Thick And Red</ows:Title>
-      				<ows:Abstract>Specify this style if you want your maps to have thick red coastlines.
-      				</ows:Abstract>
-      				<ows:Identifier>thickAndRed</ows:Identifier>
-      			</Style>
-      			<Format>image/png</Format>
-      			<Format>image/gif</Format>
-      			<Dimension>
-      				<ows:Title>Time</ows:Title>
-      				<ows:Abstract>Monthly datasets</ows:Abstract>
-      				<ows:Identifier>TIME</ows:Identifier>
-      				<Value>2007-05</Value>
-      				<Value>2007-06</Value>
-      				<Value>2007-07</Value>
-      			</Dimension>
-      			<TileMatrixSetLink>
-      				<TileMatrixSet>BigWorld</TileMatrixSet>
-      			</TileMatrixSetLink>
-      		</Layer>
-      		<!-- [ ... other layers ... ] -->
-      		<TileMatrixSet>
-      			<!-- optional bounding box of data in this CRS -->
-      			<ows:Identifier>BigWorld</ows:Identifier>
-      			<ows:SupportedCRS>urn:ogc:def:crs:OGC:1.3:CRS84</ows:SupportedCRS>
-      			<TileMatrix>
-      				<ows:Identifier>1e6</ows:Identifier>
-      				<ScaleDenominator>1e6</ScaleDenominator>
-      				<!-- top left point of tile matrix bounding box -->
-      				<TopLeftCorner> -180 84</TopLeftCorner>
-      				<!-- width and height of each tile in pixel units -->
-      				<TileWidth>256</TileWidth>
-      				<TileHeight>256</TileHeight>
-      				<!-- width and height of matrix in tile units -->
-      				<MatrixWidth>60000</MatrixWidth>
-      				<MatrixHeight>50000</MatrixHeight>
-      			</TileMatrix>
-      			<TileMatrix>
-      				<ows:Identifier>2.5e6</ows:Identifier>
-      				<ScaleDenominator>2.5e6</ScaleDenominator>
-      				<TopLeftCorner>-180 84</TopLeftCorner>
-      				<TileWidth>256</TileWidth>
-      				<TileHeight>256</TileHeight>
-      				<MatrixWidth>9000</MatrixWidth>
-      				<MatrixHeight>7000</MatrixHeight>
-      			</TileMatrix>
-      		</TileMatrixSet>
-      	</Contents>
-      	<Themes>
-      		<Theme>
-      			<ows:Title>Foundation</ows:Title>
-      			<ows:Abstract>"Digital Chart Of The World" data</ows:Abstract>
-      			<ows:Identifier>Foundation</ows:Identifier>
-      			<Theme>
-      				<ows:Title>Boundaries</ows:Title>
-      				<ows:Identifier>Boundaries</ows:Identifier>
-      				<LayerRef>coastlines</LayerRef>
-      				<LayerRef>politicalBoundaries</LayerRef>
-      				<LayerRef>depthContours</LayerRef>
-      			</Theme>
-      			<Theme>
-      				<ows:Title>Transportation</ows:Title>
-      				<ows:Identifier>Transportation</ows:Identifier>
-      				<LayerRef>roads</LayerRef>
-      				<LayerRef>railroads</LayerRef>
-      				<LayerRef>airports</LayerRef>
-      			</Theme>
-      		</Theme>
-      		<Theme>
-      			<ows:Title>World Geology</ows:Title>
-      			<ows:Identifier>World Geology</ows:Identifier>
-      			<LayerRef>worldAgeRockType</LayerRef>
-      			<LayerRef>worldFaultLines</LayerRef>
-      			<LayerRef>felsicMagmatic</LayerRef>
-      			<LayerRef>maficMagmatic</LayerRef>
-      		</Theme>
-      	</Themes>
-      </Capabilities>
+      <Capabilities xmlns="http://www.opengis.net/wmts/1.0"
+        xmlns:ows="http://www.opengis.net/ows/1.1"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:gml="http://www.opengis.net/gml"
+        xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd"
+        version="1.0.0">
+      <ows:ServiceIdentification>
+        <ows:Title>World example Web Map Tile Service</ows:Title>
+        <ows:Abstract>Example service that constrains some world layers
+          in the urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel Well-known
+          scale set</ows:Abstract>
+        <ows:Keywords>
+          <ows:Keyword>World</ows:Keyword>
+          <ows:Keyword>Global</ows:Keyword>
+          <ows:Keyword>Digital Elevation Model</ows:Keyword>
+          <ows:Keyword>Administrative Boundaries</ows:Keyword>
+        </ows:Keywords>
+        <ows:ServiceType>OGC WMTS</ows:ServiceType>
+        <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+        <ows:Fees>none</ows:Fees>
+        <ows:AccessConstraints>none</ows:AccessConstraints>
+      </ows:ServiceIdentification>
+      <ows:ServiceProvider>
+        <ows:ProviderName>UAB-CREAF-MiraMon</ows:ProviderName>
+        <ows:ProviderSite xlink:href="http://www.creaf.uab.es/miramon"/>
+        <ows:ServiceContact>
+          <ows:IndividualName>Joan Maso Pau</ows:IndividualName>
+          <ows:PositionName>Senior Software Engineer</ows:PositionName>
+          <ows:ContactInfo>
+            <ows:Phone>
+              <ows:Voice>+34 93 581 1312</ows:Voice>
+              <ows:Facsimile>+34 93 581 4151</ows:Facsimile>
+            </ows:Phone>
+            <ows:Address>
+              <ows:DeliveryPoint>Fac Ciencies UAB</ows:DeliveryPoint>
+              <ows:City>Bellaterra</ows:City>
+              <ows:AdministrativeArea>Barcelona</ows:AdministrativeArea>
+              <ows:PostalCode>08193</ows:PostalCode>
+              <ows:Country>Spain</ows:Country>
+              <ows:ElectronicMailAddress>joan.maso@uab.es</ows:ElectronicMailAddress>
+            </ows:Address>
+          </ows:ContactInfo>
+        </ows:ServiceContact>
+      </ows:ServiceProvider>
+      <ows:OperationsMetadata>
+        <ows:Operation name="GetCapabilities">
+          <ows:DCP>
+            <ows:HTTP>
+              <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
+                <ows:Constraint name="PostEncoding">
+                  <ows:AllowedValues>
+                    <ows:Value>SOAP</ows:Value>
+                  </ows:AllowedValues>
+                </ows:Constraint>
+              </ows:Post>
+            </ows:HTTP>
+          </ows:DCP>
+        </ows:Operation>
+        <ows:Operation name="GetTile">
+          <ows:DCP>
+            <ows:HTTP>
+              <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
+                <ows:Constraint name="PostEncoding">
+                  <ows:AllowedValues>
+                    <ows:Value>SOAP</ows:Value>
+                  </ows:AllowedValues>
+                </ows:Constraint>
+              </ows:Post>
+            </ows:HTTP>
+          </ows:DCP>
+        </ows:Operation>
+      </ows:OperationsMetadata>
+      <Contents>
+        <Layer>
+          <ows:Title>etopo2</ows:Title>
+          <ows:Abstract>ETOPO2 - 2 minute Worldwide Bathymetry/Topography
+            Data taken from National Geophysical Data Center(NGDC) CD-ROM, ETOPO2 Global 2' Elevations, September 2001.
+            <!-- ************************************************* -->
+            <!-- [... additional Abstract information removed ...] -->
+            <!-- ************************************************* -->
+          </ows:Abstract>
+          <ows:WGS84BoundingBox>
+            <ows:LowerCorner>-180 -90</ows:LowerCorner>
+            <ows:UpperCorner>180 90</ows:UpperCorner>
+          </ows:WGS84BoundingBox>
+          <ows:Identifier>etopo2</ows:Identifier>
+          <ows:Metadata xlink:href="http://www.opengis.uab.es/SITiled/world/etopo2/metadata.htm"/>
+          <Style isDefault="true">
+            <ows:Title>default</ows:Title>
+            <ows:Identifier>default</ows:Identifier>
+            <LegendURL format="image/png" xlink:href="http://www.opengis.uab.es/SITiled/world/etopo2/legend.png"/>
+          </Style>
+          <Format>image/png</Format>
+          <InfoFormat>application/gml+xml; version=3.1</InfoFormat>
+          <TileMatrixSetLink>
+            <TileMatrixSet>WholeWorld_CRS_84</TileMatrixSet>
+          </TileMatrixSetLink>
+          <ResourceURL format="image/png" resourceType="tile" template="http://www.opengis.uab.es/SITiled/world/etopo2/default/WholeWorld_CRS_84/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+          <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.opengis.uab.es/SITiled/world/etopo2/default/WholeWorld_CRS_84/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
+        </Layer>
+        <Layer>
+          <ows:Title>Administrative Boundaries</ows:Title>
+          <ows:Abstract>The sub Country Administrative Units 1998
+            GeoDataset represents a small-scale world political map.
+            <!-- ************************************************* -->
+            <!-- [... additional Abstract information removed ...] -->
+            <!-- ************************************************* -->
+          </ows:Abstract>
+          <ows:WGS84BoundingBox>
+            <ows:LowerCorner>-180 -90</ows:LowerCorner>
+            <ows:UpperCorner>180 84</ows:UpperCorner>
+          </ows:WGS84BoundingBox>
+          <ows:Identifier>AdminBoundaries</ows:Identifier>
+          <ows:Metadata xlink:href="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/metadata.htm"/>
+          <Style isDefault="true">
+            <ows:Title>default</ows:Title>
+            <ows:Identifier>default</ows:Identifier>
+          </Style>
+          <Format>image/png</Format>
+          <TileMatrixSetLink>
+            <TileMatrixSet>World84-90_CRS_84</TileMatrixSet>
+          </TileMatrixSetLink>
+          <ResourceURL format="image/png" resourceType="tile" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+          <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
+        </Layer>
+        <TileMatrixSet>
+          <!-- optional bounding box of data in this CRS -->
+          <ows:Identifier>WholeWorld_CRS_84</ows:Identifier>
+          <ows:SupportedCRS>urn:ogc:def:crs:OGC:1.3:CRS84</ows:SupportedCRS>
+          <WellKnownScaleSet>urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel</WellKnownScaleSet>
+          <TileMatrix>
+            <ows:Identifier>2g</ows:Identifier>
+            <ScaleDenominator>795139219.951954</ScaleDenominator>
+            <!-- top left point of tile matrix bounding box -->
+            <TopLeftCorner>-180 90</TopLeftCorner>
+            <!-- width and height of each tile in pixel units -->
+            <TileWidth>320</TileWidth>
+            <TileHeight>200</TileHeight>
+            <!-- width and height of matrix in tile units -->
+            <MatrixWidth>1</MatrixWidth>
+            <MatrixHeight>1</MatrixHeight>
+          </TileMatrix>
+          <TileMatrix>
+            <ows:Identifier>1g</ows:Identifier>
+            <ScaleDenominator>397569609.975977</ScaleDenominator>
+            <TopLeftCorner>-180 90</TopLeftCorner>
+            <TileWidth>320</TileWidth>
+            <TileHeight>200</TileHeight>
+            <MatrixWidth>2</MatrixWidth>
+            <MatrixHeight>1</MatrixHeight>
+          </TileMatrix>
+          <!-- *********************************************** -->
+          <!-- [... Additional TileMatrix entries removed ...] -->
+          <!-- *********************************************** -->
+        </TileMatrixSet>
+      </Contents>
+      <Themes>
+        <Theme>
+          <ows:Title>Foundation</ows:Title>
+          <ows:Abstract>World reference data</ows:Abstract>
+          <ows:Identifier>Foundation</ows:Identifier>
+          <Theme>
+            <ows:Title>Digital Elevation Model</ows:Title>
+            <ows:Identifier>DEM</ows:Identifier>
+            <LayerRef>etopo2</LayerRef>
+          </Theme>
+          <Theme>
+            <ows:Title>Administrative Boundaries</ows:Title>
+            <ows:Identifier>AdmBoundaries</ows:Identifier>
+            <LayerRef>AdminBoundaries</LayerRef>
+          </Theme>
+        </Theme>
+      </Themes>
+      <WSDL xlink:role="http://schemas.xmlsoap.org/wsdl/1.0" xlink:show="none" xlink:type="simple" xlink:href="wmtsConcrete.wsdl"/>
+    </Capabilities>
 
 
 Example GetCapabilities Response: SOAP
 --------------------------------------
 
-An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
+An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request can be found in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. An abbreviated representation of the XML content is presented below. The primary difference here is the presence of the SOAP envelope.
 
 .. code-block:: xml
 
       <?xml version="1.0" encoding="UTF-8"?>
-        <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+      <soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xmlns:xsd="http://www.w3.org/2001/XMLSchema"
           xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
       	<soap:Body>
-      		<Capabilities xmlns="http://www.opengis.net/wmts/1.0"
-      			xmlns:ows="http://www.opengis.net/ows/1.1"
-      			xmlns:xlink="http://www.w3.org/1999/xlink"
-      			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      			xmlns:gml="http://www.opengis.net/gml"
-      			xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd"
-      			version="1.0.0">
-    			<ows:ServiceIdentification>
-    				<ows:Title>World example Web Map Tile Service</ows:Title>
-    				<ows:Abstract>Example service that constrains some world layers
-    					in the urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel Well-known
-    					scale set</ows:Abstract>
-    				<ows:Keywords>
-    					<ows:Keyword>World</ows:Keyword>
-    					<ows:Keyword>Global</ows:Keyword>
-    					<ows:Keyword>Digital Elevation Model</ows:Keyword>
-    					<ows:Keyword>Administrative Boundaries</ows:Keyword>
-    				</ows:Keywords>
-    				<ows:ServiceType>OGC WMTS</ows:ServiceType>
-    				<ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-    				<ows:Fees>none</ows:Fees>
-    				<ows:AccessConstraints>none</ows:AccessConstraints>
-    			</ows:ServiceIdentification>
-    			<ows:ServiceProvider>
-    				<ows:ProviderName>UAB-CREAF-MiraMon</ows:ProviderName>
-    				<ows:ProviderSite xlink:href="http://www.creaf.uab.es/miramon"/>
-    				<ows:ServiceContact>
-    					<ows:IndividualName>Joan Maso Pau</ows:IndividualName>
-    					<ows:PositionName>Senior Software Engineer</ows:PositionName>
-    					<ows:ContactInfo>
-    						<ows:Phone>
-    							<ows:Voice>+34 93 581 1312</ows:Voice>
-    							<ows:Facsimile>+34 93 581 4151</ows:Facsimile>
-    						</ows:Phone>
-    						<ows:Address>
-    							<ows:DeliveryPoint>Fac Ciencies UAB</ows:DeliveryPoint>
-    							<ows:City>Bellaterra</ows:City>
-    							<ows:AdministrativeArea>Barcelona</ows:AdministrativeArea>
-    							<ows:PostalCode>08193</ows:PostalCode>
-    							<ows:Country>Spain</ows:Country>
-    							<ows:ElectronicMailAddress>joan.maso@uab.es</ows:ElectronicMailAddress>
-    						</ows:Address>
-    					</ows:ContactInfo>
-    				</ows:ServiceContact>
-    			</ows:ServiceProvider>
-    			<ows:OperationsMetadata>
-    				<ows:Operation name="GetCapabilities">
-    					<ows:DCP>
-    						<ows:HTTP>
-    							<ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-    								<ows:Constraint name="PostEncoding">
-    									<ows:AllowedValues>
-    										<ows:Value>SOAP</ows:Value>
-    									</ows:AllowedValues>
-    								</ows:Constraint>
-    							</ows:Post>
-    						</ows:HTTP>
-    					</ows:DCP>
-    				</ows:Operation>
-    				<ows:Operation name="GetTile">
-    					<ows:DCP>
-    						<ows:HTTP>
-    							<ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-    								<ows:Constraint name="PostEncoding">
-    									<ows:AllowedValues>
-    										<ows:Value>SOAP</ows:Value>
-    									</ows:AllowedValues>
-    								</ows:Constraint>
-    							</ows:Post>
-    						</ows:HTTP>
-    					</ows:DCP>
-    				</ows:Operation>
-    			</ows:OperationsMetadata>
-    			<Contents>
-    				<Layer>
-    					<ows:Title>etopo2</ows:Title>
-    					<ows:Abstract>ETOPO2 - 2 minute Worldwide Bathymetry/Topography
-    						Data taken from National Geophysical Data Center(NGDC) CD-ROM, ETOPO2 Global 2' Elevations, September 2001.
-                <!-- ************************************************* -->
-                <!-- [... additional Abstract information removed ...] -->
-                <!-- ************************************************* -->
-              </ows:Abstract>
-    					<ows:WGS84BoundingBox>
-    						<ows:LowerCorner>-180 -90</ows:LowerCorner>
-    						<ows:UpperCorner>180 90</ows:UpperCorner>
-    					</ows:WGS84BoundingBox>
-    					<ows:Identifier>etopo2</ows:Identifier>
-    					<ows:Metadata xlink:href="http://www.opengis.uab.es/SITiled/world/etopo2/metadata.htm"/>
-    					<Style isDefault="true">
-    						<ows:Title>default</ows:Title>
-    						<ows:Identifier>default</ows:Identifier>
-    						<LegendURL format="image/png" xlink:href="http://www.opengis.uab.es/SITiled/world/etopo2/legend.png"/>
-    					</Style>
-    					<Format>image/png</Format>
-    					<InfoFormat>application/gml+xml; version=3.1</InfoFormat>
-    					<TileMatrixSetLink>
-    						<TileMatrixSet>WholeWorld_CRS_84</TileMatrixSet>
-    					</TileMatrixSetLink>
-    					<ResourceURL format="image/png" resourceType="tile" template="http://www.opengis.uab.es/SITiled/world/etopo2/default/WholeWorld_CRS_84/{TileMatrix}/{TileRow}/{TileCol}.png"/>
-    					<ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.opengis.uab.es/SITiled/world/etopo2/default/WholeWorld_CRS_84/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
-    				</Layer>
-    				<Layer>
-    					<ows:Title>Administrative Boundaries</ows:Title>
-    					<ows:Abstract>The sub Country Administrative Units 1998
-                GeoDataset represents a small-scale world political map.
-                <!-- ************************************************* -->
-                <!-- [... additional Abstract information removed ...] -->
-                <!-- ************************************************* -->
-              </ows:Abstract>
-    					<ows:WGS84BoundingBox>
-    						<ows:LowerCorner>-180 -90</ows:LowerCorner>
-    						<ows:UpperCorner>180 84</ows:UpperCorner>
-    					</ows:WGS84BoundingBox>
-    					<ows:Identifier>AdminBoundaries</ows:Identifier>
-    					<ows:Metadata xlink:href="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/metadata.htm"/>
-    					<Style isDefault="true">
-    						<ows:Title>default</ows:Title>
-    						<ows:Identifier>default</ows:Identifier>
-    					</Style>
-    					<Format>image/png</Format>
-    					<TileMatrixSetLink>
-    						<TileMatrixSet>World84-90_CRS_84</TileMatrixSet>
-    					</TileMatrixSetLink>
-    					<ResourceURL format="image/png" resourceType="tile" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}.png"/>
-    					<ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
-    				</Layer>
-    				<TileMatrixSet>
-    					<!-- optional bounding box of data in this CRS -->
-    					<ows:Identifier>WholeWorld_CRS_84</ows:Identifier>
-    					<ows:SupportedCRS>urn:ogc:def:crs:OGC:1.3:CRS84</ows:SupportedCRS>
-    					<WellKnownScaleSet>urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel</WellKnownScaleSet>
-    					<TileMatrix>
-    						<ows:Identifier>2g</ows:Identifier>
-    						<ScaleDenominator>795139219.951954</ScaleDenominator>
-    						<!-- top left point of tile matrix bounding box -->
-    						<TopLeftCorner>-180 90</TopLeftCorner>
-    						<!-- width and height of each tile in pixel units -->
-    						<TileWidth>320</TileWidth>
-    						<TileHeight>200</TileHeight>
-    						<!-- width and height of matrix in tile units -->
-    						<MatrixWidth>1</MatrixWidth>
-    						<MatrixHeight>1</MatrixHeight>
-    					</TileMatrix>
-    					<TileMatrix>
-    						<ows:Identifier>1g</ows:Identifier>
-    						<ScaleDenominator>397569609.975977</ScaleDenominator>
-    						<TopLeftCorner>-180 90</TopLeftCorner>
-    						<TileWidth>320</TileWidth>
-    						<TileHeight>200</TileHeight>
-    						<MatrixWidth>2</MatrixWidth>
-    						<MatrixHeight>1</MatrixHeight>
-    					</TileMatrix>
-              <!-- *********************************************** -->
-              <!-- [... Additional TileMatrix entries removed ...] -->
-              <!-- *********************************************** -->
-    				</TileMatrixSet>
-            <!-- ************************************************** -->
-            <!-- [... Additional TileMatrixSet entries removed ...] -->
-            <!-- ************************************************** -->
-    			</Contents>
-    			<Themes>
-    				<Theme>
-    					<ows:Title>Foundation</ows:Title>
-    					<ows:Abstract>World reference data</ows:Abstract>
-    					<ows:Identifier>Foundation</ows:Identifier>
-    					<Theme>
-    						<ows:Title>Digital Elevation Model</ows:Title>
-    						<ows:Identifier>DEM</ows:Identifier>
-    						<LayerRef>etopo2</LayerRef>
-    					</Theme>
-    					<Theme>
-    						<ows:Title>Administrative Boundaries</ows:Title>
-    						<ows:Identifier>AdmBoundaries</ows:Identifier>
-    						<LayerRef>AdminBoundaries</LayerRef>
-    					</Theme>
-    				</Theme>
-    			</Themes>
-    			<WSDL xlink:role="http://schemas.xmlsoap.org/wsdl/1.0" xlink:show="none" xlink:type="simple" xlink:href="wmtsConcrete.wsdl"/>
-    		</Capabilities>
-    	</soap:Body>
-    </soap:Envelope>
+        <!-- ****************************** -->
+        <!-- [... Capabilities go here ...] -->
+        <!-- ****************************** -->
+      	</soap:Body>
+      </soap:Envelope>
 
 
 Example GetCapabilities Response: Resource-Oriented
 ---------------------------------------------------
 
-An example of a compliant WMTS service's ServiceMetadata document in response to a resource-oriented request for a resource representation is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
+A sample ServiceMetadata document in response to a resource-oriented request for a resource representation can be found in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The content is virtually identical to that presented for the POX response.
 
-.. code-block:: xml
 
-      <?xml version="1.0" encoding="UTF-8"?>
-      <Capabilities xmlns="http://www.opengis.net/wmts/1.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xsi:schemaLocation="http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd" version="1.0.0">
-      	<ows:ServiceIdentification>
-      		<ows:Title>World example Web Map Tile Service</ows:Title>
-      		<ows:Abstract>Example service that constrains some world layers in the
-      				urn:ogc:def:wkss:OGC:1.0:GlobalCRS84Pixel Well-known scale set</ows:Abstract>
-      		<ows:Keywords>
-      			<ows:Keyword>World</ows:Keyword>
-      			<ows:Keyword>Global</ows:Keyword>
-      			<ows:Keyword>Digital Elevation Model</ows:Keyword>
-      			<ows:Keyword>Administrative Boundaries</ows:Keyword>
-      		</ows:Keywords>
-      		<ows:ServiceType>OGC WMTS</ows:ServiceType>
-      		<ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-      		<ows:Fees>none</ows:Fees>
-      		<ows:AccessConstraints>none</ows:AccessConstraints>
-      	</ows:ServiceIdentification>
-      	<ows:ServiceProvider>
-      		<ows:ProviderName>UAB-CREAF-MiraMon</ows:ProviderName>
-      		<ows:ProviderSite xlink:href="http://www.creaf.uab.es/miramon"/>
-      		<ows:ServiceContact>
-      			<ows:IndividualName>Joan Maso Pau</ows:IndividualName>
-      			<ows:PositionName>Senior Software Engineer</ows:PositionName>
-      			<ows:ContactInfo>
-      				<ows:Phone>
-      					<ows:Voice>+34 93 581 1312</ows:Voice>
-      					<ows:Facsimile>+34 93 581 4151</ows:Facsimile>
-      				</ows:Phone>
-      				<ows:Address>
-      					<ows:DeliveryPoint>Fac Ciencies UAB</ows:DeliveryPoint>
-      					<ows:City>Bellaterra</ows:City>
-      					<ows:AdministrativeArea>Barcelona</ows:AdministrativeArea>
-      					<ows:PostalCode>08193</ows:PostalCode>
-      					<ows:Country>Spain</ows:Country>
-      					<ows:ElectronicMailAddress>joan.maso@uab.es</ows:ElectronicMailAddress>
-      				</ows:Address>
-      			</ows:ContactInfo>
-      		</ows:ServiceContact>
-      	</ows:ServiceProvider>
-      	<ows:OperationsMetadata>
-      		<ows:Operation name="GetCapabilities">
-      			<ows:DCP>
-      				<ows:HTTP>
-      					<ows:Get xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-      						<ows:Constraint name="GetEncoding">
-      							<ows:AllowedValues>
-      								<ows:Value>KVP</ows:Value>
-      							</ows:AllowedValues>
-      						</ows:Constraint>
-      					</ows:Get>
-      				</ows:HTTP>
-      			</ows:DCP>
-      		</ows:Operation>
-      		<ows:Operation name="GetTile">
-      			<ows:DCP>
-      				<ows:HTTP>
-      					<ows:Get xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-      						<ows:Constraint name="GetEncoding">
-      							<ows:AllowedValues>
-      								<ows:Value>KVP</ows:Value>
-      							</ows:AllowedValues>
-      						</ows:Constraint>
-      					</ows:Get>
-      				</ows:HTTP>
-      			</ows:DCP>
-      		</ows:Operation>
-      	</ows:OperationsMetadata>
-      	<Contents>
-        <!-- ************************************************************* -->
-        <!-- [... Contents identical to GetCapabilities Response: SOAP...] -->
-        <!-- ************************************************************* -->
-      	</Contents>
-      	<Themes>
-        <!-- *********************************************************** -->
-        <!-- [... Themes identical to GetCapabilities Response: SOAP...] -->
-        <!-- *********************************************************** -->
-      	</Themes>
-      	<ServiceMetadataURL xlink:href="http://www.opengis.uab.es/SITiled/world/1.0.0/WMTSCapabilities.xml"/>
-      </Capabilities>
+Example GetCapabilities Request and Response Using JSON in JavaScript
+---------------------------------------------------------------------
+
+The WMTS Specification is silent regarding `JavaScript Object Notation (JSON) <http://www.json.org/>`_. Hence including a JSON encoding in source code (e.g., JavaScript) invoking a request (or receiving a response) would have no bearing on an implementation's compliance with the WMTS standard. However, the OGC `Testbed 12 initiative <http://www.opengeospatial.org/projects/initiatives/testbed12>`_ provided instructive guidance in two documents, an engineering report and a user guide. The `JavaScript JSON JSON- LD Engineering Report <http://docs.opengeospatial.org/per/16-051.html>`_ provides JSON examples that were adapted for use here in the WMTS case. Likewise, the `JSON and GeoJSON User Guide <http://docs.opengeospatial.org/guides/16-122r1.html>`_ includes WMS-based JavaScript examples, that have also been adapted for WMTS.
+
+This example assumes the existence of a WMTS service that has implemented an “acceptFormats” parameter as described in Clause “7.3.5 AcceptFormats parameter” of `06-121r9 OGC Web Services Common Implementation Specification <http://www.opengeospatial.org/standards/common>`_. The service in this case must be able to provide a JSON response. Under this assumption, a KVP GET request that includes a WMTS GetCapabilities operation could start with the following JavaScript "loadJSON" invocation.
+
+The first parameter identifies the URL (wrapped for readability) of the service endpoint where the request will be routed, including the acceptable JSON response type. The second parameter indicates that the "ShowCapabilities" function should be called back upon successful completion of the HTTP GET request. The third parameter identifies the callback for an HTTP failure path.
+
+.. code-block:: javascript
+
+  loadJSON("http://your.domain.com?
+      request=GetCapabilities&
+      service=WMTS&
+      acceptsFormats=application/json",
+    ShowCapabilities,
+    function(xhr) { alert(xhr); }
+  )
+
+
+Representative JavaScript code for the loadJSON function appears below. Invocation of this function will, under an HTTP-success execution path, de-serialize the content of a JSON response into JavaScript variables by invoking "JSON.parse()".
+
+.. code-block:: javascript
+
+  function loadJSON(path, success, error)
+  {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+      {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            if (success)
+              {
+                var data;
+                try {
+                  data = JSON.parse(xhr.responseText);
+                } catch (e) {
+                  if (error)
+                    return error("JSON file: \""+ path + "\". " + e);
+                }
+                success(data);
+              }
+          } else {
+            if (error)
+              error("JSON file: \""+ path + "\". " + xhr.statusText);
+          }
+      }
+    };
+    xhr.open("GET", path, true);
+    xhr.send();
+  }
+
+
+Representative JavaScript code for the ShowCapabilities function appears below. Due to the loadJSON() code to perform JSON.parse() on the xhr.responseText, the "capabilities" JavaScript variable will contain the response values, with subordinate key names matching what the element names would have been in a corresponding XML response.
+
+.. code-block:: javascript
+
+  function ShowCapabilities(capabilities)
+  {
+      if (capabilities.serviceIdentification.serviceTypeVersion!=“1.0.0” ||
+          capabilities.serviceIdentification.serviceType.code!="WMTS")
+          alert("This is not a compatible WMTS JSON server");
+      alert("The provider name is: " +
+          capabilities.serviceProvider.providerName);
+  }
+
+
+More friendly user output for the loadJSON() error cases could be provided if something like the following JSON string were to be supplied by the WMTS service (reporting two HTTP exceptions in this example).
+
+.. code-block:: json
+
+  {
+    "type": "ExceptionReport",
+    "version": "1.0.0",
+    "lang": "en",
+    "exception": [{
+      "type": "Exception",
+      "exceptionCode": "MissingParameterValue",
+      "exceptionText": "Service parameter missing",
+      "locator": "service"
+      },{
+      "type": "Exception",
+      "exceptionCode": "InvalidParameterValue",
+      "exceptionText": "Version number not supported",
+      "locator": "version”
+    }]
+  }
 
 
 Example GetTile Requests
@@ -650,9 +497,7 @@ Under a resource-oriented style, a representative example would be:
 Example GetTiles Response: KVP Request and Resource-Oriented
 ------------------------------------------------------------
 
-In response to a URL containing KVPs, a requested tile map that complies with the requested parameters would be returned.
-
-Under a resource-oriented style, a representation of the requested tile resource would be returned.
+In response to a URL containing KVPs (or under a resource-oriented style), a tile map that complies with the requested parameters (or a representation of the requested tile resource) would be returned.
 
 
 Example GetTiles Response: SOAP
@@ -746,10 +591,10 @@ Under a resource-oriented style, a representative example would be:
       http://your.domain.com/coastlines/blue/2007-06/coastlinesInCrs84/5e6/42/112/23/35.png
 
 
-Example GetFeatureInfo Response: POX
--------------------------------------
+Example GetFeatureInfo Response: KVP Request and Resource-Oriented
+------------------------------------------------------------------
 
-An example of a compliant WMTS service's POX response to a procedural-oriented GetFeatureInfo KVP request operation is presented below. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
+An example of a compliant WMTS service's POX response to a procedural-oriented GetFeatureInfo KVP request operation is presented below. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location. The content of a response to a resource-oriented request for a resource representation would be virtually identical.
 
 .. code-block:: xml
 
@@ -804,12 +649,6 @@ An example of a compliant WMTS service's response to a procedural-oriented SOAP-
       		</FeatureInfoResponse>
       	</soap:Body>
       </soap:Envelope>
-
-
-Example GetFeatureInfo Response:Resource-Oriented
--------------------------------------------------
-
-Under a resource-oriented style, a representation of the requested feature information would be returned.
 
 
 
