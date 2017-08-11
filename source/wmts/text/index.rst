@@ -1,4 +1,4 @@
-wmts
+WMTS
 ===========
 
 
@@ -7,4 +7,5 @@ wmts
 
    overview.rst
    main.rst
+   operations.rst
   
