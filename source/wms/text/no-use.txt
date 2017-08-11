@@ -1,0 +1,12 @@
+.. code-block:: properties
+               http://frameworkwfs.usgs.gov/framework/wfs/wfs.cgi?
+                  DATASTORE=Framework&service=wfs&version=1.1.0&
+                  request=GetFeature&typeName=cw:STATE_OR_TERRITOR&
+                  maxFeatures=4&
+                  Filter=
+                     <Filter>
+                        <PropertyIsGreaterThan>
+                           <PropertyName>POPULATION</PropertyName>
+                           <Literal>15000000</Literal>
+                        </PropertyIsGreaterThan>
+                     </Filter>

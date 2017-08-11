@@ -1,6 +1,35 @@
 WMS - Operations
 ================
 
+Background
+--------------------
+
+History
+  WMS version 1.0.0 in April 2000, followed by version 1.1.0 in June 2001,and version 1.1.1 in January 2002. The OGC released WMS version 1.3.0 in January 2004.
+Versions
+  1.3 is the current latest version 
+Test Suite
+  Test suites are available for: 
+      - `WMS 1.1.1 <http://cite.opengeospatial.org/teamengine/>`_ 
+      - `WMS 1.3.0 <http://cite.opengeospatial.org/teamengine/>`_
+Implementations
+   Implementations can be found at the OGC database. `here <http://www.opengeospatial.org/resource/products/byspec>`_
+
+Usage
+^^^^^^
+Through a highly configurable interface the WMS standard makes map images (but not source data) available in standard image formats. Government agencies publish all kinds of official map cartography using this standard. Other large organizations use this standard to enable independent departments to interact more easily internally. Anybody using this standard can use it to overlay map images from many different sources regardless of the underlying software.
+
+WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another using a common geospatial coordinate reference system.  Numerous servers and clients support WMS.
+
+
+Relation to other OGC Standards
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- OGC Web Map Tile Service Interface Standard (WMTS): The WMTS standard is a better fit For highly scalable systems (many simultaneous requests) that only need static maps. It complements the WMS standard with cachable static map tiles. WMS servers can be used as data sources or rendering engines for WMTS services.
+- OGC Web Feature Service (WFS): The WFS standard is a better fit for extended query functionality of spatial data. It provides programmatic access to the geographic feature data. WMS and WFS often go together. An organization publishing both WMS and WFS often use the same data source.
+- OGC Styled Layer Descriptor Interface Standard (SLD): The SLD standard allows the user to modify the cartographic appearance of a map image. It is an optional feature of the OGC WMS standard.
+- OGC Symbology Encoding (SE): The SE standard describes how to define map symbology. It is used to modify the cartographic appearance of map images. It is an optional feature of the OGC WMS and SLD standards.
+
 This section provides detailed information about the types of WMS requests a client is able to perform to a WMS server.
 
 .. list-table:: WMS Operations
