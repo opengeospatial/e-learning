@@ -37,7 +37,7 @@ The ``GetMap`` request queries the server with a set of parameters describing th
 .. image:: ../img/getmap-demo.png
       :width: 70%
 
-`Link to the GetMap request <ttp://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
+
 
 The URL of this link is composed of the following parameters and values:
   
@@ -58,7 +58,7 @@ The URL of this link is composed of the following parameters and values:
       BGCOLOR=0xffffff& 
       TRANSPARENT=TRUE
   
-
+`Link to the GetMap request <http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
 
 
 Client Usage
@@ -66,7 +66,6 @@ Client Usage
 
 A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is the URI for the GetCapabilities request. For example: 
 
-`Link to the GetCapabilities request <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_  
 
 The URL of this link is composed of the following parameters and values:
 
@@ -77,7 +76,7 @@ The URL of this link is composed of the following parameters and values:
   SERVICE=WMS&
   VERSION=1.3
 
-
+`Link to the GetCapabilities request <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_  
 
 
 References
