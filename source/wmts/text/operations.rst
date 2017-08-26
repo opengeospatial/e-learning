@@ -1,11 +1,11 @@
 WMTS - Operations
-======================
+=================
 
 Background
 ----------
 
 History
-  WMTS version 1.0.0 (Document reference number OGC 07-057r7) was released in 2007, and the Web Map Tile Service Simple Profile was released in 2013.
+  Version 1.0.0 of the WMTS Specification ("WMTS Spec") `07-057r7 OpenGIS Web Map Tile Service Implementation Standard <http://www.opengeospatial.org/standards/wmts>`_ was published in 2010, and the `Web Map Tile Service Simple Profile  <http://docs.opengeospatial.org/is/13-082r2/13-082r2.html>`_ was published in 2016.
 Versions
   1.0.0 is the current latest version.
 Test Suite
@@ -35,9 +35,9 @@ Overview of WMTS Operations and Resources
 
 A WMTS abstract specification describes the semantics of the resources offered by the servers and requested by the client. It specifies the semantics of the ServiceMetadata document, of the Tile images or representations, and of the optional FeatureInfo documents providing descriptions of the maps at specific locations.
 
-Client-server exchange mechanisms are specified under two distinct architectural styles. Under the first "procedural-oriented" style, the requests and responses for GetCapabilities, GetTile and (optional) GetFeatureInfo operations use the encodings of Key-Value Pairs (KVP), "plain-old XML" (POX) messages, or XML messages embedded in SOAP envelopes.
+Client-server exchange mechanisms are specified under two distinct architectural styles. Under the first "procedural-oriented" style, the requests and responses for GetCapabilities, GetTile and (optional) GetFeatureInfo operations use the encodings of Key-Value Pair (KVP) requests with "plain-old XML" (POX) responses or XML messages embedded in SOAP envelopes.
 
-Under the second "resource-oriented" style, request mechanisms and an endpoint publishing strategy are specified to enable an approach more closely resembling that of `REpresentational State Transfer (REST) <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`_, particularly `Richardson Maturity Model Level 1 <http://docs.opengeospatial.org/guides/16-057r1.html#_rest_and_open_geospatial_resources>`_. This approach is based on web URL endpoints that enable clients to directly access the ServiceMetadata, Tile, and FeatureInfo resources as documents (i.e., the request is implicit in the URL itself).
+Under the second "resource-oriented" style, request mechanisms and an endpoint publishing strategy are specified to enable an approach more closely resembling that of `REpresentational State Transfer (REST) <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`_. This approach is based on web URL endpoints that enable clients to directly access the ServiceMetadata, Tile, and FeatureInfo resources as documents. The request is implicit in the URL itself.
 
 Under a resource-oriented style, a scalable WMTS service could be created using no image processing logic at all by pre-rendering images and relying only on an ordinary web server to return the static ServiceMetadata XML document and provide the image tile files. The images are considered by the HTTP protocol to be standard web resources, and providers could leverage their existing technologies to improve the flow of those resources to requesting clients.
 
@@ -46,7 +46,7 @@ Whichever style is used, WMTS-enabled services can generally offer advantages in
 The WMTS interface allows a client to retrieve three general types of resources:
 
 ServiceMetadata resource
-   A ServiceMetadata resource (accessed directly under the resource-oriented style or in response to a GetCapabilities operation under the procedural-oriented style) is required in compliant implementations. It describes the abilities and information holdings of the specific server implementation. This operation also supports negotiation of the standard version being used for client-server interactions.
+   A ServiceMetadata resource (accessed directly under the resource-oriented style or in response to a GetCapabilities operation under the procedural-oriented style) is required in compliant implementations. It describes the abilities and information holdings of the specific server implementation.
 
 Tile resource
    A Tile resource (accessed directly under the resource-oriented style or in response to a GetTile operation under the procedural-oriented style) is required in compliant implementations. It shows a fragment of a map representation of a layer.
@@ -54,23 +54,23 @@ Tile resource
 FeatureInfo resource
    A FeatureInfo resource (accessed directly under the resource-oriented style or in response to a GetFeatureInfo operation under the procedural-oriented style) is optional. It provides information about the features located at a particular pixel of a tile map. It does this in a manner similar to the WMS GetFeatureInfo operation by providing, for example, thematic attribute name and value pairs in textual form.
 
-The WMTS serves a single tile of a single layer of a map. As illustrated in the following figure, tiles are related in a hierarchy called a "Tile Matrix Set" in which coarse-resolution tiles are near the top and finer resolution tiles nearer the bottom.
+The WMTS serves a single tile of a single layer of a map. As illustrated in the following figure, tiles are related in a hierarchy called a "Tile Matrix Set" in which coarse-resolution tiles are nearer the top and finer resolution tiles nearer the bottom.
 
 .. image:: ../img/Tiles.png
       :width: 50%
 
-Unlike WMS, there is no specified way to request a server to combine and return a map tile with information coming from more than one layer in a single fetching process. WMTS clients that want to show a combination of layers must make independent requests for the layer tiles and then combine or overlay the responses. Also, bounding boxes and scales of these WMTS tiles are constrained to a discrete set of values.
+Unlike WMS, there is no specified way to request a server to combine and return a map tile with information coming from more than one layer in a single retrieval. WMTS clients that want to show a combination of layers must make independent requests for the layer tiles and then combine or overlay the responses. Also, bounding boxes and scales of these WMTS tiles are constrained to a discrete set of values.
 
-A full explanation of the geometry of the tiled space can be found in Clause 6.1 of the WMTS Specification `07-057r7 OpenGIS Web Map Tile Service Implementation Standard <http://www.opengeospatial.org/standards/wmts>`_.
+A full explanation of the geometry of the tiled space can be found in Clause 6.1 of the WMTS Spec.
 
 
-Get Capabilities Examples
--------------------------
+Examples for Retrieving ServiceMetadata
+---------------------------------------
 
 Example GetCapabilities Requests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Under the procedural-oriented style, a WMTS client can request a ServiceMetadata document using KVP with HTTP GET in the following manner. This example was adapted from the WMTS 1.0.0 Reference Implementation at the OGC `Compliance Testing GitHub Wiki <https://github.com/opengeospatial/cite/wiki/Reference-Implementations>`.
+Under the procedural-oriented style, a WMTS client can invoke a KVP ServiceMetadata request in the following manner. This example was adapted from the WMTS 1.0.0 Reference Implementation at the OGC `Compliance Testing GitHub Wiki <https://github.com/opengeospatial/cite/wiki/Reference-Implementations>`.
 
 .. code-block:: properties
 
@@ -102,7 +102,7 @@ The same request using SOAP would have the following form:
     </soap:Body>
   </soap:Envelope>
 
-Under a resource-oriented style, a representative example would be:
+Under a resource-oriented style, a representative example might be:
 
 .. code-block:: properties
 
@@ -119,7 +119,7 @@ The following figure provides a summary-level depiction of the major content blo
 .. image:: ../img/GetCapabilities-POX.png
       :width: 70%
 
-This response declares the service's support for GetCapabilities operations using KVP with HTTP GET. WMTS services in practice might contain many more Layers, TileMatrixSets, and Themes than just the several shown here.
+This response declares the service's support for KVP GetCapabilities operations. WMTS services in practice might contain many more Layers, TileMatrixSets, and Themes than just the several shown here.
 
 This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.
 
@@ -175,10 +175,10 @@ This example was adapted from content in the `WMTS Schemas <http://schemas.openg
       <ows:Operation name="GetCapabilities">
         <ows:DCP>
           <ows:HTTP>
-            <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-              <ows:Constraint name="PostEncoding">
+            <ows:Get xlink:href="http://cite.deegree.org/1.0.0">
+              <ows:Constraint name="GetEncoding">
                 <ows:AllowedValues>
-                  <ows:Value>SOAP</ows:Value>
+                  <ows:Value>KVP</ows:Value>
                 </ows:AllowedValues>
               </ows:Constraint>
             </ows:Post>
@@ -188,10 +188,10 @@ This example was adapted from content in the `WMTS Schemas <http://schemas.openg
       <ows:Operation name="GetTile">
         <ows:DCP>
           <ows:HTTP>
-            <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
-              <ows:Constraint name="PostEncoding">
+            <ows:Post xlink:href="http://cite.deegree.org/1.0.0">
+              <ows:Constraint name="GetEncoding">
                 <ows:AllowedValues>
-                  <ows:Value>SOAP</ows:Value>
+                  <ows:Value>KVP</ows:Value>
                 </ows:AllowedValues>
               </ows:Constraint>
             </ows:Post>
@@ -249,8 +249,8 @@ This example was adapted from content in the `WMTS Schemas <http://schemas.openg
         <TileMatrixSetLink>
           <TileMatrixSet>World84-90_CRS_84</TileMatrixSet>
         </TileMatrixSetLink>
-        <ResourceURL format="image/png" resourceType="tile" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}.png"/>
-        <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.opengis.uab.es/SITiled/world/AdminBoundaries/default/World84-90_CRS_84/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
+        <ResourceURL format="image/png" resourceType="tile" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+        <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
       </Layer>
       <TileMatrixSet>
         <!-- optional bounding box of data in this CRS -->
@@ -299,15 +299,23 @@ This example was adapted from content in the `WMTS Schemas <http://schemas.openg
           <LayerRef>AdminBoundaries</LayerRef>
         </Theme>
       </Theme>
+      <Theme>
+        <ows:Title>World Geology</ows:Title>
+        <ows:Identifier>World Geology</ows:Identifier>
+        <LayerRef>worldAgeRockType</LayerRef>
+        <LayerRef>worldFaultLines</LayerRef>
+        <LayerRef>felsicMagmatic</LayerRef>
+        <LayerRef>maficMagmatic</LayerRef>
+      </Theme>
     </Themes>
-    <WSDL xlink:role="http://schemas.xmlsoap.org/wsdl/1.0" xlink:show="none" xlink:type="simple" xlink:href="wmtsConcrete.wsdl"/>
+    <ServiceMetadataURL xlink:href="http://cite.deegree.org/1.0.0/WMTSCapabilities.xml"/>
   </Capabilities>
 
 
 Example GetCapabilities Response: SOAP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An example of a compliant WMTS service's ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request can be found in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. An abbreviated representation of the XML content is presented below. The primary difference here is the presence of the SOAP envelope.
+An abbreviated representation of the XML content of a ServiceMetadata document in response to a procedural-oriented SOAP-encoded GetCapabilities request is presented below. The primary differences compared to the POX response are [1] the presence of the SOAP envelope and [2] declaration of support for a SOAP interface in the OperationsMetadata section.
 
 .. code-block:: xml
 
@@ -317,25 +325,295 @@ An example of a compliant WMTS service's ServiceMetadata document in response to
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
     xsi:schemaLocation="http://www.w3.org/2003/05/soap-envelope http://www.w3.org/2003/05/soap-envelope">
     <soap:Body>
-      <!-- ********************************** -->
-      <!-- [... insert Capabilities here ...] -->
-      <!-- ********************************** -->
+      <Capabilities version="1.0.0" ... >
+        <ows:ServiceIdentification>
+          <!-- **************************************************** -->
+          <!-- [... insert ServiceIdentification elements here ...] -->
+          <!-- **************************************************** -->
+        </ows:ServiceIdentification>
+        <ows:ServiceProvider>
+          <!-- ********************************************** -->
+          <!-- [... insert ServiceProvider elements here ...] -->
+          <!-- ********************************************** -->
+        </ows:ServiceProvider>
+        <ows:OperationsMetadata>
+          <ows:Operation name="GetCapabilities">
+            <ows:DCP>
+              <ows:HTTP>
+                <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
+                  <ows:Constraint name="PostEncoding">
+                    <ows:AllowedValues>
+                      <ows:Value>SOAP</ows:Value>
+                    </ows:AllowedValues>
+                  </ows:Constraint>
+                </ows:Post>
+              </ows:HTTP>
+            </ows:DCP>
+          </ows:Operation>
+          <ows:Operation name="GetTile">
+            <ows:DCP>
+              <ows:HTTP>
+                <ows:Post xlink:href="http://www.opengis.uab.es/cgi-bin/world/MiraMon5_0.cgi?">
+                  <ows:Constraint name="PostEncoding">
+                    <ows:AllowedValues>
+                      <ows:Value>SOAP</ows:Value>
+                    </ows:AllowedValues>
+                  </ows:Constraint>
+                </ows:Post>
+              </ows:HTTP>
+            </ows:DCP>
+          </ows:Operation>
+        </ows:OperationsMetadata>
+        <Contents>
+          <!-- *************************************** -->
+          <!-- [... insert Contents elements here ...] -->
+          <!-- *************************************** -->
+        </Contents>
+        <Themes>
+          <!-- ************************************* -->
+          <!-- [... insert Themes elements here ...] -->
+          <!-- ************************************* -->
+        </Themes>
+      </Capabilities>
     </soap:Body>
   </soap:Envelope>
 
 
-Example GetCapabilities Response: Resource-Oriented
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A sample ServiceMetadata document in response to a resource-oriented request for a resource representation can be found in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The content is virtually identical to that presented for the POX response.
+Example ServiceMetadata Retrieval Under a Resource-Oriented Style
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Under a resource-oriented style, the content of a ServiceMetadata document response would be virtually identical to that presented for the POX response except that HTTP encodings may not be described in an OperationsMetadata section (WMTS Spec Clause 7.1.1.1.1). Instead, "ResourceURL" within the Layer element and "ServiceMetadataURL" within the Capabilities element are used to identify the resource endpoints. These two element locations in the POX response have been replicated in the code block below for convenience.
+
+.. code-block:: xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+  <Capabilities ... version="1.0.0">
+    ...
+    <Contents>
+      <Layer>
+        ...
+        <ResourceURL format="image/png" resourceType="tile" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+        <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
+      </Layer>
+      <TileMatrixSet>
+        ...
+      </TileMatrixSet>
+    </Contents>
+    <Themes>
+      ...
+    </Themes>
+    <ServiceMetadataURL xlink:href="http://cite.deegree.org/1.0.0/WMTSCapabilities.xml"/>
+  </Capabilities>
 
 
-Example JSON/JavaScript GetCapabilities Request and Response
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example Service-Endpoint API to Retrieve a ServiceMetadata Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The resource-oriented ServiceMetadata retrieval described above can be reverse-engineered to build an application programming interface (API) for accessing resources at the service endpoint. The example below conforms to the `OpenAPI 2.0 Specification <https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md>`_. A general treatment of APIs in the geospatial context can be found in the `OGC Open Geospatial APIs - White Paper <http://docs.opengeospatial.org/wp/16-019r4/16-019r4.html>`_.
+
+.. code-block:: yaml
+
+  swagger: '2.0'
+  info:
+    version: 1.0.0
+    title: OGC WMTS ServiceMetadata API
+    description: API for using HTTP GET to retrieve an OGC WMTS ServiceMetadata resource.
+    contact:
+      email: techdesk@opengeospatial.org
+    license:
+      name: Creative Commons 3.0
+      url: http://creativecommons.org/licenses/by/3.0/
+  paths:
+    /1.0.0/{ServiceMetadataFileName}:
+      get:
+        summary: Retrieves a ServiceMetadata resource
+        operationId: GetResourceRepresentation
+        description: |
+          Clients will access the WMTS ServiceMetadata resource by using the URL to request (via HTTP GET) a file from a standard HTTP server.
+        produces:
+        - application/xml
+        - application/json
+        parameters:
+        - in: path
+          name: ServiceMetadataFileName
+          type: string
+          description: name of ServiceMetadata file
+          required: true
+          enum: [WMTSGetCapabilities.xml]
+        responses:
+          200:
+            description: Service Metadata file available
+            schema:
+              $ref: '#/definitions/WMTSServiceMetadata'
+          400:
+            description: Bad Request
+          404:
+            description: File Not Found
+          500:
+            description: Internal Server Error
+  definitions:
+    WMTSServiceMetadata:
+      type: object
+      required:
+      - type
+      - capabilities
+      properties:
+        type:
+          type: string
+          enum: [WMTSServiceMetadata]
+        capabilities:
+          $ref: '#/definitions/Capabilities'
+    Capabilities:
+      type: object
+      required:
+      - type
+      - version
+      properties:
+        type:
+          type: string
+          enum: [Capabilities]
+        version:
+          type: string
+          enum: [1.0.0]
+        updateSequence:
+          type: string
+        serviceIdentification:
+          $ref: '#/definitions/ServiceIdentification'
+        serviceProvider:
+          $ref: '#/definitions/ServiceProvider'
+        contents:
+          $ref: '#/definitions/Contents'
+        themes:
+          $ref: '#/definitions/Themes'
+        serviceMetadataURL:
+          $ref: '#/definitions/ServiceMetadataURL'
+    ServiceIdentification:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [ServiceIdentification]
+        serviceType:
+          $ref: '#/definitions/ServiceType'
+        serviceTypeVersion:
+          type: string
+          enum: [1.0.0]
+        title:
+          $ref: '#/definitions/TitleType'
+        keywords:
+          $ref: '#/definitions/KeywordsType'
+    ServiceType:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [ServiceType]
+    TitleType:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [TitleType]
+    KeywordsType:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [KeywordsType]
+    ServiceProvider:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [ServiceProvider]
+    Contents:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [Contents]
+        layer:
+          $ref: '#/definitions/Layer'
+        tileMatrixSet:
+          $ref: '#/definitions/TileMatrixSet'
+    Layer:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [Layer]
+    TileMatrixSet:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [TileMatrixSet]
+    Themes:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [Themes]
+        theme:
+          $ref: '#/definitions/Theme'
+    Theme:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [Theme]
+    ServiceMetadataURL:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum: [ServiceMetadataURL]
+
+...
+... TO BE REFACTORED AND FLESHED OUT FURTHER ...
+...
+
+
+
+A prudent practice in an actual implementation would be to provide much more "info" section detail containing metadata about the API itself.
+
+The paths->get->produces section includes both the mandatory support for XML production as well as optional support for JSON production (which would require a local extension of the WMTS Spec, which contains no mention of JSON). A JSON-based code fragment is provided below.
+
+This API supports consumption of only a single, constant value for a single (path) parameter. In practice, it might make sense to incorporate it into a fuller, WMTS-wide API that also supports retrieval of Tile and Feature Information resources.
+
+
+
+
+
+Example Client JavaScript Implementation to Retrieve JSON ServiceMetadata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The WMTS Specification is silent regarding `JavaScript Object Notation (JSON) <http://www.json.org/>`_. Hence including a JSON encoding in source code (e.g., JavaScript) invoking a request (or receiving a response) would have no bearing on an implementation's compliance with the WMTS standard. However, the OGC `Testbed 12 initiative <http://www.opengeospatial.org/projects/initiatives/testbed12>`_ provided instructive guidance in two documents, an engineering report and a user guide. The `JavaScript JSON JSON- LD Engineering Report <http://docs.opengeospatial.org/per/16-051.html>`_ provides JSON examples that were adapted for use here in the WMTS case. Likewise, the `JSON and GeoJSON User Guide <http://docs.opengeospatial.org/guides/16-122r1.html>`_ includes WMS-based JavaScript examples, which have also been adapted to apply to WMTS.
 
-This example assumes the existence of a WMTS service that has implemented an “acceptFormats” parameter as described in Clause “7.3.5 AcceptFormats parameter” of `06-121r9 OGC Web Services Common Implementation Specification <http://www.opengeospatial.org/standards/common>`_. The service in this case must be able to provide a JSON response. Under this assumption, a KVP GET request that includes a WMTS GetCapabilities operation could start with the following JavaScript "loadJSON" invocation.
+A procedural-oriented style would require the existence of a WMTS service that has implemented an “acceptFormats” parameter as described in Clause “7.3.5 AcceptFormats parameter” of `06-121r9 OGC Web Services Common Implementation Specification <http://www.opengeospatial.org/standards/common>`_. Using this service, a KVP GET request including a WMTS GetCapabilities operation could start with the following JavaScript "loadJSON" invocation.
 
 .. code-block:: javascript
 
@@ -344,9 +622,11 @@ This example assumes the existence of a WMTS service that has implemented an “
     function(xhr) { alert(xhr); }
   )
 
-The first parameter identifies the URL of the service endpoint where the request will be routed, including the acceptable JSON response type. The second parameter indicates that the "ShowCapabilities" function should be called back upon successful completion of the HTTP GET request. The third parameter identifies the callback for an HTTP failure path.
+A similar code fragment could be developed under a resource-oriented style by simply substituting the URL "http://cite.deegree.org/1.0.0/WMTSCapabilities.json" as the first parameter. No “acceptFormats” KVP would be required.
 
-Representative JavaScript code for the loadJSON function appears below.
+The first parameter identifies the URL of the service endpoint, including the acceptable JSON response type. The second parameter indicates that the "ShowCapabilities" function should be called back upon successful completion of the HTTP GET request. The third parameter identifies the callback for an HTTP failure path.
+
+Representative JavaScript code for the loadJSON function appears below. This code would apply under either architectural style.
 
 .. code-block:: javascript
 
@@ -378,7 +658,7 @@ Representative JavaScript code for the loadJSON function appears below.
     xhr.send();
   }
 
-Invocation of this function will, under an HTTP-success execution path, de-serialize the content of a JSON response into JavaScript variables by invoking the "JSON.parse()" function. This function, along with the XMLHttpRequest object, is built into the base JavaScript library of most modern browsers.
+Invocation of this function would, under an HTTP-success execution path, de-serialize the content of a JSON response into JavaScript variables by invoking the "JSON.parse()" function. This function, along with the XMLHttpRequest object, is built into the base JavaScript library (i.e., part of the standard local client API) of most modern browsers.
 
 Representative JavaScript code for the ShowCapabilities function appears below.
 
@@ -417,13 +697,13 @@ More friendly user output for the loadJSON() error cases could be provided if so
   }
 
 
-GetTile Examples
-----------------
+Examples for Retrieving Tile Resources
+--------------------------------------
 
-Example GetTile Requests
-^^^^^^^^^^^^^^^^^^^^^^^^
+Example Requests for Retrieving Tile Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Under the procedural-oriented style, a WMTS client can issue a GetTile request using KVP with HTTP GET in the following manner.
+Under the procedural-oriented style, a WMTS client can issue a KVP GetTile request in the following manner.
 
 .. code-block:: properties
 
@@ -465,18 +745,17 @@ The same request using SOAP would have the following form:
     </soap:Body>
   </soap:Envelope>
 
-Under a resource-oriented style, a representative example would be:
+Under a resource-oriented style, a representative example to retrieve a Tile resource would be:
 
 .. code-block:: properties
 
   http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/17/42/112.png
 
 
+Example Responses for Tile Resources: KVP-Request and Resource-Oriented
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example GetTiles Response: KVP-Request and Resource-Oriented
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-In response to a URL containing KVPs (or under a resource-oriented style), a tile map that complies with the requested parameters (or a representation of the requested tile resource) would be returned. A correctly formulated request would generate the image shown below.
+In response to a GetTile KVP request, or under a resource-oriented style, a Tile resource that complies with the requested parameters would be returned. A correctly formulated request would generate the image shown below.
 
 .. image:: ../img/wmts100.png
       :width: 50%
@@ -485,22 +764,19 @@ In response to a URL containing KVPs (or under a resource-oriented style), a til
 
 `Here's <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2108>`_` a tile from the neighboring column.
 
-
 .. image:: ../img/wmts100b.png
       :width: 50%
 
-
-Another example can be found in the `OGC WMTS Simple Profile <http://docs.opengeospatial.org/is/13-082r2/13-082r2.html>`_.
+An example of a Tile resource for direct, resource-oriented retrieval can be found in the `OGC WMTS Simple Profile <http://docs.opengeospatial.org/is/13-082r2/13-082r2.html>`_.
 
 .. image:: ../img/14664_OSM_GetTile_Response.png
       :width: 50%
 
-`Link to the corresponding GetTile request <http://a.tile.openstreetmap.org/15/9798/14664.png>`_.
+`Link to the corresponding Tile resource <http://a.tile.openstreetmap.org/15/9798/14664.png>`_.
 
 
-
-Example GetTiles Response: SOAP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example Responses for Tile Resources: SOAP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetTiles request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
@@ -528,13 +804,30 @@ An example of a compliant WMTS service's response to a procedural-oriented SOAP-
   </soap:Envelope>
 
 
-GetFeatureInfo Examples
------------------------
+Example Service-Endpoint API for Retrieving Tile Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Example GetFeatureInfo Requests
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+An OpenAPI 2.0 service-endpoint API for retrieving Tile resources is presented below.
 
-Under the procedural-oriented style, a WMTS client can issue a GetFeatureInfo request using KVP with HTTP GET in the following manner.
+.. code-block:: yaml
+
+  swagger: '2.0'
+
+...
+... TO BE ADDED ...
+...
+
+
+
+
+
+Examples for Retrieving Feature Information Resources
+-----------------------------------------------------
+
+Example Requests for Retrieving Feature Information Resources
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Under the procedural-oriented style, a WMTS client can issue a GetFeatureInfo KVP request in the following manner.
 
 .. code-block:: properties
 
@@ -585,17 +878,17 @@ The same request using SOAP would have the following form. Note that the followi
   </soap:Envelope>
 
 
-Under a resource-oriented style, a representative example would be:
+Under a resource-oriented style, a representative example to retrieve a Feature Information resource would be:
 
 .. code-block:: properties
 
   http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/17/4/4/23/35.png
 
 
-Example GetFeatureInfo Response: KVP Request and Resource-Oriented
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example Responses for Feature Information Resources: KVP-Request and Resource-Oriented
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-An example of a compliant WMTS service's POX response to a procedural-oriented GetFeatureInfo KVP request operation is presented below. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location. The content of a response to a resource-oriented request for a resource representation would be virtually identical.
+In response to a GetFeatureInfo KVP request, or under a resource-oriented style, a POX Feature Information document that complies with the requested parameters would be returned. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
 
 .. code-block:: xml
 
@@ -618,8 +911,8 @@ An example of a compliant WMTS service's POX response to a procedural-oriented G
   </ReguralGridedElevations>
 
 
-Example GetFeatureInfo Response: SOAP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example Response for Feature Information Resources: SOAP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetFeatureInfo request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
@@ -650,6 +943,23 @@ An example of a compliant WMTS service's response to a procedural-oriented SOAP-
       </FeatureInfoResponse>
     </soap:Body>
   </soap:Envelope>
+
+
+Example Service-Endpoint API for Retrieving a Feature Information Resource
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+An OpenAPI 2.0 service-endpoint API for accessing Feature Information resources is presented below.
+
+.. code-block:: yaml
+
+  swagger: '2.0'
+
+
+...
+... TO BE ADDED ...
+...
+
+
 
 
 References
