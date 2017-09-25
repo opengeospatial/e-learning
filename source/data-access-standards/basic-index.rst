@@ -8,5 +8,6 @@ Contents:
    :name: acc
    
    ../wfs/text/basic-index.rst
+   ../geopackage/text/basic-index.rst
 
 
