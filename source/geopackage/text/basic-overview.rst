@@ -1,4 +1,4 @@
-GeoPackage Basic Overview
+GeoPackage - Overview
 =========================
 Audience
 --------

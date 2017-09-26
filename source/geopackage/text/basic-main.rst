@@ -1,5 +1,5 @@
-GeoPackage
-==============================
+GeoPackage - Introduction
+=========================
 
 Introduction
 ------------
