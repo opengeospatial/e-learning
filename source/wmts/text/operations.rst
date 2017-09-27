@@ -387,24 +387,32 @@ Under a resource-oriented style, the content of a ServiceMetadata document respo
 
 .. code-block:: xml
 
-<?xml version="1.0" encoding="UTF-8"?>
-  <Capabilities ... version="1.0.0">
-    ...
-    <Contents>
-      <Layer>
-        ...
-        <ResourceURL format="image/png" resourceType="tile" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}.png"/>
-        <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
-      </Layer>
-      <TileMatrixSet>
-        ...
-      </TileMatrixSet>
-    </Contents>
-    <Themes>
-      ...
-    </Themes>
-    <ServiceMetadataURL xlink:href="http://cite.deegree.org/1.0.0/WMTSCapabilities.xml"/>
-  </Capabilities>
+  <?xml version="1.0" encoding="UTF-8"?>
+    <Capabilities ... version="1.0.0">
+      <!-- ******************************************* -->
+      <!-- [... insert Capabilities elements here ...] -->
+      <!-- ******************************************* -->
+      <Contents>
+        <Layer>
+          <!-- ************************************ -->
+          <!-- [... insert Layer elements here ...] -->
+          <!-- ************************************ -->
+          <ResourceURL format="image/png" resourceType="tile" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}.png"/>
+          <ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml"/>
+        </Layer>
+        <TileMatrixSet>
+          <!-- ******************************************** -->
+          <!-- [... insert TileMatrixSet elements here ...] -->
+          <!-- ******************************************** -->
+        </TileMatrixSet>
+      </Contents>
+      <Themes>
+        <!-- ************************************* -->
+        <!-- [... insert Themes elements here ...] -->
+        <!-- ************************************* -->
+      </Themes>
+      <ServiceMetadataURL xlink:href="http://cite.deegree.org/1.0.0/WMTSCapabilities.xml"/>
+    </Capabilities>
 
 
 Example Client JavaScript Implementation to Retrieve JSON ServiceMetadata

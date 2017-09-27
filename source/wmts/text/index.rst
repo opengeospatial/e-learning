@@ -8,4 +8,4 @@ WMTS
    overview.rst
    main.rst
    operations.rst
-  
+   api.rst
