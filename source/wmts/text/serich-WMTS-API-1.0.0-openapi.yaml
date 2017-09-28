@@ -1,0 +1,398 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0-alpha
+  title: Draft WMTS API for Discussion Purposes Only
+  description: >
+    Draft (unofficial for discussion purposes only) WMTS API for retrieval of OGC WMTS resources. The design of this API roughly corresponds to the "resource-oriented style" described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.
+  termsOfService: http://cite.deegree.org/deegree-webservices-3.4-RC3/
+  contact:
+    name: OGC Tech Desk
+    email: techdesk@opengeospatial.org
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: http://cite.deegree.org/{basePath}
+    description: Server on which the API is implemented
+    variables:
+      basePath:
+        default: '1.0.0'
+paths:
+  /{serviceMetadataDocumentName}:
+    get:
+      summary: Retrieve WMTS ServiceMetadata.
+      description: This endpoint returns a WMTS ServiceMetadata resource.
+      parameters:
+        - name: serviceMetadataDocumentName
+          in: path
+          description: ServiceMetadata Capabilities document name
+          example: 'WMTSCapabilities.xml'
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ServiceMetadata resource available
+          content:
+            'application/xml':
+              schema:
+                $ref: '#/components/schemas/Capabilities'
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Capabilities'
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /retrieveTile/{Layer}/{Style}/{Format}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}:
+    get:
+      summary: Retrieve a WMTS Tile.
+      description: This endpoint returns a Tile resource.
+      parameters:  # layer and format already specified in resourceURL
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+      responses:
+        '200':
+          description: Tile matched the specified criteria
+          content:
+            'image/*':
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+# Note: FeatureInfo support is optional
+  /retrieveFeatureInfo/{Layer}/{Style}/{Format}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}:
+    get:
+      summary: Retrieve FeatureInfo.
+      description: This endpoint returns a Feature resource.
+      parameters:  # layer and format already specified in resourceURL
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+        - $ref: "#/components/parameters/jParam"
+        - $ref: "#/components/parameters/iParam"
+      responses:
+        '200':
+          description: Feature information matched the specified criteria
+          content:
+            'application/gml+xml':
+              schema:
+                $ref: '#/components/schemas/featureGML'
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/featureGeoJSON'
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    styleParam:
+      name: style
+      in: path
+      required: true
+      schema:
+        type: string  # ows:CodeType per WMTS Spec Table 7
+    dimensionParam:
+      name: dimension
+      in: path
+      required: true  # should this be zero-or-more optional?
+      schema:
+        type: string
+    tileMatrixSetParam:
+      name: tileMatrixSet
+      in: path
+      required: true
+      schema:
+        type: string
+    tileMatrixParam:  # scale
+      name: tileMatrix
+      in: path
+      required: true
+      schema:
+        type: string
+    tileRowParam:
+      name: tileRow
+      in: path
+      required: true
+      schema:
+        type: string
+    tileColParam:
+      name: tileCol
+      in: path
+      required: true
+      schema:
+        type: string
+    jParam:
+      name: j
+      in: path
+      required: true
+      schema:
+        type: string
+    iParam:
+      name: i
+      in: path
+      required: true
+      schema:
+        type: string
+  schemas:
+    Capabilities:
+      type: object
+      required:
+        - serviceMetadataURL
+      properties:
+        owsServiceIdentification:
+          $ref: '#/components/schemas/owsServiceIdentification'
+        owsServiceProvider:
+          $ref: '#/components/schemas/owsServiceProvider'
+        contents:
+          $ref: '#/components/schemas/contents'
+        serviceMetadataURL:
+          $ref: '#/components/schemas/serviceMetadataURL'
+        themes:
+          $ref: '#/components/schemas/themes'
+    owsServiceIdentification:
+      type: object
+      required:
+        - owsTitle
+      properties:
+        owsTitle:
+          type: object
+        owsAbstract:
+          type: object
+        owsKeywords:
+          type: object
+        owsServiceType:
+          type: object
+        owsServiceTypeVersion:
+          type: object
+        owsFees:
+          type: object
+        owsAccessConstraints:
+          type: object
+    owsServiceProvider:
+      type: object
+      required:
+        - owsIndividualName
+      properties:
+        owsIndividualName:
+          type: object
+        owsPositionName:
+          type: object
+        owsContactInfo:
+          type: object
+    contents:
+      type: object
+      required:
+        - layer
+        - tileMatrixSet
+      properties:
+        layer:
+          type: object
+        tileMatrixSet:
+          type: object
+    layer:
+      type: object
+      required:
+        - owsTitle
+        - owsAbstract
+        - owsWGS84BoundingBox
+        - owsIdentifier
+        - Style
+        - Format
+        - tileMatrixSetLink
+        - resourceURL
+      properties:
+        owsTitle:
+          type: object
+        owsAbstract:
+          type: object
+        owsWGS84BoundingBox:
+          type: object
+        owsIdentifier:
+          type: object
+        Style:
+          type: object
+        Format:
+          type: object
+        tileMatrixSetLink:
+          type: object
+        resourceURL:
+          $ref: '#/components/schemas/resourceURL'
+    tileMatrixSet:
+      type: object
+      required:
+        - owsIdentifier
+        - owsSupportedCRS
+        - tileMatrix
+      properties:
+        owsIdentifier:
+          type: object
+        owsSupportedCRS:
+          type: object
+        wellKnownScaleSet:
+          type: object
+        tileMatrix:
+          type: object
+    tileMatrix:
+      type: object
+      required:
+        - owsIdentifier
+        - scaleDenominator
+        - topLeftCorner
+        - tileWidth
+        - tileHeight
+        - matrixWidth
+        - matrixHeight
+      properties:
+        owsIdentifier:
+          type: object
+        scaleDenominator:
+          type: object
+        topLeftCorner:
+          type: object
+        tileWidth:
+          type: object
+        tileHeight:
+          type: object
+        matrixWidth:
+          type: object
+        matrixHeight:
+          type: object
+    serviceMetadataURL:
+      type: object
+      required:
+        - format
+        - resourceType
+        - template
+      properties:
+        format:
+          type: object
+        resourceType:
+          type: object
+        template:
+          type: object
+    themes:
+      type: object
+      required:
+        - owsTitle
+        - owsAbstract
+        - owsIdentifier
+      properties:
+        owsTitle:
+          type: object
+        owsAbstract:
+          type: object
+        owsIdentifier:
+          type: object
+    resourceURL:  # one per layer
+      type: object
+      required:
+        - format
+        - resourceType
+        - urlTemplate
+      properties:
+        format:
+          type: string  # ows:MimeType per WMTS Spec Table 31
+        resourceType:
+          type: string  # must contain "tile" or "FeatureInfo" per Table 31
+        urlTemplate:
+          type: string  # must support WMTS Spec Table 32 (tile) or 34 (FI)
+          example:
+            oneOf:
+              tileTemplate: '<ResourceURL format="image/png" resourceType="tile" template="http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png">'
+              tileRequest: 'http://www.maps.bob/etopo2/default/WholeWorld_CRS_84/10m/1/3.png'
+              FeatureInfoTemplate: '<ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml">'
+              FeatureInfoRequest: 'http://www.maps.bob/etopo2/ default/WholeWorld_CRS_84/10m/1/3/86/132.xml'
+    featureGML:
+      type: object
+      required:
+        - 'gml:id'
+      xml:
+        name: AbstractFeature
+        namespace: 'http://www.opengis.net/gml/3.2'
+        prefix: gml
+      properties:
+        'gml:id':
+          type: string
+          xml:
+            namespace: 'http://www.opengis.net/gml/3.2'
+            prefix: gml
+            attribute: true
+    featureGeoJSON:
+      type: object
+      required:
+        - type
+        - geometry
+        - properties
+      properties:
+        type:
+          type: string
+          enum:
+            - Feature
+        geometry:
+          $ref: '#/components/schemas/geometryGeoJSON'
+          nullable: true
+        properties:
+          type: object
+          nullable: true
+    geometryGeoJSON:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+            - MultiPoint
+            - LineString
+            - MultiLineString
+            - Polygon
+            - MultiPolygon
+            - GeometryCollection
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
