@@ -3,7 +3,7 @@ WFS - Overview
 
 Audience
 --------
-Students that are familiar with web services and want to have an overview of WFS.
+Students that are familiar with web services and want to have an overview of Web Feature Service (WFS) standard.
 
 Learning Objectives
 -------------------

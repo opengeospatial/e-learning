@@ -460,6 +460,8 @@ The response resulting from the request above is shown below. Some content has b
 srsName parameter
 ^^^^^^^^^^^^^^^^^
 
+This parameter is used to specify the spatial reference system to encode feature geometries in. The spatial reference systems allowed for each feature type can be identified from the GetCapabilities response.
+
 .. code-block:: properties
 
       https://services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&request=getfeature&service=wfs&typenames=ci:City&count=1&srsName=urn:ogc:def:crs:EPSG::4326
@@ -496,6 +498,8 @@ The response resulting from the request above is shown below. Some content has b
 featureId parameter
 ^^^^^^^^^^^^^^^^^^^
 
+This parameter is used to filter the features returned by the request.
+
 .. code-block:: properties
 
       http://localhost:8080/geoserver/wfs?
@@ -528,9 +532,9 @@ The response resulting from the request above is shown below. Some content has b
 query action
 ^^^^^^^^^^^^
 
-Up to now, we have only presented GetFeature request examples sent as URLs through the HTTP GET method. It is also possible to send the body of the request as an XML document through the HTTP POST method.
+Up to now, we have only presented GetFeature request examples sent as URLs through the HTTP Get method. It is also possible to send the body of the request as an XML document through the HTTP Post method.
 
-The following is an example of a GetFeature request that contains a query action and is sent through the HTTP POST method.
+The following is an example of a GetFeature request that contains a query action and is sent through the HTTP Post method.
 
 The request is sent to the following URL `https://services.interactive-instruments.de/ogc-reference/simple/wfs <https://services.interactive-instruments.de/ogc-reference/simple/wfs>`_
 
@@ -578,14 +582,15 @@ The response returned by the request above is shown below.
       </wfs:member>
       </wfs:FeatureCollection>
 
+.. _wfs_getpropertyvalue:
 
 GetPropertyValue
 ---------------
 
+Returns the value of the feature property specified in the request. This operation is most useful when the server is being accessed over networks with limited bandwidth because it returns only the property value rather than the complete feature instance data.
+
 Request
 ^^^^^^^
-
-Returns the value of the feature property specified in the request. This operation is most useful when the server is being accessed over networks with limited bandwidth because it returns only the property value rather than the complete feature instance data.
 
 The following is an example of a GetPropertyValue request that contains a query action and is sent through the HTTP POST method.
 
@@ -621,14 +626,15 @@ The response resulting from the above request is shown below.
       <wfs:member>324800</wfs:member>
       </wfs:ValueCollection>
 
+.. _wfs_describefeaturetype:
 
 DescribeFeatureType
 -------------------
 
+Returns a description of the structure, including properties, of the feature type specified in the request.
+
 Request
 ^^^^^^^
-
-Returns a description of the structure, including properties, of the feature type specified in the request.
 
 An example of a DescribeFeatureType request is:
 
@@ -702,14 +708,15 @@ A stored query expression may be used in a GetPropertyValue, GetFeature, GetFeat
 
 All servers shall implement the ability to list, describe and execute a stored query that fetches features based on their identifier. Additional stored queries may also be offered.
 
+.. _wfs_liststoredqueries:
 
 ListStoredQueries
 ---------------
 
+Returns a list of the queries that have been stored inside the server.
+
 Request
 ^^^^^^^
-
-Returns a list of the queries that have been stored inside the server.
 
 An example of a ListStoredQueries request is:
 
@@ -735,13 +742,15 @@ The response is an XML document that presents the identifier and name of each qu
             </wfs:ListStoredQueriesResponse>
 
 
+.. _wfs_describestoredqueries:
+
 DescribeStoredQueries
----------------
+---------------------
+
+Returns a description of the stored queries referenced in the request parameters.
 
 Request
 ^^^^^^^
-
-Returns a description of the stored queries referenced in the request paramaters.
 
 An example of a DescribeStoredQueries request is:
 
@@ -768,25 +777,224 @@ The response is an XML document that describes the stored query specified by the
             </wfs:StoredQueryDescription>
             </wfs:DescribeStoredQueriesResponse>
 
+.. _wfs_transaction:
 
-Optional operations
--------------------
+Transaction
+-----------
 
-The following are additional operations which are optional for simple and basic WFS instances but are mandatory for advanced WFS configurations.
+This optional operation allows the feature instances and their properties to be updated or deleted. The operation can also be used to insert new features. The WFS standard does not enforce any particular security model, therefore implementations are expected to implement a security model appropriate for their own infrastructure.
 
-- GetPropertyValue
-  Retrieves the value of a feature property or part of the value of a complex feature property for a set of feature instances
-- GetFeatureWithLock
-  Serves a similar function to a GetFeature request but with the additional ability to lock a feature, presumably for subsequent updating or changes.
-- LockFeature
-  Locks a set of feature instances such that no other operations may modify the data while the lock is in place.
-- Transaction
-  Allows the feature instances and their properties to modified or deleted.
-- CreateStoredQuery
-  Creates and stores a query that can be rapidly and easily triggered by a client at a later point in time.
-- DropStoredQuery
-  Deletes a previously stored query from the server.
 
+Request
+^^^^^^^
+
+An example request is shown below. Since the request modifies data, we suggest installing a local instance of a WFS. The following example was tested against a WFS instance hosted locally at <http://localhost:8080/geoserver/wfs>
+
+.. code-block:: xml
+
+            <wfs:Transaction version="2.0.0" service="WFS"
+             xmlns="http://www.someserver.com/myns"
+             xmlns:fes="http://www.opengis.net/fes/2.0"
+             xmlns:topp="http://www.openplans.org/topp"
+             xmlns:wfs="http://www.opengis.net/wfs/2.0"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0.0/wfs.xsd">
+             <wfs:Update typeName="topp:tasmania_roads">
+             <wfs:Property>
+             <wfs:ValueReference>TYPE</wfs:ValueReference>
+             <wfs:Value>road</wfs:Value>
+             </wfs:Property>
+             <fes:Filter>
+             <fes:ResourceId rid="tasmania_roads.1"/>
+             </fes:Filter>
+             </wfs:Update>
+            </wfs:Transaction>
+
+Response
+^^^^^^^^
+The response is an XML document that confirms whether the transaction was successful.
+
+.. code-block:: xml
+
+          <wfs:TransactionResponse xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0.0" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd">
+          <wfs:TransactionSummary>
+          <wfs:totalInserted>0</wfs:totalInserted>
+          <wfs:totalUpdated>1</wfs:totalUpdated>
+          <wfs:totalReplaced>0</wfs:totalReplaced>
+          <wfs:totalDeleted>0</wfs:totalDeleted>
+          </wfs:TransactionSummary>
+          <wfs:UpdateResults><wfs:Feature>
+          <fes:ResourceId rid="tasmania_roads.1"/>
+          </wfs:Feature>
+          </wfs:UpdateResults>
+          </wfs:TransactionResponse>
+
+
+.. _wfs_getfeaturewithlock:
+
+GetFeatureWithLock
+------------------
+
+Serves a similar function to a GetFeature request but with the additional ability to lock a feature, presumably for subsequent updating or changes.
+
+Request
+^^^^^^^
+
+An example request is shown below. Since the request modifies the state of a data source, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at <http://localhost:8080/geoserver/wfs>
+
+.. code-block:: xml
+
+            <wfs:GetFeatureWithLock service="WFS" version="2.0.0"
+             handle="GetFeatureWithLock-tc1" expiry="5" resultType="results"
+             xmlns:topp="http://www.openplans.org/topp"
+             xmlns:fes="http://www.opengis.net/fes/2.0"
+             xmlns:wfs="http://www.opengis.net/wfs/2.0"
+             valueReference="the_geom"  count="1">
+              <wfs:Query typeNames="topp:states"/>
+            </wfs:GetFeatureWithLock>
+
+Response
+^^^^^^^^
+The response is a feature collection similar to that received from a GetFeature response. The example below has been shortened for brevity.
+
+.. code-block:: xml
+
+          <wfs:FeatureCollection xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:topp="http://www.openplans.org/topp" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" lockId="GetFeatureWithLock-tc1_6badb1c771c6ee70" numberMatched="49" numberReturned="1" timeStamp="2017-09-29T07:25:43.601Z" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd http://www.openplans.org/topp http://localhost:8080/geoserver/wfs?service=WFS&amp;version=2.0.0&amp;request=DescribeFeatureType&amp;typeName=topp%3Astates http://www.opengis.net/gml/3.2 http://localhost:8080/geoserver/schemas/gml/3.2.1/gml.xsd">
+          <wfs:member>
+          <topp:states gml:id="states.1">
+          <topp:the_geom>
+          <gml:MultiSurface srsName="urn:ogc:def:crs:EPSG::4326" srsDimension="2"><gml:surfaceMember><gml:Polygon><gml:exterior><gml:LinearRing><gml:posList>37.51099 -88.071564 37.476273 -88.087883 37.628479 -88.157631 37.583572 -88.134171 37.51099 -88.071564</gml:posList></gml:LinearRing></gml:exterior></gml:Polygon></gml:surfaceMember></gml:MultiSurface>
+          </topp:the_geom>
+          <topp:STATE_NAME>Illinois</topp:STATE_NAME>
+          <topp:STATE_FIPS>17</topp:STATE_FIPS>
+          <topp:SAMP_POP>1747776.0</topp:SAMP_POP>
+          </topp:states>
+          </wfs:member>
+          </wfs:FeatureCollection>
+
+
+.. _wfs_lockfeature:
+
+LockFeature
+-----------
+
+Locks a set of feature instances such that no other operations may modify the data while the lock is in place.
+
+Request
+^^^^^^^
+
+An example request is shown below. Since the request modifies the state of a data source, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at <http://localhost:8080/geoserver/wfs>
+
+.. code-block:: xml
+
+            <wfs:LockFeature
+               service="WFS"
+               version="2.0.0"
+               expiry="5"
+               xmlns:topp="http://www.openplans.org/topp"
+               xmlns:wfs="http://www.opengis.net/wfs/2.0"
+               xmlns:ogc="http://www.opengis.net/ogc"
+               xmlns:fes="http://www.opengis.net/fes/2.0"
+               xmlns:gml="http://www.opengis.net/gml"
+               xmlns:myns="http://www.example.com/myns"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+               <wfs:Query typeNames="topp:states">
+                    <fes:Filter>
+                        <fes:PropertyIsEqualTo>
+                           <fes:ValueReference>topp:STATE_NAME</fes:ValueReference>
+                           <fes:Literal>Illinois</fes:Literal>
+                        </fes:PropertyIsEqualTo>
+                    </fes:Filter>
+               </wfs:Query>
+            </wfs:LockFeature>
+
+Response
+^^^^^^^^
+The response is a feature collection similar to that received from a GetFeature response. The example below has been shortened for brevity.
+
+.. code-block:: xml
+
+          <wfs:LockFeatureResponse xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" lockId="GeoServer_5dcc3c771e1b15c" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd">
+              <wfs:FeaturesLocked><fes:ResourceId rid="states.1"/></wfs:FeaturesLocked>
+          </wfs:LockFeatureResponse>
+
+.. _wfs_createstoredquery:
+
+CreateStoredQuery
+-----------------
+
+Creates and stores a query that can be rapidly and easily triggered by a client at a later point in time.
+
+Request
+^^^^^^^
+
+An example request is shown below. Since the request persists a query, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at <http://localhost:8080/geoserver/wfs>
+
+.. code-block:: xml
+
+            <wfs:CreateStoredQuery service='WFS' version='2.0.0'
+             xmlns:wfs='http://www.opengis.net/wfs/2.0'
+             xmlns:fes='http://www.opengis.org/fes/2.0'
+             xmlns:gml='http://www.opengis.net/gml/3.2'
+             xmlns:myns='http://www.someserver.com/myns'
+             xmlns:xsd='http://www.w3.org/2001/XMLSchema'
+             xmlns:topp='http://www.openplans.org/topp'>
+              <wfs:StoredQueryDefinition id='stateStoredQuery'>
+                <wfs:Parameter name='stateName' type='xsd:String'/>
+                <wfs:QueryExpressionText
+                 returnFeatureTypes='topp:states'
+                 language='urn:ogc:def:queryLanguage:OGC-WFS::WFS_QueryExpression'
+                 isPrivate='false'>
+                  <wfs:Query typeNames='topp:states'>
+                    <fes:Filter>
+                        <fes:PropertyIsEqualTo>
+                           <fes:ValueReference>topp:STATE_NAME</fes:ValueReference>
+                           <fes:Literal>${stateName}</fes:Literal>
+                        </fes:PropertyIsEqualTo>
+                    </fes:Filter>
+                  </wfs:Query>
+                </wfs:QueryExpressionText>
+              </wfs:StoredQueryDefinition>
+            </wfs:CreateStoredQuery>
+
+Response
+^^^^^^^^
+An example response is shown below.
+
+.. code-block:: xml
+
+          <wfs:CreateStoredQueryResponse xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" status="OK" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd"/>
+
+
+.. _wfs_dropstoredquery:
+
+DropStoredQuery
+-----------------
+
+Deletes a previously stored query from the server.
+
+Request
+^^^^^^^
+
+An example request is shown below. Since the request deletes a previously stored query, we suggest installing a local instance of a WFS. The following example was tested against a WFS instance hosted locally at <http://localhost:8080/geoserver/wfs>
+
+.. code-block:: xml
+
+            <wfs:DropStoredQuery
+             xmlns:wfs='http://www.opengis.net/wfs/2.0'
+             service='WFS' id='myStoredQuery'/>
+
+Response
+^^^^^^^^
+
+An example response is shown below:
+
+.. code-block:: xml
+
+          <wfs:DropStoredQueryResponse xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:wfs="http://www.opengis.net/wfs/2.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" status="OK" xsi:schemaLocation="http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd"/>
+
+
+.. _wfs_exceptions:
 
 Exceptions
 ---------------

@@ -3,7 +3,7 @@ WFS - Introduction
 
 Introduction
 ------------
-The OGC Web Feature Service Interface Standard (WFS) defines a set of interfaces for accessing geographic information at the feature and feature property level over the Internet. A feature is an abstraction of real world phenomena, that is it is a representation of anything that can be found in the world. The attributes or characteristics of a geographic feature are referred to as feature properties. WFS offer the means to retrieve or query geographic features in a manner independent of the underlying data stores they publish. Where a WFS is authorized to do so, the service can also update or delete geographic features. An instance of a WFS is also able to store queries in order to enable client applications to retrieve or execute the queries at a later point in time.
+The OGC Web Feature Service (WFS) Interface Standard defines a set of interfaces for accessing geographic information at the feature and feature property level over the Internet. A feature is an abstraction of real world phenomena, that is it is a representation of anything that can be found in the world. The attributes or characteristics of a geographic feature are referred to as feature properties. WFS offer the means to retrieve or query geographic features in a manner independent of the underlying data stores they publish. Where a WFS is authorized to do so, the service can also update or delete geographic features. An instance of a WFS is also able to store queries in order to enable client applications to retrieve or execute the queries at a later point in time.
 
 
 Background
@@ -49,13 +49,27 @@ DescribeStoredQueries
 GetFeature
    Returns a selection of feature instances from a data store published through the WFS.
 
+The following optional operations may also be offered by a WFS server:
+
+GetPropertyValue
+   Retrieves the value of a feature property or part of the value of a complex feature property for a set of feature instances
+GetFeatureWithLock
+   Serves a similar function to a GetFeature request but with the additional ability to lock a feature, presumably for subsequent updating or changes.
+LockFeature
+   Locks a set of feature instances such that no other operations may modify the data while the lock is in place.
+Transaction
+   Allows the feature instances and their properties to be inserted, updated or deleted.
+CreateStoredQuery
+   Creates and stores a query that can be rapidly and easily triggered by a client at a later point in time.
+DropStoredQuery
+   Deletes a previously stored query from the server.
 
 
 
 Example
 -------
 
-This `OGC WFS Demo server <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&request=GetCapabilities>`_ publishes some sample data on sites protected for archeological, environmental or other conservation purposes.
+This `WFS Demo server <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&request=GetCapabilities>`_ publishes some sample data on sites protected for archeological, environmental or other conservation purposes.
 
 An example ``GetFeature`` request that can be used to retrieve data from the service is shown below.
 
@@ -67,6 +81,7 @@ An example ``GetFeature`` request that can be used to retrieve data from the ser
       REQUEST=GetFeature&
       TYPENAMES=ps:ProtectedSite
 
+`Link to the GetFeature request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=ps:ProtectedSite>`_
 
 The ``GetFeature`` request queries the server with a set of parameters describing the geographic features to return. The names and identifiers of the available geographic feature datasets are obtained from the capabilities document that is returned by a GetCapabilities response.
 
