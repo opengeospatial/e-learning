@@ -4,7 +4,17 @@ Style Layer Descriptor (SLD)
 Introduction
 ------------
 
-Geospatial data (vector and raster) have no intrinsic visual component. In order to see data, it must be styled. Styling specifies color, thickness, and other visible attributes used to render data on a map. A WMS provides a set of style options for each data set; however these are preconfigured by the server, and the user cannot create, inspect, modify a style. The Styled Layer Descriptor (SLD) is a standard that enables an application  to configure in an XML document how to properly portray layers and legends in a WMS. It uses Symbology Ending (SE) to specify styling of features and coverages. The SLD Profile of WMS enhances a WMS with additional operations to support styling of features from WFS and coverages from WCS.
+- Geospatial data (vector and raster) have no intrinsic visual component. 
+- In order to see data, it must be styled. 
+- Styling specifies color, thickness, and other visible attributes used to render data on a map. 
+- A WMS provides a set of style options for each data set; however these are preconfigured by the server, and the user cannot create, inspect, modify a style. 
+
+
+SLD
+----------------
+- The Styled Layer Descriptor (SLD) is a standard that enables an application  to configure in an XML document how to properly portray layers and legends in a WMS. 
+- It uses Symbology Ending (SE) to specify styling of features and coverages. 
+- The SLD Profile of WMS enhances a WMS with additional operations to support styling of features from WFS and coverages from WCS.
 
 
 History
