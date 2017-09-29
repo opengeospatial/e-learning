@@ -16,6 +16,6 @@ This is an official OGC tutorial module.
    ogc-standards/text/index.rst
    visualization-standards/basic-index.rst
    data-access-standards/basic-index.rst
+   processing/basic-index.rst
    metadata-catalogue/index.rst
    references.rst
-
