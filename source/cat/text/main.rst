@@ -10,7 +10,7 @@ Catalogue services support the ability to publish and search collections of desc
 History and Versions
 
   - CSW 2.0.2 `07-006r1  <http://portal.opengeospatial.org/files/?artifact_id=20555>`_ was released in 2007-02-23
-  - CSW 3.0 (will be released in 2015-2016). It adds OpenSearch support.
+  - CSW 3.0 (will be released in 2015-2016). It adds open search support.
 
 Test suites exist for: 
 
@@ -68,5 +68,5 @@ Harvest (Optional)
 Example
 -------
 
-Example of operations for  `pycsw - CSW Data.gov <https://gist.github.com/kalxas/5ab6237b4163b0fdc930>`_
+Example of operations for  `PyCSW - CSW Data.gov <https://gist.github.com/kalxas/5ab6237b4163b0fdc930>`_
 
