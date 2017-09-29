@@ -25,8 +25,7 @@ The Uniform Resource Locator (URL) or hyperlink is a string that provides a refe
 - ftp://ftp.funet.fi/pub/standards/RFC/rfc959.txt
 - Mailto: bermud@me.com
 
-The first identifies and provides access to the OGC website. The second identifies and provides access to a text-only document and the third one identifies and provides access to an email address
-
+The first identifies and provides access to the OGC website. The second identifies and provides access to a text-only document and the third one identifies and provides access to an email address.
 
 
 Encodings
@@ -44,8 +43,7 @@ Web Services operate through interfaces and operations that allow the exchange o
 
 HTTP
 ----
-The World Wide Web Consortium (W3C) defines protocols for exchanging information on the Web. OGC relies on W3C protocols 
-to develop interfaces for Geospatial Web services. The two most common ones are as follows:
+The World Wide Web Consortium (W3C) defines protocols for exchanging information on the Web. OGC relies on W3C protocols  to develop interfaces for Geospatial Web services. The two most common ones are as follows:
 
 HTTP GET
 ^^^^^^^^
@@ -141,6 +139,13 @@ Operation
       1. S: Small room
       2. M: Medium room
       3. L: Large room 
+      
+Service, Interface and Operations
+------------------------------------------------------------------
+      
+.. image:: ../img/romba.jpg
+      :width: 70%
+      
 
 In an OGC Web Service
 ^^^^^^^^^^^^^^^^^^^^^
