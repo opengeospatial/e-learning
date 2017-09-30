@@ -23,13 +23,7 @@ paths:
       summary: Retrieve WMTS ServiceMetadata.
       description: This endpoint returns a WMTS ServiceMetadata resource.
       parameters:
-        - name: serviceMetadataDocumentName
-          in: path
-          description: ServiceMetadata Capabilities document name
-          example: 'WMTSCapabilities.xml'
-          required: true
-          schema:
-            type: string
+        - $ref: "#/components/parameters/serviceMetadataDocumentNameParam"
       responses:
         '200':
           description: ServiceMetadata resource available
@@ -121,6 +115,13 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   parameters:
+    serviceMetadataDocumentNameParam:
+      name: serviceMetadataDocumentName
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 'WMTSCapabilities.xml'
     styleParam:
       name: style
       in: path

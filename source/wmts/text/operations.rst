@@ -33,9 +33,9 @@ Relation to other OGC Standards
 Overview of WMTS Operations and Resources
 -----------------------------------------
 
-A WMTS abstract specification describes the semantics of the resources offered by the servers and requested by the client. It specifies the semantics of the ServiceMetadata document, of the Tile images or representations, and of the optional FeatureInfo documents providing descriptions of the maps at specific locations.
+The WMTS Specification ("WMTS Spec") `07-057r7 OpenGIS Web Map Tile Service Implementation Standard <http://www.opengeospatial.org/standards/wmts>`_ describes the semantics of resources offered by conformant servers and requested by clients. It specifies the semantics of the ServiceMetadata document, of the Tile images or representations, and of the optional FeatureInfo documents providing descriptions of the maps at specific locations.
 
-Client-server exchange mechanisms are specified under two distinct architectural styles. Under the first "procedural-oriented" style, the requests and responses for GetCapabilities, GetTile and (optional) GetFeatureInfo operations use the encodings of Key-Value Pair (KVP) requests with "plain-old XML" (POX) responses or XML messages embedded in SOAP envelopes.
+The WMTS Spec specifies client-server exchange mechanisms under two distinct architectural styles. Under the first "procedural-oriented" style, the requests and responses for GetCapabilities, GetTile and (optional) GetFeatureInfo operations use the encodings of Key-Value Pair (KVP) requests with "plain-old XML" (POX) responses or XML messages embedded in SOAP envelopes.
 
 Under the second "resource-oriented" style, request mechanisms and an endpoint publishing strategy are specified to enable an approach more closely resembling that of `REpresentational State Transfer (REST) <http://www.ics.uci.edu/~fielding/pubs/dissertation/rest_arch_style.htm>`_. This approach is based on web URL endpoints that enable clients to directly access the ServiceMetadata, Tile, and FeatureInfo resources as documents. The request is implicit in the URL itself.
 
