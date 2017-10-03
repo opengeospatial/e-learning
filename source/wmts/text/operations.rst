@@ -567,9 +567,9 @@ In response to a GetTile KVP request, or under a resource-oriented style, a Tile
 .. image:: ../img/wmts100.png
       :width: 50%
 
-`Link to the corresponding GetTile request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
+Here is a `link to the corresponding GetTile request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
 
-`Here's <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2108>`_` a tile from the neighboring column.
+Here is a `link to a tile from the neighboring column <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2108>`_.
 
 .. image:: ../img/wmts100b.png
       :width: 50%
