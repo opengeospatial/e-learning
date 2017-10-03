@@ -504,11 +504,8 @@ More friendly user output for the loadJSON() error cases could be provided if so
   }
 
 
-Examples for Retrieving Tile Resources
---------------------------------------
-
-Example Requests for Retrieving Tile Resources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Examples Requests and Responses for Tile Resources
+--------------------------------------------------
 
 Under the procedural-oriented style, a WMTS client can issue a KVP GetTile request in the following manner.
 
@@ -552,16 +549,6 @@ The same request using SOAP would have the following form:
     </soap:Body>
   </soap:Envelope>
 
-Under a resource-oriented style, a representative example to retrieve a Tile resource would be:
-
-.. code-block:: properties
-
-  http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/17/42/112.png
-
-
-Example Responses for Tile Resources: KVP-Request and Resource-Oriented
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 In response to a GetTile KVP request, or under a resource-oriented style, a Tile resource that complies with the requested parameters would be returned. A correctly formulated request would generate the image shown below.
 
 .. image:: ../img/wmts100.png
@@ -580,10 +567,6 @@ An example of a Tile resource for direct, resource-oriented retrieval can be fou
       :width: 50%
 
 `Link to the corresponding Tile resource <http://a.tile.openstreetmap.org/15/9798/14664.png>`_.
-
-
-Example Responses for Tile Resources: SOAP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetTiles request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
@@ -611,13 +594,10 @@ An example of a compliant WMTS service's response to a procedural-oriented SOAP-
   </soap:Envelope>
 
 
-Examples for Retrieving Feature Information Resources
------------------------------------------------------
+Example Requests and Responses for Feature Information Resources
+----------------------------------------------------------------
 
-Example Requests for Retrieving Feature Information Resources
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Under the procedural-oriented style, a WMTS client can issue a GetFeatureInfo KVP request in the following manner.
+A WMTS client can issue a GetFeatureInfo KVP request in the following manner.
 
 .. code-block:: properties
 
@@ -667,17 +647,6 @@ The same request using SOAP would have the following form. Note that the followi
     </soap:Body>
   </soap:Envelope>
 
-
-Under a resource-oriented style, a representative example to retrieve a Feature Information resource would be:
-
-.. code-block:: properties
-
-  http://cite.deegree.org/1.0.0/cite/default/2007-06/InspireCrs84Quad/17/4/4/23/35.png
-
-
-Example Responses for Feature Information Resources: KVP-Request and Resource-Oriented
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 In response to a GetFeatureInfo KVP request, or under a resource-oriented style, a POX Feature Information document that complies with the requested parameters would be returned. This example was adapted from content in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location.
 
 .. code-block:: xml
@@ -699,10 +668,6 @@ In response to a GetFeatureInfo KVP request, or under a resource-oriented style,
       </GridPoint_etopo2>
     </gml:featureMember>
   </ReguralGridedElevations>
-
-
-Example Response for Feature Information Resources: SOAP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An example of a compliant WMTS service's response to a procedural-oriented SOAP-encoded GetFeatureInfo request is presented below. This example was adapted from an example in the `WMTS Schemas <http://schemas.opengis.net/wmts/>`_, which are part of the WMTS Specification.
 
