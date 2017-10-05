@@ -9,8 +9,8 @@ info:
     name: OGC Tech Desk
     email: techdesk@opengeospatial.org
   license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+    name: CC-BY 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
 servers:
   - url: http://cite.deegree.org/{basePath}
     description: Server on which the API is implemented
@@ -28,9 +28,6 @@ paths:
         '200':
           description: ServiceMetadata resource available
           content:
-            'application/xml':
-              schema:
-                $ref: '#/components/schemas/Capabilities'
             'application/json':
               schema:
                 $ref: '#/components/schemas/Capabilities'
@@ -190,10 +187,10 @@ components:
           example: '1.0.0'
         updateSequence:
           type: string
-        owsServiceIdentification:
-          $ref: '#/components/schemas/owsServiceIdentification'
-        owsServiceProvider:
-          $ref: '#/components/schemas/owsServiceProvider'
+        ServiceIdentification:
+          $ref: '#/components/schemas/ServiceIdentification'
+        ServiceProvider:
+          $ref: '#/components/schemas/ServiceProvider'
         Contents:
           $ref: '#/components/schemas/Contents'
         serviceMetadataURL:
@@ -201,35 +198,35 @@ components:
           example: 'http://cite.deegree.org/1.0.0/WMTSCapabilities.xml'
         Themes:
           $ref: '#/components/schemas/Themes'
-    owsServiceIdentification:
+    ServiceIdentification:
       type: object
       required:
         - owsTitle
       properties:
-        owsTitle:
+        Title:
           type: object
-        owsAbstract:
+        Abstract:
           type: object
-        owsKeywords:
+        Keywords:
           type: object
-        owsServiceType:
+        ServiceType:
           type: object
-        owsServiceTypeVersion:
+        ServiceTypeVersion:
           type: object
-        owsFees:
+        Fees:
           type: object
-        owsAccessConstraints:
+        AccessConstraints:
           type: object
-    owsServiceProvider:
+    ServiceProvider:
       type: object
       required:
         - owsIndividualName
       properties:
-        owsIndividualName:
+        IndividualName:
           type: object
-        owsPositionName:
+        PositionName:
           type: object
-        owsContactInfo:
+        ContactInfo:
           type: object
     Contents:
       type: object
@@ -243,26 +240,26 @@ components:
     Layer:
       type: object
       required:
-        - owsIdentifier
+        - Identifier
         - Style
         - Format
         - tileMatrixSetLink
         - resourceURL
       properties:
-        owsIdentifier:
+        Identifier:
           type: string
           example: 'coastlines'
-        owsTitle:
+        Title:
           type: string
           example: 'Coastlines'
-        owsAbstract:
+        Abstract:
           type: string
           example: 'Coastline/shorelines (BA010)'
-        owsKeywords:
+        Keywords:
           type: string
-        owsBoundingBox:
+        BoundingBox:
           $ref: '#/components/schemas/boundingBox'
-        owsWGS84BoundingBox:
+        WGS84BoundingBox:
           $ref: '#/components/schemas/boundingBox'
         Style:
           type: object
@@ -277,7 +274,7 @@ components:
           example: 'application/gml+xml'
         Dimension:
           $ref: '#/components/schemas/Dimension'
-        owsMetadata:
+        Metadata:
           type: object
         tileMatrixSetLink:
           $ref: '#/components/schemas/tileMatrixSetLink'
@@ -329,7 +326,7 @@ components:
           type: string
         matrixSetBoundingBox:
           $ref: '#/components/schemas/boundingBox'
-        owsSupportedCRS:
+        SupportedCRS:
           type: string
           example: 'urn:ogc:def:crs:OGC:1.3:CRS84'
         wellKnownScaleSet:
@@ -451,20 +448,24 @@ components:
       required:
         - format
         - resourceType
-        - urlTemplate
+        - hrefTemplate
       properties:
         format:
-          type: string  # ows:MimeType per WMTS Spec Table 31
+          type: string  # ows:MimeType per WMTS Spec Tables 31 and 33
+          enum:
+            - image/png
+            - application/gml+xml
         resourceType:
-          type: string  # must contain "tile" or "FeatureInfo" per Table 31
-        urlTemplate:
-          type: string  # must support WMTS Spec Table 32 (tile) or 34 (FI)
+          type: string  # per WMTS Spec Tables 31 and 33
+          enum:
+            - tile
+            - FeatureInfo
+        hrefTemplate:
+          type: string  # per WMTS Spec Tables 32 and 34
           example:
             oneOf:
-              tileTemplate: '<ResourceURL format="image/png" resourceType="tile" template="http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png">'
-              tileRequest: 'http://www.maps.bob/etopo2/default/WholeWorld_CRS_84/10m/1/3.png'
-              FeatureInfoTemplate: '<ResourceURL format="application/gml+xml; version=3.1" resourceType="FeatureInfo" template="http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml">'
-              FeatureInfoRequest: 'http://www.maps.bob/etopo2/ default/WholeWorld_CRS_84/10m/1/3/86/132.xml'
+              tileTemplate: 'http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png'
+              FeatureInfoTemplate: 'http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml'
     featureGML:
       type: object
       required:
