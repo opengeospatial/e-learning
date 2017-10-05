@@ -107,7 +107,7 @@ paths:
     get:
       summary: WMTS GetTile.
       description: Retrieve a Tile using a KVP request.
-      parameters:  # layer and format already specified in resourceURL
+      parameters:
         - $ref: "#/components/parameters/serviceParam"
         - $ref: "#/components/parameters/requestParam"
         - $ref: "#/components/parameters/versionParam"
@@ -183,12 +183,11 @@ paths:
                     type: string
                     enum:
                       - Not implemented
-# Note: FeatureInfo support is optional
   /getFeatureInfo:
     get:
       summary: WMTS GetFeatureInfo.
-      description: Retrieve FeatureInfo using a KVP request.
-      parameters:  # layer and format already specified in resourceURL
+      description: Retrieve FeatureInfo using a KVP request (optional for conformance).
+      parameters:
         - $ref: "#/components/parameters/serviceParam"
         - $ref: "#/components/parameters/requestParam"
         - $ref: "#/components/parameters/versionParam"
@@ -319,7 +318,7 @@ components:
       name: dimension
       schema:
         type: string
-      example: '2007-05' # if ServiceMetadata <Dimension><Identifier> is 'TIME'
+      example: '2007-05' # assumes <Dimension><Identifier> is 'TIME'
     tileMatrixSetParam:
       in: query
       name: tileMatrixSet
@@ -419,69 +418,313 @@ components:
             - '1.0.0'
         updateSequence:
           type: string
-        owsServiceIdentification:
-          $ref: '#/components/schemas/owsServiceIdentification'
-        owsServiceProvider:
-          $ref: '#/components/schemas/owsServiceProvider'
+          example: 'ABC123'
+        ows:ServiceIdentification:
+          $ref: '#/components/schemas/ows:ServiceIdentification'
+        ows:ServiceProvider:
+          $ref: '#/components/schemas/ows:ServiceProvider'
+        ows:OperationsMetadata:
+          $ref: '#/components/schemas/ows:OperationsMetadata'
         Contents:
           $ref: '#/components/schemas/Contents'
         Themes:
           $ref: '#/components/schemas/Themes'
-    owsServiceIdentification:
+    ows:ServiceIdentification: # OWS Common 7.4.4
       type: object
       required:
+        - ows:ServiceType
+        - ows:ServiceVersion
         - ows:Title
       properties:
+        ows:ServiceType:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'OGC WMTS'
+        ows:ServiceTypeVersion:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: '1.0.0'
+        ows:Profile:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
         ows:Title:
-          type: object
-        owsAbstract:
-          type: object
-        owsKeywords:
-          type: object
-        owsServiceType:
-          type: object
-        owsServiceTypeVersion:
-          type: object
-        owsFees:
-          type: object
-        owsAccessConstraints:
-          type: object
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Web Map Tile Service'
+        ows:Abstract:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Service that contrains the map access interface to some TileMatrixSets'
+        ows:Keywords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ows:Keyword'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:Fees:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'NONE'
+        ows:AccessConstraints:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'NONE'
       xml:
         prefix: "ows"
         namespace: 'http://www.opengis.net/ows/1.1'
-    owsServiceProvider:
+    ows:Keyword:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example:
+        oneOf:
+          tileExample: 'tile'
+          tileMatrixSetExample: 'tile matrix set'
+          mapExample: 'map'
+    ows:ServiceProvider: # OWS Common 7.4.5
       type: object
       required:
-        - owsIndividualName
+        - ows:IndividualName
       properties:
-        owsIndividualName:
+        ows:IndividualName:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Firstname Lastname'
+        ows:PositionName:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Senior Software Engineer'
+        ows:ContactInfo:
           type: object
-        owsPositionName:
-          type: object
-        owsContactInfo:
-          type: object
+          properties:
+            ows:Phone:
+              $ref: '#/components/schemas/ows:Phone'
+            ows:Address:
+              $ref: '#/components/schemas/ows:Address'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
       xml:
         prefix: "ows"
         namespace: 'http://www.opengis.net/ows/1.1'
-    owsOperationsMetadata:
+    ows:Phone:
+      type: object
+      properties:
+        ows:Voice:
+          $ref: '#/components/schemas/ows:Voice'
+        ows:Facsimile:
+          $ref: '#/components/schemas/ows:Facsimile'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Voice:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '+34 93 581 1312'
+    ows:Facsimile:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '+34 93 581 4151'
+    ows:Address:
+      type: object
+      properties:
+        ows:DeliveryPoint:
+          $ref: '#/components/schemas/ows:DeliveryPoint'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:City:
+          $ref: '#/components/schemas/ows:City'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:AdministrativeArea:
+          $ref: '#/components/schemas/ows:AdministrativeArea'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:PostalCode:
+          $ref: '#/components/schemas/ows:PostalCode'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:Country:
+          $ref: '#/components/schemas/ows:Country'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:ElectronicMailAddress:
+          $ref: '#/components/schemas/ows:ElectronicMailAddress'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:DeliveryPoint:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Fac Ciencies UAB'
+    ows:City:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Bellaterra'
+    ows:AdministrativeArea:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Barcelona'
+    ows:PostalCode:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '08193'
+    ows:Country:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Spain'
+    ows:ElectronicMailAddress:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'techdesk@opengeospatial.org'
+    ows:OperationsMetadata: # OWS Common 7.4.6
       type: object
       required:
         - getCapabilitiesOperation
         - getTileOperation
       properties:
         getCapabilitiesOperation:
-          type: object
-          properties:
-            xx:
-              type: object
-
+          $ref: '#/components/schemas/getCapabilitiesOperation'
         getTileOperation:
-          type: object
+          $ref: '#/components/schemas/getTileOperation'
         getFeatureInfoOperation:
-          type: object
+          $ref: '#/components/schemas/getFeatureInfoOperation'
       xml:
         prefix: "ows"
         namespace: 'http://www.opengis.net/ows/1.1'
+    getCapabilitiesOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetCapabilities'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    getTileOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetTile'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    getFeatureInfoOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetFeatureInfo'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    ows:DCP:
+      type: object
+      required:
+        - ows:HTTP
+      properties:
+        ows:HTTP:
+          $ref: '#/components/schemas/ows:HTTP'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:HTTP:
+      type: object
+      required:
+        - ows:Get
+      properties:
+        ows:Get:
+          $ref: '#/components/schemas/ows:Get'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Get:
+      type: object
+      required:
+        - xlink:href
+      properties:
+        xlink:href:
+          type: string
+          example: 'http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100'
+        ows:AllowedValues:
+          $ref: '#/components/schemas/ows:AllowedValues'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:AllowedValues:
+      type: object
+      required:
+        - ows:Value
+      properties:
+        ows:Value:
+          $ref: '#/components/schemas/ows:Value'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Value:
+      type: string
+      enum:
+        - 'KVP'
     Contents:
       type: object
       properties:
@@ -498,32 +741,31 @@ components:
         - Style
         - Format
         - tileMatrixSetLink
-        - resourceURL
       properties:
-        owsIdentifier:
+        ows:Identifier:
           type: string
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
           example: 'coastlines'
-        owsTitle:
+        ows:Title:
           type: string
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
           example: 'Coastlines'
-        owsAbstract:
+        ows:Abstract:
           type: string
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
           example: 'Coastline/shorelines (BA010)'
-        owsKeywords:
+        ows:Keywords:
           type: string
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
-        owsBoundingBox:
+        ows:BoundingBox:
           type: object
           required:
             - lowerCorner
@@ -538,7 +780,7 @@ components:
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
-        owsWGS84BoundingBox:
+        ows:WGS84BoundingBox:
           type: object
           required:
             - lowerCorner
@@ -554,7 +796,7 @@ components:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
         Style:
-          type: object
+          $ref: '#/components/schemas/Style'
         Format:
           type: string
           example:
@@ -566,13 +808,43 @@ components:
           example: 'application/gml+xml'
         Dimension:
           $ref: '#/components/schemas/Dimension'
-        owsMetadata:
+        ows:Metadata:
           type: object
           xml:
             prefix: "ows"
             namespace: 'http://www.opengis.net/ows/1.1'
         tileMatrixSetLink:
           $ref: '#/components/schemas/tileMatrixSetLink'
+    Style:
+      type: object
+      properties:
+        ows:Identifier:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'DarkBlue'
+              Example2: 'ThickAndRed'
+        ows:Title:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'Dark Blue'
+              Example2: 'Thick and Red'
+        ows:Abstract:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'Specify this style if you want your maps to have dark blue coastlines'
+              Example2: 'Specify this style if you want your maps to have thick red coastlines'
     Dimension:
           type: string
           example:

@@ -47,7 +47,7 @@ paths:
     get:
       summary: Retrieve a WMTS Tile.
       description: This endpoint returns a Tile resource.
-      parameters:  # layer and format already specified in resourceURL
+      parameters:
         - $ref: "#/components/parameters/styleParam"
         - $ref: "#/components/parameters/dimensionParam"
         - $ref: "#/components/parameters/tileMatrixSetParam"
@@ -74,12 +74,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-# Note: FeatureInfo support is optional
   /retrieveFeatureInfo/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}:
     get:
       summary: Retrieve FeatureInfo.
       description: This endpoint returns a Feature resource.
-      parameters:  # layer and format already specified in resourceURL
+      parameters:
         - $ref: "#/components/parameters/styleParam"
         - $ref: "#/components/parameters/dimensionParam"
         - $ref: "#/components/parameters/tileMatrixSetParam"
@@ -124,7 +123,7 @@ components:
       in: path
       required: true
       schema:
-        type: string  # ows:CodeType per WMTS Spec Table 7
+        type: string  # per WMTS Spec Table 7
       example: 'blue'
     dimensionParam:  # Refer to WMS 1.3.0 Annex C
       name: dimension
@@ -132,7 +131,7 @@ components:
       required: true  # Note: the WMTS Spec allows 0..*
       schema:
         type: string
-      example: '2007-05' # if ServiceMetadata <Dimension><Identifier> is 'TIME'
+      example: '2007-05' # assumes ServiceMetadata Dimension-Identifier is 'TIME'
     tileMatrixSetParam:
       name: tileMatrixSet
       in: path
@@ -201,7 +200,7 @@ components:
     ServiceIdentification:
       type: object
       required:
-        - owsTitle
+        - Title
       properties:
         Title:
           type: object
@@ -220,7 +219,7 @@ components:
     ServiceProvider:
       type: object
       required:
-        - owsIndividualName
+        - IndividualName
       properties:
         IndividualName:
           type: object
@@ -312,7 +311,7 @@ components:
       type: object
       required:
         - matrixSetID
-        - owsSupportedCRS
+        - SupportedCRS
         - tileMatrix
       properties:
         matrixSetID:
@@ -451,7 +450,7 @@ components:
         - hrefTemplate
       properties:
         format:
-          type: string  # ows:MimeType per WMTS Spec Tables 31 and 33
+          type: string  # per WMTS Spec Tables 31 and 33
           enum:
             - image/png
             - application/gml+xml

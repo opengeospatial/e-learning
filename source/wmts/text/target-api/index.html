@@ -9,18 +9,18 @@
 <div class="container">
     <h1>Draft WMTS API for Discussion Purposes Only</h1>
     <p class="sw-info">
-
+        
         Version: <span class="sw-info-version">1.0.0-alpha</span>
     </p>
-    <p><p>Draft (unofficial for discussion purposes only) WMTS API for retrieval of OGC WMTS resources. The design of this API roughly corresponds to the &quot;resource-oriented style&quot; described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts..</p>
+    <p><p>Draft (unofficial for discussion purposes only) WMTS API for retrieval of OGC WMTS resources. The design of this API roughly corresponds to the &quot;resource-oriented style&quot; described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.</p>
     </p>
-
-
+    
+    
     <div id="sw-schemes" class="sw-default-value">
         <span class="sw-default-value-header">Schemes:</span>
-
+        
     </div>
-
+    
         <h2 id="swagger--summary-no-tags">Summary</h2>
         <table class="table table-bordered table-condensed swagger--summary">
             <thead>
@@ -40,7 +40,7 @@
                         </td>
                         <td>
                             <p>Retrieve FeatureInfo.</p>
-
+        
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                         </td>
                         <td>
                             <p>Retrieve a WMTS Tile.</p>
-
+        
                         </td>
                     </tr>
                     <tr>
@@ -64,17 +64,17 @@
                         </td>
                         <td>
                             <p>Retrieve WMTS ServiceMetadata.</p>
-
+        
                         </td>
                     </tr>
             </tbody>
         </table>
-
-
-
+    
+    
+    
     <h2>Paths</h2>
-
-
+    
+        
         <span id="path--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I-"></span>
             <div id="operation--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I--get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
@@ -84,10 +84,10 @@
                 <div class="panel-body">
                     <section class="sw-operation-description">
                         <p>This endpoint returns a Feature resource.</p>
-
+            
                     </section>
-
-
+            
+                    
                         <section class="sw-request-params">
                             <table class="table">
                                 <thead>
@@ -109,7 +109,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -125,7 +125,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -141,7 +141,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -157,7 +157,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -173,7 +173,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -189,7 +189,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -205,7 +205,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -221,7 +221,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -231,66 +231,66 @@
                                 </tbody>
                             </table>
                         </section>
-
+                    
                         <section class="sw-responses">
-
+                    
                             <dl>
                                     <dt class="sw-response-200">
                                         200 OK
-
+                                    
                                     </dt>
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Feature information matched the specified criteria</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-404">
                                         404 Not Found
-
+                                    
                                     </dt>
                                     <dd class="sw-response-404">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>File Not Found</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-default">
-                                        default
-
+                                        default 
+                                    
                                     </dt>
                                     <dd class="sw-response-default">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Unexpected error</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                             </dl>
                         </section>
                 </div>
             </div>
-
+        
         <span id="path--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol-"></span>
             <div id="operation--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol--get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
@@ -300,10 +300,10 @@
                 <div class="panel-body">
                     <section class="sw-operation-description">
                         <p>This endpoint returns a Tile resource.</p>
-
+            
                     </section>
-
-
+            
+                    
                         <section class="sw-request-params">
                             <table class="table">
                                 <thead>
@@ -325,7 +325,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -341,7 +341,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -357,7 +357,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -373,7 +373,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -389,7 +389,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -405,7 +405,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -415,66 +415,66 @@
                                 </tbody>
                             </table>
                         </section>
-
+                    
                         <section class="sw-responses">
-
+                    
                             <dl>
                                     <dt class="sw-response-200">
                                         200 OK
-
+                                    
                                     </dt>
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Tile matched the specified criteria</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-404">
                                         404 Not Found
-
+                                    
                                     </dt>
                                     <dd class="sw-response-404">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>File Not Found</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-default">
-                                        default
-
+                                        default 
+                                    
                                     </dt>
                                     <dd class="sw-response-default">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Unexpected error</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                             </dl>
                         </section>
                 </div>
             </div>
-
+        
         <span id="path---serviceMetadataDocumentName-"></span>
             <div id="operation---serviceMetadataDocumentName--get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
@@ -484,10 +484,10 @@
                 <div class="panel-body">
                     <section class="sw-operation-description">
                         <p>This endpoint returns a WMTS ServiceMetadata resource.</p>
-
+            
                     </section>
-
-
+            
+                    
                         <section class="sw-request-params">
                             <table class="table">
                                 <thead>
@@ -509,7 +509,7 @@
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
-
+                                        
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
@@ -519,70 +519,70 @@
                                 </tbody>
                             </table>
                         </section>
-
+                    
                         <section class="sw-responses">
-
+                    
                             <dl>
                                     <dt class="sw-response-200">
                                         200 OK
-
+                                    
                                     </dt>
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>ServiceMetadata resource available</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-404">
                                         404 Not Found
-
+                                    
                                     </dt>
                                     <dd class="sw-response-404">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>File Not Found</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                                     <dt class="sw-response-default">
-                                        default
-
+                                        default 
+                                    
                                     </dt>
                                     <dd class="sw-response-default">
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <p>Unexpected error</p>
-
+                                            
                                                 </div>
                                             </div>
                                             <div class="row">
-
+                                                
                                                 <div class="col-md-6 sw-response-model">
                                             </div>
-
+                                            
                                             </div>                </dd>
                             </dl>
                         </section>
                 </div>
             </div>
-
-
-
-
-
+    
+     
+    
+                       
+    
 </div>
 <script src="bundle.js" type="application/javascript"></script>
 </body>
