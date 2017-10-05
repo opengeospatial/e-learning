@@ -33,37 +33,37 @@
             <tbody>
                     <tr>
                             <td class="swagger--summary-path" rowspan="1">
-                                <a href="#path--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I-">/retrieveFeatureInfo/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}</a>
+                                <a href="#path--">/</a>
                             </td>
                         <td>
-                            <a href="#operation--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I--get">GET</a>
+                            <a href="#operation---get">GET</a>
                         </td>
                         <td>
-                            <p>Retrieve FeatureInfo using a KVP request.</p>
+                            <p>WMTS GetCapabilities.</p>
         
                         </td>
                     </tr>
                     <tr>
                             <td class="swagger--summary-path" rowspan="1">
-                                <a href="#path--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol-">/retrieveTile/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}</a>
+                                <a href="#path--getFeatureInfo">/getFeatureInfo</a>
                             </td>
                         <td>
-                            <a href="#operation--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol--get">GET</a>
+                            <a href="#operation--getFeatureInfo-get">GET</a>
                         </td>
                         <td>
-                            <p>Retrieve a WMTS Tile using a KVP request.</p>
+                            <p>WMTS GetFeatureInfo.</p>
         
                         </td>
                     </tr>
                     <tr>
                             <td class="swagger--summary-path" rowspan="1">
-                                <a href="#path---serviceMetadataDocumentName-">/{serviceMetadataDocumentName}</a>
+                                <a href="#path--getTile">/getTile</a>
                             </td>
                         <td>
-                            <a href="#operation---serviceMetadataDocumentName--get">GET</a>
+                            <a href="#operation--getTile-get">GET</a>
                         </td>
                         <td>
-                            <p>Retrieve WMTS ServiceMetadata using a KVP request.</p>
+                            <p>WMTS GetTile.</p>
         
                         </td>
                     </tr>
@@ -75,15 +75,15 @@
     <h2>Paths</h2>
     
         
-        <span id="path--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I-"></span>
-            <div id="operation--retrieveFeatureInfo--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol---J---I--get" class="swagger--panel-operation-get panel">
+        <span id="path--"></span>
+            <div id="operation---get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
-                    <div class="operation-summary">Retrieve FeatureInfo using a KVP request.</div>
-                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/retrieveFeatureInfo/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}</strong></h3>
+                    <div class="operation-summary">WMTS GetCapabilities.</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/</strong></h3>
                 </div>
                 <div class="panel-body">
                     <section class="sw-operation-description">
-                        <p>Get a Feature resource.</p>
+                        <p>Retrieve WMTS capabilities using a KVP request.</p>
             
                     </section>
             
@@ -102,10 +102,249 @@
                                 <tbody>
                                         <tr>
                                             <td>
+                                                service
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                version
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                request
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                acceptVersions
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                updateSequence
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                acceptFormats
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                    
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>OK</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
+                                    
+                                    </dt>
+                                    <dd class="sw-response-400">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Known exception.</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-500">
+                                        500 Internal Server Error
+                                    
+                                    </dt>
+                                    <dd class="sw-response-500">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>No other execption code specified by this service.</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>
+        
+        <span id="path--getFeatureInfo"></span>
+            <div id="operation--getFeatureInfo-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary">WMTS GetFeatureInfo.</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/getFeatureInfo</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Retrieve FeatureInfo using a KVP request (optional for conformance).</p>
+            
+                    </section>
+            
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                service
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/serviceParam">#/components/parameters/serviceParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                request
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/requestParam">#/components/parameters/requestParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                version
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/versionParam">#/components/parameters/versionParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                layer
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/layerParam">#/components/parameters/layerParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 style
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -118,10 +357,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                dimension
+                                                format
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -129,6 +368,21 @@
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/formatParam">#/components/parameters/formatParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                dimension
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
                                                     <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/dimensionParam">#/components/parameters/dimensionParam</a></span>
                                             </td>
                                         </tr>
@@ -137,7 +391,7 @@
                                                 tileMatrixSet
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -153,7 +407,7 @@
                                                 tileMatrix
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -169,7 +423,7 @@
                                                 tileRow
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -185,7 +439,7 @@
                                                 tileCol
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -201,7 +455,7 @@
                                                 j
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -217,7 +471,7 @@
                                                 i
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -226,6 +480,22 @@
                                             <td>
                                                     <span class="json-property-required"></span>
                                                     <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/iParam">#/components/parameters/iParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                infoFormat
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/infoFormatParam">#/components/parameters/infoFormatParam</a></span>
                                             </td>
                                         </tr>
                                 </tbody>
@@ -242,7 +512,7 @@
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>Feature information matched the specified criteria</p>
+                                                    <p>OK</p>
                                             
                                                 </div>
                                             </div>
@@ -252,14 +522,14 @@
                                             </div>
                                             
                                             </div>                </dd>
-                                    <dt class="sw-response-404">
-                                        404 Not Found
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
                                     
                                     </dt>
-                                    <dd class="sw-response-404">
+                                    <dd class="sw-response-400">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>File Not Found</p>
+                                                    <p>Known exception.</p>
                                             
                                                 </div>
                                             </div>
@@ -269,14 +539,31 @@
                                             </div>
                                             
                                             </div>                </dd>
-                                    <dt class="sw-response-default">
-                                        default 
+                                    <dt class="sw-response-500">
+                                        500 Internal Server Error
                                     
                                     </dt>
-                                    <dd class="sw-response-default">
+                                    <dd class="sw-response-500">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>Unexpected error</p>
+                                                    <p>No other execption code specified by this service.</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                            </div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-501">
+                                        501 Not Implemented
+                                    
+                                    </dt>
+                                    <dd class="sw-response-501">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Operation not supported by this service.</p>
                                             
                                                 </div>
                                             </div>
@@ -291,15 +578,15 @@
                 </div>
             </div>
         
-        <span id="path--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol-"></span>
-            <div id="operation--retrieveTile--Style---Dimension---TileMatrixSet---TileMatrix---TileRow---TileCol--get" class="swagger--panel-operation-get panel">
+        <span id="path--getTile"></span>
+            <div id="operation--getTile-get" class="swagger--panel-operation-get panel">
                 <div class="panel-heading">
-                    <div class="operation-summary">Retrieve a WMTS Tile using a KVP request.</div>
-                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/retrieveTile/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}</strong></h3>
+                    <div class="operation-summary">WMTS GetTile.</div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/getTile</strong></h3>
                 </div>
                 <div class="panel-body">
                     <section class="sw-operation-description">
-                        <p>Get a Tile resource.</p>
+                        <p>Retrieve a Tile using a KVP request.</p>
             
                     </section>
             
@@ -318,10 +605,74 @@
                                 <tbody>
                                         <tr>
                                             <td>
+                                                service
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/serviceParam">#/components/parameters/serviceParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                request
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/requestParam">#/components/parameters/requestParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                version
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/versionParam">#/components/parameters/versionParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                layer
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/layerParam">#/components/parameters/layerParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                                 style
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -334,10 +685,10 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                dimension
+                                                format
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -345,6 +696,21 @@
                                             </td>
                                             <td>
                                                     <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/formatParam">#/components/parameters/formatParam</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                dimension
+                                            </td>
+                                            <td></td>
+                                            <td>query</td>
+                                            <td>
+                                        <span class="json-property-type">object</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
                                                     <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/dimensionParam">#/components/parameters/dimensionParam</a></span>
                                             </td>
                                         </tr>
@@ -353,7 +719,7 @@
                                                 tileMatrixSet
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -369,7 +735,7 @@
                                                 tileMatrix
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -385,7 +751,7 @@
                                                 tileRow
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -401,7 +767,7 @@
                                                 tileCol
                                             </td>
                                             <td></td>
-                                            <td>path</td>
+                                            <td>query</td>
                                             <td>
                                         <span class="json-property-type">object</span>
                                         <span class="json-property-range" title="Value limits"></span>
@@ -426,7 +792,7 @@
                                     <dd class="sw-response-200">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>Tile matched the specified criteria</p>
+                                                    <p>OK</p>
                                             
                                                 </div>
                                             </div>
@@ -436,14 +802,14 @@
                                             </div>
                                             
                                             </div>                </dd>
-                                    <dt class="sw-response-404">
-                                        404 Not Found
+                                    <dt class="sw-response-400">
+                                        400 Bad Request
                                     
                                     </dt>
-                                    <dd class="sw-response-404">
+                                    <dd class="sw-response-400">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>File Not Found</p>
+                                                    <p>Known exception.</p>
                                             
                                                 </div>
                                             </div>
@@ -453,14 +819,14 @@
                                             </div>
                                             
                                             </div>                </dd>
-                                    <dt class="sw-response-default">
-                                        default 
+                                    <dt class="sw-response-500">
+                                        500 Internal Server Error
                                     
                                     </dt>
-                                    <dd class="sw-response-default">
+                                    <dd class="sw-response-500">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>Unexpected error</p>
+                                                    <p>No other execption code specified by this service.</p>
                                             
                                                 </div>
                                             </div>
@@ -470,101 +836,14 @@
                                             </div>
                                             
                                             </div>                </dd>
-                            </dl>
-                        </section>
-                </div>
-            </div>
-        
-        <span id="path---serviceMetadataDocumentName-"></span>
-            <div id="operation---serviceMetadataDocumentName--get" class="swagger--panel-operation-get panel">
-                <div class="panel-heading">
-                    <div class="operation-summary">Retrieve WMTS ServiceMetadata using a KVP request.</div>
-                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/{serviceMetadataDocumentName}</strong></h3>
-                </div>
-                <div class="panel-body">
-                    <section class="sw-operation-description">
-                        <p>Get capabilities in a WMTS ServiceMetadata resource.</p>
-            
-                    </section>
-            
-                    
-                        <section class="sw-request-params">
-                            <table class="table">
-                                <thead>
-                                <tr>
-                                    <th class="sw-param-name"></th>
-                                    <th class="sw-param-description"></th>
-                                    <th class="sw-param-type"></th>
-                                    <th class="sw-param-data-type"></th>
-                                    <th class="sw-param-annotation"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                        <tr>
-                                            <td>
-                                                serviceMetadataDocumentName
-                                            </td>
-                                            <td></td>
-                                            <td>path</td>
-                                            <td>
-                                        <span class="json-property-type">object</span>
-                                        <span class="json-property-range" title="Value limits"></span>
-                                        
-                                            </td>
-                                            <td>
-                                                    <span class="json-property-required"></span>
-                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/components/parameters/serviceMetadataDocumentNameParam">#/components/parameters/serviceMetadataDocumentNameParam</a></span>
-                                            </td>
-                                        </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                    
-                        <section class="sw-responses">
-                    
-                            <dl>
-                                    <dt class="sw-response-200">
-                                        200 OK
+                                    <dt class="sw-response-501">
+                                        501 Not Implemented
                                     
                                     </dt>
-                                    <dd class="sw-response-200">
+                                    <dd class="sw-response-501">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <p>ServiceMetadata resource available</p>
-                                            
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                
-                                                <div class="col-md-6 sw-response-model">
-                                            </div>
-                                            
-                                            </div>                </dd>
-                                    <dt class="sw-response-404">
-                                        404 Not Found
-                                    
-                                    </dt>
-                                    <dd class="sw-response-404">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p>File Not Found</p>
-                                            
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                
-                                                <div class="col-md-6 sw-response-model">
-                                            </div>
-                                            
-                                            </div>                </dd>
-                                    <dt class="sw-response-default">
-                                        default 
-                                    
-                                    </dt>
-                                    <dd class="sw-response-default">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <p>Unexpected error</p>
+                                                    <p>Operation not supported by this service.</p>
                                             
                                                 </div>
                                             </div>
