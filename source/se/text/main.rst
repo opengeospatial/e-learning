@@ -6,73 +6,116 @@ Introduction
 
 Geospatial data (vector and raster) have no intrinsic visual component. In order to see data, it must be styled. Styling specifies color, thickness, and other visible attributes used to render data on a map. The Symbology Encoding (SE) standard defines the language to formally encode the rules of how to portray features and coverages.
 
-Encoding a style for a feature
-------------------------------
+History
+
+  SE 1.1.0 was approved as a standard in July 2006.
+  Previous use of symbology encoding was through version 1.0.0  of the Style Layer Descriptor (SLD) standard. To allow parts that are not specific to SLD and Web Map Services (WMS) to be reused, SLD 1.0.0 was split up into the separate standards of SE 1.1.0 and SLD 1.1.0.
+Versions
+  1.1.0 is the current latest version
+Test Suite
+  There is currently no test suite available for this standard.
+
+Usage
+-----
+
+SE can be used through web services such as WMS. It can also be used independently of any web service. SE is used for styling the following map data:
+
+  * Feature data
+  * Coverage data
+
+Relation to other OGC Standards
+-------------------------------
+
+SE can be used within an SLD. In fact the two standards originated from the same specification and although now separate, are kept consistent.
+
+Both SE and SLD can be used together to instruct a WMS on how it should render a layer.
+
+For styling and rendering three-dimensional (3D) visualizations, the OGC Keyhole Markup Language (KML) and City Geography Markup Language (CityGML) standards are more appropriate.
+
+Example
+-------
 
 
-The following code provides an example of how to encode a style for a feature
+The following code provides an example of how to use SE 1.1.0 to style polygon features. The example wraps SE 1.1.0 content (identifiable in the example through the "se:" namespace prefix) inside SLD 1.1.0 content (identifiable through the "sld:" namespace prefix). Note that the SE namespace is <http://www.opengis.net/se> and the SLD namespace is <http://www.opengis.net/sld>.
 
 .. code-block:: xml
    :linenos:
-	
+
       <?xml version="1.0" encoding="ISO-8859-1"?>
-      <FeatureTypeStyle version="1.1.0" 
-              xsi:schemaLocation="http://www.opengis.net/se FeatureStyle.xsd"
-              xmlns="http://www.opengis.net/se" 
-              xmlns:ogc="http://www.opengis.net/ogc"
-              xmlns:xlink="http://www.w3.org/1999/xlink" 
-              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-              xmlns:oceansea="http://www.myurl.net/oceansea">
-          <FeatureTypeName>oceansea:Foundation</FeatureTypeName>
-          <Rule>
-              <Name>main</Name>
-              <PolygonSymbolizer uom="http://www.opengeospatial.org/sld/units/pixel">
-                  <Fill>
-                      <SvgParameter name="fill">#96C3F5</SvgParameter>
-                  </Fill>
-              </PolygonSymbolizer>
-          </Rule>
-      </FeatureTypeStyle>  
+      <sld:StyledLayerDescriptor version="1.1.0" xsi:schemaLocation="http://www.opengis.net/sld
+      StyledLayerDescriptor.xsd" xmlns="http://www.opengis.net/sld" xmlns:sld="http://www.opengis.net/sld" xmlns:ogc="http://www.opengis.net/ogc"
+      xmlns:se="http://www.opengis.net/se" xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <sld:NamedLayer>
+       <se:Name>se_test_polygon</se:Name>
+       <sld:UserStyle>
+       <sld:IsDefault>1</sld:IsDefault>
+       <se:FeatureTypeStyle>
+       <se:Rule>
+       <se:Name>main</se:Name>
+       <se:PolygonSymbolizer uom="http://www.opengeospatial.org/se/units/metre">
+       <se:Geometry>
+       <ogc:PropertyName>the_geom</ogc:PropertyName>
+       </se:Geometry>
+       <se:Fill>
+       <se:SvgParameter name="fill">#0000FF</se:SvgParameter>
+       </se:Fill>
+       </se:PolygonSymbolizer>
+       </se:Rule>
+       </se:FeatureTypeStyle>
+       </sld:UserStyle>
+      </sld:NamedLayer>
+      </sld:StyledLayerDescriptor>
+
+
 
 Explanation:
 
-- **line 9** provides the name of the feature type. Note that the name has a base URL (http://www.myurl.net/oceansea) and a local name (Foundation). 
+- **line 13-20** provide the details of how to portray the polygon, that is with a blue fill color (#0000FF)
+- **line 15** provides the name of the geometry attribute to apply the ``PolygonSymbolizer`` styling to.
 
-- **line 12-16** provide the details of how to portray the line of the polygon, which is color 96C3F5 (light blue)
+Importing the example SLD/SE document above into a local instance of GeoServer and calling a GetMap request of the `tasmania_state_boudaries  <http://localhost:8080/geoserver/topp/wms?service=WMS&version=1.1.0&request=GetMap&layers=topp:tasmania_state_boundaries&styles=se_test_polygon&bbox=143.83482400000003,-43.648056,148.47914100000003,-39.573891&width=768&height=673&srs=EPSG:4326&format=application/openlayers>`_ layer that references the SLD/SE document renders the layer as shown below.
 
+.. image:: ../img/tasmania_state_boundaries_blue.png
+   :height: 327
+   :width: 560
 
-The following is another example, with version 1.0.0. It provides the details of how to portray a circle (size and fill color) 
+The following is another example, with version 1.0.0. It provides the details of how to portray a star (size and fill color). Note that at version 1.0.0 the FeatureTypeStyle and its nested elements used the "sld:" namespace prefix <http://www.opengis.net/sld>.
 
 .. code-block:: xml
-      
-         
+
       <?xml version="1.0" encoding="ISO-8859-1"?>
-      <StyledLayerDescriptor version="1.0.0"
+      <sld:StyledLayerDescriptor version="1.0.0"
           xsi:schemaLocation="http://www.opengis.net/sld StyledLayerDescriptor.xsd"
-          xmlns="http://www.opengis.net/sld"
+          xmlns:sld="http://www.opengis.net/sld"
           xmlns:ogc="http://www.opengis.net/ogc"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <NamedLayer>
-              <Name>Simple point</Name>
-              <UserStyle>
-                  <Title>GeoServer SLD Cook Book: Simple point</Title>
-                  <FeatureTypeStyle>
-                      <Rule>
-                          <PointSymbolizer>
-                              <Graphic>
-                                  <Mark>
-                                      <WellKnownName>circle</WellKnownName>
-                                      <Fill>
-                                          <CssParameter name="fill">#FF0000</CssParameter>
-                                      </Fill>
-                                  </Mark>
-                                  <Size>6</Size>
-                              </Graphic>
-                          </PointSymbolizer>
-                      </Rule>
-                  </FeatureTypeStyle>
-              </UserStyle>
-          </NamedLayer>
-      </StyledLayerDescriptor>
+          <sld:NamedLayer>
+              <sld:Name>Point star</sld:Name>
+              <sld:UserStyle>
+                  <sld:Title>Star symbol</sld:Title>
+                  <sld:FeatureTypeStyle>
+                      <sld:Rule>
+                          <sld:PointSymbolizer>
+                              <sld:Graphic>
+                                  <sld:Mark>
+                                      <sld:WellKnownName>star</sld:WellKnownName>
+                                      <sld:Fill>
+                                          <sld:CssParameter name="fill">#0000FF</sld:CssParameter>
+                                      </sld:Fill>
+                                  </sld:Mark>
+                                  <sld:Size>10</sld:Size>
+                              </sld:Graphic>
+                          </sld:PointSymbolizer>
+                      </sld:Rule>
+                  </sld:FeatureTypeStyle>
+              </sld:UserStyle>
+          </sld:NamedLayer>
+      </sld:StyledLayerDescriptor>
 
+
+Resources
+---------
+- `GeoServer SLD Cookbook <http://docs.geoserver.org/stable/en/user/styling/sld/cookbook/>`_
+- `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_

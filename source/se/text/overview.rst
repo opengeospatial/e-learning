@@ -24,14 +24,11 @@ Prerequisites
 -------------
 
 The following modules are prerequisites:
- 
-- :doc:`../../other-module/text/index`
 
+- :doc:`../../fundamental-concepts/text/index`
+- :doc:`../../ogc-standards/text/index`
+- :doc:`../../wms/text/basic-index`
 
 Resources
 ---------
 - `Reference name <link>`_
-
-
-
-
