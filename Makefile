@@ -54,6 +54,14 @@ html:
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
+ogc:
+	$(SPHINXBUILD) -b html source build
+	cp ./source/wmts/text/*.yaml ./build/wmts/text
+	cp -r ./source/wmts/text/target-api ./build/wmts/text
+	cp -r ./source/wmts/text/target-api-kvp ./build/wmts/text
+	@echo
+	@echo "OGC Build finished."
+
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
