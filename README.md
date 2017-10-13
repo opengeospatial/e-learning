@@ -9,12 +9,14 @@ An example web page created from this material is available [here](http://cite.o
 
 The source is build in rst format and avialable in GitHub: https://github.com/opengeospatial/e-learning
 
-### Requirements 
-- To build it, [SPHINX] (http://sphinx-doc.org) is needed 
+### Requirements
+- To build it, [SPHINX] (http://sphinx-doc.org) is needed
 - A [git client](https://git-scm.com) to clone the respository
 
-### Process 
+### Process
 
    1. Clone the repository: git clone https://github.com/opengeospatial/e-learning.git
-   2. Run ```sphinx-build -b html source build```
-   3. Navigate to the build folder and open the index.html file
+   2. Navigate to the e-learning folder with ```cd e-learning```
+   3. Run ```make ogc```
+   4. Navigate to the build folder with ```cd build```
+   5. Open the index.html file
