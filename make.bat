@@ -68,6 +68,19 @@ if "%1" == "html" (
 	goto end
 )
 
+if "%1" == "ogc" (
+	%SPHINXBUILD% -b html source build
+	copy .\source\wmts\text\*.yaml .\build\wmts\text
+	mkdir .\build\wmts\text\target-api
+	mkdir .\build\wmts\text\target-api-kvp
+	xcopy .\source\wmts\text\target-api .\build\wmts\text\target-api
+	xcopy .\source\wmts\text\target-api-kvp .\build\wmts\text\target-api-kvp
+	if errorlevel 1 exit /b 1
+	echo.
+	echo.Build finished. The HTML pages are in %BUILDDIR%/html.
+	goto end
+)
+
 if "%1" == "dirhtml" (
 	%SPHINXBUILD% -b dirhtml %ALLSPHINXOPTS% %BUILDDIR%/dirhtml
 	if errorlevel 1 exit /b 1

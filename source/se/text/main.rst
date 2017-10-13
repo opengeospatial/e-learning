@@ -10,10 +10,19 @@ History
 
   SE 1.1.0 was approved as a standard in July 2006.
   Previous use of symbology encoding was through version 1.0.0  of the Style Layer Descriptor (SLD) standard. To allow parts that are not specific to SLD and Web Map Services (WMS) to be reused, SLD 1.0.0 was split up into the separate standards of SE 1.1.0 and SLD 1.1.0.
+
 Versions
+
   1.1.0 is the current latest version
+
 Test Suite
+
   There is currently no test suite available for this standard.
+
+Implementations
+
+  Implementations can be found at the `OGC implementation database <http://www.opengeospatial.org/resource/products/byspec>`_
+
 
 Usage
 -----
@@ -74,13 +83,13 @@ Explanation:
 - **line 13-20** provide the details of how to portray the polygon, that is with a blue fill color (#0000FF)
 - **line 15** provides the name of the geometry attribute to apply the ``PolygonSymbolizer`` styling to.
 
-Importing the example SLD/SE document above into a local instance of GeoServer and calling a GetMap request of the `tasmania_state_boudaries  <http://localhost:8080/geoserver/topp/wms?service=WMS&version=1.1.0&request=GetMap&layers=topp:tasmania_state_boundaries&styles=se_test_polygon&bbox=143.83482400000003,-43.648056,148.47914100000003,-39.573891&width=768&height=673&srs=EPSG:4326&format=application/openlayers>`_ layer that references the SLD/SE document renders the layer as shown below.
+Importing the example SLD/SE document above into a local instance of GeoServer and calling a GetMap request of the `tasmania_state_boudaries  <http://localhost:8080/geoserver/topp/wms?service=WMS&version=1.3.0&request=GetMap&layers=topp:tasmania_state_boundaries&styles=se_test_polygon&bbox=-43.648056,143.83482400000003,-39.573891,148.47914100000003&width=768&height=673&srs=EPSG:4326&format=application/openlayers>`_ layer that references the SLD/SE document renders the layer as shown below.
 
-.. image:: ../img/tasmania_state_boundaries_blue.png
+.. image:: ../img/tasmania_state_boundaries_blue_2.png
    :height: 327
    :width: 560
 
-The following is another example, with version 1.0.0. It provides the details of how to portray a star (size and fill color). Note that at version 1.0.0 the FeatureTypeStyle and its nested elements used the "sld:" namespace prefix <http://www.opengis.net/sld>.
+The following is another example, with version 1.0.0. It provides the details of how to portray a star (size and fill color). Note that at version 1.0.0 the FeatureTypeStyle and its nested elements used the SLD namespace <http://www.opengis.net/sld>, in this example with an "sld:" namespace prefix.
 
 .. code-block:: xml
 
