@@ -1,5 +1,5 @@
-WPS
-===
+Web Processing Service (WPS)
+===========================
 
 
 .. toctree::

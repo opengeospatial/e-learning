@@ -1,5 +1,5 @@
-WMS
-===
+Web Map Service
+===============
 
 
 .. toctree::

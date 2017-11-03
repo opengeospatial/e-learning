@@ -1,5 +1,5 @@
-WMTS
-===========
+Web Map Tile Service (WMTS)
+===========================
 
 
 .. toctree::

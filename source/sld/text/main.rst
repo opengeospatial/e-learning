@@ -1,5 +1,5 @@
-Styled Layer Descriptor (SLD)
-============================
+SLD - Introduction
+==================
 
 Introduction
 ------------

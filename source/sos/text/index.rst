@@ -1,5 +1,5 @@
-sos
-===========
+Sensor Observation Service (SOS)
+===============================
 
 
 .. toctree::
@@ -7,4 +7,3 @@ sos
 
    overview.rst
    main.rst
-  

@@ -1,4 +1,4 @@
-SensorThings API - Operations
+SensorThings - Operations
 =============================
 
 The entities offered by a SensorThings API service can be accessed by appending a resource path to the service root URI. An example of a URL that retrieves observations is shown below.

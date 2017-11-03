@@ -1,4 +1,4 @@
-SensorThings API - Overview
+SensorThings - Overview
 ===========================
 
 Audience
