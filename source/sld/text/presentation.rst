@@ -1,4 +1,4 @@
-Style Layer Descriptor (SLD)
+Styled Layer Descriptor (SLD)
 ============================
 
 Geospatial data (vector and raster) have no intrinsic visual component.
