@@ -9,7 +9,7 @@ Geospatial data (vector and raster) have no intrinsic visual component. In order
 History
 
   SE 1.1.0 was approved as a standard in July 2006.
-  Previous use of symbology encoding was through version 1.0.0  of the Style Layer Descriptor (SLD) standard. To allow parts that are not specific to SLD and Web Map Services (WMS) to be reused, SLD 1.0.0 was split up into the separate standards of SE 1.1.0 and SLD 1.1.0.
+  Previous use of symbology encoding was through version 1.0.0  of the Styled Layer Descriptor (SLD) standard. To allow parts that are not specific to SLD and Web Map Services (WMS) to be reused, SLD 1.0.0 was split up into the separate standards of SE 1.1.0 and SLD 1.1.0.
 
 Versions
 

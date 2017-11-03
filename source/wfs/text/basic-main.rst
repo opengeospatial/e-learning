@@ -85,8 +85,7 @@ An example ``GetFeature`` request that can be used to retrieve data from the ser
 
 The ``GetFeature`` request queries the server with a set of parameters describing the geographic features to return. The names and identifiers of the available geographic feature datasets are obtained from the capabilities document that is returned by a GetCapabilities response.
 
-The data returned by the GetFeature request can be rendered by a desktop Geographic Information System (GIS) or forwarded to an OGC WMS for rendering. Alternatively, it can be forwarded to an OGC WPS for further processing. The data returned by the ``GetFeature`` request above is shown below after rendering by a GIS.
-
+The data returned by the GetFeature request can be rendered by a desktop Geographic Information System (GIS) or forwarded to an OGC WMS for rendering. Alternatively, it can be forwarded to an OGC WPS for further processing. 
 
 
 Client Usage
