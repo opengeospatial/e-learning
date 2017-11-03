@@ -1,5 +1,5 @@
-Symbology Encoding
-==================
+SE - Introduction
+=================
 
 Introduction
 ------------

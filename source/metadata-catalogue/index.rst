@@ -6,7 +6,5 @@ Contents:
 .. toctree::
    :maxdepth: 1
    :name: metadata
-   
-   ../csw/text/index.rst
 
-
+   ../cat/text/index.rst

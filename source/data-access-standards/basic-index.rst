@@ -10,3 +10,4 @@ Contents:
    ../wfs/text/basic-index.rst
    ../geopackage/text/basic-index.rst
    ../sta/text/index.rst
+   ../sos/text/index.rst

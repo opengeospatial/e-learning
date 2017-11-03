@@ -1,5 +1,5 @@
-SLD
-===
+Styled Layer Descriptor (SLD)
+=============================
 
 
 .. toctree::
@@ -7,4 +7,3 @@ SLD
 
    overview.rst
    main.rst
-  

@@ -1,5 +1,5 @@
-WFS
-===
+Web Feature Service (WFS)
+========================
 
 
 .. toctree::

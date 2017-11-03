@@ -1,5 +1,5 @@
-SensorThings API - Main
-=======================
+SensorThings - Introduction
+===============================
 
 Introduction
 ------------

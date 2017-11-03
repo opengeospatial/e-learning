@@ -1,5 +1,5 @@
-SE
-==
+Symbology Encoding (SE)
+======================
 
 
 .. toctree::
@@ -7,4 +7,3 @@ SE
 
    overview.rst
    main.rst
-  
