@@ -22,7 +22,7 @@ This section provides detailed information about the types of operations that a 
    * - ``Dismiss`` (optional)
      - Allows a client to terminate asynchronous processing jobs.
 
-The following are examples of requests that can be sent to operations offered by WPS.
+The following are examples of requests that can be sent to operations offered by WPS. The examples can be trialled using tools such as `CURL <https://curl.haxx.se/>`_ , `wget <https://www.gnu.org/software/wget/>`_ or `JMeter <http://jmeter.apache.org/>`_.
 
 .. _wps_getcap:
 
@@ -382,7 +382,7 @@ The request accepts a job identifier (JobID) taken from an **Execute** response.
 Response
 ^^^^^^^^
 
-The request accepts a job identifier (JobID) taken from an **Execute** response.
+The response provides the output from the job that was identified in the request.
 
 .. code-block:: xml
 

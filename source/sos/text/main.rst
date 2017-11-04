@@ -80,7 +80,7 @@ GetResult
 Example
 -------
 
-This `SOS Demo server <http://sensorweb.demo.52north.org/52n-sos-webapp/service?service=SOS&request=GetCapabilities&AcceptVersions=2.0.0>`_ publishes observations from air quality sensors.
+This `SOS Demo server <http://sensorweb.demo.52north.org/52n-sos-webapp/service?service=SOS&request=GetCapabilities&version=2.0.0>`_ publishes observations from air quality sensors.
 
 A web-based SOS client application is available at the following location for querying the SOS.
 
@@ -92,7 +92,7 @@ Client Usage
 
 A client needs to know the location of the SOS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is typically the URI of the GetCapabilities request, however the capabilities document returned by the service may present alternative URI end points for other operations.
 
-http://sensorweb.demo.52north.org/52n-sos-webapp/service?service=SOS&request=GetCapabilities&AcceptVersions=2.0.0
+http://sensorweb.demo.52north.org/52n-sos-webapp/service?service=SOS&request=GetCapabilities&version=2.0.0
 
 The observation offerings are then identified from the GetCapabilities response and a GetObservation request created to retrieve data from the identified observation offerings. An example ``GetObservation`` request that can be used to retrieve data from the offerings is shown below.
 

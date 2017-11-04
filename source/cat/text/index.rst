@@ -1,5 +1,5 @@
-CSW
-===========
+Catalogue Services for the Web (CSW)
+====================================
 
 
 .. toctree::
@@ -8,4 +8,3 @@ CSW
    overview.rst
    concepts.rst
    main.rst
-  

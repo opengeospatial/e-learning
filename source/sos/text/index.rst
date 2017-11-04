@@ -7,3 +7,4 @@ Sensor Observation Service (SOS)
 
    overview.rst
    main.rst
+   operations.rst
