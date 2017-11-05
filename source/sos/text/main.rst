@@ -29,7 +29,7 @@ The goal of SOS is to provide access to observations from sensors and sensor sys
 
 The SOS acts as the intermediary between a client application and a physical sensor or an observation repository. In addition to accessing and SOS to retrieve observations, client applications can also access SOS to obtain metadata that describes the associated sensors, platforms, procedures and other characteristics associated with observations. By default, the data returned by an SOS is written as eXtensible Markup Language (XML) based on schema specified in standards such as the Observations and Measurements (O&M) and Sensor Model Language (SensorML).
 
-An overview of SOS and its role in the Sensor Web Enablement (SWE) suite of standards is shown in the following figure.
+An overview of SOS and its role in the Sensor Web Enablement (SWE) suite of standards is shown in the following figure (adapted from OGC document 10-073r1).
 
 .. image:: ../img/SWE_Overview.png
    :height: 327
@@ -108,6 +108,15 @@ The observation offerings are then identified from the GetCapabilities response 
 `A link to the GetObservation request <http://sensorweb.demo.52north.org/52n-sos-webapp/service?service=SOS&version=2.0.0&request=GetObservation&offering=http%3A%2F%2Fwww.52north.org%2Ftest%2Foffering%2F1>`_
 
 The ``GetObservation`` request queries the server with a set of parameters describing the observations to return. The observations returned can be rendered by a desktop Geographic Information System (GIS) or web application. Alternatively, the observations can be forwarded to an OGC WPS for further processing.
+
+Other Tutorials
+---------------
+
+There are other tutorial resources available from across the Web. Examples are listed below:
+
+https://52north.github.io/sensor-web-tutorial/
+
+http://www.ogcnetwork.net/sos_2_0/tutorial/
 
 References
 ----------

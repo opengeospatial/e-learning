@@ -1,7 +1,27 @@
 SOS - Operations
 ================
 
-This section provides detailed information about the types of operations that an SOS server offers.
+This section provides detailed information about the types of operations that an SOS server offers. Before presenting the operations, it is worth reviewing the terminology used by SOS.
+
+Consider a situation where sensors have been deployed at an industrial estate to monitor carbon monoxide emissions. Each sensor has been placed in a separate building. In this case, each building is a feature-of-interest, each physical sensor represents a procedure and each building's carbon monoxide emission is an observed property. The act of measuring the carbon monoxide emission at a point in time is an observation.
+
+* Feature: Abstraction of real-world phenomena.
+
+* Measurement: Set of operations having the object of determining the value of a quantity.
+
+* Observed Property: Facet or attribute of an object referenced by a name which is observed by a procedure.
+
+* Observation: Act of observing a property.
+
+* Observation Offering: An Observation Offering groups collections of observations produced by one procedure, e.g., a sensor system, and lists the basic metadata for the associated observations including the observed properties of the observations.
+
+* Procedure: Method, algorithm, instrument, sensor, or system of these which may be used in making an observation.
+
+* Sensor: Entity that provides information about an observed property as its output. A sensor uses a combination of physical, chemical or biological means in order to estimate the underlying observed property. At the end of the measuring chain electronic devices produce signals to be processed.
+
+* Sensor System: System whose components are sensors. A sensor system as a whole may itself be referred to as a sensor with an own management and sensor output interface. In addition, the components of a sensor system are individually addressable.
+
+The above concepts are applied by SOS through the series of operations listed in the following table.
 
 .. list-table:: SOS Operations
    :widths: 30 80
@@ -36,7 +56,7 @@ This section provides detailed information about the types of operations that an
 
 
 
-The following are examples of requests that can be sent to operations offered by SOS. The example requests and others can be trialled on the 52 North SOS demonstration client <http://sensorweb.demo.52north.org/52n-sos-webapp/client>. Alternatively, they can be trialled using tools such as `CURL <https://curl.haxx.se/>`_ , `wget <https://www.gnu.org/software/wget/>`_ or `JMeter <http://jmeter.apache.org/>`_.
+The following are examples of requests that can be sent to operations offered by SOS. The examples can be trialled using tools such as `CURL <https://curl.haxx.se/>`_ , `wget <https://www.gnu.org/software/wget/>`_ or `JMeter <http://jmeter.apache.org/>`_.
 
 .. _sos_getcap:
 
