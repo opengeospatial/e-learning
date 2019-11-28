@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction to Distributed Computing and Web Services &mdash; OGC e-Learning 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> OGC e-Learning
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../text/index.html">Fundamental Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../text/basic.html">Introduction to Web Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#maps-and-the-web">Maps and the web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#url">URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#encodings">Encodings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#http">HTTP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#http-get">HTTP GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#http-post">HTTP POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#service-interfaces-and-operations">Service, Interfaces and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#service">Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#interface">Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#operation">Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#vacuum-cleaning-robot-analogy">Vacuum Cleaning Robot Analogy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../text/basic.html#service-interface-and-operations">Service, Interface and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../text/basic.html#in-an-ogc-web-service">In an OGC Web Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc/text/index.html">Introduction to OGC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/intro-ogc.html">Introduction to OGC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc-standards/text/index.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#definition-of-a-standard">Definition of a Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#open-standards">Open Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#example-of-a-rule-in-a-standard">Example of a rule in a standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#ogc-services">OGC Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#types-of-standards">Types of Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#ows-common">OWS Common</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../visualization-standards/basic-index.html">Visualization Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wms/text/basic-index.html">Web Map Service (WMS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/basic-overview.html">WMS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/basic-main.html">WMS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#overview-of-wms-operations">Overview of WMS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/operations.html">WMS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getmap">GetMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getfeatureinfo">GetFeatureInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../wmts/text/index.html">Web Map Tile Service (WMTS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/overview.html">WMTS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/main.html">WMTS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#overview-of-wmts-operations">Overview of WMTS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#example-gettile-request">Example GetTile Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/operations.html">WMTS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#overview-of-wmts-operations-and-resources">Overview of WMTS Operations and Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#examples-for-retrieving-servicemetadata">Examples for Retrieving ServiceMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#examples-requests-and-responses-for-tile-resources">Examples Requests and Responses for Tile Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#example-requests-and-responses-for-feature-information-resources">Example Requests and Responses for Feature Information Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/api.html">Potential Future Development of a WMTS OAS 3.0 API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/api.html#id1">Draft WMTS API for Discussion Purposes Only</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../kml/text/basic-index.html">KML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-overview.html">KML Basic Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-main.html">KML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#external-links">External links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sld/text/index.html">Styled Layer Descriptor (SLD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/overview.html">SLD - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/main.html">SLD - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#history">History</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#test-suites-and-implementations">Test Suites and Implementations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#more-examples">More Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../se/text/index.html">Symbology Encoding (SE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/overview.html">SE - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/main.html">SE - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-access-standards/basic-index.html">Data Access Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wfs/text/basic-index.html">Web Feature Service (WFS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/basic-overview.html">WFS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/basic-main.html">WFS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#overview-of-wfs-operations">Overview of WFS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/operations.html">WFS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getfeature">GetFeature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getpropertyvalue">GetPropertyValue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#describefeaturetype">DescribeFeatureType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#stored-queries">Stored Queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#liststoredqueries">ListStoredQueries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#describestoredqueries">DescribeStoredQueries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#transaction">Transaction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getfeaturewithlock">GetFeatureWithLock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#lockfeature">LockFeature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#createstoredquery">CreateStoredQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#dropstoredquery">DropStoredQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../geopackage/text/basic-index.html">GeoPackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-overview.html">GeoPackage - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-main.html">GeoPackage - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#external-links">External links</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/advanced.html">GeoPackage - Advanced</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#why-does-geopackage-have-these-tables">Why does GeoPackage have these tables?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#using-the-nga-geopackage-java-library">Using the NGA GeoPackage Java library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#using-the-gdal-ogr-library">Using the GDAL/OGR library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sta/text/index.html">SensorThings API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/overview.html">SensorThings - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/main.html">SensorThings - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#resources-offered">Resources Offered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/operations.html">SensorThings - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/operations.html#retrieval-options">Retrieval Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sos/text/index.html">Sensor Observation Service (SOS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/overview.html">SOS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/main.html">SOS - Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#overview-of-sos-operations">Overview of SOS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#other-tutorials">Other Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/operations.html">SOS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#describesensor">DescribeSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getobservation">GetObservation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getfeatureofinterest">GetFeatureOfInterest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getobservationbyid">GetObservationById</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertsensor">InsertSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#deletesensor">DeleteSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertobservation">InsertObservation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertresulttemplate">InsertResultTemplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertresult">InsertResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getresulttemplate">GetResultTemplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getresult">GetResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/basic-index.html">Processing Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wps/text/basic-index.html">Web Processing Service (WPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-overview.html">WPS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-main.html">WPS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#overview-of-wps-operations">Overview of WPS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/operations.html">WPS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#describeprocess">DescribeProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#execute">Execute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getstatus">GetStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getresult">GetResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#dismiss">Dismiss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata-catalogue/index.html">Metadata and Catalogue Services Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cat/text/index.html">Catalogue Services for the Web (CSW)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/overview.html">CSW - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/concepts.html">Concepts related to Metadata and Catalogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#metadata-concepts">Metadata Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#search-and-services">Search and Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#encodings-and-profiles">Encodings and Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/main.html">CSW</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#profiles">Profiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#overview-of-csw-operations">Overview of CSW Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">OGC e-Learning</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Introduction to Distributed Computing and Web Services</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/fundamental-concepts/slides/basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="introduction-to-distributed-computing-and-web-services">
+<h1>Introduction to Distributed Computing and Web Services<a class="headerlink" href="#introduction-to-distributed-computing-and-web-services" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="publishing-geospatial-data">
+<h2>Publishing geospatial data<a class="headerlink" href="#publishing-geospatial-data" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/first-map.jpg"><img alt="../../_images/first-map.jpg" src="../../_images/first-map.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="id1">
+<h2>Publishing geospatial data<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/mobile-map.jpg"><img alt="../../_images/mobile-map.jpg" src="../../_images/mobile-map.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="what-changed">
+<h2>What changed?<a class="headerlink" href="#what-changed" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id2">
+<h2>What changed?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/technology.jpg"><img alt="../../_images/technology.jpg" src="../../_images/technology.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="what-is-this">
+<h2>What is this?<a class="headerlink" href="#what-is-this" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/internet-colors.jpg"><img alt="../../_images/internet-colors.jpg" src="../../_images/internet-colors.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="internet">
+<h2>Internet<a class="headerlink" href="#internet" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/internet-colors.jpg"><img alt="../../_images/internet-colors.jpg" src="../../_images/internet-colors.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="world-wide-web">
+<h2>World Wide Web<a class="headerlink" href="#world-wide-web" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Enabled by Internet</p></li>
+<li><p>All <strong>Information</strong> from computers connected around the world.</p></li>
+<li><p>Some of these nodes are <strong>servers</strong></p></li>
+</ul>
+</div>
+<div class="section" id="how-do-we-connect-to-the-web-and-nodes-talk-to-each-other">
+<h2>How do we connect to the Web and nodes talk to each other?<a class="headerlink" href="#how-do-we-connect-to-the-web-and-nodes-talk-to-each-other" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>URL</p></li>
+<li><p>HTTP</p></li>
+</ul>
+</div>
+<div class="section" id="uniform-resource-locator-url">
+<h2>Uniform Resource Locator (URL)<a class="headerlink" href="#uniform-resource-locator-url" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://my.umbc.edu/">http://my.umbc.edu/</a></p></li>
+<li><p><a class="reference external" href="ftp://ftp.funet.fi/pub/standards/RFC/rfc959.txt">ftp://ftp.funet.fi/pub/standards/RFC/rfc959.txt</a></p></li>
+<li><p><a class="reference external" href="mailto:bermud&#37;&#52;&#48;me&#46;com">mailto:bermud<span>&#64;</span>me<span>&#46;</span>com</a></p></li>
+</ul>
+</div>
+<div class="section" id="every-node-can-be-identified-by-a-url">
+<h2>Every node can be identified by a URL<a class="headerlink" href="#every-node-can-be-identified-by-a-url" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/internet-colors.jpg"><img alt="../../_images/internet-colors.jpg" src="../../_images/internet-colors.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="protocols-allow-the-nodes-to-connect-to-each-other">
+<h2>Protocols (allow the nodes to connect to each other)<a class="headerlink" href="#protocols-allow-the-nodes-to-connect-to-each-other" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/protocols.jpg"><img alt="../../_images/protocols.jpg" src="../../_images/protocols.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="http-protocol-for-performing-requests-to-servers">
+<h2>HTTP protocol for performing requests to servers<a class="headerlink" href="#http-protocol-for-performing-requests-to-servers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Defines how to connect to servers</p></li>
+<li><p>Defines how to download data form servers</p></li>
+<li><p>Most use:  HTTP GET and HTTP POST</p></li>
+</ul>
+</div>
+<div class="section" id="http-get-is-a-url">
+<h2>HTTP GET is a URL<a class="headerlink" href="#http-get-is-a-url" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/topp/ows?</span>
+<span class="na">service</span><span class="o">=</span><span class="s">WFS&amp;version=1.0.0&amp;request=GetCapabilities</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="http-key-value-pairs">
+<h2>HTTP key/value pairs<a class="headerlink" href="#http-key-value-pairs" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span>  http://localhost:8080/geoserver/topp/ows?
+
+  service=WFS &amp;
+  version=1.0.0 &amp;
+  request=GetCapabilities
+
+- ? goes after the key value pairs
+- &amp; separates the key value pairs
+- &quot; &quot; no white spaces nor space returns
+</pre></div>
+</div>
+</div>
+<div class="section" id="http-post">
+<h2>HTTP POST<a class="headerlink" href="#http-post" title="Permalink to this headline">¶</a></h2>
+<p>POST requests involves custom clients and sending of XML encoded data to a server. It is more verbose than HTTP GET. Every GET request here has an equivalent POST request, but the opposite is not true.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+   &lt;wfs:GetCapabilities
+      service=&quot;WFS&quot;
+      version=&quot;1.0.0&quot;
+     ...
+</pre></div>
+</div>
+</div>
+<div class="section" id="encodings">
+<h2>Encodings<a class="headerlink" href="#encodings" title="Permalink to this headline">¶</a></h2>
+<p>When connecting to a node (server) <strong>encodings</strong> provide the format (arrangement of data elements) and syntax of the data and messages sent to and by the server.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>A file in XML</p></li>
+<li><p>An image in JPG</p></li>
+<li><p>A temporary binary object in JAVA</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="operation-interfaces-and-services">
+<h2>Operation, interfaces and services<a class="headerlink" href="#operation-interfaces-and-services" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>A well define HTTP GET request is called an <strong>operation</strong>.</p></li>
+<li><p>An <strong>Interface</strong> is a set of operations.</p></li>
+<li><p>A <strong>Service</strong> is a set of interfaces</p></li>
+</ul>
+</div>
+<div class="section" id="service">
+<h2>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h2>
+<p><strong>Distinct part of the functionality</strong> that is provided by an entity through interfaces (ISO 19119:2005). A service can define interfaces to for example:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>manage travel reservations</p></li>
+<li><p>get bank transactions</p></li>
+<li><p>query maps</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="vacuum-cleaning-robot-analogy">
+<h2>Vacuum cleaning robot analogy<a class="headerlink" href="#vacuum-cleaning-robot-analogy" title="Permalink to this headline">¶</a></h2>
+<p>A good analogy to a service is a vacuum cleaning robot. It provides a service,
+with a set of interfaces and a set of operations.</p>
+<a class="reference internal image-reference" href="../../_images/roomba-service.jpg"><img alt="../../_images/roomba-service.jpg" src="../../_images/roomba-service.jpg" style="width: 70%;" /></a>
+</div>
+<div class="section" id="service-interface-and-operations-analogy">
+<h2>Service, interface and operations analogy<a class="headerlink" href="#service-interface-and-operations-analogy" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/romba.jpg"><img alt="../../_images/romba.jpg" src="../../_images/romba.jpg" style="width: 90%;" /></a>
+</div>
+<div class="section" id="what-operations-can-be-defined-to-request-a-map-on-the-web">
+<h2>What operations can be defined to request a map on the Web?<a class="headerlink" href="#what-operations-can-be-defined-to-request-a-map-on-the-web" title="Permalink to this headline">¶</a></h2>
+<p>Anybody can define an operation such as:</p>
+<ul class="simple">
+<li><p>getMap</p></li>
+<li><p>getImage</p></li>
+<li><p>get2dmap</p></li>
+<li><p>getLocation</p></li>
+</ul>
+</div>
+<div class="section" id="heterogeneous-services">
+<h2>Heterogeneous services<a class="headerlink" href="#heterogeneous-services" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/client-services.jpg"><img alt="../../_images/client-services.jpg" src="../../_images/client-services.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="heterogeneous-services-lot-of-effort">
+<h2>Heterogeneous services (lot of effort!)<a class="headerlink" href="#heterogeneous-services-lot-of-effort" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/clients-services.jpg"><img alt="../../_images/clients-services.jpg" src="../../_images/clients-services.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="agreement-of-services-is-great">
+<h2>Agreement of services is great!<a class="headerlink" href="#agreement-of-services-is-great" title="Permalink to this headline">¶</a></h2>
+<a class="reference internal image-reference" href="../../_images/common-interface.jpg"><img alt="../../_images/common-interface.jpg" src="../../_images/common-interface.jpg" style="width: 1049px; height: 654px;" /></a>
+</div>
+<div class="section" id="if-we-have-a-common-shared-agreed-interface">
+<h2>If we have a common shared agreed interface …<a class="headerlink" href="#if-we-have-a-common-shared-agreed-interface" title="Permalink to this headline">¶</a></h2>
+<p>we can define an operation using HTTP to get a map such as:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span>http://myServer?
+VERSION=1.3.0&amp;
+REQUEST=GetMap&amp;
+...
+</pre></div>
+</div>
+<p><strong>This is what OGC standards do (e.g. WMS)!</strong></p>
+</div>
+<div class="section" id="standards-enable-interoperability">
+<h2>Standards enable interoperability<a class="headerlink" href="#standards-enable-interoperability" title="Permalink to this headline">¶</a></h2>
+<p><em>Increase ability to access, fuse and apply</em> diverse content when and where needed is critical to situational awareness and disaster planning/ response in cross-boundary and cross-domain settings</p>
+<a class="reference internal image-reference" href="../../_images/issues.jpg"><img alt="../../_images/issues.jpg" src="../../_images/issues.jpg" style="width: 1200px; height: 600px;" /></a>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OGC. License: CC BY 3.0.
+      Last updated on Nov 28, 2019.
+    </p>
+  </div>
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

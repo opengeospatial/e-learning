@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>WMS - Operations &mdash; OGC e-Learning 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Web Map Service (WMS)" href="basic-index.html"/>
+        <link rel="next" title="Web Map Tile Service (WMTS)" href="../../wmts/text/index.html"/>
+        <link rel="prev" title="WMS - Introduction" href="basic-main.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> OGC e-Learning
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../fundamental-concepts/text/index.html">Fundamental Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/basic.html">Introduction to Web Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#maps-and-the-web">Maps and the web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#url">URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#encodings">Encodings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#http">HTTP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#http-get">HTTP GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#http-post">HTTP POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#service-interfaces-and-operations">Service, Interfaces and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#service">Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#interface">Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#operation">Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#vacuum-cleaning-robot-analogy">Vacuum Cleaning Robot Analogy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#service-interface-and-operations">Service, Interface and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#in-an-ogc-web-service">In an OGC Web Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc/text/index.html">Introduction to OGC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/intro-ogc.html">Introduction to OGC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc-standards/text/index.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#definition-of-a-standard">Definition of a Standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#open-standards">Open Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#example-of-a-rule-in-a-standard">Example of a rule in a standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#ogc-services">OGC Services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#types-of-standards">Types of Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#ows-common">OWS Common</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../visualization-standards/basic-index.html">Visualization Standards</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="basic-index.html">Web Map Service (WMS)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic-overview.html">WMS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="basic-main.html">WMS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html#overview-of-wms-operations">Overview of WMS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">WMS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getmap">GetMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getfeatureinfo">GetFeatureInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../wmts/text/index.html">Web Map Tile Service (WMTS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/overview.html">WMTS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/main.html">WMTS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#overview-of-wmts-operations">Overview of WMTS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#example-gettile-request">Example GetTile Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/operations.html">WMTS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#overview-of-wmts-operations-and-resources">Overview of WMTS Operations and Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#examples-for-retrieving-servicemetadata">Examples for Retrieving ServiceMetadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#examples-requests-and-responses-for-tile-resources">Examples Requests and Responses for Tile Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#example-requests-and-responses-for-feature-information-resources">Example Requests and Responses for Feature Information Resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/api.html">Potential Future Development of a WMTS OAS 3.0 API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/api.html#id1">Draft WMTS API for Discussion Purposes Only</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../kml/text/basic-index.html">KML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-overview.html">KML Basic Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-main.html">KML</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html#external-links">External links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sld/text/index.html">Styled Layer Descriptor (SLD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/overview.html">SLD - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/main.html">SLD - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#history">History</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#test-suites-and-implementations">Test Suites and Implementations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html#more-examples">More Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../se/text/index.html">Symbology Encoding (SE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/overview.html">SE - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html#resources">Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/main.html">SE - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html#resources">Resources</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-access-standards/basic-index.html">Data Access Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wfs/text/basic-index.html">Web Feature Service (WFS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/basic-overview.html">WFS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/basic-main.html">WFS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#overview-of-wfs-operations">Overview of WFS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wfs/text/operations.html">WFS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getfeature">GetFeature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getpropertyvalue">GetPropertyValue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#describefeaturetype">DescribeFeatureType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#stored-queries">Stored Queries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#liststoredqueries">ListStoredQueries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#describestoredqueries">DescribeStoredQueries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#transaction">Transaction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#getfeaturewithlock">GetFeatureWithLock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#lockfeature">LockFeature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#createstoredquery">CreateStoredQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#dropstoredquery">DropStoredQuery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wfs/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../geopackage/text/basic-index.html">GeoPackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-overview.html">GeoPackage - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-main.html">GeoPackage - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic-main.html#external-links">External links</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/advanced.html">GeoPackage - Advanced</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#why-does-geopackage-have-these-tables">Why does GeoPackage have these tables?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#using-the-nga-geopackage-java-library">Using the NGA GeoPackage Java library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/advanced.html#using-the-gdal-ogr-library">Using the GDAL/OGR library</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sta/text/index.html">SensorThings API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/overview.html">SensorThings - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/main.html">SensorThings - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#resources-offered">Resources Offered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/operations.html">SensorThings - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/operations.html#retrieval-options">Retrieval Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sos/text/index.html">Sensor Observation Service (SOS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/overview.html">SOS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/main.html">SOS - Main</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#overview-of-sos-operations">Overview of SOS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#other-tutorials">Other Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/operations.html">SOS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#describesensor">DescribeSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getobservation">GetObservation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getfeatureofinterest">GetFeatureOfInterest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getobservationbyid">GetObservationById</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertsensor">InsertSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#deletesensor">DeleteSensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertobservation">InsertObservation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertresulttemplate">InsertResultTemplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#insertresult">InsertResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getresulttemplate">GetResultTemplate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#getresult">GetResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/basic-index.html">Processing Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wps/text/basic-index.html">Web Processing Service (WPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-overview.html">WPS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-main.html">WPS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#overview-of-wps-operations">Overview of WPS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/operations.html">WPS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#describeprocess">DescribeProcess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#execute">Execute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getstatus">GetStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#getresult">GetResult</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#dismiss">Dismiss</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata-catalogue/index.html">Metadata and Catalogue Services Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cat/text/index.html">Catalogue Services for the Web (CSW)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/overview.html">CSW - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/concepts.html">Concepts related to Metadata and Catalogs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#metadata-concepts">Metadata Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#search-and-services">Search and Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/concepts.html#encodings-and-profiles">Encodings and Profiles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/main.html">CSW</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#profiles">Profiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#relation-to-other-ogc-standards">Relation to other OGC Standards</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#overview-of-csw-operations">Overview of CSW Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/main.html#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">OGC e-Learning</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../visualization-standards/basic-index.html">Visualization Standards</a> &raquo;</li>
+      
+          <li><a href="basic-index.html">Web Map Service (WMS)</a> &raquo;</li>
+      
+    <li>WMS - Operations</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/wms/text/operations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="wms-operations">
+<h1>WMS - Operations<a class="headerlink" href="#wms-operations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt>History</dt><dd><p>WMS version 1.0.0 in April 2000, followed by version 1.1.0 in June 2001,and version 1.1.1 in January 2002. The OGC released WMS version 1.3.0 in January 2004.</p>
+</dd>
+<dt>Versions</dt><dd><p>1.3 is the current latest version</p>
+</dd>
+<dt>Test Suite</dt><dd><dl class="simple">
+<dt>Test suites are available for:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="http://cite.opengeospatial.org/teamengine/">WMS 1.1.1</a></p></li>
+<li><p><a class="reference external" href="http://cite.opengeospatial.org/teamengine/">WMS 1.3.0</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Implementations</dt><dd><p>Implementations can be found at the OGC database. <a class="reference external" href="http://www.opengeospatial.org/resource/products/byspec">here</a></p>
+</dd>
+</dl>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>Through a highly configurable interface the WMS standard makes map images (but not source data) available in standard image formats. Government agencies publish all kinds of official map cartography using this standard. Other large organizations use this standard to enable independent departments to interact more easily internally. Anybody using this standard can use it to overlay map images from many different sources regardless of the underlying software.</p>
+<p>WMS provides a standard interface for requesting a geospatial map image.  The benefit of this is that WMS clients can request images from multiple WMS servers, and then combine them into a single view for the user.  The standard guarantees that these images can all be overlaid on one another using a common geospatial coordinate reference system.  Numerous servers and clients support WMS.</p>
+</div>
+<div class="section" id="relation-to-other-ogc-standards">
+<h3>Relation to other OGC Standards<a class="headerlink" href="#relation-to-other-ogc-standards" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>OGC Web Map Tile Service Interface Standard (WMTS): The WMTS standard is a better fit For highly scalable systems (many simultaneous requests) that only need static maps. It complements the WMS standard with cachable static map tiles. WMS servers can be used as data sources or rendering engines for WMTS services.</p></li>
+<li><p>OGC Web Feature Service (WFS): The WFS standard is a better fit for extended query functionality of spatial data. It provides programmatic access to the geographic feature data. WMS and WFS often go together. An organization publishing both WMS and WFS often use the same data source.</p></li>
+<li><p>OGC Styled Layer Descriptor Interface Standard (SLD): The SLD standard allows the user to modify the cartographic appearance of a map image. It is an optional feature of the OGC WMS standard.</p></li>
+<li><p>OGC Symbology Encoding (SE): The SE standard describes how to define map symbology. It is used to modify the cartographic appearance of map images. It is an optional feature of the OGC WMS and SLD standards.</p></li>
+</ul>
+<p>This section provides detailed information about the types of WMS requests a client is able to perform to a WMS server.</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">WMS Operations</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operation</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code></p></td>
+<td><p>Retrieves metadata about the service, including supported operations and parameters, and a list of the available layers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetMap</span></code></p></td>
+<td><p>Retrieves a map image for a specified area and content.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetFeatureInfo</span></code> (optional)</p></td>
+<td><p>Retrieves the underlying data, including geometry and attribute values, for a pixel location on a map.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DescribeLayer</span></code> (optional)</p></td>
+<td><p>Indicates the WFS or WCS to retrieve additional information about the layer.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetLegendGraphic</span></code> (optional)</p></td>
+<td><p>Retrieves a legend for a map.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="getcapabilities">
+<span id="wms-getcap"></span><h2>GetCapabilities<a class="headerlink" href="#getcapabilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="request">
+<h3>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h3>
+<p>A WMS server responding to a <strong>GetCapabilities</strong> request returns metadata about the service, including supported operations and parameters, and a list of the available layers.</p>
+<p>An example of a GetCapabilities request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
+<span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3</span>
+<span class="na">REQUEST</span><span class="o">=</span><span class="s">GetCapabilities&amp;</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">This is a link to a GetCapabilities request.</a></p>
+<p>There are three parameters (and values) being passed to the WMS server, <code class="docutils literal notranslate"><span class="pre">SERVICE=WMS</span></code>, <code class="docutils literal notranslate"><span class="pre">VERSION=1.3</span></code>, and <code class="docutils literal notranslate"><span class="pre">REQUEST=GetCapabilities</span></code>.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SERVICE</span></code> parameter tells the server that a WMS request is forthcoming.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter tells the server what version of the WMS is being requested.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">REQUEST</span></code> parameter tells the server that the operation requested is the <cite>GetCapabilities</cite> operation.</p></li>
+</ul>
+<p>The WMS standard requires that requests always includes these three parameters.
+The table bellow summarizes the parameters and values required to perform the request.</p>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">Parameters of the GetCapabilities Operation</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SERVICE</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service name. Value is <code class="docutils literal notranslate"><span class="pre">WMS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service version. Value is one of <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.1</span></code>, <code class="docutils literal notranslate"><span class="pre">1.3</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REQUEST</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Operation name. Value is <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<p>The response is a Capabilities XML document with a detailed description of the WMS service.  It contains three main sections:</p>
+<table class="colwidths-given docutils align-default" id="id7">
+<caption><span class="caption-text">Sections Capabilities Document</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Service</strong></p></th>
+<th class="head"><p>Contains service metadata such as the service name, keywords, and contact information for the organization operating the server.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Request</strong></p></td>
+<td><p>Describes the operations the WMS service provides and the parameters and output formats for each operation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Layer</strong></p></td>
+<td><p>Lists the available coordinate systems and layers.
+In some servers (e.g. Geoserver) layers are named in the form “namespace:layer”.
+Each layer provides service metadata such as title, abstract and keywords.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="getcapabilities-layer-style-section">
+<span id="wms-getmap"></span><h3>GetCapabilities Layer Style Section<a class="headerlink" href="#getcapabilities-layer-style-section" title="Permalink to this headline">¶</a></h3>
+<p>The GetCapabilites response contains a <em>Layer</em> section, which details about the style available to that layer.
+In the example bellow the available style is <em>default</em>.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Layer</span> <span class="na">queryable=</span><span class="s">&quot;0&quot;</span> <span class="na">opaque=</span><span class="s">&quot;0&quot;</span> <span class="na">cascaded=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Name&gt;</span>nationalparks<span class="nt">&lt;/Name&gt;</span>
+  <span class="nt">&lt;Title&gt;</span>National Parks<span class="nt">&lt;/Title&gt;</span>
+  <span class="nt">&lt;EX_GeographicBoundingBox&gt;</span>
+    <span class="nt">&lt;westBoundLongitude&gt;</span>-4.43064<span class="nt">&lt;/westBoundLongitude&gt;</span>
+    <span class="nt">&lt;eastBoundLongitude&gt;</span>1.99728<span class="nt">&lt;/eastBoundLongitude&gt;</span>
+    <span class="nt">&lt;southBoundLatitude&gt;</span>50.3532<span class="nt">&lt;/southBoundLatitude&gt;</span>
+    <span class="nt">&lt;northBoundLatitude&gt;</span>55.5917<span class="nt">&lt;/northBoundLatitude&gt;</span>
+  <span class="nt">&lt;/EX_GeographicBoundingBox&gt;</span>
+  <span class="nt">&lt;BoundingBox</span> <span class="na">CRS=</span><span class="s">&quot;EPSG:27700&quot;</span>
+         <span class="na">minx=</span><span class="s">&quot;246828&quot;</span> <span class="na">miny=</span><span class="s">&quot;56378.4&quot;</span> <span class="na">maxx=</span><span class="s">&quot;652374&quot;</span> <span class="na">maxy=</span><span class="s">&quot;633117&quot;</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;Style&gt;</span>
+    <span class="nt">&lt;Name&gt;</span>default<span class="nt">&lt;/Name&gt;</span>
+    <span class="nt">&lt;Title&gt;</span>default<span class="nt">&lt;/Title&gt;</span>
+    <span class="nt">&lt;LegendURL</span> <span class="na">width=</span><span class="s">&quot;110&quot;</span> <span class="na">height=</span><span class="s">&quot;22&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Format&gt;</span>image/png<span class="nt">&lt;/Format&gt;</span>
+      <span class="nt">&lt;OnlineResource</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+         <span class="na">xlink:type=</span><span class="s">&quot;simple&quot;</span>
+         <span class="na">xlink:href=</span><span class="s">&quot;...&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/LegendURL&gt;</span>
+  <span class="nt">&lt;/Style&gt;</span>
+<span class="nt">&lt;/Layer&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getmap">
+<h2>GetMap<a class="headerlink" href="#getmap" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Request<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>A WMS server responding to a <strong>GetMap</strong> request returns a map image for a specified area and content.</p>
+<p>The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output.
+The information needed to specify values for parameters such as <code class="docutils literal notranslate"><span class="pre">layers</span></code>, <code class="docutils literal notranslate"><span class="pre">styles</span></code> and <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">Reference</span> <span class="pre">Systems</span> <span class="pre">(SRS)</span></code> can be obtained from the Capabilities document.</p>
+<p>The response is a map image, or other map output artifact, depending on the format requested.</p>
+<p>An example of a GetMap request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3.0&amp;</span>
+<span class="na">REQUEST</span><span class="o">=</span><span class="s">GetMap&amp;</span>
+<span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
+<span class="na">LAYERS</span><span class="o">=</span><span class="s">DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;</span>
+<span class="na">STYLES</span><span class="o">=</span><span class="s">,,,,,,&amp;</span>
+<span class="na">CRS</span><span class="o">=</span><span class="s">EPSG:27700&amp;</span>
+<span class="na">BBOX</span><span class="o">=</span><span class="s">424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;</span>
+<span class="na">WIDTH</span><span class="o">=</span><span class="s">400&amp;</span>
+<span class="na">HEIGHT</span><span class="o">=</span><span class="s">300&amp;</span>
+<span class="na">FORMAT</span><span class="o">=</span><span class="s">image/png&amp;</span>
+<span class="na">BGCOLOR</span><span class="o">=</span><span class="s">0xffffff&amp;</span>
+<span class="na">TRANSPARENT</span><span class="o">=</span><span class="s">TRUE&amp;</span>
+<span class="na">EXCEPTIONS</span><span class="o">=</span><span class="s">XML</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&amp;REQUEST=GetMap&amp;SERVICE=WMS&amp;LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;STYLES=,,,,,,&amp;CRS=EPSG:27700&amp;BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;WIDTH=400&amp;HEIGHT=300&amp;FORMAT=image/png&amp;BGCOLOR=0xffffff&amp;TRANSPARENT=TRUE">This is a link to a GetMaprequest.</a></p>
+<p>The getMap request accesses a server with data from Great Britain.
+The request specifies a set of layers with no particular style (STYLES=,,,,,,). This server has seven map layers:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>DTM (Digital Terrain Model)</p></li>
+<li><p>Overview (Overview 1:1m)</p></li>
+<li><p>Raster_250K (Raster 1:250k)</p></li>
+<li><p>Topography (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
+<li><p>National Parks (The national parks of Great Britain)</p></li>
+<li><p>Infrastructure (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
+<li><p>Named Places (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
+</ol>
+</div></blockquote>
+<p>The coordinate reference system (CRS) is EPSG:27700, which is the Ordnance Survey National Grid reference system.
+The image is returned in a PNG transparent format with width 400 and height 300 pixels.The background color is white (Hex code=0xffffff).</p>
+<p>The table bellow summarizes the parameters and values.</p>
+<table class="colwidths-given docutils align-default" id="id8">
+<caption><span class="caption-text">Standard Parameters for the GetMap Operation</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 15%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Required?</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">service</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service name. Value is <code class="docutils literal notranslate"><span class="pre">WMS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">version</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service version. Value is one of <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.1</span></code>, <code class="docutils literal notranslate"><span class="pre">1.3</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">request</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Operation name. Value is <code class="docutils literal notranslate"><span class="pre">GetMap</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">layers</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Layers to display on map.
+Value is a comma-separated list of layer names.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">styles</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Styles in which layers are to be rendered.
+Value is a comma-separated list of style names,
+or empty if default styling is required.
+Style names may be empty in the list, to use default layer styling.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">srs</span></code> <em>or</em> <code class="docutils literal notranslate"><span class="pre">crs</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Spatial Reference System for map output.
+Value is in form <code class="docutils literal notranslate"><span class="pre">EPSG:nnn</span></code>.
+<code class="docutils literal notranslate"><span class="pre">crs</span></code> is the parameter key used in WMS 1.3.0.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bbox</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Bounding box for map extent.
+Value is <code class="docutils literal notranslate"><span class="pre">minx,miny,maxx,maxy</span></code> in units of the SRS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">width</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Width of map output, in pixels.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">height</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Height of map output, in pixels.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">format</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Format for the map output.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">transparent</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Whether the map background should be transparent.
+Values are <code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">bgcolor</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Background color for the map image.
+Value is in the form <code class="docutils literal notranslate"><span class="pre">RRGGBB</span></code>.
+Default is <code class="docutils literal notranslate"><span class="pre">FFFFFF</span></code> (white).</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">exceptions</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Format in which to report exceptions.
+Default value is <code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.se_xml</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Time value or range for map data.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sld</span></code></p></td>
+<td><p>No</p></td>
+<td><p>A URL referencing a StyledLayerDescriptor XML file
+which controls or enhances map layers and styling</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sld_body</span></code></p></td>
+<td><p>No</p></td>
+<td><p>A URL-encoded StyledLayerDescriptor XML document
+which controls or enhances map layers and styling</p></td>
+</tr>
+</tbody>
+</table>
+<p>Another WMS request examples is as follows:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wms?</span>
+<span class="na">request</span><span class="o">=</span><span class="s">GetMap</span>
+<span class="na">&amp;service</span><span class="o">=</span><span class="s">WMS</span>
+<span class="na">&amp;version</span><span class="o">=</span><span class="s">1.1.1</span>
+<span class="na">&amp;layers</span><span class="o">=</span><span class="s">topp%3Astates</span>
+<span class="na">&amp;styles</span><span class="o">=</span><span class="s">population</span>
+<span class="na">&amp;srs</span><span class="o">=</span><span class="s">EPSG%3A4326</span>
+<span class="na">&amp;bbox</span><span class="o">=</span><span class="s">-145.15104058007,21.731919794922,-57.154894212888,58.961058642578&amp;</span>
+<span class="na">&amp;width</span><span class="o">=</span><span class="s">780</span>
+<span class="na">&amp;height</span><span class="o">=</span><span class="s">330</span>
+<span class="na">&amp;format</span><span class="o">=</span><span class="s">image%2Fpng</span>
+</pre></div>
+</div>
+<p>The request specifies the <code class="docutils literal notranslate"><span class="pre">topp:states</span></code> layer to be output as a PNG map image in SRS EPGS:4326 and using default styling <cite>population</cite>.</p>
+<p>A WMS request can also be sent via HTTP POST as an XML document, as follows:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;ogc:GetMap</span> <span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ows&quot;</span>
+            <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+   <span class="na">version=</span><span class="s">&quot;1.1.1&quot;</span> <span class="na">service=</span><span class="s">&quot;WMS&quot;</span><span class="nt">&gt;</span>
+   <span class="nt">&lt;StyledLayerDescriptor</span> <span class="na">version=</span><span class="s">&quot;1.0.0&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;NamedLayer&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>topp:states<span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;NamedStyle&gt;&lt;Name&gt;</span>population<span class="nt">&lt;/Name&gt;&lt;/NamedStyle&gt;</span>
+      <span class="nt">&lt;/NamedLayer&gt;</span>
+   <span class="nt">&lt;/StyledLayerDescriptor&gt;</span>
+   <span class="nt">&lt;BoundingBox</span> <span class="na">srsName=</span><span class="s">&quot;http://www.opengis.net/gml/srs/epsg.xml#4326&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;gml:coord&gt;&lt;gml:X&gt;</span>-130<span class="nt">&lt;/gml:X&gt;&lt;gml:Y&gt;</span>24<span class="nt">&lt;/gml:Y&gt;&lt;/gml:coord&gt;</span>
+      <span class="nt">&lt;gml:coord&gt;&lt;gml:X&gt;</span>-55<span class="nt">&lt;/gml:X&gt;&lt;gml:Y&gt;</span>50<span class="nt">&lt;/gml:Y&gt;&lt;/gml:coord&gt;</span>
+   <span class="nt">&lt;/BoundingBox&gt;</span>
+   <span class="nt">&lt;Output&gt;</span>
+      <span class="nt">&lt;Format&gt;</span>image/png<span class="nt">&lt;/Format&gt;</span>
+      <span class="nt">&lt;Size&gt;&lt;Width&gt;</span>550<span class="nt">&lt;/Width&gt;&lt;Height&gt;</span>250<span class="nt">&lt;/Height&gt;&lt;/Size&gt;</span>
+   <span class="nt">&lt;/Output&gt;</span>
+<span class="nt">&lt;/ogc:GetMap&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Response<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The response of a GetMap request is an image.</p>
+<a class="reference internal image-reference" href="../../_images/getmap-demo1.png"><img alt="../../_images/getmap-demo1.png" src="../../_images/getmap-demo1.png" style="width: 70%;" /></a>
+<p>If the request is wrong the server will return an error message.</p>
+</div>
+<div class="section" id="time">
+<h3>Time<a class="headerlink" href="#time" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">TIME</span></code> parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering.
+The TIME attribute for WMS GetMap requests is described in version 1.3 of the WMS specification.</p>
+<div class="section" id="specifying-a-time">
+<h4>Specifying a time<a class="headerlink" href="#specifying-a-time" title="Permalink to this headline">¶</a></h4>
+<p>The format used for specifying a time in the WMS TIME parameter is based on <a class="reference external" href="http://en.wikipedia.org/wiki/ISO_8601">ISO-8601</a>.
+The precision might varied depending on the server.</p>
+<p>The parameter is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">TIME</span><span class="o">=&lt;</span><span class="n">timestring</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Times follow the general format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yyyy</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">ddThh</span><span class="p">:</span><span class="n">mm</span><span class="p">:</span><span class="n">ss</span><span class="o">.</span><span class="n">SSSZ</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">yyyy</span></code>: 4-digit year</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MM</span></code>: 2-digit month</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dd</span></code>: 2-digit day</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hh</span></code>: 2-digit hour</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mm</span></code>: 2-digit minute</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ss</span></code>: 2-digit second</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SSS</span></code>: 3-digit millisecond</p></li>
+</ul>
+<p>The day and intraday values are separated with a capital <code class="docutils literal notranslate"><span class="pre">T</span></code>, and the entire string is suffixed with a <code class="docutils literal notranslate"><span class="pre">Z</span></code>, indicating <a class="reference external" href="http://en.wikipedia.org/wiki/Coordinated_Universal_Time">UTC</a> for the time zone. (The WMS specification does not provide for other time zones.)</p>
+<p>WMS Servers will apply the <code class="docutils literal notranslate"><span class="pre">TIME</span></code> value to all temporally enabled layers in the <code class="docutils literal notranslate"><span class="pre">LAYERS</span></code> parameter of the GetMap request.</p>
+<p>Layers without a temporal component will be served normally, allowing clients to include reference information like political boundaries along with temporal data.</p>
+<table class="docutils align-default" id="id9">
+<caption><span class="caption-text">Examples of Time Values for the TIME parameter in GetMap requests</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Time specification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>December 12, 2001 at 6:00 PM</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2001-12-12T18:00:00.0Z</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>May 5, 1993 at 11:34 PM</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1993-05-05T11:34:00.0Z</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="specifying-an-absolute-interval">
+<h4>Specifying an absolute interval<a class="headerlink" href="#specifying-an-absolute-interval" title="Permalink to this headline">¶</a></h4>
+<p>A client may request information over a continuous interval instead of a single instant by specifying a start and end time, separated by a <code class="docutils literal notranslate"><span class="pre">/</span></code> character.</p>
+<p>In this scenario the start and end are <em>inclusive</em>; that is, samples from exactly the endpoints of the specified range will be included in the rendered tile.</p>
+<table class="colwidths-given docutils align-default" id="id10">
+<caption><span class="caption-text">Examples of Time Values for Absolute Intervals</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Time specification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The month of September 2002</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2002-09-01T00:00:00.0Z/2002-09-30T23:59:59.999Z</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>The entire day of December 25, 2010</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2010-12-25T00:00:00.0Z/2010-12-25T23:59:59.999Z</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="specifying-a-relative-interval">
+<h4>Specifying a relative interval<a class="headerlink" href="#specifying-a-relative-interval" title="Permalink to this headline">¶</a></h4>
+<p>A client may request information over a relative time interval instead of a set time range by specifying a start or end time with an associated duration, separated by a <code class="docutils literal notranslate"><span class="pre">/</span></code> character.</p>
+<p>One end of the interval must be a time value, but the other may be a duration value as defined by the ISO 8601 standard.  The special keyword <code class="docutils literal notranslate"><span class="pre">PRESENT</span></code> may be used to specify a time relative to the present server time.</p>
+<table class="docutils align-default" id="id11">
+<caption><span class="caption-text">Examples of Time Values for Relative Intervals</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Time specification</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The month of September 2002</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2002-09-01T00:00:00.0Z/P1M</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>The entire day of December 25, 2010</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2010-12-25T00:00:00.0Z/P1D</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>The entire day preceding December 25, 2010</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">P1D/2010-12-25T00:00:00.0Z</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>36 hours preceding the current time</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">PT36H/PRESENT</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reduced-accuracy-times">
+<h4>Reduced accuracy times<a class="headerlink" href="#reduced-accuracy-times" title="Permalink to this headline">¶</a></h4>
+<p>The WMS specification also allows time specifications to be truncated by omitting some of the time string. Usually servers will treat the time as a range whose length is equal to the <em>most precise unit specified</em> in the time string.
+For example, if the time specification omits all fields except year, it identifies a range one year long starting at the beginning of that year.</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">Examples of Time Values for Reduced Accuracy Times</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Reduced Accuracy Time</p></th>
+<th class="head"><p>Equivalent Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The month of September 2002</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2002-09</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2002-09-01T00:00:00.0Z/2002-09-30T23:59:59.999Z</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>The day of December 25, 2010</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2010-12-25</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2010-12-25T00:00:00.0Z/2010-12-25T23:59:59.999Z</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="reduced-accuracy-times-with-ranges">
+<h4>Reduced accuracy times with ranges<a class="headerlink" href="#reduced-accuracy-times-with-ranges" title="Permalink to this headline">¶</a></h4>
+<p>Reduced accuracy times are also allowed when specifying ranges. The ranges are inclusive.
+Some servers (e.g GeoServer) effectively expands the start and end times as described above, and then includes any samples from after the beginning of the start interval and before the end of the end interval.</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">Examples of Time Values for Reduced Accuracy Times with Ranges</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 35%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>Reduced Accuracy Time</p></th>
+<th class="head"><p>Equivalent Range</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>The months of September through December 2002</p></td>
+<td><p>2002-09/2002-12</p></td>
+<td><p>2002-09-01T00:00:00.0Z/ 2002-12-31T23:59:59.999Z</p></td>
+</tr>
+<tr class="row-odd"><td><p>12PM through 6PM, December 25, 2010</p></td>
+<td><p>2010-12-25T12/ 2010-12-25T18</p></td>
+<td><p>2010-12-25T12:00:00.0Z/ 2010-12-25T18:59:59.999Z</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="specifying-a-list-of-times">
+<h4>Specifying a list of times<a class="headerlink" href="#specifying-a-list-of-times" title="Permalink to this headline">¶</a></h4>
+<p>Some Servers, such a GeoServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame.</p>
+<p>The elements of a list are separated by commas.</p>
+<p>If the list is evenly spaced (for example, daily or hourly samples) then the list may be specified as a range, using a start time, end time, and period separated by slashes.</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">Examples of List with Time Values</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Description</p></th>
+<th class="head"><p>List notation</p></th>
+<th class="head"><p>Equivalent range notation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Noon every day for August 12-14, 2012</p></td>
+<td><p>TIME=2012-08-12T12:00:00.0Z, 2012-08-13T12:00:00.0Z, 2012-08-14T12:00:00.0Z</p></td>
+<td><p>TIME=2012-08-12T12:00:00.0Z/ 2012-08-18:T12:00:00.0Z/ P1D</p></td>
+</tr>
+<tr class="row-odd"><td><p>Midnight on the first of September, October, and November 1999</p></td>
+<td><p>TIME=1999-09-01T00:00:00.0Z, 1999-10-01T00:00:00.0Z, 1999-11-01T00:00:00.0Z</p></td>
+<td><p>TIME=1999-09-01T00:00:00.0Z/ 1999-11-01T00:00:00.0Z/ P1M</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="specifying-a-periodicity">
+<h4>Specifying a periodicity<a class="headerlink" href="#specifying-a-periodicity" title="Permalink to this headline">¶</a></h4>
+<p>The periodicity is also specified in ISO-8601 format: a capital P followed by one or more interval lengths, each consisting of a number and a letter identifying a time unit:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Unit</p></th>
+<th class="head"><p>Abbreviation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Years</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Months</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Days</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">D</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hours</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">H</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Minutes</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">M</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Seconds</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">S</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>The Year/Month/Day group of values must be separated from the Hours/Minutes/Seconds group by a <code class="docutils literal notranslate"><span class="pre">T</span></code> character. The T itself may be omitted if hours, minutes, and seconds are all omitted. Additionally, fields which contain a 0 may be omitted entirely.</p>
+<p>Fractional values are permitted, but only for the most specific value that is included.</p>
+<p>The period must divide evenly into the interval defined by the start/end times. So if the start/end times denote 12 hours, a period of 1 hour would be allowed, but a period of 5 hours would not.</p>
+<p>For example, the multiple representations listed below are all equivalent.</p>
+<ul class="simple">
+<li><p>One hour: P0Y0M0DT1H0M0S, PT1H0M0S or PT1H</p></li>
+<li><p>90 minutes: P0Y0M0DT1H30M0S, PT1H30M or P90M</p></li>
+<li><p>18 months: P1Y6M0DT0H0M0S, P1Y6M0D, P0Y18M0DT0H0M0S or P18M</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="getfeatureinfo">
+<h2>GetFeatureInfo<a class="headerlink" href="#getfeatureinfo" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Request<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>A WMS server responding to a <strong>GetFeatureInfo</strong> request returns the underlying data, including geometry and attribute values, for a pixel location on a map.
+It is similar to the WFS GetFeature operation, but less flexible in both input and output.
+The one advantage of <code class="docutils literal notranslate"><span class="pre">GetFeatureInfo</span></code> is that the request uses an (x,y) pixel value from a returned WMS image.
+This is easier to use for a naive client that is not able to perform true geographic referencing.</p>
+<p>The standard parameters for the GetFeatureInfo operation are:</p>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">Parameters for the GetFeatureInfo Operation</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SERVICE</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service name. Value is <code class="docutils literal notranslate"><span class="pre">WMS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service version. Value is one of <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.1</span></code>, <code class="docutils literal notranslate"><span class="pre">1.3</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REQUEST</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Operation name. Value is <code class="docutils literal notranslate"><span class="pre">GetFeatureInfo</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">QUERY_LAYERS</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Comma separated list of layers to be queried`</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">INFO_FORMAT</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Format for the feature information response (MIME type).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">FEATURE_COUNT</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Maximum number of features to return.
+Default is 1.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Pixel column point on the map. 0 is left side.
+<code class="docutils literal notranslate"><span class="pre">x</span></code> is the parameter key used in WMS 1.1.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">j</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Pixel row on the map. 0 is the top.
+<code class="docutils literal notranslate"><span class="pre">y</span></code> is the parameter key used in WMS 1.1.0.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EXCEPTIONS</span></code></p></td>
+<td><p>No</p></td>
+<td><p>Format in which to report exceptions.
+The default value is <code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.se_xml</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example formats are as follows:</p>
+<table class="colwidths-given docutils align-default" id="id16">
+<caption><span class="caption-text">Formats for <code class="docutils literal notranslate"><span class="pre">INFO_FORMAT</span></code> parameter in a the GetFeatureInfo Request</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 60%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Format</strong></p></th>
+<th class="head"><p><strong>Syntax</strong></p></th>
+<th class="head"><p><strong>Notes</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>TEXT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info_format=text/plain</span></code></p></td>
+<td><p>Simple text output. (The default format)</p></td>
+</tr>
+<tr class="row-odd"><td><p>GML 2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info_format=application/vnd.ogc.gml</span></code></p></td>
+<td><p>Works only for Simple Features</p></td>
+</tr>
+<tr class="row-even"><td><p>GML 3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info_format=application/vnd.ogc.gml/3.1.1</span></code></p></td>
+<td><p>Works for both Simple and Complex Features</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTML</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info_format=text/html</span></code></p></td>
+<td><p>Uses HTML templates that are defined on the server.</p></td>
+</tr>
+<tr class="row-even"><td><p>JSON</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">info_format=application/json</span></code></p></td>
+<td><p>Simple JSON representation.</p></td>
+</tr>
+</tbody>
+</table>
+<p>An example request for feature information from the <code class="docutils literal notranslate"><span class="pre">topp:states</span></code> layer in HTML format is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wms?</span>
+<span class="na">request</span><span class="o">=</span><span class="s">GetFeatureInfo</span>
+<span class="na">&amp;service</span><span class="o">=</span><span class="s">WMS</span>
+<span class="na">&amp;version</span><span class="o">=</span><span class="s">1.1.1</span>
+<span class="na">&amp;layers</span><span class="o">=</span><span class="s">topp%3Astates</span>
+<span class="na">&amp;styles</span><span class="o">=</span>
+<span class="na">&amp;srs</span><span class="o">=</span><span class="s">EPSG%3A4326</span>
+<span class="na">&amp;format</span><span class="o">=</span><span class="s">image%2Fpng</span>
+<span class="na">&amp;bbox</span><span class="o">=</span><span class="s">-145.151041%2C21.73192%2C-57.154894%2C58.961059</span>
+<span class="na">&amp;width</span><span class="o">=</span><span class="s">780</span>
+<span class="na">&amp;height</span><span class="o">=</span><span class="s">330</span>
+<span class="na">&amp;query_layers</span><span class="o">=</span><span class="s">topp%3Astates</span>
+<span class="na">&amp;info_format</span><span class="o">=</span><span class="s">text%2Fhtml</span>
+<span class="na">&amp;feature_count</span><span class="o">=</span><span class="s">50</span>
+<span class="na">&amp;x</span><span class="o">=</span><span class="s">353</span>
+<span class="na">&amp;y</span><span class="o">=</span><span class="s">145</span>
+<span class="na">&amp;exceptions</span><span class="o">=</span><span class="s">application%2Fvnd.ogc.se_xml</span>
+</pre></div>
+</div>
+<p>An example request for feature information in GeoJSON format is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wms?</span>
+<span class="na">&amp;INFO_FORMAT</span><span class="o">=</span><span class="s">application/json</span>
+<span class="na">&amp;REQUEST</span><span class="o">=</span><span class="s">GetFeatureInfo</span>
+<span class="na">&amp;EXCEPTIONS</span><span class="o">=</span><span class="s">application/vnd.ogc.se_xml</span>
+<span class="na">&amp;SERVICE</span><span class="o">=</span><span class="s">WMS</span>
+<span class="na">&amp;VERSION</span><span class="o">=</span><span class="s">1.1.1</span>
+<span class="na">&amp;WIDTH</span><span class="o">=</span><span class="s">970&amp;HEIGHT=485&amp;X=486&amp;Y=165&amp;BBOX=-180,-90,180,90</span>
+<span class="na">&amp;LAYERS</span><span class="o">=</span><span class="s">COUNTRYPROFILES:grp_administrative_map</span>
+<span class="na">&amp;QUERY_LAYERS</span><span class="o">=</span><span class="s">COUNTRYPROFILES:grp_administrative_map</span>
+<span class="na">&amp;TYPENAME</span><span class="o">=</span><span class="s">COUNTRYPROFILES:grp_administrative_map</span>
+</pre></div>
+</div>
+<p>The result will be:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span>{
+&quot;type&quot;:&quot;FeatureCollection&quot;,
+&quot;features&quot;:[
+   {
+      &quot;type&quot;:&quot;Feature&quot;,
+      &quot;id&quot;:&quot;dt_gaul_geom.fid-138e3070879&quot;,
+      &quot;geometry&quot;:{
+         &quot;type&quot;:&quot;MultiPolygon&quot;,
+         &quot;coordinates&quot;:[
+            [
+               [
+                  [
+                     XXXXXXXXXX,
+                     XXXXXXXXXX
+                  ],
+                  ...
+                  [
+                     XXXXXXXXXX,
+                     XXXXXXXXXX
+                  ]
+               ]
+            ]
+         ]
+      },
+      &quot;geometry_name&quot;:&quot;at_geom&quot;,
+      &quot;properties&quot;:{
+         &quot;bk_gaul&quot;:X,
+         &quot;at_admlevel&quot;:0,
+         &quot;at_iso3&quot;:&quot;XXX&quot;,
+         &quot;ia_name&quot;:&quot;XXXX&quot;,
+         &quot;at_gaul_l0&quot;:X,
+         &quot;bbox&quot;:[
+            XXXX,
+            XXXX,
+            XXXX,
+            XXXX
+         ]
+      }
+   }
+],
+&quot;crs&quot;:{
+   &quot;type&quot;:&quot;EPSG&quot;,
+   &quot;properties&quot;:{
+      &quot;code&quot;:&quot;4326&quot;
+   }
+},
+&quot;bbox&quot;:[
+   XXXX,
+   XXXX,
+   XXXX,
+   XXXX
+]
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exceptions">
+<span id="wms-describelayer"></span><h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>When a request from a client to a WMS Server is not performed properly, a Server needs to report an exception.
+Formats in which a WMS Server can report exceptions are shown in the table bellow.</p>
+<table class="colwidths-given docutils align-default" id="id17">
+<caption><span class="caption-text">Exceptions</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 50%" />
+<col style="width: 35%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Format</strong></p></th>
+<th class="head"><p><strong>Syntax</strong></p></th>
+<th class="head"><p><strong>Notes</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>XML</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.se_xml</span></code></p></td>
+<td><p>The error is described in XML.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PNG</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.se_inimage</span></code></p></td>
+<td><p>The error is return as an image.</p></td>
+</tr>
+<tr class="row-even"><td><p>Blank</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/vnd.ogc.se_blank</span></code></p></td>
+<td><p>A blank image is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p>JSON</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">application/json</span></code></p></td>
+<td><p>The error is reported as a simple JSON representation.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://docs.geoserver.org/stable/en/user/services/wms/reference.html">GeoServer WMS reference</a>
+- <a class="reference external" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0</a></p></li>
+<li><p><a class="reference external" href="http://docs.geoserver.org/stable/en/user/_sources/services/wms/time.txt">GeoServer  Time Support in GeoServer WMS</a>
+- <a class="reference external" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../wmts/text/index.html" class="btn btn-neutral float-right" title="Web Map Tile Service (WMTS)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic-main.html" class="btn btn-neutral" title="WMS - Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, OGC. License: CC BY 3.0.
+      Last updated on Nov 28, 2019.
+    </p>
+  </div>
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

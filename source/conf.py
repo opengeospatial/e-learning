@@ -33,7 +33,7 @@ extensions = [
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.todo',
-    'sphinx.ext.pngmath',
+    'sphinx.ext.imgmath',
   #  'sphinx.ext.mathjax',
     'sphinx.ext.ifconfig',
     'sphinx.ext.viewcode',
@@ -290,8 +290,7 @@ texinfo_documents = [
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None}
 
-def setup(app):
-  app.add_description_unit('confval', 'confval', 
-    'pair: %s; configuration value') 
-
-
+# The function below was deactivated because it was causing an error at compilation 2019-11-28
+# def setup(app):
+#   app.add_description_unit('confval', 'confval',
+#     'pair: %s; configuration value')
