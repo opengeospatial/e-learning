@@ -3,11 +3,13 @@ import os, fnmatch
 def findReplace(directory, find, replace, filePattern):
     for path, dirs, files in os.walk(os.path.abspath(directory)):
         for filename in fnmatch.filter(files, filePattern):
+            print filename
             filepath = os.path.join(path, filename)
             with open(filepath) as f:
                 s = f.read()
+            print find + "===="+replace
             s = s.replace(find, replace)
             with open(filepath, "w") as f:
                 f.write(s)
 
-findReplace("./docs", "_static", "static", "*.html")
+findReplace("/Users/gobehobona/Documents/GitHub/e-learning/docs", "ghstatic", "static", "*.html")
