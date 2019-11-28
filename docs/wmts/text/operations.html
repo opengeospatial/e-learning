@@ -517,7 +517,7 @@
 </dd>
 </dl>
 <p>The WMTS serves a single tile of a single layer of a map. As illustrated in the following figure, tiles are related in a hierarchy called a “Tile Matrix Set” in which coarse-resolution tiles are nearer the top and finer resolution tiles nearer the bottom.</p>
-<a class="reference internal image-reference" href="../../_images/Tiles.png"><img alt="../../_images/Tiles.png" src="../../_images/Tiles.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../images/Tiles.png"><img alt="../../images/Tiles.png" src="../../images/Tiles.png" style="width: 50%;" /></a>
 <p>Unlike WMS, there is no specified way to request a server to combine and return a map tile with information coming from more than one layer in a single retrieval. WMTS clients that want to show a combination of layers must make independent requests for the layer tiles and then combine or overlay the responses. Also, bounding boxes and scales of these WMTS tiles are constrained to a discrete set of values.</p>
 <p>A full explanation of the geometry of the tiled space can be found in Clause 6.1 of the WMTS Spec.</p>
 </div>
@@ -562,7 +562,7 @@
 <h3>Example GetCapabilities Response: POX<a class="headerlink" href="#example-getcapabilities-response-pox" title="Permalink to this headline">¶</a></h3>
 <p>An example of a compliant WMTS service’s POX response to a procedural-oriented GetCapabilities KVP request operation is presented below.</p>
 <p>The following figure provides a summary-level depiction of the major content blocks:</p>
-<a class="reference internal image-reference" href="../../_images/GetCapabilities-POX.png"><img alt="../../_images/GetCapabilities-POX.png" src="../../_images/GetCapabilities-POX.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="../../images/GetCapabilities-POX.png"><img alt="../../images/GetCapabilities-POX.png" src="../../images/GetCapabilities-POX.png" style="width: 70%;" /></a>
 <p>This response declares the service’s support for KVP GetCapabilities operations. WMTS services in practice might contain many more Layers, TileMatrixSets, and Themes than just the several shown here.</p>
 <p>This example was adapted from content in the <a class="reference external" href="http://schemas.opengis.net/wmts/">WMTS Schemas</a>, which are part of the WMTS Specification. The corresponding XML schema can be found in the same location. Some of the lengthy XML content has been removed and replaced by brief comments in order to reduce the space consumed by the full response.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
@@ -966,12 +966,12 @@
 </pre></div>
 </div>
 <p>In response to a GetTile KVP request, or under a resource-oriented style, a Tile resource that complies with the requested parameters would be returned. A correctly formulated request would generate the image shown below.</p>
-<a class="reference internal image-reference" href="../../_images/wmts100.png"><img alt="../../_images/wmts100.png" src="../../_images/wmts100.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../images/wmts100.png"><img alt="../../images/wmts100.png" src="../../images/wmts100.png" style="width: 50%;" /></a>
 <p>Here is a <a class="reference external" href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=cite&amp;STYLE=default&amp;FORMAT=image/png&amp;TILEMATRIXSET=InspireCrs84Quad&amp;TILEMATRIX=11&amp;TILEROW=431&amp;TILECOL=2107">link to the corresponding GetTile request</a>.</p>
 <p>Here is a <a class="reference external" href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&amp;REQUEST=GetTile&amp;VERSION=1.0.0&amp;LAYER=cite&amp;STYLE=default&amp;FORMAT=image/png&amp;TILEMATRIXSET=InspireCrs84Quad&amp;TILEMATRIX=11&amp;TILEROW=431&amp;TILECOL=2108">link to a tile from the neighboring column</a>.</p>
-<a class="reference internal image-reference" href="../../_images/wmts100b.png"><img alt="../../_images/wmts100b.png" src="../../_images/wmts100b.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../images/wmts100b.png"><img alt="../../images/wmts100b.png" src="../../images/wmts100b.png" style="width: 50%;" /></a>
 <p>An example of a Tile resource for direct, resource-oriented retrieval can be found in the <a class="reference external" href="http://docs.opengeospatial.org/is/13-082r2/13-082r2.html">OGC WMTS Simple Profile</a>.</p>
-<a class="reference internal image-reference" href="../../_images/14664_OSM_GetTile_Response.png"><img alt="../../_images/14664_OSM_GetTile_Response.png" src="../../_images/14664_OSM_GetTile_Response.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="../../images/14664_OSM_GetTile_Response.png"><img alt="../../images/14664_OSM_GetTile_Response.png" src="../../images/14664_OSM_GetTile_Response.png" style="width: 50%;" /></a>
 <p><a class="reference external" href="http://a.tile.openstreetmap.org/15/9798/14664.png">Link to the corresponding Tile resource</a>.</p>
 <p>An example of a compliant WMTS service’s response to a procedural-oriented SOAP-encoded GetTiles request is presented below. This example was adapted from an example in the <a class="reference external" href="http://schemas.opengis.net/wmts/">WMTS Schemas</a>, which are part of the WMTS Specification.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>

@@ -523,18 +523,18 @@ GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS)
 <p>Once the SQLite3 application is running, list the tables in the GeoPackage using the following command <code class="docutils literal notranslate"><span class="pre">.tables</span></code>. Notice that the tables are different from those that are in the states10.gpkg GeoPackage. This is because the states10.gpkg file contains vector features only, whereas the bluemarble.gpkg file contains tile matrix sets of imagery.</p>
 <p>Now close the SQLite3 application by running the following command <code class="docutils literal notranslate"><span class="pre">.quit</span></code></p>
 <p>A screenshot showing the steps and outputs is presented below.</p>
-<a class="reference internal image-reference" href="../../_images/sqlite3_list_tables.png"><img alt="../../_images/sqlite3_list_tables.png" src="../../_images/sqlite3_list_tables.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/sqlite3_list_tables.png"><img alt="../../images/sqlite3_list_tables.png" src="../../images/sqlite3_list_tables.png" style="width: 560px; height: 327px;" /></a>
 <p>Most of the tables are optional and only required for specific types of datasets. That is why the bluemarble.gpkg database has some tables that are not in the states10.gpkg database. The following figure shows the mandatory and optional tables of a GeoPackage.</p>
-<a class="reference internal image-reference" href="../../_images/geopackage-overview.png"><img alt="../../_images/geopackage-overview.png" src="../../_images/geopackage-overview.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/geopackage-overview.png"><img alt="../../images/geopackage-overview.png" src="../../images/geopackage-overview.png" style="width: 560px; height: 327px;" /></a>
 <p>Although the SQLite3 command line utility can list tables contained in a GeoPackage and query non-spatial attributes, SQLite3 is unable to read the geospatial content. A GeoPackage reader is required to view and query both the spatial and non-spatial content together. The OGC <a class="reference external" href="http://www.opengeospatial.org/resource/products/byspec">website</a> contains a list of software applications that offer GeoPackage reading and writing.</p>
 <p>Using the free and open source QGIS application, open the states10.gpkg file, through the vector file loader button.</p>
-<a class="reference internal image-reference" href="../../_images/open_states10.png"><img alt="../../_images/open_states10.png" src="../../_images/open_states10.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/open_states10.png"><img alt="../../images/open_states10.png" src="../../images/open_states10.png" style="width: 560px; height: 327px;" /></a>
 <p>Once QGIS has loaded the GeoPackage, it will display US state boundaries. As a GeoPackage reader, QGIS is able to read the geometries, spatial reference system and other geospatial content.</p>
-<a class="reference internal image-reference" href="../../_images/view_states10.png"><img alt="../../_images/view_states10.png" src="../../_images/view_states10.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/view_states10.png"><img alt="../../images/view_states10.png" src="../../images/view_states10.png" style="width: 560px; height: 327px;" /></a>
 <p>Now we will have a look at the feature properties. Right click on the layer name (which is displayed as statesQGIS) and select Open Attribute Table from the pop-up menu.</p>
-<a class="reference internal image-reference" href="../../_images/open_attribute_table.png"><img alt="../../_images/open_attribute_table.png" src="../../_images/open_attribute_table.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/open_attribute_table.png"><img alt="../../images/open_attribute_table.png" src="../../images/open_attribute_table.png" style="width: 560px; height: 327px;" /></a>
 <p>The properties of all features in the statesGIS dataset are displayed in an attribute table. The data can now be queried and modified like any other feature dataset in a desktop GIS.</p>
-<a class="reference internal image-reference" href="../../_images/view_attribute_table.png"><img alt="../../_images/view_attribute_table.png" src="../../_images/view_attribute_table.png" style="width: 560px; height: 327px;" /></a>
+<a class="reference internal image-reference" href="../../images/view_attribute_table.png"><img alt="../../images/view_attribute_table.png" src="../../images/view_attribute_table.png" style="width: 560px; height: 327px;" /></a>
 <p>Details:</p>
 <ul class="simple">
 <li><p>Implemented in an SQLite database</p></li>

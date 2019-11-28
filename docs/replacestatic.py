@@ -13,3 +13,4 @@ def findReplace(directory, find, replace, filePattern):
                 f.write(s)
 
 findReplace("/Users/gobehobona/Documents/GitHub/e-learning/docs", "_static", "static", "*.html")
+findReplace("/Users/gobehobona/Documents/GitHub/e-learning/docs", "_images", "images", "*.html")
