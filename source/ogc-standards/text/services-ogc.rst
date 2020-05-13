@@ -72,7 +72,7 @@ Types of Standards
 
 **Encoding standards** provide rules that determine how to organize information, typically sent by a service provider or produced by an application. An encoding standard might specify how to organize information encoded in, for example a text file, binary or  XML. An encoding standard is often based on a conceptual model, and a conceptual model can be implemented in different kinds of encodings. The OGC Abstract Specification is a set of conceptual models. Conceptual models are often visualized using the Unified Modeling Language (UML).
 
-**Interface Standards ** provide rules that determine the operations between service providers and service requesters. For example, an interface to request maps to a map service provider.
+**Interface Standards** provide rules that determine the operations between service providers and service requesters. For example, an interface to request maps to a map service provider.
 
 Encodings and services can be categorized as follows based on the purpose.
 
