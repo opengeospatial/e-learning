@@ -1,15 +1,22 @@
-Introduction to OGC Standards
+Understanding OGC Standards
 =============================
 
-Definition of a Standard
+What is a standard?
 ------------------------
 
-In the OGC context, a standard is an agreed specification of rules and guidelines about how to implement software interfaces and data encodings. Geospatial software vendors, developers and users collaborate in the OGC's consensus process to develop and agree on standards that enable information systems to exchange geospatial information and instructions for geoprocessing. OGC standards are open standards. 
+In the OGC context, a standard is an agreed specification of rules and guidelines about how to implement software interfaces and data encodings. Geospatial software vendors, developers and users collaborate in the OGC's consensus process to develop and agree on standards that enable information systems to exchange geospatial information and instructions for geoprocessing. OGC standards are open standards.
 
 Open Standards
-------------------
+--------------
 
-The OGC defines Open standards as standards that are:
+Organizations like the OGC, the IETF, the World Wide Web Consortium (W3C) and others are open organizations in the sense that any individual or organization can participate, the topics of debate are largely public, decisions are democratic (usually by consensus), and specifications are free and readily available. An “open” process is necessary to arrive at an “open” standard. The openness that OGC promotes is part of this general progress.
+
+Often the terms “open standards” and “open source” are confused or incorrectly taken to mean the same thing. The OGC standards are specifications developed in an open process. Open source is software made freely available under a license that allows the program to run for any purpose, to study how the program works, to adapt it, and to redistribute copies, including modifications. As a matter of policy, the OGC Board of Directors and staff don’t favor either proprietary software or open source software. From the OGC perspective, any developer who implements OGC standards in software or online services is doing the right thing. OGC cares about interoperability – the ability to share geospatial information.
+
+Open Standards - the definition
+-------------------------------
+
+The OGC defines Open Standards as standards that are:
 
 1. Freely and publicly available – They are available free of charge and unencumbered by patents and other intellectual property.
 2. Non discriminatory – They are available to anyone, any organization, any time, anywhere with no restrictions.
@@ -20,8 +27,6 @@ The OGC defines Open standards as standards that are:
 
 
 An "Open Standard" is not the same as "Open Source". "Open Source" refers to "Free and Open Source Software", which has been made available under a free software license with the rights to run the program for any purpose, to study how the program works, to adapt it, and to redistribute copies, including modifications. These freedoms enable Open Source software development, a public, collaborative model that promotes early publishing and frequent releases. Most open source software products implement open standards, such as OGC standards. Some are also reference implementations of OGC. A reference implementation is an example of correct implementation of a standard, for use by developers that is free and publicly available for testing via a web service or download.
-
-
 
 
 Example of a rule in a standard
@@ -46,24 +51,8 @@ The following request is an HTTP GET request for a map of Gipuzkoa, a province o
 	bbox=530000,4740000,610000,4820000
 	&width=600&
 	height=600&
-	format=image/png   
+	format=image/png
 
-OGC Services
-------------
-
-OGC services are any software services that implement OGC interface standards. OGC services follows the Service Oriented Architecture (SOA) approach, using the publish/find/bind pattern for dynamic binding between service and clients and in a distributed environment. 
-
-.. image:: ../img/soa.jpg
-      :width: 80%
-      
-   
-As shown, there are three essential kinds of operations performed by services:
-
-**Publish operations** register data and services to a broker (such as registry, catalog or clearinghouse). A service provider contacts the service broker to publish, update or unpublish a service. A service provider typically publishes service metadata describing its capabilities and network address.
-
-**Find operations**, used by service consumers (clients), access service brokers to discover specific service types or instances. Service consumers describe to a broker the kinds of services they are looking for. The broker responds by delivering the results that match the request. Service consumers typically use metadata about services stored by the broker to find services of interest.
-
-**Bind operations** are used by service consumers (clients) when invoking a service. A service consumer typically uses service metadata provided by the broker to bind to a service provider. The service consumers can either use a proxy generator to generate the code that can bind to the service, or they can use the service description to implement the binding before accessing that service.
 
 
 Types of Standards
@@ -72,7 +61,7 @@ Types of Standards
 
 **Encoding standards** provide rules that determine how to organize information, typically sent by a service provider or produced by an application. An encoding standard might specify how to organize information encoded in, for example a text file, binary or  XML. An encoding standard is often based on a conceptual model, and a conceptual model can be implemented in different kinds of encodings. The OGC Abstract Specification is a set of conceptual models. Conceptual models are often visualized using the Unified Modeling Language (UML).
 
-**Interface Standards ** provide rules that determine the operations between service providers and service requesters. For example, an interface to request maps to a map service provider.
+**Interface Standards** provide rules that determine the operations between service providers and service requesters. For example, an interface to request maps to a map service provider.
 
 Encodings and services can be categorized as follows based on the purpose.
 
@@ -89,22 +78,3 @@ Encodings and services can be categorized as follows based on the purpose.
 | data access       | data models  | data      |
 |                   | and encoding | services  |
 +-------------------+--------------+-----------+
-
-OWS Common
-----------
-
-The OGC Web Services Common `(OWS Common) <http://www.opengeospatial.org/standards/common>`_  provides guidance to OGC members who are developing OGC interface implementation standards. The purpose of OWS Common is to maintain consistency among OGC standards. OWS Common provides rules for specifying some of the parameters and data structures used in operation requests and responses. Each interface standard details additional aspects, including specifying all additional parameters and data structures needed in all operation requests and responses. The following is a list of some common aspects covered by OWS Common document:
-
-* GetCapabilities operation (request, parameters, response)
-* Exception reports
-* Operations parameters
-   * Bounding box
-   * Coordinate reference systems
-   * Format parameters
-   * Data descriptions
-   * Multilingual text encoding
-* Operation request and response encoding (HTTP GET and HTTP POST)
-* Guidance for OWS Implementation Specifications
-
-
-

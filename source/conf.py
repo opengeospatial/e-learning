@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OGC e-Learning'
-copyright = u'2017, OGC. License: CC BY 3.0'
+copyright = u'2017, Open Geospatial Consortium. License: CC BY 3.0'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

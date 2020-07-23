@@ -24,7 +24,7 @@ Usage
 ^^^^^^
 The WFS standard makes geographic feature data available through a highly configurable interface. By default, the data returned by a WFS is in Geography Markup Language (GML) which is written as eXtensible Markup Language (XML). However, emerging versions of the standard will also support the JavaScript Object Notation (JSON). Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.
 
-WFS provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that WFS clients can request source data from multiple WFS servers, and then render the data for display on the client or process the data further as part of a workflow. The standard guarantees that the data can be handled consistently with other data using a common geospatial coordinate reference system. Feature properties encoded using common data types such as text strings, date and time can also be handled consistently.
+WFS provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that WFS clients can request source data from multiple WFS servers, and then render the data for display on the client or process the data further as part of a workflow. The standard guarantees that the data can be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.
 
 Relation to other OGC Standards
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -85,7 +85,7 @@ An example ``GetFeature`` request that can be used to retrieve data from the ser
 
 The ``GetFeature`` request queries the server with a set of parameters describing the geographic features to return. The names and identifiers of the available geographic feature datasets are obtained from the capabilities document that is returned by a GetCapabilities response.
 
-The data returned by the GetFeature request can be rendered by a desktop Geographic Information System (GIS) or forwarded to an OGC WMS for rendering. Alternatively, it can be forwarded to an OGC WPS for further processing. 
+The data returned by the GetFeature request can be rendered by a desktop Geographic Information System (GIS) or forwarded to an OGC WMS for rendering. Alternatively, it can be forwarded to an OGC WPS for further processing.
 
 
 Client Usage

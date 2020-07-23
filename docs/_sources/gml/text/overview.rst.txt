@@ -1,30 +1,22 @@
-gml - Overview
-======================
+GML - Overview
+=====================
 
 Audience
 --------
-Students that are ...
+Trainees that will be working with vector feature data.
 
 Learning Objectives
 -------------------
 
-At the completion of the module students will be able to:
+At completion of the module, trainees will be able to:
 
-- Explain what is gml
-- Describe what can be done with gml
-- Use gml to ...
-- Use gml to ...
-
-
+- Summarize what the Geography Markup Language encoding is
+- Identify example uses of the Geography Markup Language encoding
+- Outline the benefits of using the Geography Markup Language encoding
 
 Prerequisites
 -------------
 
-The following modules are prerequisites:
- 
-- :doc:`../../ogc-standards/text/index`
-- :doc:`../../wms/text/index`
+Familiarity with Extensible Markup Language (XML).
 
-
-
-
+NOTE: W3Schools.com offers a free `tutorial <https://www.w3schools.com/xml/>`_  on XML.

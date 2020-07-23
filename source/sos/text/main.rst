@@ -116,7 +116,7 @@ There are other tutorial resources available from across the Web. Examples are l
 
 https://52north.github.io/sensor-web-tutorial/
 
-http://www.ogcnetwork.net/sos_2_0/tutorial/
+http://istsos.org/tutorial/
 
 References
 ----------
