@@ -370,18 +370,22 @@
 <h1>An Introduction to OGC API - Features<a class="headerlink" href="#an-introduction-to-ogc-api-features" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>OGC API - Features is a multi-part standard that offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data. The specification is a multi-part document. The Core part of the specification describes the mandatory capabilities that every implementing service has to support and is restricted to read-access to spatial data. Additional capabilities that address specific needs will be specified in additional parts. Envisaged future capabilities include, for example, support for creating and modifying data, more complex data models, richer queries, and additional coordinate reference systems.</p>
+<p>OGC API - Features is a multi-part standard that offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data. The Core part of the standard is called <strong>OGC API - Features - Part 1: Core</strong>. The Core part of the specification describes the mandatory capabilities that every implementing service has to support and is restricted to read-access to spatial data. Additional capabilities that address specific needs will be specified in additional parts. Envisaged future capabilities include, for example, support for creating and modifying data, more complex data models, richer queries, and additional coordinate reference systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This tutorial module is not intended to be a replacement to the actual <strong>OGC API - Features - Part 1: Core</strong> standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the <strong>OGC API - Features - Part 1: Core</strong> standard for additional detail.</p>
+</div>
 </div>
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
-<dt>History</dt><dd><p>While in draft form and prior to February 2019, OGC API - Features was referred to as WFS3.0.</p>
+<dt>History</dt><dd><p>While in draft form and prior to February 2019, <strong>OGC API - Features - Part 1: Core</strong> was referred to as WFS3.0.</p>
 </dd>
-<dt>Versions</dt><dd><p>1.0.0 is the current latest version</p>
+<dt>Versions</dt><dd><p><strong>OGC API - Features - Part 1: Core</strong> version 1.0.0 is the current latest version</p>
 </dd>
 <dt>Test Suite</dt><dd><dl class="simple">
 <dt>Test suites are available for:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/opengeospatial/ets-ogcapi-features10">OGC API - Features 1.0.0</a></p></li>
+<li><p><a class="reference external" href="https://github.com/opengeospatial/ets-ogcapi-features10">OGC API - Features</a></p></li>
 </ul>
 </dd>
 </dl>
@@ -391,8 +395,8 @@
 </dl>
 <div class="section" id="usage">
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<p>Part 1 of this standard specifies discovery and query operations that are implemented using the HTTP GET method. Support for additional methods (in particular POST, PUT, DELETE, PATCH) will be specified in additional parts. Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.</p>
-<p>OGC API - Features provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that client applications can request source data from multiple implementations of the API, and then render the data for display or process the data further as part of a workflow. The standard enables the data to be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.</p>
+<p><strong>OGC API - Features - Part 1: Core</strong> specifies discovery and query operations that are implemented using the HTTP GET method. Support for additional methods (in particular POST, PUT, DELETE, PATCH) will be specified in additional parts. Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.</p>
+<p>The standard provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that client applications can request source data from multiple implementations of the API, and then render the data for display or process the data further as part of a workflow. The standard enables the data to be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.</p>
 </div>
 <div class="section" id="relation-to-other-ogc-standards">
 <h3>Relation to other OGC Standards<a class="headerlink" href="#relation-to-other-ogc-standards" title="Permalink to this headline">¶</a></h3>
@@ -403,7 +407,7 @@
 </div>
 <div class="section" id="overview-of-resources">
 <h2>Overview of Resources<a class="headerlink" href="#overview-of-resources" title="Permalink to this headline">¶</a></h2>
-<p>OGC API - Features defines the resources listed in the following table.</p>
+<p><strong>OGC API - Features - Part 1: Core</strong> defines the resources listed in the following table.</p>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">Overview of OGC API - Features resources</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -426,21 +430,25 @@
 <td><p>/conformance</p></td>
 <td><p>This resource presents information about the functionality that is implemented by the server.</p></td>
 </tr>
-<tr class="row-even"><td><p>Feature collections</p></td>
+<tr class="row-even"><td><p>API definition</p></td>
+<td><p>/api</p></td>
+<td><p>This resource provides metadata about the API itself. Note use of <strong>/api</strong> on the server is optional and the API definition may be hosted on completely separate server</p></td>
+</tr>
+<tr class="row-odd"><td><p>Feature collections</p></td>
 <td><p>/collections</p></td>
 <td><p>This resource lists the feature collections that are offered through the API.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Feature collection</p></td>
+<tr class="row-even"><td><p>Feature collection</p></td>
 <td><p>/collections/{collectionId}</p></td>
 <td><p>This resource describes the feature collection identified in the path.</p></td>
 </tr>
-<tr class="row-even"><td><p>Features</p></td>
+<tr class="row-odd"><td><p>Features</p></td>
 <td><p>/collections/{collectionId}/items</p></td>
 <td><p>This resource presents the features that are contained in the collection.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Feature</p></td>
+<tr class="row-even"><td><p>Feature</p></td>
 <td><p>/collections/{collectionId}/items/{featureId}</p></td>
-<td><p>This resource presents the feature that is identified in the part</p></td>
+<td><p>This resource presents the feature that is identified in the path</p></td>
 </tr>
 </tbody>
 </table>
@@ -450,10 +458,8 @@
 <p>This <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/">demonstration server</a> publishes vector geospatial data through an interface that conforms to OGC API - Features.</p>
 <p>An example request that can be used to retrieve data from the Vegetation surface feature collection is <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html">https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html</a></p>
 <p>Note that the response to the request is HTML in this case.</p>
-<p>Alternatively, the same data can be retrieved in JSON format, through the request <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json">https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json</a></p>
-<p>Copy the JSON returned by the VegetationSrf feature collection and paste it into the free <a class="reference external" href="https://geojson.io">geojson.io</a> viewer to see the data rendered. A screenshot is shown below.</p>
-<a class="reference internal image-reference" href="../../images/geojsonviewer.png"><img alt="../../images/geojsonviewer.png" src="../../images/geojsonviewer.png" style="width: 1049px; height: 654px;" /></a>
-<p>Of course, a client application that supports OGC API - Features would be able to retrieve the data without the need to copy-and-paste manually.</p>
+<p>Alternatively, the same data can be retrieved in GeoJSON format, through the request <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json">https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json</a></p>
+<p>A client application can then retrieve the GeoJSON document and display or process it.</p>
 </div>
 </div>
 
@@ -476,7 +482,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Jul 23, 2020.
+      Last updated on Jul 25, 2020.
     </p>
   </div>
 
