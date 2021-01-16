@@ -138,21 +138,23 @@ Registered extensions have been reviewed and adopted by OGC and are for all inte
 
 The following extensions have been adopted by OGC:
 
-* `Non-Linear Geometry Types <http://www.geopackage.org/guidance/extensions/nonlinear_geometry_types.md>`_
-* `RTree Spatial Indexes <http://www.geopackage.org/guidance/extensions/rtree_spatial_indexes.md>`_
-* `Zoom Other Intervals <http://www.geopackage.org/guidance/extensions/zoom_other_intervals.md>`_
-* `Tiles Encoding WebP <http://www.geopackage.org/guidance/extensions/tiles_encoding_webp.md>`_
-* `Metadata <http://www.geopackage.org/guidance/extensions/metadata.md>`_
-* `Schema <http://www.geopackage.org/guidance/extensions/schema.md>`_
-* `WKT for Coordinate Reference Systems <http://www.geopackage.org/guidance/extensions/wkt_for_crs.md>`_
-* `Tiled Gridded Coverage Data <http://www.geopackage.org/guidance/extensions/tiled_gridded_coverage_data.md>`_
-* `Related Tables <http://www.geopackage.org/guidance/extensions/related_tables.md>`_
+* `Non-Linear Geometry Types <extensions/nonlinear_geometry_types.rst>`_
+* `RTree Spatial Indexes <extensions/rtree_spatial_indexes.rst>`_
+* `Zoom Other Intervals <extensions/zoom_other_intervals.rst>`_
+* `Tiles Encoding WebP <extensions/tiles_encoding_webp.rst>`_
+* `Metadata <extensions/metadata.rst>`_
+* `Schema <extensions/schema.rst>`_
+* `WKT for Coordinate Reference Systems <extensions/wkt_for_crs.rst>`_
+* `Tiled Gridded Coverage Data <extensions/tiled_gridded_coverage_data.rst>`_
+* `Related Tables <extensions/related_tables.rst>`_
+
+Follow the links for a description for each individual extension.
 
 Community Extensions
 ********************
 
 OGC acknowledges that there are use cases not covered by the GeoPackage standard. Implementers are welcome to use the extension mechanism defined here to develop community extensions. The extension mechanism provides advantages including discoverability (the extensions in use can be discovered by scanning a single table) and uniformity (declaring that an extension is in use indicates that a defined set of requirements are being met). However, this is a decision that should be made carefully as custom extensions do introduce interoperability risks.
-OGC manages a registry of `community extensions <http://www.geopackage.org/extensions.html>`_.
+OGC manages a registry of `community extensions <http://www.geopackage.org/extensions.html#_community_extensions>`_.
 
 OGC is unable to endorse community extensions. Therefore an Extended GeoPackage containing community extensions will not pass conformance tests. However, a community of interest MAY waive that requirement in its own GeoPackage profile, with the caveat that it must bear the responsibility of endorsing the new extension(s).
 

@@ -53,6 +53,16 @@ Due to its XML serialization, GML is well suited to geospatial data exchange acr
 In contrast, GeoPackage is better suited to storage and random access of geospatial data on a file system.
 GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS) which provides a common way for applications to store and access feature data in relational or object-relational databases.
 
+Applications
+------------
+
+The following are some applications and APIs that can be used with GeoPackage:
+
+* `SQLite <apps/sqlite.rst>`_
+* `GDAL / OGR <apps/gdal-ogr.rst>`_
+* `QGIS <apps/qgis.rst>`_
+* `The GeoPackage-Java library <apps/geopackage-java.rst>`_
+
 External links
 --------------
 

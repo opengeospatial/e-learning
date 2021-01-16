@@ -18,8 +18,4 @@ Contents
    basic-main.rst
    advanced.rst
    content-types.rst
-   sqlite.rst
-   qgis.rst
-   gdal-ogr.rst
-   geopackage-java.rst
    nsg-gpkg.rst
