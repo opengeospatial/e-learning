@@ -437,13 +437,12 @@
 <h3>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h3>
 <p>A WMS server responding to a <strong>GetCapabilities</strong> request returns metadata about the service, including supported operations and parameters, and a list of the available layers.</p>
 <p>An example of a GetCapabilities request is:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
-<span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
-<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//ows.terrestris.de/osm/service?</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetCapabilities&amp;</span>
+<span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;VERSION=1.3.0</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">This is a link to a GetCapabilities request.</a></p>
+<p><a class="reference external" href="https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3.0">This is a link to a GetCapabilities request.</a></p>
 <p>There are three parameters (and values) being passed to the WMS server, <code class="docutils literal notranslate"><span class="pre">SERVICE=WMS</span></code>, <code class="docutils literal notranslate"><span class="pre">VERSION=1.3</span></code>, and <code class="docutils literal notranslate"><span class="pre">REQUEST=GetCapabilities</span></code>.</p>
 <ul class="simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">SERVICE</span></code> parameter tells the server that a WMS request is forthcoming.</p></li>
@@ -546,39 +545,24 @@ In the example bellow the available style is <em>default</em>.</p>
 The information needed to specify values for parameters such as <code class="docutils literal notranslate"><span class="pre">layers</span></code>, <code class="docutils literal notranslate"><span class="pre">styles</span></code> and <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">Reference</span> <span class="pre">Systems</span> <span class="pre">(SRS)</span></code> can be obtained from the Capabilities document.</p>
 <p>The response is a map image, or other map output artifact, depending on the format requested.</p>
 <p>An example of a GetMap request is:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
-<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3.0&amp;</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//ows.terrestris.de/osm/service?</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetMap&amp;</span>
 <span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
-<span class="na">LAYERS</span><span class="o">=</span><span class="s">DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;</span>
-<span class="na">STYLES</span><span class="o">=</span><span class="s">,,,,,,&amp;</span>
-<span class="na">CRS</span><span class="o">=</span><span class="s">EPSG:27700&amp;</span>
-<span class="na">BBOX</span><span class="o">=</span><span class="s">424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3.0&amp;</span>
+<span class="na">LAYERS</span><span class="o">=</span><span class="s">OSM-WMS&amp;</span>
+<span class="na">STYLES</span><span class="o">=</span><span class="s">&amp;</span>
+<span class="na">CRS</span><span class="o">=</span><span class="s">EPSG:4326&amp;</span>
+<span class="na">BBOX</span><span class="o">=</span><span class="s">51.49451,-0.11377,51.53267,-0.06971&amp;</span>
 <span class="na">WIDTH</span><span class="o">=</span><span class="s">400&amp;</span>
 <span class="na">HEIGHT</span><span class="o">=</span><span class="s">300&amp;</span>
 <span class="na">FORMAT</span><span class="o">=</span><span class="s">image/png&amp;</span>
-<span class="na">BGCOLOR</span><span class="o">=</span><span class="s">0xffffff&amp;</span>
-<span class="na">TRANSPARENT</span><span class="o">=</span><span class="s">TRUE&amp;</span>
-<span class="na">EXCEPTIONS</span><span class="o">=</span><span class="s">XML</span>
+<span class="na">TRANSPARENT</span><span class="o">=</span><span class="s">TRUE</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&amp;REQUEST=GetMap&amp;SERVICE=WMS&amp;LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;STYLES=,,,,,,&amp;CRS=EPSG:27700&amp;BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;WIDTH=400&amp;HEIGHT=300&amp;FORMAT=image/png&amp;BGCOLOR=0xffffff&amp;TRANSPARENT=TRUE">This is a link to a GetMaprequest.</a></p>
-<p>The getMap request accesses a server with data from Great Britain.
-The request specifies a set of layers with no particular style (STYLES=,,,,,,). This server has seven map layers:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p>DTM (Digital Terrain Model)</p></li>
-<li><p>Overview (Overview 1:1m)</p></li>
-<li><p>Raster_250K (Raster 1:250k)</p></li>
-<li><p>Topography (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
-<li><p>National Parks (The national parks of Great Britain)</p></li>
-<li><p>Infrastructure (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
-<li><p>Named Places (selection of topographical data derived from OS VectorMap District 1:50k)</p></li>
-</ol>
-</div></blockquote>
-<p>The coordinate reference system (CRS) is EPSG:27700, which is the Ordnance Survey National Grid reference system.
-The image is returned in a PNG transparent format with width 400 and height 300 pixels.The background color is white (Hex code=0xffffff).</p>
-<p>The table bellow summarizes the parameters and values.</p>
+<p><a class="reference external" href="https://ows.terrestris.de/osm/service?REQUEST=GetMap&amp;SERVICE=WMS&amp;VERSION=1.3.0&amp;LAYERS=OSM-WMS&amp;STYLES=&amp;CRS=EPSG:4326&amp;BBOX=51.49451,-0.11377,51.53267,-0.06971&amp;WIDTH=400&amp;HEIGHT=300&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE">This is a link to a GetMap request.</a></p>
+<p>The getMap request accesses a server offered by Terrestris. The request retrieves a map created from OpenStreetMap data</p>
+<p>The coordinate reference system (CRS) is EPSG:4326, which is the World Geodetic System 1984 (WGS84) coordinate reference system. The image is returned in a PNG transparent format with width 400 and height 300 pixels.</p>
+<p>The table bellow summarizes the available parameters and values.</p>
 <table class="colwidths-given docutils align-default" id="id8">
 <caption><span class="caption-text">Standard Parameters for the GetMap Operation</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -1217,7 +1201,7 @@ Formats in which a WMS Server can report exceptions are shown in the table bello
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Jul 25, 2020.
+      Last updated on Jan 16, 2021.
     </p>
   </div>
 
@@ -1246,7 +1230,6 @@ Formats in which a WMS Server can report exceptions are shown in the table bello
       <script type="text/javascript" src="../../static/jquery.js"></script>
       <script type="text/javascript" src="../../static/underscore.js"></script>
       <script type="text/javascript" src="../../static/doctools.js"></script>
-      <script type="text/javascript" src="../../static/language_data.js"></script>
 
   
 

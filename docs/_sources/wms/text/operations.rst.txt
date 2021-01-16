@@ -7,10 +7,10 @@ Background
 History
   WMS version 1.0.0 in April 2000, followed by version 1.1.0 in June 2001,and version 1.1.1 in January 2002. The OGC released WMS version 1.3.0 in January 2004.
 Versions
-  1.3 is the current latest version 
+  1.3 is the current latest version
 Test Suite
-  Test suites are available for: 
-      - `WMS 1.1.1 <http://cite.opengeospatial.org/teamengine/>`_ 
+  Test suites are available for:
+      - `WMS 1.1.1 <http://cite.opengeospatial.org/teamengine/>`_
       - `WMS 1.3.0 <http://cite.opengeospatial.org/teamengine/>`_
 Implementations
    Implementations can be found at the OGC database. `here <http://www.opengeospatial.org/resource/products/byspec>`_
@@ -47,10 +47,10 @@ This section provides detailed information about the types of WMS requests a cli
    * - ``DescribeLayer`` (optional)
      - Indicates the WFS or WCS to retrieve additional information about the layer.
    * - ``GetLegendGraphic`` (optional)
-     - Retrieves a legend for a map. 
+     - Retrieves a legend for a map.
 
 
-  
+
 .. _wms_getcap:
 
 GetCapabilities
@@ -64,28 +64,27 @@ A WMS server responding to a **GetCapabilities** request returns metadata about 
 An example of a GetCapabilities request is:
 
 .. code-block:: properties
-  
-  http://metaspatial.net/cgi-bin/ogc-wms.xml?
-  SERVICE=WMS&
-  VERSION=1.3
+
+  https://ows.terrestris.de/osm/service?
   REQUEST=GetCapabilities&
+  SERVICE=WMS&VERSION=1.3.0
 
-  
-`This is a link to a GetCapabilities request. <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ 
-    
-There are three parameters (and values) being passed to the WMS server, ``SERVICE=WMS``, ``VERSION=1.3``, and ``REQUEST=GetCapabilities``.  
 
-- The ``SERVICE`` parameter tells the server that a WMS request is forthcoming.  
-- The ``VERSION`` parameter tells the server what version of the WMS is being requested.  
-- The ``REQUEST`` parameter tells the server that the operation requested is the `GetCapabilities` operation. 
+`This is a link to a GetCapabilities request. <https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3.0>`_
 
-The WMS standard requires that requests always includes these three parameters.  
+There are three parameters (and values) being passed to the WMS server, ``SERVICE=WMS``, ``VERSION=1.3``, and ``REQUEST=GetCapabilities``.
+
+- The ``SERVICE`` parameter tells the server that a WMS request is forthcoming.
+- The ``VERSION`` parameter tells the server what version of the WMS is being requested.
+- The ``REQUEST`` parameter tells the server that the operation requested is the `GetCapabilities` operation.
+
+The WMS standard requires that requests always includes these three parameters.
 The table bellow summarizes the parameters and values required to perform the request.
 
 .. list-table:: Parameters of the GetCapabilities Operation
    :widths: 15 15 70
-   :header-rows: 1  
-   
+   :header-rows: 1
+
    * - **Parameter**
      - **Required**
      - **Description**
@@ -105,15 +104,15 @@ The response is a Capabilities XML document with a detailed description of the W
 
 .. list-table:: Sections Capabilities Document
    :widths: 20 80
-   :header-rows: 1  
-   
+   :header-rows: 1
+
    * - **Service**
      - Contains service metadata such as the service name, keywords, and contact information for the organization operating the server.
    * - **Request**
-     - Describes the operations the WMS service provides and the parameters and output formats for each operation.  
+     - Describes the operations the WMS service provides and the parameters and output formats for each operation.
    * - **Layer**
-     - Lists the available coordinate systems and layers.  
-       In some servers (e.g. Geoserver) layers are named in the form "namespace:layer".  
+     - Lists the available coordinate systems and layers.
+       In some servers (e.g. Geoserver) layers are named in the form "namespace:layer".
        Each layer provides service metadata such as title, abstract and keywords.
 
 .. _wms_getmap:
@@ -122,7 +121,7 @@ The response is a Capabilities XML document with a detailed description of the W
 GetCapabilities Layer Style Section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The GetCapabilites response contains a *Layer* section, which details about the style available to that layer. 
+The GetCapabilites response contains a *Layer* section, which details about the style available to that layer.
 In the example bellow the available style is *default*.
 
 
@@ -138,14 +137,14 @@ In the example bellow the available style is *default*.
           <southBoundLatitude>50.3532</southBoundLatitude>
           <northBoundLatitude>55.5917</northBoundLatitude>
         </EX_GeographicBoundingBox>
-        <BoundingBox CRS="EPSG:27700" 
+        <BoundingBox CRS="EPSG:27700"
                minx="246828" miny="56378.4" maxx="652374" maxy="633117"/>
         <Style>
           <Name>default</Name>
           <Title>default</Title>
           <LegendURL width="110" height="22">
             <Format>image/png</Format>
-            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink" 
+            <OnlineResource xmlns:xlink="http://www.w3.org/1999/xlink"
                xlink:type="simple"
                xlink:href="..."/>
           </LegendURL>
@@ -163,53 +162,41 @@ Request
 
 A WMS server responding to a **GetMap** request returns a map image for a specified area and content.
 
-The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output. 
-The information needed to specify values for parameters such as ``layers``, ``styles`` and ``Spatial Reference Systems (SRS)`` can be obtained from the Capabilities document.  
+The core parameters specify one or more layers and styles to appear on the map, a bounding box for the map extent, a target spatial reference system, and a width, height, and format for the output.
+The information needed to specify values for parameters such as ``layers``, ``styles`` and ``Spatial Reference Systems (SRS)`` can be obtained from the Capabilities document.
 
-The response is a map image, or other map output artifact, depending on the format requested. 
+The response is a map image, or other map output artifact, depending on the format requested.
 
 An example of a GetMap request is:
 
 .. code-block:: properties
 
-      http://metaspatial.net/cgi-bin/ogc-wms.xml?
-      VERSION=1.3.0& 
-      REQUEST=GetMap& 
-      SERVICE=WMS& 
-      LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& 
-      STYLES=,,,,,,& 
-      CRS=EPSG:27700& 
-      BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& 
-      WIDTH=400& 
-      HEIGHT=300& 
+      https://ows.terrestris.de/osm/service?
+      REQUEST=GetMap&
+      SERVICE=WMS&
+      VERSION=1.3.0&
+      LAYERS=OSM-WMS&
+      STYLES=&
+      CRS=EPSG:4326&
+      BBOX=51.49451,-0.11377,51.53267,-0.06971&
+      WIDTH=400&
+      HEIGHT=300&
       FORMAT=image/png&
-      BGCOLOR=0xffffff& 
-      TRANSPARENT=TRUE&
-      EXCEPTIONS=XML
-  
+      TRANSPARENT=TRUE
 
-`This is a link to a GetMaprequest. <http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
 
-The getMap request accesses a server with data from Great Britain. 
-The request specifies a set of layers with no particular style (STYLES=,,,,,,). This server has seven map layers:
-   
-   1. DTM (Digital Terrain Model)
-   2. Overview (Overview 1:1m)
-   3. Raster_250K (Raster 1:250k)
-   4. Topography (selection of topographical data derived from OS VectorMap District 1:50k)
-   5. National Parks (The national parks of Great Britain)
-   6. Infrastructure (selection of topographical data derived from OS VectorMap District 1:50k)
-   7. Named Places (selection of topographical data derived from OS VectorMap District 1:50k)
+`This is a link to a GetMap request. <https://ows.terrestris.de/osm/service?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&LAYERS=OSM-WMS&STYLES=&CRS=EPSG:4326&BBOX=51.49451,-0.11377,51.53267,-0.06971&WIDTH=400&HEIGHT=300&FORMAT=image/png&TRANSPARENT=TRUE>`_
 
-The coordinate reference system (CRS) is EPSG:27700, which is the Ordnance Survey National Grid reference system. 
-The image is returned in a PNG transparent format with width 400 and height 300 pixels.The background color is white (Hex code=0xffffff).
+The getMap request accesses a server offered by Terrestris. The request retrieves a map created from OpenStreetMap data
 
-The table bellow summarizes the parameters and values.
+The coordinate reference system (CRS) is EPSG:4326, which is the World Geodetic System 1984 (WGS84) coordinate reference system. The image is returned in a PNG transparent format with width 400 and height 300 pixels.
+
+The table bellow summarizes the available parameters and values.
 
 .. list-table:: Standard Parameters for the GetMap Operation
    :widths: 20 15 65
-   :header-rows: 1   
-   
+   :header-rows: 1
+
    * - **Parameter**
      - **Required?**
      - **Description**
@@ -224,11 +211,11 @@ The table bellow summarizes the parameters and values.
      - Operation name. Value is ``GetMap``.
    * - ``layers``
      - Yes
-     - Layers to display on map.  
+     - Layers to display on map.
        Value is a comma-separated list of layer names.
    * - ``styles``
      - Yes
-     - Styles in which layers are to be rendered.  
+     - Styles in which layers are to be rendered.
        Value is a comma-separated list of style names,
        or empty if default styling is required.
        Style names may be empty in the list, to use default layer styling.
@@ -236,7 +223,7 @@ The table bellow summarizes the parameters and values.
      - Yes
      - Spatial Reference System for map output.
        Value is in form ``EPSG:nnn``.
-       ``crs`` is the parameter key used in WMS 1.3.0. 
+       ``crs`` is the parameter key used in WMS 1.3.0.
    * - ``bbox``
      - Yes
      - Bounding box for map extent.
@@ -249,7 +236,7 @@ The table bellow summarizes the parameters and values.
      - Height of map output, in pixels.
    * - ``format``
      - Yes
-     - Format for the map output.  
+     - Format for the map output.
    * - ``transparent``
      - No
      - Whether the map background should be transparent.
@@ -263,7 +250,7 @@ The table bellow summarizes the parameters and values.
    * - ``exceptions``
      - No
      - Format in which to report exceptions.
-       Default value is ``application/vnd.ogc.se_xml``. 
+       Default value is ``application/vnd.ogc.se_xml``.
    * - ``time``
      - No
      - Time value or range for map data.
@@ -274,7 +261,7 @@ The table bellow summarizes the parameters and values.
    * - ``sld_body``
      - No
      - A URL-encoded StyledLayerDescriptor XML document
-       which controls or enhances map layers and styling     
+       which controls or enhances map layers and styling
 
 
 
@@ -309,8 +296,8 @@ A WMS request can also be sent via HTTP POST as an XML document, as follows:
       <StyledLayerDescriptor version="1.0.0">
          <NamedLayer>
            <Name>topp:states</Name>
-           <NamedStyle><Name>population</Name></NamedStyle> 
-         </NamedLayer> 
+           <NamedStyle><Name>population</Name></NamedStyle>
+         </NamedLayer>
       </StyledLayerDescriptor>
       <BoundingBox srsName="http://www.opengis.net/gml/srs/epsg.xml#4326">
          <gml:coord><gml:X>-130</gml:X><gml:Y>24</gml:Y></gml:coord>
@@ -321,29 +308,29 @@ A WMS request can also be sent via HTTP POST as an XML document, as follows:
          <Size><Width>550</Width><Height>250</Height></Size>
       </Output>
    </ogc:GetMap>
-   
-   
+
+
 Response
 ^^^^^^^^
 
 The response of a GetMap request is an image.
-   
+
 .. image:: ../img/getmap-demo.png
       :width: 70%
-      
+
 If the request is wrong the server will return an error message.
-      
+
 Time
 ^^^^
 
-The ``TIME`` parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering. 
+The ``TIME`` parameter allows filtering a dataset by temporal slices as well as spatial tiles for rendering.
 The TIME attribute for WMS GetMap requests is described in version 1.3 of the WMS specification.
 
 Specifying a time
 """""""""""""""""
 
-The format used for specifying a time in the WMS TIME parameter is based on `ISO-8601 <http://en.wikipedia.org/wiki/ISO_8601>`_. 
-The precision might varied depending on the server. 
+The format used for specifying a time in the WMS TIME parameter is based on `ISO-8601 <http://en.wikipedia.org/wiki/ISO_8601>`_.
+The precision might varied depending on the server.
 
 The parameter is::
 
@@ -423,13 +410,13 @@ One end of the interval must be a time value, but the other may be a duration va
 Reduced accuracy times
 """"""""""""""""""""""""""""""
 
-The WMS specification also allows time specifications to be truncated by omitting some of the time string. Usually servers will treat the time as a range whose length is equal to the *most precise unit specified* in the time string. 
+The WMS specification also allows time specifications to be truncated by omitting some of the time string. Usually servers will treat the time as a range whose length is equal to the *most precise unit specified* in the time string.
 For example, if the time specification omits all fields except year, it identifies a range one year long starting at the beginning of that year.
 
 .. list-table:: Examples of Time Values for Reduced Accuracy Times
    :header-rows: 1
    :widths: 15 15 70
-   
+
    * - Description
      - Reduced Accuracy Time
      - Equivalent Range
@@ -449,7 +436,7 @@ Some servers (e.g GeoServer) effectively expands the start and end times as desc
 .. list-table:: Examples of Time Values for Reduced Accuracy Times with Ranges
    :header-rows: 1
    :widths: 20 35 45
-   
+
    * - Description
      - Reduced Accuracy Time
      - Equivalent Range
@@ -463,7 +450,7 @@ Some servers (e.g GeoServer) effectively expands the start and end times as desc
 Specifying a list of times
 """"""""""""""""""""""""""""""
 
-Some Servers, such a GeoServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame. 
+Some Servers, such a GeoServer can also accept a list of discrete time values. This is useful for some applications such as animations, where one time is equal to one frame.
 
 The elements of a list are separated by commas.
 
@@ -510,7 +497,7 @@ The Year/Month/Day group of values must be separated from the Hours/Minutes/Seco
 
 Fractional values are permitted, but only for the most specific value that is included.
 
-The period must divide evenly into the interval defined by the start/end times. So if the start/end times denote 12 hours, a period of 1 hour would be allowed, but a period of 5 hours would not. 
+The period must divide evenly into the interval defined by the start/end times. So if the start/end times denote 12 hours, a period of 1 hour would be allowed, but a period of 5 hours would not.
 
 For example, the multiple representations listed below are all equivalent.
 
@@ -526,7 +513,7 @@ Request
 
 A WMS server responding to a **GetFeatureInfo** request returns the underlying data, including geometry and attribute values, for a pixel location on a map.
 It is similar to the WFS GetFeature operation, but less flexible in both input and output.
-The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.  
+The one advantage of ``GetFeatureInfo`` is that the request uses an (x,y) pixel value from a returned WMS image.
 This is easier to use for a naive client that is not able to perform true geographic referencing.
 
 The standard parameters for the GetFeatureInfo operation are:
@@ -534,7 +521,7 @@ The standard parameters for the GetFeatureInfo operation are:
 .. list-table:: Parameters for the GetFeatureInfo Operation
    :widths: 20 20 60
    :header-rows: 1
-      
+
    * - **Parameter**
      - **Required**
      - **Description**
@@ -575,7 +562,7 @@ Example formats are as follows:
 .. list-table:: Formats for ``INFO_FORMAT`` parameter in a the GetFeatureInfo Request
    :widths: 10 60 30
    :header-rows: 1
-   
+
    * - **Format**
      - **Syntax**
      - **Notes**
@@ -583,18 +570,18 @@ Example formats are as follows:
      - ``info_format=text/plain``
      - Simple text output. (The default format)
    * - GML 2
-     - ``info_format=application/vnd.ogc.gml`` 
+     - ``info_format=application/vnd.ogc.gml``
      - Works only for Simple Features
    * - GML 3
      - ``info_format=application/vnd.ogc.gml/3.1.1``
      - Works for both Simple and Complex Features
    * - HTML
      - ``info_format=text/html``
-     - Uses HTML templates that are defined on the server. 
+     - Uses HTML templates that are defined on the server.
    * - JSON
      - ``info_format=application/json``
      - Simple JSON representation.
-  
+
 
 An example request for feature information from the ``topp:states`` layer in HTML format is:
 
@@ -636,7 +623,7 @@ An example request for feature information in GeoJSON format is:
 The result will be:
 
 .. code-block:: properties
-   
+
    {
    "type":"FeatureCollection",
    "features":[
@@ -698,13 +685,13 @@ The result will be:
 Exceptions
 ---------------
 
-When a request from a client to a WMS Server is not performed properly, a Server needs to report an exception. 
+When a request from a client to a WMS Server is not performed properly, a Server needs to report an exception.
 Formats in which a WMS Server can report exceptions are shown in the table bellow.
 
 .. list-table:: Exceptions
    :widths: 15 50 35
    :header-rows: 1
-   
+
    * - **Format**
      - **Syntax**
      - **Notes**
@@ -716,7 +703,7 @@ Formats in which a WMS Server can report exceptions are shown in the table bello
      - The error is return as an image.
    * - Blank
      - ``application/vnd.ogc.se_blank``
-     - A blank image is returned. 
+     - A blank image is returned.
    * - JSON
      - ``application/json``
      - The error is reported as a simple JSON representation.
@@ -728,8 +715,3 @@ References
   - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
 - `GeoServer  Time Support in GeoServer WMS  <http://docs.geoserver.org/stable/en/user/_sources/services/wms/time.txt>`_
   - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
-
-
-
-
-

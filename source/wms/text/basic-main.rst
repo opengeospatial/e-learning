@@ -24,15 +24,15 @@ DescribeLayer
    Returns additional information about the requested layer.
 GetLegendGraphic
    Returns a legend, as an image, for the map image, providing a visual guide to the map elements.
-   
-   
+
+
 
 Example
 -------
 
-This `OGC WMS Demo server <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ publishes data from Great Britain provided by the Ordnance Survey.
+This `OGC WMS Demo server <https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_ publishes maps created by Terrestris from OpenStreetMap data.
 
-The ``GetMap`` request queries the server with a set of parameters describing the map image. The values of the parameters are taken from the Capabilities document. A correctly formulated ``GetMap`` request will create the image shown below. 
+The ``GetMap`` request queries the server with a set of parameters describing the map image. The values of the parameters are taken from the Capabilities document. A correctly formulated ``GetMap`` request will create the image shown below.
 
 .. image:: ../img/getmap-demo.png
       :width: 70%
@@ -40,49 +40,45 @@ The ``GetMap`` request queries the server with a set of parameters describing th
 
 
 The URL of this link is composed of the following parameters and values:
-  
+
 
 .. code-block:: properties
 
-      http://metaspatial.net/cgi-bin/ogc-wms.xml?
-      VERSION=1.3.0& 
-      REQUEST=GetMap& 
-      SERVICE=WMS& 
-      LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& 
-      STYLES=,,,,,,& 
-      CRS=EPSG:27700& 
-      BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& 
-      WIDTH=400& 
-      HEIGHT=300& 
+      https://ows.terrestris.de/osm/service?
+      REQUEST=GetMap&
+      SERVICE=WMS&
+      VERSION=1.3.0&
+      LAYERS=OSM-WMS&
+      STYLES=&
+      CRS=EPSG:4326&
+      BBOX=51.49451,-0.11377,51.53267,-0.06971&
+      WIDTH=400&
+      HEIGHT=300&
       FORMAT=image/png&
-      BGCOLOR=0xffffff& 
       TRANSPARENT=TRUE
-  
-`Link to the GetMap request <http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&REQUEST=GetMap& SERVICE=WMS& LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places& STYLES=,,,,,,& CRS=EPSG:27700&BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587& WIDTH=400& HEIGHT=300&FORMAT=image/png& BGCOLOR=0xffffff& TRANSPARENT=TRUE>`_
+
+`Link to the GetMap request <https://ows.terrestris.de/osm/service?REQUEST=GetMap&SERVICE=WMS&VERSION=1.3.0&LAYERS=OSM-WMS&STYLES=&CRS=EPSG:4326&BBOX=51.49451,-0.11377,51.53267,-0.06971&WIDTH=400&HEIGHT=300&FORMAT=image/png&TRANSPARENT=TRUE>`_
 
 
 Client Usage
 ------------
 
-A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is the URI for the GetCapabilities request. For example: 
+A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the 'end point' of the service. The end point is the URI for the GetCapabilities request. For example:
 
 
 The URL of this link is composed of the following parameters and values:
 
 .. code-block:: properties
-  
-  http://metaspatial.net/cgi-bin/ogc-wms.xml?
+
+  https://ows.terrestris.de/osm/service?
   REQUEST=GetCapabilities&
   SERVICE=WMS&
   VERSION=1.3
 
-`Link to the GetCapabilities request <http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_  
+`Link to the GetCapabilities request <https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&SERVICE=WMS&VERSION=1.3>`_
 
 
 References
 ----------
 
-`GeoServer  WMS reference <http://docs.geoserver.org/stable/en/user/services/wms/reference.html>`_ - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_
-
-
-
+`Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_

@@ -393,42 +393,41 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>This <a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">OGC WMS Demo server</a> publishes data from Great Britain provided by the Ordnance Survey.</p>
+<p>This <a class="reference external" href="https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">OGC WMS Demo server</a> publishes maps created by Terrestris from OpenStreetMap data.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> request queries the server with a set of parameters describing the map image. The values of the parameters are taken from the Capabilities document. A correctly formulated <code class="docutils literal notranslate"><span class="pre">GetMap</span></code> request will create the image shown below.</p>
 <a class="reference internal image-reference" href="../../images/getmap-demo1.png"><img alt="../../images/getmap-demo1.png" src="../../images/getmap-demo1.png" style="width: 70%;" /></a>
 <p>The URL of this link is composed of the following parameters and values:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
-<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3.0&amp;</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//ows.terrestris.de/osm/service?</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetMap&amp;</span>
 <span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
-<span class="na">LAYERS</span><span class="o">=</span><span class="s">DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;</span>
-<span class="na">STYLES</span><span class="o">=</span><span class="s">,,,,,,&amp;</span>
-<span class="na">CRS</span><span class="o">=</span><span class="s">EPSG:27700&amp;</span>
-<span class="na">BBOX</span><span class="o">=</span><span class="s">424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">1.3.0&amp;</span>
+<span class="na">LAYERS</span><span class="o">=</span><span class="s">OSM-WMS&amp;</span>
+<span class="na">STYLES</span><span class="o">=</span><span class="s">&amp;</span>
+<span class="na">CRS</span><span class="o">=</span><span class="s">EPSG:4326&amp;</span>
+<span class="na">BBOX</span><span class="o">=</span><span class="s">51.49451,-0.11377,51.53267,-0.06971&amp;</span>
 <span class="na">WIDTH</span><span class="o">=</span><span class="s">400&amp;</span>
 <span class="na">HEIGHT</span><span class="o">=</span><span class="s">300&amp;</span>
 <span class="na">FORMAT</span><span class="o">=</span><span class="s">image/png&amp;</span>
-<span class="na">BGCOLOR</span><span class="o">=</span><span class="s">0xffffff&amp;</span>
 <span class="na">TRANSPARENT</span><span class="o">=</span><span class="s">TRUE</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?VERSION=1.3.0&amp;REQUEST=GetMap&amp;SERVICE=WMS&amp;LAYERS=DTM,Overview,Raster_250K,Topography,nationalparks,Infrastructure,Places&amp;STYLES=,,,,,,&amp;CRS=EPSG:27700&amp;BBOX=424735.97883597884,96026.98412698413,467064.02116402116,127773.01587301587&amp;WIDTH=400&amp;HEIGHT=300&amp;FORMAT=image/png&amp;BGCOLOR=0xffffff&amp;TRANSPARENT=TRUE">Link to the GetMap request</a></p>
+<p><a class="reference external" href="https://ows.terrestris.de/osm/service?REQUEST=GetMap&amp;SERVICE=WMS&amp;VERSION=1.3.0&amp;LAYERS=OSM-WMS&amp;STYLES=&amp;CRS=EPSG:4326&amp;BBOX=51.49451,-0.11377,51.53267,-0.06971&amp;WIDTH=400&amp;HEIGHT=300&amp;FORMAT=image/png&amp;TRANSPARENT=TRUE">Link to the GetMap request</a></p>
 </div>
 <div class="section" id="client-usage">
 <h2>Client Usage<a class="headerlink" href="#client-usage" title="Permalink to this headline">¶</a></h2>
 <p>A client needs to know the location of the WMS service to be able to interact with the server. The location is usually called the ‘end point’ of the service. The end point is the URI for the GetCapabilities request. For example:</p>
 <p>The URL of this link is composed of the following parameters and values:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//metaspatial.net/cgi-bin/ogc-wms.xml?</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//ows.terrestris.de/osm/service?</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetCapabilities&amp;</span>
 <span class="na">SERVICE</span><span class="o">=</span><span class="s">WMS&amp;</span>
 <span class="na">VERSION</span><span class="o">=</span><span class="s">1.3</span>
 </pre></div>
 </div>
-<p><a class="reference external" href="http://metaspatial.net/cgi-bin/ogc-wms.xml?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">Link to the GetCapabilities request</a></p>
+<p><a class="reference external" href="https://ows.terrestris.de/osm/service?REQUEST=GetCapabilities&amp;SERVICE=WMS&amp;VERSION=1.3">Link to the GetCapabilities request</a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://docs.geoserver.org/stable/en/user/services/wms/reference.html">GeoServer  WMS reference</a> - <a class="reference external" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0</a></p>
+<p><a class="reference external" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0</a></p>
 </div>
 </div>
 
@@ -451,7 +450,7 @@
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Jul 25, 2020.
+      Last updated on Jan 16, 2021.
     </p>
   </div>
 
@@ -480,7 +479,6 @@
       <script type="text/javascript" src="../../static/jquery.js"></script>
       <script type="text/javascript" src="../../static/underscore.js"></script>
       <script type="text/javascript" src="../../static/doctools.js"></script>
-      <script type="text/javascript" src="../../static/language_data.js"></script>
 
   
 
