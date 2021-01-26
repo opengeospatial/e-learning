@@ -1,0 +1,616 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tiled Gridded Coverage Data &mdash; OGC e-Learning 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../../index.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../../index.html" class="icon icon-home"> OGC e-Learning
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamental-concepts/text/index.html">Fundamental Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../fundamental-concepts/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fundamental-concepts/text/basic.html">Interoperability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/basic.html#the-internet-and-the-web">The Internet and the Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/basic.html#interoperability-is-essential">Interoperability Is Essential</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fundamental-concepts/text/open.html">Standards Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/open.html#the-need">The Need</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html">Networking Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#url">URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#encodings">Encodings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#http">HTTP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#http-get">HTTP GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#http-post">HTTP POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#service-interfaces-and-operations">Service, Interfaces and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#service">Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#interface">Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#operation">Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#vacuum-cleaning-robot-analogy">Vacuum Cleaning Robot Analogy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#service-interface-and-operations">Service, Interface and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../fundamental-concepts/text/networking.html#in-an-ogc-web-service">In an OGC Web Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ogc/text/index.html">Introduction to OGC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogc/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogc/text/intro-ogc.html">OGC - The Organization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/intro-ogc.html#technical-committee">Technical Committee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/intro-ogc.html#domain-working-groups">Domain Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/intro-ogc.html#standards-working-groups">Standards Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/intro-ogc.html#ogc-naming-authority-sub-committee">OGC Naming Authority Sub-Committee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc/text/intro-ogc.html#compliance-interoperability-testing-evaluation-cite-sub-committee">Compliance Interoperability &amp; Testing Evaluation (CITE) Sub-Committee</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ogc-standards/text/index.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogc-standards/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html">Understanding OGC Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html#what-is-a-standard">What is a standard?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html#open-standards">Open Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html#open-standards-the-definition">Open Standards - the definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html#example-of-a-rule-in-a-standard">Example of a rule in a standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/services-ogc.html#types-of-standards">Types of Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogc-standards/text/service-architecture.html">OGC Service Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/service-architecture.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogc-standards/text/service-architecture.html#ows-common">OWS Common</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-encoding-standards/basic-index.html">Data Encoding Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../basic-index.html">GeoPackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../basic-overview.html">GeoPackage - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../basic-main.html">GeoPackage - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../advanced.html">Advanced GeoPackage Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../content-types.html">Content Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../nsg-gpkg.html">NSG Profile of GeoPackage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../gml/text/index.html">Geography Markup Language (GML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../gml/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../gml/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../gml/text/overview.html">GML - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../gml/text/main.html">GML - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../data-access-standards/basic-index.html">Data Access Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../ogcapi-features/text/basic-index.html">OGC API - Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogcapi-features/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../ogcapi-features/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../ogcapi-features/text/basic-overview.html">Overview, OGC API - Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../ogcapi-features/text/basic-main.html">An Introduction to OGC API - Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../ogcapi-features/text/operations.html">Resources of OGC API - Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../wfs/text/basic-index.html">Web Feature Service (WFS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../wfs/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wfs/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wfs/text/basic-overview.html">WFS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wfs/text/basic-main.html">WFS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wfs/text/operations.html">WFS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../wcs/text/basic-index.html">Web Coverage Service (WCS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../wcs/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wcs/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wcs/text/basic-overview.html">WCS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wcs/text/basic-main.html">WCS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wcs/text/operations.html">WCS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sta/text/index.html">SensorThings API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../sta/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../sta/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../sta/text/overview.html">SensorThings - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../sta/text/main.html">SensorThings - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../sta/text/operations.html">SensorThings - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sos/text/index.html">Sensor Observation Service (SOS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../sos/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../sos/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../sos/text/overview.html">SOS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../sos/text/main.html">SOS - Main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../sos/text/operations.html">SOS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../processing/basic-index.html">Processing Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../wps/text/basic-index.html">Web Processing Service (WPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../wps/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wps/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wps/text/basic-overview.html">WPS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wps/text/basic-main.html">WPS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wps/text/operations.html">WPS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../visualization-standards/basic-index.html">Visualization Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../wms/text/basic-index.html">Web Map Service (WMS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../wms/text/basic-overview.html">WMS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wms/text/basic-main.html">WMS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-main.html#overview-of-wms-operations">Overview of WMS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wms/text/operations.html">WMS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#getmap">GetMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#getfeatureinfo">GetFeatureInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wms/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../wmts/text/index.html">Web Map Tile Service (WMTS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../wmts/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../wmts/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../wmts/text/overview.html">WMTS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wmts/text/main.html">WMTS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../wmts/text/operations.html">WMTS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../kml/text/basic-index.html">KML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../kml/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../kml/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../kml/text/basic-overview.html">KML Basic Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../kml/text/basic-main.html">KML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../sld/text/index.html">Styled Layer Descriptor (SLD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../sld/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../sld/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../sld/text/overview.html">SLD - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../sld/text/main.html">SLD - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../se/text/index.html">Symbology Encoding (SE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../se/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../se/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../se/text/overview.html">SE - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../se/text/main.html">SE - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../metadata-catalogue/index.html">Metadata and Catalogue Services Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../metadata-catalogue/index.html#contents">Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../cat/text/index.html">Catalogue Services for the Web (CSW)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../cat/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../cat/text/index.html#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../metadata/text/index.html">Metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../metadata/text/index.html#contents">Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../references.html">References</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">OGC e-Learning</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Tiled Gridded Coverage Data</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/geopackage/text/extensions/tiled_gridded_coverage_data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="id1">
+<h1><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html">Tiled Gridded Coverage Data</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>The “GeoPackage Extension for Tiled Gridded Coverage Data” extension (previously titled Elevation Extension) defines how to encode and store tiled regular gridded data, such as a digital elevation model, in a GeoPackage. The tiles contain values, such as elevation, temperature or pressure, and are stored in one of two encodings:</p>
+<ul class="simple">
+<li><p>The PNG encoding uses PNG files to store 16-bit integer values and a scale and offset may be applied to fine-tune the coverage range.</p></li>
+<li><p>The TIFF encoding uses TIFF files to support 32-bit floating point data. To simplify development, this encoding constrains many of the TIFF options to the minimal set needed to meet the floating-point requirement.</p></li>
+</ul>
+<div class="section" id="id2">
+<h2><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#gpkg_extensions">gpkg_extensions</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>To use this extension, add the rows to this table as described by Table 1.</p>
+<p>To use this extension, add the following rows to this table as described in Table 1.</p>
+<table class="docutils align-default" id="id23">
+<caption><span class="caption-text">Table 1: <code class="docutils literal notranslate"><span class="pre">gpkg_extensions</span></code>
+ :widths: 20 15 15 40 10
+ :header-rows: 1</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">table_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">column_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">extension_name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">definition</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">scope</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage_ancillary</span></code></p></td>
+<td><p><em>NULL</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage</span></code></p></td>
+<td><p><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html">http://docs.opengeospatial.org/is/17-066r1/17-066r1.html</a></p></td>
+<td><p><em>read-write</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_tile_ancillary</span></code></p></td>
+<td><p><em>NULL</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage</span></code></p></td>
+<td><p><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html">http://docs.opengeospatial.org/is/17-066r1/17-066r1.html</a></p></td>
+<td><p><em>read-write</em></p></td>
+</tr>
+<tr class="row-even"><td><p><em>tile pyramid user data table name</em></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">tile_data</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage</span></code></p></td>
+<td><p><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html">http://docs.opengeospatial.org/is/17-066r1/17-066r1.html</a></p></td>
+<td><p><em>read-write</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#gpkg_contents">gpkg_contents</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Like any other content type, add a row for each coverage, using a <code class="docutils literal notranslate"><span class="pre">data_type</span></code> of “<em>2d-gridded-coverage</em>”.</p>
+</div>
+<div class="section" id="id4">
+<h2><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#gpkg_spatial_ref_sys">gpkg_spatial_ref_sys</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Like any other content type, the SRS for your contents must be registered in this table. Much like GeoPackage provides a default SRS (EPSG::4326) for normal use, when this extension is in use, EPSG::4979 (WGS-84 with height above ellipsoid) is provided as a default. However, any valid SRS may be used.</p>
+</div>
+<div class="section" id="id5">
+<h2><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#coverage-ancillary">gpkg_2d_gridded_coverage_ancillary</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Add a row to this table for each coverage as described in Table 2.</p>
+<table class="docutils align-default" id="id24">
+<caption><span class="caption-text">Table 2: <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage_ancillary</span></code>
+ :widths: 20 80
+ :header-rows: 1</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Column</p></td>
+<td><p>Value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Primary key</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tile_matrix_set_name</span></code></p></td>
+<td><p><em>tile pyramid user data table name</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">datatype</span></code></p></td>
+<td><p>“<em>integer</em>” or “<em>float</em>”</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="#id6"><span class="problematic" id="id7">``</span></a>scale``*</p></td>
+<td><p>Scale as a multiple relative to the unit of measure (Default <em>1</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id8"><span class="problematic" id="id9">``</span></a>offset``*</p></td>
+<td><p>The offset to the 0 value (Default <em>0</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">precision</span></code></p></td>
+<td><p>The smallest value that has meaning for this dataset</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">data_null</span></code></p></td>
+<td><p>The value that indicates <em>NULL</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">grid_cell_encoding</span></code></p></td>
+<td><p>“<em>grid-value-is-center</em>” (default), “<em>grid-value-is-area</em>”, or “<em>grid-value-is-corner</em>”</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">uom</span></code></p></td>
+<td><p>Units of Measure for values in the grid coverage (see <a class="reference external" href="http://unitsofmeasure.org/ucum.html">UCUM</a>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">field_name</span></code></p></td>
+<td><p>Type of Gridded coverage data (default is “<em>Height</em>”)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">quantity_definition</span></code></p></td>
+<td><p>Description of the values contained in the gridded overage (default is “<em>Height</em>”)</p></td>
+</tr>
+</tbody>
+</table>
+<p>* Only used for “integer” datatype</p>
+</div>
+<div class="section" id="id10">
+<h2><a class="reference external" href="http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#_tile_ancillary">gpkg_2d_gridded_tile_ancillary</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<p>Add a row to this table for each coverage tile as described in Table 3.</p>
+<table class="docutils align-default" id="id25">
+<caption><span class="caption-text">Table 3: <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_tile_ancillary</span></code>
+ :widths: 20 80
+ :header-rows: 1</span><a class="headerlink" href="#id25" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Column</p></td>
+<td><p>Value</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">id</span></code></p></td>
+<td><p>Primary key</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">tpudt_name</span></code></p></td>
+<td><p><em>tile pyramid user data table name</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">tpudt_id</span></code></p></td>
+<td><p>Foreign key to <code class="docutils literal notranslate"><span class="pre">id</span></code> in <em>tile pyramid user data table</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="#id11"><span class="problematic" id="id12">``</span></a>scale``*</p></td>
+<td><p>Scale as a multiple relative to the unit of measure (Default <em>1</em>)</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id13"><span class="problematic" id="id14">``</span></a>offset``*</p></td>
+<td><p>The offset to the <em>0</em> value (Default <em>0</em>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="#id15"><span class="problematic" id="id16">``</span></a>min``**</p></td>
+<td><p>Minimum value of this tile</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id17"><span class="problematic" id="id18">``</span></a>max``**</p></td>
+<td><p>Maximum value of this tile</p></td>
+</tr>
+<tr class="row-odd"><td><p><a href="#id19"><span class="problematic" id="id20">``</span></a>mean``**</p></td>
+<td><p>The arithmetic mean of values in this tile</p></td>
+</tr>
+<tr class="row-even"><td><p><a href="#id21"><span class="problematic" id="id22">``</span></a>std_dev``**</p></td>
+<td><p>The standard deviation of values in this tile</p></td>
+</tr>
+</tbody>
+</table>
+<p>* Only used for “integer” datatype</p>
+<p>** These values are natural, not scaled or offset</p>
+</div>
+<div class="section" id="using-scale-and-offset">
+<h2>Using Scale and Offset<a class="headerlink" href="#using-scale-and-offset" title="Permalink to this headline">¶</a></h2>
+<p>Integer values may be scaled and offset in order to make more efficient use of 16-bit integer space available in PNG files. The scale and offset may be applied to the entire coverage and/or the individual tile. The scale and offset do not apply to the <code class="docutils literal notranslate"><span class="pre">data_null</span></code> value.</p>
+<p>Actual cell values are be calculated by:</p>
+<ol class="arabic simple">
+<li><p>Multiplying the stored value by the <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_tile_ancillary_table.scale</span></code> value and then adding the <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_tile_ancillary_table.offset</span></code>,</p></li>
+<li><p>Multiplying that value by the <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage_ancillary.scale</span></code> value and then adding the <code class="docutils literal notranslate"><span class="pre">gpkg_2d_gridded_coverage_ancillary.offset</span></code>.</p></li>
+</ol>
+<p>In pseudo-code, this conversion would look like:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>elevationInUnitOfMeasure = (SomeGrid_RegularCoverage.tile_data→pngpixels[i] *
+gpkg_2d_gridded_tile_ancillary.scale + gpkg_2d_gridded_tile_ancillary.offset) *
+gpkg_2d_gridded_coverage_ancillary.scale + gpkg_2d_gridded_coverage_ancillary.offset;
+</pre></div>
+</div>
+</div>
+<div class="section" id="png-encoding">
+<h2>PNG Encoding<a class="headerlink" href="#png-encoding" title="Permalink to this headline">¶</a></h2>
+<p>Encode integer data using the PNG format. Pixel values are 16-bit unsigned integer (single channel - “greyscale”).</p>
+</div>
+<div class="section" id="tiff-encoding">
+<h2>TIFF Encoding<a class="headerlink" href="#tiff-encoding" title="Permalink to this headline">¶</a></h2>
+<p>Encode floating point data using the TIFF format.
+Tiles are encoded as a single-band image using one 32-bit floating point component per pixel.
+Each TIFF encoded tile is a baseline TIFF as defined in the Part 1 of the TIFF standard.</p>
+<p>This implies a number of constraints which are listed below:</p>
+<ul class="simple">
+<li><p>Only one band per TIFF tile, i.e., for any pixel in the TIFF tile, there SHALL be only one component</p></li>
+<li><p>All pixels in the tile SHALL be set with a valid component value</p></li>
+<li><p>Other TIFF tags are derived from the other constraints in this extension</p></li>
+<li><p>No multi-image/tiling extensions</p></li>
+</ul>
+<p>The only allowed encoding extensions are:</p>
+<ul class="simple">
+<li><p>IEEE floating point</p></li>
+<li><p>LZW compression</p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
+      Last updated on Jan 26, 2021.
+    </p>
+  </div>
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

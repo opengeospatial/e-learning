@@ -1,246 +1,86 @@
-GeoPackage - Advanced
-=====================
+Advanced GeoPackage Concepts
+============================
 
-Introduction
-------------
+Identifying a GeoPackage
+------------------------
 
-There are several different ways to create and read a GeoPackage. Most of the implementing software products have their own unique way of supporting the handling of a GeoPackage. In this chapter we will show how a GeoPackage can be read using the free and open source GeoPackage Java library that can be found `here <https://github.com/ngageoint/geopackage-java>`_ .
+A `GeoPackage <http://geopackage.org>`_ is an `SQLite Database <http://sqlite.org/index.html>`_ file with a `.gpkg extension <http://www.geopackage.org/spec120/#r3>`_. 
+If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state `"SQLite format 3" <http://www.geopackage.org/spec120/#r1>`_.
 
-For ease of reference, we reproduce the GeoPackage schema overview below.
+Opening a GeoPackage
+--------------------
 
-.. image:: ../img/geopackage-overview.png
-   :height: 327
-   :width: 560
+There are a number of ways to open a GeoPackage. 
 
-The ``gpkg_spatial_ref_sys`` table contains coordinate reference system definitions that are used to reference vector and tile data in user tables to locations on the earth.
+* For using a command-line SQL interface, consider the "sqlite" command.
+* For using a graphical SQL interface, consider `DB Browser for SQLite <http://sqlitebrowser.org/>`_.
+* For using a web application, consider using `NGA's application <http://ngageoint.github.io/geopackage-js/>`_ as long as the GeoPackage file isn't too big.
+* For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment. 
 
-The ``gpkg_contents`` table provides a list of all geospatial contents in a GeoPackage to allow applications to identify and describe geospatial data that is available for access and/or update.
+The GeoPackage community tries to maintain a list of operational GeoPackage implementations and this list can be found on the `implementations page <http://www.geopackage.org/implementations.html>`_. Additional information on specific products and versions of products that implement GeoPackage can also be found at http://www.opengeospatial.org/resource/products. You can search by specific versions of the GeoPackage standard. Note: Search for all implementing products.
 
-The ``gpkg_geometry_columns`` table specifies the type of geometry supported by user data tables containing features.
+Creating a GeoPackage
+---------------------
 
-The ``gpkg_tile_matrix_set`` table provides records identifying each tile pyramid user data table contained in the GeoPackage.
+Similarly, if you wish to create a new GeoPackage from scratch or from an existing source file such as a ShapeFile or .csv, below are some suggestions:
 
-The ``gpkg_tile_matrix`` table documents the structure of the tile matrix at each zoom level in each tiles table.
+* For using direct SQL access, start with the `empty geopackage template <http://www.geopackage.org/data/empty.gpkg>`_
+* For using a desktop application, refer to the implementations list above
+* For using a command line program, consider the `GDAL <http://www.gdal.org>`_ vector and raster utilities 
+* This `blog post <http://www.fulcrumapp.com/blog/working-with-geodata/>`_ (The section titled "Creating a GeoPackage with Reference Data") provides an example that describes steps for creating a GeoPackage using ogr2ogr. The post also provides information on how to add the `SpatiaLite <https://www.gaia-gis.it/fossil/libspatialite/index>`_ extension to enable further spatial analysis in SQLite.
 
-The ``gpkg_extensions`` table or updateable view in a GeoPackage is used to indicate that a particular extension applies to a GeoPackage, a table in a GeoPackage, or a column of a table in a GeoPackage.
-
-The ``gpkg_data_columns`` table stores a minimal description of the schema of feature and tile matrix data tables that supplements the data available from the SQLite sqlite_master table and pragma table_info(table_name) SQL function.
 
-The ``gpkg_data_column_constraints`` table contains data to specify restrictions on basic data type column values.
+    Note: For maximum interoperability, start your database identifiers (table names, column names, etc.) with a lowercase character and only use lowercase characters, numbers 0-9, and underscores (`_`).
 
-The ``gpkg_metadata`` table allows for metadata to be stored inside the GeoPackage.
+Checking a GeoPackage Version
+-----------------------------
 
-The ``gpkg_metadata_reference`` table relates metadata records stored in the gpkg_metadata to feature and tile data stored in the GeoPackage.
+Using a direct SQL interface such as DB Browser is the easiest way to check a GeoPackage version. SQLite uses `"pragma" statements<https://www.sqlite.org/pragma.html>`_ to implement non-standard SQL functions. 
+These statements can be executed just like any other SQL statement and where relevant, they return a result set. The two pragmas you need to know are:
 
-Why does GeoPackage have these tables?
--------------------------------------
+* `PRAGMA application_id`
+   * 1196444487 (the 32-bit integer value of 0x47504B47 or `GPKG` in ASCII) for GPKG 1.2 and greater 
+   * 1196437808 (the 32-bit integer value of 0x47503130 or `GP10` in ASCII) for GPKG 1.0 or 1.1
+* `PRAGMA user_version`
+   * For versions 1.2 and later, this returns an integer representing the version number in the form MMmmPP (MM = major version, mm = minor version, PP = patch). Therefore 1.2 is 10200.
+   
+What is in a GeoPackage
+-----------------------
 
-The GeoPackage standard implements the OGC OpenGIS® Simple Features Interface Standard (SFS) which provides a common way for applications to store and access feature data in relational or object-relational databases. The specific tables that play a key role in this are the ``gpkg_geometry_columns`` , ``gpkg_spatial_ref_sys``, ``gpkg_contents`` and a user-named table that contains the feature properties. Use of the SFS by GeoPackage allows implementations of the GeoPackage standard to make use of the large number of spatial reference systems available from registers such as the `EPSG Geodetic Parameter Registry  <https://www.epsg-registry.org/>`_. Use of the SFS by GeoPackage also makes GeoPackages interoperable with other formats that use the SFS, for example the OGC Geography Markup Language (GML). This means that data can be exchanged between a GeoPackage and other SFS-based formats with minimal or no information loss because the data models are based on a common feature model.
+Like other relational databases, GeoPackages contain a number of tables. These tables fall into two categories, user-defined data tables and metadata tables. GeoPackages contain two mandatory metadata tables, ``gpkg_contents`` and ``gpkg_spatial_ref_sys``. 
+The presence of other metadata tables is dictated by the content being stored (see Content Types below). The name of the user-defined data table is the primary key for ``gpkg_contents`` and generally is a foreign key for content-specific metadata tables.
 
-The GeoPackage standard adopts a tile-based pyramid structure for storing imagery and raster maps at multiple resolutions. An illustration of this structure is shown below. The specific tables that play a key role in storage of such data include ``gpkg_tile_matrix_set`` , ``gpkg_tile_matrix`` , ``gpkg_contents`` and a user-named table that contains the actual binary encoded tiles. This tile-based pyramid structure is particularly useful when handling a GeoPackage on small or constrained devices such as mobile phones, tablets or laptops because an appropriate resolution can be selected based on the zoom level and the device screen size.
+`gpkg_contents <http://www.geopackage.org/spec120/#_contents>`_
+***************************************************************
 
-.. image:: ../img/pyramid.png
-   :height: 327
-   :width: 560
+The `gpkg_contents` table is the table of contents for a GeoPackage. 
+The mandatory columns in this table are:
 
-Using the NGA GeoPackage Java library
--------------------------------------
+* ``table_name``: the actual name of the user-defined data table (this is also the primary key for this table);
+* ``data_type``: the data type, e.g., "tiles", "features", "attributes" or some other type provided by an extension;
+* ``identifier`` and ``description``: human-readable text ("identifier" is analogous to "title");
+* ``last_change``: the informational date of last change, in ISO 8601 format (for practical purposes, `RFC3339 <https://www.ietf.org/rfc/rfc3339.txt>`_ applies);
+* ``min_x``, ``min_y``, ``max_x``, and ``max_y``: the spatial extents of the content. (This is informational and often used by clients to provide a default view window.);
+* ``srs_id``: spatial reference system (see next subsection).
 
-The open source NGA GeoPackage Java library has been designed to closely abstract the tables of a GeoPackage. The library offers a Data Access Object (DAO) for each of the core tables found in a GeoPackage.
-
-Features and tiles can be accessed from the DAO instances and queried to extract metadata or feature properties. The following code block presents an annotated example of a program that reads two separate GeoPackages, one containing vector features and another containing tiles of imagery. The source code has been adapted from the `GeoPackage Java library website <https://github.com/ngageoint/geopackage-java>`_ . Note that the example uses the states10.gpkg and bluemarble.gpkg sample files. Both files can be downloaded from `here <https://demo.luciad.com/GeoPackageData/>`_ .
-
-.. code-block:: java
-
-
-      package org.opengeospatial.GeoPackageDemo;
+`gpkg_spatial_ref_sys <http://www.geopackage.org/spec120/#spatial_ref_sys)>`_
+*****************************************************************************
 
-      import java.io.File;
-      import java.util.List;
-      import mil.nga.geopackage.GeoPackage;
-      import mil.nga.geopackage.core.contents.ContentsDao;
-      import mil.nga.geopackage.core.srs.SpatialReferenceSystemDao;
-      import mil.nga.geopackage.extension.ExtensionsDao;
-      import mil.nga.geopackage.features.columns.GeometryColumnsDao;
-      import mil.nga.geopackage.features.user.FeatureDao;
-      import mil.nga.geopackage.features.user.FeatureResultSet;
-      import mil.nga.geopackage.features.user.FeatureRow;
-      import mil.nga.geopackage.geom.GeoPackageGeometryData;
-      import mil.nga.geopackage.io.GeoPackageTextOutput;
-      import mil.nga.geopackage.manager.GeoPackageManager;
-      import mil.nga.geopackage.metadata.MetadataDao;
-      import mil.nga.geopackage.metadata.reference.MetadataReferenceDao;
-      import mil.nga.geopackage.schema.columns.DataColumnsDao;
-      import mil.nga.geopackage.schema.constraints.DataColumnConstraintsDao;
-      import mil.nga.geopackage.tiles.matrix.TileMatrixDao;
-      import mil.nga.geopackage.tiles.matrixset.TileMatrixSetDao;
-      import mil.nga.geopackage.tiles.user.TileDao;
-      import mil.nga.geopackage.tiles.user.TileResultSet;
-      import mil.nga.geopackage.tiles.user.TileRow;
-      import mil.nga.wkb.geom.Geometry;
+For content that has spatial reference (including but not limited to tiles and features), each row in contents must reference a coordinate reference system which is stored in the ``gpkg_spatial_ref_sys`` table. 
+The mandatory columns in this table are:
 
-      /**
-       * GeoPackage demonstration
-       *
-       */
-      public class App {
+* ``srs_name``, ``description``: a human readable name and description for the SRS; 
+* ``srs_id``: a unique identifier for the SRS; also the primary key for the table;
+* ``organization``: Case-insensitive name of the defining organization e.g., ``EPSG`` or ``epsg``;
+* ``organization_coordsys_id``: Numeric ID of the SRS assigned by the organization;
+* ``definition``: Well Known Text definition of the SRS.
 
-        /**
-        * This method reads a GeoPackage file and prints out the contents to the console
-        */
-      	public void read(File geopackageFile) {
+At least three rows must be in this table. There must be one row for each of the following ``srs_id`` column values:
 
-      		// Open a GeoPackage and create an handle to it
-      		GeoPackage geoPackage = GeoPackageManager.open(geopackageFile);
+* *4326*: latitude and longitude coordinates on the WGS84 reference ellipsoid,
+* *0*: undefined geographic coordinate reference systems, and
+* *-1*: undefined Cartesian coordinate reference systems.
 
-      		// Create DAO instances of GeoPackage tables
-      		SpatialReferenceSystemDao srsDao = geoPackage.getSpatialReferenceSystemDao(); //accesses gpkg_spatial_ref_sys
-      		ContentsDao contentsDao = geoPackage.getContentsDao();   //accesses gpkg_contents
-      		GeometryColumnsDao geomColumnsDao = geoPackage.getGeometryColumnsDao();  //accesses gpkg_geometry_columns
-      		TileMatrixSetDao tileMatrixSetDao = geoPackage.getTileMatrixSetDao();  //accesses gpkg_tile_matrix_set
-      		TileMatrixDao tileMatrixDao = geoPackage.getTileMatrixDao();   //accesses gpkg_tile_matrix
-      		DataColumnsDao dataColumnsDao = geoPackage.getDataColumnsDao();  //accesses gpkg_data_columns
-      		DataColumnConstraintsDao dataColumnConstraintsDao = geoPackage.getDataColumnConstraintsDao(); //accesses gpkg_data_columns_constraints
-      		MetadataDao metadataDao = geoPackage.getMetadataDao(); //accesses gpkg_metadata
-      		MetadataReferenceDao metadataReferenceDao = geoPackage.getMetadataReferenceDao();  //accesses gpkg_metadata_reference
-      		ExtensionsDao extensionsDao = geoPackage.getExtensionsDao(); //accesses gpkg_extensions
-
-      		// Feature and tile tables
-      		List<String> features = geoPackage.getFeatureTables();
-      		List<String> tiles = geoPackage.getTileTables();
-
-      		// If there are any features print their properties (as represented by column names and values)
-      		if (features.size() > 0) {
-      			FeatureDao featureDao = geoPackage.getFeatureDao(features.get(0));
-      			FeatureResultSet featureResultSet = featureDao.queryForAll();
-      			try {
-      				while (featureResultSet.moveToNext()) {
-      					FeatureRow featureRow = featureResultSet.getRow();
-      					String[] columnNames = featureRow.getColumnNames();
-      					for(String columnName: columnNames)
-      					{
-      						if(featureRow.getColumn(columnName).isGeometry())
-      							System.out.println(featureRow.getGeometry().toString());
-      						else
-      							System.out.println(featureRow.getColumn(columnName).getName()+"="+featureRow.getValue(columnName));
-      					}
-
-
-      				}
-      			} finally {
-      				featureResultSet.close();
-      			}
-
-      		}
-
-      		// If there are any tiles in the GeoPackage, then print out information about the tile tables
-      		if (tiles.size() > 0) {
-
-      			TileDao tileDao = geoPackage.getTileDao(tiles.get(0));
-      			TileResultSet tileResultSet = tileDao.queryForAll();
-
-      			//Now print out descriptions of the tiles
-      			StringBuilder output = new StringBuilder();
-      			GeoPackageTextOutput textOutput = new GeoPackageTextOutput(
-      					geoPackage);
-      			output.append("\n\n");
-      			output.append(textOutput.header());
-      			output.append("\n\n");
-      			output.append(textOutput.tileTable(geoPackage.getTileTables().get(0)));
-      			System.out.println(output);
-      		}
-
-      		// Close the database when done
-          System.out.println("Done!");
-      		geoPackage.close();
-
-      	}
-
-      	/*
-      	 * This is the main method. It creates an array of two GeoPackage files, one consisting of vector feature data and another consisting of imagery tile data.
-      	 */
-      	public static void main(String[] args) {
-
-      		//Create an array of two GeoPackage files.
-      		File[] existingGeoPackages = new File[2];
-      		existingGeoPackages[0] = new File("/Users/Shared/states10.gpkg");
-      		existingGeoPackages[1] = new File("/Users/Shared/bluemarble.gpkg");
-
-      		//Pass each of the files in the array to the read() method for reading
-      		App app = new App();
-      		for(File existingGeoPackage: existingGeoPackages){
-      			app.read(existingGeoPackage);
-      		}
-
-      	}
-
-      }
-
-When the program runs it prints out the feature and tile datasets, including feature properties and tile matrix descriptions.
-
-To run this program, create a Maven project and add the following dependency to the configuration file of the Maven project. This will allow the library dependencies to be pulled in from the Maven Central Repository. A quick start guide for creating a Maven project can be found `here <https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html>`_.
-
-.. code-block:: xml
-
-
-      <dependency>
-          <groupId>mil.nga.geopackage</groupId>
-          <artifactId>geopackage</artifactId>
-          <version>1.3.1</version>
-      </dependency>
-
-
-
-Using the GDAL/OGR library
--------------------------------------
-
-There are alternative ways of accessing a GeoPackage, including through use of other prorgamming languages and libraries. One of the software libraries that offers this ability is the free and open source Geospatial Data Abstraction Layer (GDAL) and its vector toolkit, OGR. GDAL offers C, C++ and Python bindings that allow it to be imported into a variety of applications.
-
-To build and install GDAL on Windows, Linux or Mac OS X, the source code can downloaded from `here <http://www.gdal.org/usergroup0.html>`_.
-
-For a quick start, GDAL 1.11 is also installed during the installation of QGIS.
-
-An example Python script for reading a GeoPackage using GDAL 1.11 is below. The source code has been adapted from `here <http://gdal.org/1.11/ogr/ogr_apitut.html>`_. When the program runs it prints out the values of feature properties.
-
-
-.. code-block:: python
-
-
-      import sys
-      import ogr
-      # First open a handle on the GeoPackage.
-      ds = ogr.Open( "/home/ogckm/Downloads/states10.gpkg" )
-      # If the file handle is null then exit
-      if ds is None:
-          print "Open failed.\n"
-          sys.exit( 1 )
-      # Select the dataset to retrieve from the GeoPackage and assign it to an layer instance called lyr.
-      # The names of available datasets can be found in the gpkg_contents table.
-      lyr = ds.GetLayerByName( "statesQGIS" )
-      # Refresh the reader
-      lyr.ResetReading()
-      # for each feature in the layer, print the feature properties
-      for feat in lyr:
-
-          feat_defn = lyr.GetLayerDefn()
-          # for each non-geometry feature property, print its value
-          for i in range(feat_defn.GetFieldCount()):
-              field_defn = feat_defn.GetFieldDefn(i)
-
-              if field_defn.GetType() == ogr.OFTInteger:
-                  print "%d" % feat.GetFieldAsInteger(i)
-              elif field_defn.GetType() == ogr.OFTReal:
-                  print "%.3f" % feat.GetFieldAsDouble(i)
-              elif field_defn.GetType() == ogr.OFTString:
-                  print "%s" % feat.GetFieldAsString(i)
-              else:
-                  print "%s" % feat.GetFieldAsString(i)
-          # Confirm whether there is a geometry property
-          geom = feat.GetGeometryRef()
-          if geom is not None and geom.GetGeometryType() == ogr.wkbMultiPolygon:
-              print "has a geometry property"
-          print "\n"
-
-      ds = None
-
-Note that GDAL 2.0 uses a different set of classes for accessing vector data. We have used GDAL 1.11 in this example because it is currently included by default in Linux repositories and also comes bundled within QGIS.
+However, many more rows that reference other coordinate reference systems (CRSs) are possible. 
+Using CRSs incorrectly is one of the most common ways to break GeoPackage interoperability. 
+When in doubt, discuss CRSs with a geospatial expert to ensure that you are using an appropriate coordinate reference system for your situation.
