@@ -17,4 +17,5 @@ Contents
    basic-overview.rst
    basic-main.rst
    advanced.rst
+   content-types.rst
    nsg-gpkg.rst

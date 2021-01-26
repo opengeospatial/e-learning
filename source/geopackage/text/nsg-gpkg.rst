@@ -1,5 +1,5 @@
 NSG Profile of GeoPackage
-=====================
+=========================
 
 Introduction
 ------------
