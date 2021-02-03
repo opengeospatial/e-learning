@@ -109,7 +109,7 @@ but attributes have no geometry column and the corresponding row in ``gpkg_conte
 This data is commonly joined with spatial data as required by an application. 
 
 `Extensions <http://www.geopackage.org/spec120/#extension_mechanism>`_
-**********************************************************************
+----------------------------------------------------------------------
 
 In addition to tiles, features, and attributes, GeoPackage has a well-defined extension mechanism to support use cases that are not part of the core standard. 
 A GeoPackage extension is a set of one or more requirements clauses that either profiles / extends existing requirements clauses in the GeoPackage standard or adds new requirements clauses.
@@ -138,15 +138,15 @@ Registered extensions have been reviewed and adopted by OGC and are for all inte
 
 The following extensions have been adopted by OGC:
 
-* `Non-Linear Geometry Types <extensions/nonlinear_geometry_types.rst>`_
-* `RTree Spatial Indexes <extensions/rtree_spatial_indexes.rst>`_
-* `Zoom Other Intervals <extensions/zoom_other_intervals.rst>`_
-* `Tiles Encoding WebP <extensions/tiles_encoding_webp.rst>`_
-* `Metadata <extensions/metadata.rst>`_
-* `Schema <extensions/schema.rst>`_
-* `WKT for Coordinate Reference Systems <extensions/wkt_for_crs.rst>`_
-* `Tiled Gridded Coverage Data <extensions/tiled_gridded_coverage_data.rst>`_
-* `Related Tables <extensions/related_tables.rst>`_
+* `Non-Linear Geometry Types <extensions/nonlinear_geometry_types.html>`_
+* `RTree Spatial Indexes <extensions/rtree_spatial_indexes.html>`_
+* `Zoom Other Intervals <extensions/zoom_other_intervals.html>`_
+* `Tiles Encoding WebP <extensions/tiles_encoding_webp.html>`_
+* `Metadata <extensions/metadata.html>`_
+* `Schema <extensions/schema.html>`_
+* `WKT for Coordinate Reference Systems <extensions/wkt_for_crs.html>`_
+* `Tiled Gridded Coverage Data <extensions/tiled_gridded_coverage_data.html>`_
+* `Related Tables <extensions/related_tables.html>`_
 
 Follow the links for a description for each individual extension.
 

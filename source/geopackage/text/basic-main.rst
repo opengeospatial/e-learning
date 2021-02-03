@@ -58,10 +58,10 @@ Applications
 
 The following are some applications and APIs that can be used with GeoPackage:
 
-* `SQLite <apps/sqlite.rst>`_
-* `GDAL / OGR <apps/gdal-ogr.rst>`_
-* `QGIS <apps/qgis.rst>`_
-* `The GeoPackage-Java library <apps/geopackage-java.rst>`_
+* `SQLite <apps/sqlite.html>`_
+* `GDAL / OGR <apps/gdal-ogr.html>`_
+* `QGIS <apps/qgis.html>`_
+* `The GeoPackage-Java library <apps/geopackage-java.html>`_
 
 External links
 --------------
