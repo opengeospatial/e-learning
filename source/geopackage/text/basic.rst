@@ -1,4 +1,4 @@
-Advanced GeoPackage Concepts
+Basic GeoPackage Concepts
 ============================
 
 Identifying a GeoPackage
@@ -43,44 +43,19 @@ These statements can be executed just like any other SQL statement and where rel
    * 1196437808 (the 32-bit integer value of 0x47503130 or `GP10` in ASCII) for GPKG 1.0 or 1.1
 * `PRAGMA user_version`
    * For versions 1.2 and later, this returns an integer representing the version number in the form MMmmPP (MM = major version, mm = minor version, PP = patch). Therefore 1.2 is 10200.
-   
-What is in a GeoPackage
------------------------
 
-Like other relational databases, GeoPackages contain a number of tables. These tables fall into two categories, user-defined data tables and metadata tables. GeoPackages contain two mandatory metadata tables, ``gpkg_contents`` and ``gpkg_spatial_ref_sys``. 
-The presence of other metadata tables is dictated by the content being stored (see Content Types below). The name of the user-defined data table is the primary key for ``gpkg_contents`` and generally is a foreign key for content-specific metadata tables.
+Running the Executable Test Suite
+---------------------------------
 
-`gpkg_contents <http://www.geopackage.org/spec120/#_contents>`_
-***************************************************************
+The `GeoPackage Executable Test Suite <https://cite.opengeospatial.org/teamengine/>`_ (ETS) is a conformance test suite that verifies the structure and content of a GeoPackage data container.
+To run the ETS, do the following:
 
-The `gpkg_contents` table is the table of contents for a GeoPackage. 
-The mandatory columns in this table are:
+1. Open the site (linked above).
+2. Create an account using the link provided.
+3. Log in.
+4. Create a new session.
+5. Choose the GeoPackage 1.2 specification (or later if available).
+6. Provide a file using either the URL box or a file upload.
+7. Select the "Start" button.
 
-* ``table_name``: the actual name of the user-defined data table (this is also the primary key for this table);
-* ``data_type``: the data type, e.g., "tiles", "features", "attributes" or some other type provided by an extension;
-* ``identifier`` and ``description``: human-readable text ("identifier" is analogous to "title");
-* ``last_change``: the informational date of last change, in ISO 8601 format (for practical purposes, `RFC3339 <https://www.ietf.org/rfc/rfc3339.txt>`_ applies);
-* ``min_x``, ``min_y``, ``max_x``, and ``max_y``: the spatial extents of the content. (This is informational and often used by clients to provide a default view window.);
-* ``srs_id``: spatial reference system (see next subsection).
-
-`gpkg_spatial_ref_sys <http://www.geopackage.org/spec120/#spatial_ref_sys)>`_
-*****************************************************************************
-
-For content that has spatial reference (including but not limited to tiles and features), each row in contents must reference a coordinate reference system which is stored in the ``gpkg_spatial_ref_sys`` table. 
-The mandatory columns in this table are:
-
-* ``srs_name``, ``description``: a human readable name and description for the SRS; 
-* ``srs_id``: a unique identifier for the SRS; also the primary key for the table;
-* ``organization``: Case-insensitive name of the defining organization e.g., ``EPSG`` or ``epsg``;
-* ``organization_coordsys_id``: Numeric ID of the SRS assigned by the organization;
-* ``definition``: Well Known Text definition of the SRS.
-
-At least three rows must be in this table. There must be one row for each of the following ``srs_id`` column values:
-
-* *4326*: latitude and longitude coordinates on the WGS84 reference ellipsoid,
-* *0*: undefined geographic coordinate reference systems, and
-* *-1*: undefined Cartesian coordinate reference systems.
-
-However, many more rows that reference other coordinate reference systems (CRSs) are possible. 
-Using CRSs incorrectly is one of the most common ways to break GeoPackage interoperability. 
-When in doubt, discuss CRSs with a geospatial expert to ensure that you are using an appropriate coordinate reference system for your situation.
+The ETS is open source software hosted in a `GitHub Repository <https://github.com/opengeospatial/ets-gpkg12>`_.

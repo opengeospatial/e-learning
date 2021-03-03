@@ -14,8 +14,9 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   basic-overview.rst
-   basic-main.rst
-   advanced.rst
-   content-types.rst
+   overview.rst
+   introduction.rst
+   basic.rst
+   contents.rst
+   modeling.rst
    nsg-gpkg.rst

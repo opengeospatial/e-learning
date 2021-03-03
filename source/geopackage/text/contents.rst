@@ -1,12 +1,54 @@
 Content Types
 =============
 
+What is in a GeoPackage
+-----------------------
+
+Like other relational databases, GeoPackages contain a number of tables. These tables fall into two categories, *metadata tables* and *user-defined data tables*.
+GeoPackages contain two mandatory metadata tables, ``gpkg_contents`` and ``gpkg_spatial_ref_sys``. 
+The presence of other metadata tables is dictated by the content being stored (see Content Types below). The name of the user-defined data table is the primary key for ``gpkg_contents`` and generally is a foreign key for content-specific metadata tables.
+
+`gpkg_contents <http://www.geopackage.org/spec120/#_contents>`_
+***************************************************************
+
+The `gpkg_contents` table is the table of contents for a GeoPackage. 
+The mandatory columns in this table are:
+
+* ``table_name``: the actual name of the user-defined data table (this is also the primary key for this table)
+* ``data_type``: the data type, e.g., "tiles", "features", "attributes" or some other type provided by an extension
+* ``identifier`` and ``description``: human-readable text ("identifier" is analogous to "title")
+* ``last_change``: the informational date of last change, in ISO 8601 format (for practical purposes, `RFC3339 <https://www.ietf.org/rfc/rfc3339.txt>`_ applies)
+* ``min_x``, ``min_y``, ``max_x``, and ``max_y``: the spatial extents of the content. (This is informational and often used by clients to provide a default view window.)
+* ``srs_id``: spatial reference system (see next subsection)
+
+`gpkg_spatial_ref_sys <http://www.geopackage.org/spec120/#spatial_ref_sys)>`_
+*****************************************************************************
+
+For content that has spatial reference (including but not limited to tiles and features), each row in contents must reference a coordinate reference system which is stored in the ``gpkg_spatial_ref_sys`` table. 
+The mandatory columns in this table are:
+
+* ``srs_name``, ``description``: a human readable name and description for the SRS 
+* ``srs_id``: a unique identifier for the SRS; also the primary key for the table
+* ``organization``: Case-insensitive name of the defining organization e.g., ``EPSG`` or ``epsg``
+* ``organization_coordsys_id``: Numeric ID of the SRS assigned by the organization
+* ``definition``: Well Known Text definition of the SRS.
+
+At least three rows must be in this table. There must be one row for each of the following ``srs_id`` column values:
+
+* *4326*: latitude and longitude coordinates on the WGS84 reference ellipsoid,
+* *0*: undefined geographic coordinate reference systems, and
+* *-1*: undefined Cartesian coordinate reference systems.
+
+However, many more rows that reference other coordinate reference systems (CRSs) are possible. 
+Using CRSs incorrectly is one of the most common ways to break GeoPackage interoperability. 
+When in doubt, discuss CRSs with a geospatial expert to ensure that you are using an appropriate coordinate reference system for your situation.
+
 `Features <http://www.geopackage.org/spec120/#features>`_
 ---------------------------------------------------------
 
 Vector feature data are geographic entities including conceptual ones such as districts, real world objects such as roads and rivers, and observations. (An *observation* is an act that results in the estimation of the value of a feature property, and involves application of a specified procedure, such as a sensor, instrument, algorithm or process chain. A temperature at a given geographic location provided by a sensor is an example of an observation.) 
 For vector feature data, there is one additional required table: ``gpkg_geometry_columns``. 
-Features are stored in the user-defined data tables identified by the ``table_name`` values in ``gpkg_contents`` (one table per row). 
+Features are stored in the user-defined data tables identified by the ``table_name`` values in ``gpkg_contents`` (one table per row).
 
 .. figure:: http://www.geopackage.org/spec120/geopackage-features.png
     :width: 600px
@@ -36,11 +78,22 @@ The GeoPackage standard has an `example schema <http://www.geopackage.org/spec12
 `Tiles <http://www.geopackage.org/spec120/#tiles>`_
 ---------------------------------------------------
 
-The GeoPackage Tiles option specifies a mechanism for storing raster data in tile pyramids. 
-"Tile pyramid" refers to the concept of pyramid structure of tiles of different spatial extent and resolution at different zoom levels, and the tile data itself. 
-"Tile" refers to an individual raster image such as a PNG or JPEG that covers a specific geographic area. 
-"Tile matrix" refers to rows and columns of tiles that all have the same spatial extent and resolution at a particular zoom level. 
-"Tile matrix set" refers to the definition of a tile pyramid’s tiling structure. 
+The GeoPackage standard adopts a tile-based pyramid structure for storing imagery and raster maps at multiple resolutions.
+An illustration of this structure is shown below.
+
+.. figure:: ../img/pyramid2.png
+   :height: 327
+   :width: 560
+Figure 2: A tile pyramid
+
+The GeoPackage *tiles* option specifies a mechanism for storing raster data in tile pyramids. 
+
+* "Tile pyramid" refers to the concept of pyramid structure of tiles of different spatial extent and resolution at different zoom levels, and the tile data itself. 
+* "Tile" refers to an individual raster image such as a PNG or JPEG that covers a specific geographic area. 
+* "Tile matrix" refers to rows and columns of tiles that all have the same spatial extent and resolution at a particular zoom level. 
+* "Tile matrix set" refers to the definition of a tile pyramid’s tiling structure. 
+
+This tile-based pyramid structure is particularly useful when handling a GeoPackage on small or constrained devices such as mobile phones, tablets or laptops because an appropriate resolution can be selected based on the zoom level and the device screen size.
 This mechanism is based on the model for tile matrix sets described in Section 6 of the `WMTS Implementation Specification <http://www.opengeospatial.org/standards/wmts>`_.
 
 If tiles are to be included in a GeoPackage, there are two additional required metadata tables, ``gpkg_tile_matrix_set`` and ``gpkg_tile_matrix``. 
@@ -48,7 +101,7 @@ In addition to these tables, each tile pyramid requires a user-defined table tha
 
 .. figure:: http://www.geopackage.org/spec120/geopackage-tiles.png
     :width: 600px
-Figure 2: UML Diagram of Tiles tables
+Figure 3: UML Diagram of Tiles tables
 
 `gpkg_tile_matrix_set <http://www.geopackage.org/spec120/#_tile_matrix_set>`_
 *****************************************************************************
