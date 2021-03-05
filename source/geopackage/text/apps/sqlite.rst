@@ -26,7 +26,7 @@ Now close the SQLite3 application by running the following command ``.quit``
 
 A screenshot showing the steps and outputs is presented below.
 
-.. image:: ../img/sqlite3_list_tables.png
+.. image:: ../../img/sqlite3_list_tables.png
    :height: 327
    :width: 560
 
