@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Content Types &mdash; OGC e-Learning 2.0.0 documentation</title>
+  <title>Basic GeoPackage Concepts &mdash; OGC e-Learning 2.0.0 documentation</title>
   
 
   
@@ -35,8 +35,8 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="GeoPackage" href="basic-index.html"/>
-        <link rel="next" title="NSG Profile of GeoPackage" href="nsg-gpkg.html"/>
-        <link rel="prev" title="Advanced GeoPackage Concepts" href="advanced.html"/> 
+        <link rel="next" title="Content Types" href="contents.html"/>
+        <link rel="prev" title="GeoPackage - Introduction" href="introduction.html"/> 
 
   
   <script src="static/js/modernizr.min.js"></script>
@@ -158,10 +158,11 @@
 <li class="toctree-l2 current"><a class="reference internal" href="basic-index.html">GeoPackage</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="basic-index.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="basic-index.html#contents">Contents</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="basic-overview.html">GeoPackage - Overview</a></li>
-<li class="toctree-l4"><a class="reference internal" href="basic-main.html">GeoPackage - Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="advanced.html">Advanced GeoPackage Concepts</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Content Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="overview.html">GeoPackage - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="introduction.html">GeoPackage - Introduction</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Basic GeoPackage Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="contents.html">Content Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="modeling.html">Modeling Guidelines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nsg-gpkg.html">NSG Profile of GeoPackage</a></li>
 </ul>
 </li>
@@ -354,11 +355,11 @@
       
           <li><a href="basic-index.html">GeoPackage</a> &raquo;</li>
       
-    <li>Content Types</li>
+    <li>Basic GeoPackage Concepts</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../../_sources/geopackage/text/content-types.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/geopackage/text/basic.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -367,150 +368,74 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="content-types">
-<h1>Content Types<a class="headerlink" href="#content-types" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2><a class="reference external" href="http://www.geopackage.org/spec120/#features">Features</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Vector feature data are geographic entities including conceptual ones such as districts, real world objects such as roads and rivers, and observations. (An <em>observation</em> is an act that results in the estimation of the value of a feature property, and involves application of a specified procedure, such as a sensor, instrument, algorithm or process chain. A temperature at a given geographic location provided by a sensor is an example of an observation.)
-For vector feature data, there is one additional required table: <code class="docutils literal notranslate"><span class="pre">gpkg_geometry_columns</span></code>.
-Features are stored in the user-defined data tables identified by the <code class="docutils literal notranslate"><span class="pre">table_name</span></code> values in <code class="docutils literal notranslate"><span class="pre">gpkg_contents</span></code> (one table per row).</p>
-<div class="figure align-default">
-<a class="reference internal image-reference" href="http://www.geopackage.org/spec120/geopackage-features.png"><img alt="http://www.geopackage.org/spec120/geopackage-features.png" src="http://www.geopackage.org/spec120/geopackage-features.png" style="width: 600px;" /></a>
+  <div class="section" id="basic-geopackage-concepts">
+<h1>Basic GeoPackage Concepts<a class="headerlink" href="#basic-geopackage-concepts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="identifying-a-geopackage">
+<h2>Identifying a GeoPackage<a class="headerlink" href="#identifying-a-geopackage" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="http://geopackage.org">GeoPackage</a> is an <a class="reference external" href="http://sqlite.org/index.html">SQLite Database</a> file with a <a class="reference external" href="http://www.geopackage.org/spec120/#r3">.gpkg extension</a>.
+If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state <a class="reference external" href="http://www.geopackage.org/spec120/#r1">“SQLite format 3”</a>.</p>
 </div>
-<p>Figure 1: UML Diagram of Features tables</p>
-<div class="section" id="id2">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#_geometry_columns">gpkg_geometry_columns</a><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">gpkg_geometry_columns</span></code> table describes the geometry for a particular Features table.
-Each feature table must have a corresponding row in this table. The required columns in this table are:</p>
+<div class="section" id="opening-a-geopackage">
+<h2>Opening a GeoPackage<a class="headerlink" href="#opening-a-geopackage" title="Permalink to this headline">¶</a></h2>
+<p>There are a number of ways to open a GeoPackage.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">table_name</span></code> and <code class="docutils literal notranslate"><span class="pre">column_name</span></code> where the geometries are stored</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">geometry_type_name</span></code> <a class="reference external" href="http://www.geopackage.org/spec120/#geometry_types_core">http://www.geopackage.org/spec120/#geometry_types_core</a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">srs_id</span></code> the spatial reference system (see previous page)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">z</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> are flags to indicate 3D/4D applications (Z values are for height/elevation/depth and M values are reserved for other types of domain-specific measurements)</p></li>
+<li><p>For using a command-line SQL interface, consider the “sqlite” command.</p></li>
+<li><p>For using a graphical SQL interface, consider <a class="reference external" href="http://sqlitebrowser.org/">DB Browser for SQLite</a>.</p></li>
+<li><p>For using a web application, consider using <a class="reference external" href="http://ngageoint.github.io/geopackage-js/">NGA’s application</a> as long as the GeoPackage file isn’t too big.</p></li>
+<li><p>For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment.</p></li>
+</ul>
+<p>The GeoPackage community tries to maintain a list of operational GeoPackage implementations and this list can be found on the <a class="reference external" href="http://www.geopackage.org/implementations.html">implementations page</a>. Additional information on specific products and versions of products that implement GeoPackage can also be found at <a class="reference external" href="http://www.opengeospatial.org/resource/products">http://www.opengeospatial.org/resource/products</a>. You can search by specific versions of the GeoPackage standard. Note: Search for all implementing products.</p>
+</div>
+<div class="section" id="creating-a-geopackage">
+<h2>Creating a GeoPackage<a class="headerlink" href="#creating-a-geopackage" title="Permalink to this headline">¶</a></h2>
+<p>Similarly, if you wish to create a new GeoPackage from scratch or from an existing source file such as a ShapeFile or .csv, below are some suggestions:</p>
+<ul>
+<li><p>For using direct SQL access, start with the <a class="reference external" href="http://www.geopackage.org/data/empty.gpkg">empty geopackage template</a></p></li>
+<li><p>For using a desktop application, refer to the implementations list above</p></li>
+<li><p>For using a command line program, consider the <a class="reference external" href="http://www.gdal.org">GDAL</a> vector and raster utilities</p></li>
+<li><p>This <a class="reference external" href="http://www.fulcrumapp.com/blog/working-with-geodata/">blog post</a> (The section titled “Creating a GeoPackage with Reference Data”) provides an example that describes steps for creating a GeoPackage using ogr2ogr. The post also provides information on how to add the <a class="reference external" href="https://www.gaia-gis.it/fossil/libspatialite/index">SpatiaLite</a> extension to enable further spatial analysis in SQLite.</p>
+<blockquote>
+<div><p>Note: For maximum interoperability, start your database identifiers (table names, column names, etc.) with a lowercase character and only use lowercase characters, numbers 0-9, and underscores (<cite>_</cite>).</p>
+</div></blockquote>
+</li>
 </ul>
 </div>
-<div class="section" id="id3">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#feature_user_tables)">User-defined Data Tables</a><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>Features are stored in user-defined data tables. Each features table has exactly one geometry column, a BLOB.
-(The structure of this BLOB is described <a class="reference external" href="http://www.geopackage.org/spec120/#gpb_format">here</a>.)
-The <a class="reference external" href="http://www.geopackage.org/spec120/#geometry_types_core">OGC Simple Features geometry types</a> are the supported geometry types.
-Other than the geometry column and a primary key, the schema of a features table is up to the implementer.
-Properties (text, integer, or real) provide additional information about each feature.
-The GeoPackage standard has an <a class="reference external" href="http://www.geopackage.org/spec120/#example_feature_table_cols">example schema</a>.</p>
-</div>
-</div>
-<div class="section" id="id4">
-<h2><a class="reference external" href="http://www.geopackage.org/spec120/#tiles">Tiles</a><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>The GeoPackage Tiles option specifies a mechanism for storing raster data in tile pyramids.
-“Tile pyramid” refers to the concept of pyramid structure of tiles of different spatial extent and resolution at different zoom levels, and the tile data itself.
-“Tile” refers to an individual raster image such as a PNG or JPEG that covers a specific geographic area.
-“Tile matrix” refers to rows and columns of tiles that all have the same spatial extent and resolution at a particular zoom level.
-“Tile matrix set” refers to the definition of a tile pyramid’s tiling structure.
-This mechanism is based on the model for tile matrix sets described in Section 6 of the <a class="reference external" href="http://www.opengeospatial.org/standards/wmts">WMTS Implementation Specification</a>.</p>
-<p>If tiles are to be included in a GeoPackage, there are two additional required metadata tables, <code class="docutils literal notranslate"><span class="pre">gpkg_tile_matrix_set</span></code> and <code class="docutils literal notranslate"><span class="pre">gpkg_tile_matrix</span></code>.
-In addition to these tables, each tile pyramid requires a user-defined table that contains the actual tiles.</p>
-<div class="figure align-default">
-<a class="reference internal image-reference" href="http://www.geopackage.org/spec120/geopackage-tiles.png"><img alt="http://www.geopackage.org/spec120/geopackage-tiles.png" src="http://www.geopackage.org/spec120/geopackage-tiles.png" style="width: 600px;" /></a>
-</div>
-<p>Figure 2: UML Diagram of Tiles tables</p>
-<div class="section" id="id5">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#_tile_matrix_set">gpkg_tile_matrix_set</a><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>The <code class="docutils literal notranslate"><span class="pre">gpkg_tile_matrix_set</span></code> table describes names a tile matrix set (pyramid). The columns in this table are:</p>
+<div class="section" id="checking-a-geopackage-version">
+<h2>Checking a GeoPackage Version<a class="headerlink" href="#checking-a-geopackage-version" title="Permalink to this headline">¶</a></h2>
+<p>Using a direct SQL interface such as DB Browser is the easiest way to check a GeoPackage version. SQLite uses <a class="reference external" href="https://www.sqlite.org/pragma.html">“pragma” statements</a> to implement non-standard SQL functions.
+These statements can be executed just like any other SQL statement and where relevant, they return a result set. The two pragmas you need to know are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">table_name</span></code> and <code class="docutils literal notranslate"><span class="pre">srs_id</span></code> match the entries in <code class="docutils literal notranslate"><span class="pre">gpkg_contents</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">min_x</span></code>, <code class="docutils literal notranslate"><span class="pre">min_y</span></code>, <code class="docutils literal notranslate"><span class="pre">max_x</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_y</span></code>: the actual spatial extents of the tile pyramid.</p></li>
+<li><dl class="simple">
+<dt><cite>PRAGMA application_id</cite></dt><dd><ul>
+<li><p>1196444487 (the 32-bit integer value of 0x47504B47 or <cite>GPKG</cite> in ASCII) for GPKG 1.2 and greater</p></li>
+<li><p>1196437808 (the 32-bit integer value of 0x47503130 or <cite>GP10</cite> in ASCII) for GPKG 1.0 or 1.1</p></li>
 </ul>
-<p>This is must be exact so that applications can use this information to geolocate tiles correctly.
-(This is in contrast with the extents in <code class="docutils literal notranslate"><span class="pre">gpkg_contents</span></code> which are informative and are expected to reflect the extents of <em>usable content</em>.)</p>
-</div>
-<div class="section" id="id6">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#tile_matrix">gpkg_tile_matrix</a><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>Each tile matrix set is composed of one or more tile matrices, each identified by its zoom level.
-The required columns in this table are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">table_name</span></code> matches the entry in <code class="docutils literal notranslate"><span class="pre">gpkg_contents</span></code> and elsewhere</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">zoom_level</span></code> indicates the zoom levels present in the file.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">matrix_width</span></code> and <code class="docutils literal notranslate"><span class="pre">matrix_height</span></code> describe the size of the tile matrix in tiles</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tile_width</span></code> and <code class="docutils literal notranslate"><span class="pre">tile_height</span></code> describe the size of each tile in pixels</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">pixel_x_size</span></code> and <code class="docutils literal notranslate"><span class="pre">pixel_y_size</span></code> describe the size of each pixel</p></li>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>PRAGMA user_version</cite></dt><dd><ul>
+<li><p>For versions 1.2 and later, this returns an integer representing the version number in the form MMmmPP (MM = major version, mm = minor version, PP = patch). Therefore 1.2 is 10200.</p></li>
 </ul>
-<p>By default, zoom levels are separated by powers of two, but if this is inappropriate for your scenario, other multiples are possible by using the <a class="reference external" href="http://www.geopackage.org/spec120/#extension_zoom_other_intervals">Zoom Other Levels</a> extension.</p>
-</div>
-<div class="section" id="id7">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#tiles_user_tables">User Data Tables</a><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>The physical tiles (data) are stored in user data tables with a specific schema.
-The required columns for these tables are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> is a primary key</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">zoom_level</span></code> indicates which tile matrix this tile is part of</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tile_column</span></code> and <code class="docutils literal notranslate"><span class="pre">tile_row</span></code> are the zero-indexed tile number</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tile_data</span></code> is the BLOB containing the tile image</p></li>
-</ul>
-<p>Unless you use an extension, PNG and JPG are the two supported file types for the tiles.
-PNG is generally better for synthetic data (i.e., digital maps) because it is lossless and its compression codec compresses synthetic data fairly well.
-JPG is generally better for natural data (i.e., satellite or aerial imagery) due to its superior (though lossy) compression.
-However, since PNG supports alpha transparency and JPG does not, it is common to use PNG tiles around the boundary of a tile pyramid.
-This allows users to see the data underneath the tile boundaries.
-JPG files have an adjustable compression rating.
-We have found that a ratings in the range 50-75 (out of 100) work best for imagery.
-Ratings that are too high use too much space and ratings that are too low have too many visible artifacts.
-Within the 50-75 range it is a reasonable tradeoff between file size and image quality.</p>
-<p>Tile pyramids may be sparsely populated.
-This is a good way to manage GeoPackage size.
-Applications should be aware of this possibility and if possible, drop to the next zoom level to render that part of the map.</p>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><a class="reference external" href="http://www.geopackage.org/spec120/#attributes">Attributes</a><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>Attributes are tables that only contain non-spatial data.
-The rules for attributes are similar to those for features,
-but attributes have no geometry column and the corresponding row in <code class="docutils literal notranslate"><span class="pre">gpkg_contents</span></code> has a <code class="docutils literal notranslate"><span class="pre">data_type</span></code> of “attributes”.
-This data is commonly joined with spatial data as required by an application.</p>
-<div class="section" id="id9">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#extension_mechanism">Extensions</a><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>In addition to tiles, features, and attributes, GeoPackage has a well-defined extension mechanism to support use cases that are not part of the core standard.
-A GeoPackage extension is a set of one or more requirements clauses that either profiles / extends existing requirements clauses in the GeoPackage standard or adds new requirements clauses.
-Existing requirement clause extension examples include additional geometry types, additional SQL geometry functions, and additional tile image formats.
-New requirement clause extension examples include spatial indexes, triggers, additional tables, other BLOB column encodings, and other SQL functions.</p>
-<p>Files that use one or more extensions are by definition Extended GeoPackages.
-There are two categories of extensions, <em>registered</em> and <em>community</em>.</p>
-</div>
-<div class="section" id="id10">
-<h3><a class="reference external" href="http://www.geopackage.org/spec120/#extensions_table_definition">gpkg_extensions</a><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>The extensions table describes the extensions that are in use in a GeoPackage.
-The columns for this table are:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">table_name</span></code> is the name of the SQLite table where the extension applies</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">column_name</span></code> is the name of the SQLite column (in the referenced <code class="docutils literal notranslate"><span class="pre">table_name</span></code>) where the extension applies (in some situations this is <em>null</em>)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">extension_name</span></code> is the case sensitive name of the extension that is required, in the form <code class="docutils literal notranslate"><span class="pre">&lt;author&gt;_&lt;extension_name&gt;</span></code> (the author name <em>gpkg</em> is reserved for OGC adopted extensions)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">definition</span></code> is permalink, URI, or reference to a document that defines the extension</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">scope</span></code> is either <em>read-write</em> (for most extensions) or <em>write-only</em> (for extensions that can be used seamlessly by applications that are unaware of the extension as long as they operate in a read-only mode)</p></li>
+</dd>
+</dl>
+</li>
 </ul>
 </div>
-<div class="section" id="registered-extensions">
-<h3>Registered Extensions<a class="headerlink" href="#registered-extensions" title="Permalink to this headline">¶</a></h3>
-<p>Registered extensions have been reviewed and adopted by OGC and are for all intents and purposes part of the standard. Most registered extensions are published as part of the <a class="reference external" href="http://www.geopackage.org/spec120/#registered_extensions">core standard</a> but they may be published independently as well.</p>
-<p>The following extensions have been adopted by OGC:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="extensions/nonlinear_geometry_types.rst">Non-Linear Geometry Types</a></p></li>
-<li><p><a class="reference external" href="extensions/rtree_spatial_indexes.rst">RTree Spatial Indexes</a></p></li>
-<li><p><a class="reference external" href="extensions/zoom_other_intervals.rst">Zoom Other Intervals</a></p></li>
-<li><p><a class="reference external" href="extensions/tiles_encoding_webp.rst">Tiles Encoding WebP</a></p></li>
-<li><p><a class="reference external" href="extensions/metadata.rst">Metadata</a></p></li>
-<li><p><a class="reference external" href="extensions/schema.rst">Schema</a></p></li>
-<li><p><a class="reference external" href="extensions/wkt_for_crs.rst">WKT for Coordinate Reference Systems</a></p></li>
-<li><p><a class="reference external" href="extensions/tiled_gridded_coverage_data.rst">Tiled Gridded Coverage Data</a></p></li>
-<li><p><a class="reference external" href="extensions/related_tables.rst">Related Tables</a></p></li>
-</ul>
-<p>Follow the links for a description for each individual extension.</p>
-</div>
-<div class="section" id="community-extensions">
-<h3>Community Extensions<a class="headerlink" href="#community-extensions" title="Permalink to this headline">¶</a></h3>
-<p>OGC acknowledges that there are use cases not covered by the GeoPackage standard. Implementers are welcome to use the extension mechanism defined here to develop community extensions. The extension mechanism provides advantages including discoverability (the extensions in use can be discovered by scanning a single table) and uniformity (declaring that an extension is in use indicates that a defined set of requirements are being met). However, this is a decision that should be made carefully as custom extensions do introduce interoperability risks.
-OGC manages a registry of <a class="reference external" href="http://www.geopackage.org/extensions.html#_community_extensions">community extensions</a>.</p>
-<p>OGC is unable to endorse community extensions. Therefore an Extended GeoPackage containing community extensions will not pass conformance tests. However, a community of interest MAY waive that requirement in its own GeoPackage profile, with the caveat that it must bear the responsibility of endorsing the new extension(s).</p>
-<p>Implementers that are interested in developing their own extensions are encouraged to contact OGC to ensure that the extensions are developed in accordance with OGC policies and in a way that minimizes risks to interoperability. OGC will consider adopting externally developed extensions that address a clear use case, have a sound technical approach, and have a commitment to implementation by multiple implementers.</p>
-</div>
+<div class="section" id="running-the-executable-test-suite">
+<h2>Running the Executable Test Suite<a class="headerlink" href="#running-the-executable-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://cite.opengeospatial.org/teamengine/">GeoPackage Executable Test Suite</a> (ETS) is a conformance test suite that verifies the structure and content of a GeoPackage data container.
+To run the ETS, do the following:</p>
+<ol class="arabic simple">
+<li><p>Open the site (linked above).</p></li>
+<li><p>Create an account using the link provided.</p></li>
+<li><p>Log in.</p></li>
+<li><p>Create a new session.</p></li>
+<li><p>Choose the GeoPackage 1.2 specification (or later if available).</p></li>
+<li><p>Provide a file using either the URL box or a file upload.</p></li>
+<li><p>Select the “Start” button.</p></li>
+</ol>
+<p>The ETS is open source software hosted in a <a class="reference external" href="https://github.com/opengeospatial/ets-gpkg12">GitHub Repository</a>.</p>
 </div>
 </div>
 
@@ -520,10 +445,10 @@ OGC manages a registry of <a class="reference external" href="http://www.geopack
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nsg-gpkg.html" class="btn btn-neutral float-right" title="NSG Profile of GeoPackage" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="contents.html" class="btn btn-neutral float-right" title="Content Types" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="advanced.html" class="btn btn-neutral" title="Advanced GeoPackage Concepts" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="introduction.html" class="btn btn-neutral" title="GeoPackage - Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -533,7 +458,7 @@ OGC manages a registry of <a class="reference external" href="http://www.geopack
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Jan 26, 2021.
+      Last updated on Mar 05, 2021.
     </p>
   </div>
 
