@@ -36,32 +36,12 @@ Implementation Summary
 - Supports both vector feature data and tile matrix sets of imagery and maps
 - Ideal format for encoding geospatial data where Size, Weight and Power (SWaP) are limited
 
-Tables
-------
-
-The following figure shows the mandatory and optional tables of a GeoPackage.
-
-.. image:: ../img/geopackage-overview.png
-   :height: 327
-   :width: 560
-
-
 Relation to other OGC Standards
 -------------------------------
 
 Due to its XML serialization, GML is well suited to geospatial data exchange across networks.
 In contrast, GeoPackage is better suited to storage and random access of geospatial data on a file system.
 GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS) which provides a common way for applications to store and access feature data in relational or object-relational databases.
-
-Applications
-------------
-
-The following are some applications and APIs that can be used with GeoPackage:
-
-* `SQLite <apps/sqlite.html>`_
-* `GDAL / OGR <apps/gdal-ogr.html>`_
-* `QGIS <apps/qgis.html>`_
-* `The GeoPackage-Java library <apps/geopackage-java.html>`_
 
 External links
 --------------

@@ -1,4 +1,4 @@
-`Schema <http://www.geopackage.org/spec120/#extension_schema>`_
+`Schema <http://www.geopackage.org/spec130/#extension_schema>`_
 _______________________________________________________________
 
 This extension provides a means to describe the columns of tables in a GeoPackage with more detail than can be captured by the SQL table definition directly. The information provided by this extension can be used by applications to, for instance, present data contained in a GeoPackage in a more user-friendly fashion or implement data validation logic. The extension was originally designed to describe the schema of *features* but it could apply to any user-defined table with user-defined columns. 
@@ -20,12 +20,12 @@ To use this extension, add the following rows to this table as described in Tabl
   * - ``gpkg_data_columns``
     - *NULL*
     - ``gpkg_schema``
-    - http://www.geopackage.org/spec120/#extension_schema
+    - http://www.geopackage.org/spec130/#extension_schema
     - *read-write*
   * - ``gpkg_data_column_constraints``
     - *NULL*
     - ``gpkg_schema``
-    - http://www.geopackage.org/spec120/#extension_schema
+    - http://www.geopackage.org/spec130/#extension_schema
     - *read-write*
 
 gpkg_data_columns
