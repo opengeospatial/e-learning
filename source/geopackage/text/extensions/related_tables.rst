@@ -6,6 +6,9 @@ This extension allows a GeoPackage to contain additional data that is related to
 As an example, this can be used to establish a many-to-many relationship between features (e.g., points, lines, or areas) and multimedia files. 
 By definition, the "left" side of the relationship is the "base" data and the "right" side of the relationship is the "related" data.
 
+.. figure:: ../../img/related_tables.png
+Figure 1: Related Tables Extension
+
 `gpkg_extensions <http://docs.opengeospatial.org/is/17-066r1/17-066r1.html#gpkg_extensions>`_
 ---------------------------------------------------------------------------------------------
 

@@ -4,18 +4,21 @@ Basic GeoPackage Concepts
 Identifying a GeoPackage
 ------------------------
 
-A `GeoPackage <http://geopackage.org>`_ is an `SQLite Database <http://sqlite.org/index.html>`_ file with a `.gpkg extension <http://www.geopackage.org/spec120/#r3>`_.
-If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state `"SQLite format 3" <http://www.geopackage.org/spec120/#r1>`_.
+A `GeoPackage <http://geopackage.org>`_ is an `SQLite Database <http://sqlite.org/index.html>`_ file with a `.gpkg extension <http://www.geopackage.org/spec130/#r3>`_. 
+If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state `"SQLite format 3" <http://www.geopackage.org/spec130/#r1>`_.
 
 Opening a GeoPackage
 --------------------
 
 There are a number of ways to open a GeoPackage.
 
-* For using a command-line SQL interface, consider the "sqlite" command.
+* For using a command-line SQL interface, consider the "sqlite" command (`SQLite <apps/sqlite.html>`_).
 * For using a graphical SQL interface, consider `DB Browser for SQLite <http://sqlitebrowser.org/>`_.
 * For using a web application, consider using `NGA's application <http://ngageoint.github.io/geopackage-js/>`_ as long as the GeoPackage file isn't too big.
-* For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment.
+* For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment. One open source alternative is `QGIS <apps/qgis.html>`_.
+* There are a number of GeoPackage APIs including the following:
+  * `GDAL / OGR <apps/gdal-ogr.html>`_
+  * `The GeoPackage-Java library <apps/geopackage-java.html>`_
 
 The GeoPackage community tries to maintain a list of operational GeoPackage implementations and this list can be found on the `implementations page <http://www.geopackage.org/implementations.html>`_. Additional information on specific products and versions of products that implement GeoPackage can also be found at http://www.opengeospatial.org/resource/products. You can search by specific versions of the GeoPackage standard. Note: Search for all implementing products.
 

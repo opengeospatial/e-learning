@@ -1,4 +1,4 @@
-`Tiles Encoding WebP <http://www.geopackage.org/spec120/#extension_tiles_webp>`_
+`Tiles Encoding WebP <http://www.geopackage.org/spec130/#extension_tiles_webp>`_
 ________________________________________________________________________________
 
 This extension allows the use of the `WebP format <https://developers.google.com/speed/webp/>`_) for tiles as an alternative to JPG or PNG.

@@ -1,4 +1,4 @@
-`WKT for Coordinate Reference Systems <http://www.geopackage.org/spec120/#extension_crs_wkt>`_
+`WKT for Coordinate Reference Systems <http://www.geopackage.org/spec130/#extension_crs_wkt>`_
 ______________________________________________________________________________________________
 
 
@@ -22,7 +22,7 @@ If using this extension, add a row to this table as described in Table 1.
   * - ``extension_name``
     - ``gpkg_crs_wkt``
   * - ``definition``
-    - http://www.geopackage.org/spec120/#extension_crs_wkt
+    - http://www.geopackage.org/spec130/#extension_crs_wkt
   * - ``scope``
     - *read-write*
 

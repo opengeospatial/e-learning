@@ -18,5 +18,8 @@ Contents
    introduction.rst
    basic.rst
    contents.rst
+   features.rst
+   tiles.rst
+   attributes+extensions.rst
    modeling.rst
    nsg-gpkg.rst
