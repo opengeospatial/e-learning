@@ -1,7 +1,7 @@
-`Nonlinear Geometry Types Extension <http://www.geopackage.org/spec120/#extension_geometry_types>`_
+`Nonlinear Geometry Types Extension <http://www.geopackage.org/spec130/#extension_geometry_types>`_
 ___________________________________________________________________________________________________
 
-This extension allows the use of `extended geometry types <http://www.geopackage.org/spec120/#geometry_types_extension>`_. 
+This extension allows the use of `extended geometry types <http://www.geopackage.org/spec130/#geometry_types_extension>`_. 
 
 gpkg_extensions
 ---------------
@@ -21,7 +21,7 @@ Add a row to this table for each geometry type in use as described in Table 1.
   * - ``extension_name``
     - ``gpkg_geom_<gname>`` where ``<gname>`` is the uppercase name of the extended geometry type
   * - ``definition``
-    - http://www.geopackage.org/spec120/#extension_geometry_types
+    - http://www.geopackage.org/spec130/#extension_geometry_types
   * - ``scope``
     - *read-write*
 

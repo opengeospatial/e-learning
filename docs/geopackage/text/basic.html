@@ -162,6 +162,8 @@
 <li class="toctree-l4"><a class="reference internal" href="introduction.html">GeoPackage - Introduction</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Basic GeoPackage Concepts</a></li>
 <li class="toctree-l4"><a class="reference internal" href="contents.html">Content Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="features.html">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tiles.html">Tiles</a></li>
 <li class="toctree-l4"><a class="reference internal" href="modeling.html">Modeling Guidelines</a></li>
 <li class="toctree-l4"><a class="reference internal" href="nsg-gpkg.html">NSG Profile of GeoPackage</a></li>
 </ul>
@@ -372,17 +374,20 @@
 <h1>Basic GeoPackage Concepts<a class="headerlink" href="#basic-geopackage-concepts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="identifying-a-geopackage">
 <h2>Identifying a GeoPackage<a class="headerlink" href="#identifying-a-geopackage" title="Permalink to this headline">¶</a></h2>
-<p>A <a class="reference external" href="http://geopackage.org">GeoPackage</a> is an <a class="reference external" href="http://sqlite.org/index.html">SQLite Database</a> file with a <a class="reference external" href="http://www.geopackage.org/spec120/#r3">.gpkg extension</a>.
-If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state <a class="reference external" href="http://www.geopackage.org/spec120/#r1">“SQLite format 3”</a>.</p>
+<p>A <a class="reference external" href="http://geopackage.org">GeoPackage</a> is an <a class="reference external" href="http://sqlite.org/index.html">SQLite Database</a> file with a <a class="reference external" href="http://www.geopackage.org/spec130/#r3">.gpkg extension</a>.
+If you are unsure whether a file is an SQLite database, you can use a binary or text editor to view the starting bytes of the file and see if they state <a class="reference external" href="http://www.geopackage.org/spec130/#r1">“SQLite format 3”</a>.</p>
 </div>
 <div class="section" id="opening-a-geopackage">
 <h2>Opening a GeoPackage<a class="headerlink" href="#opening-a-geopackage" title="Permalink to this headline">¶</a></h2>
 <p>There are a number of ways to open a GeoPackage.</p>
 <ul class="simple">
-<li><p>For using a command-line SQL interface, consider the “sqlite” command.</p></li>
+<li><p>For using a command-line SQL interface, consider the “sqlite” command (<a class="reference external" href="apps/sqlite.html">SQLite</a>).</p></li>
 <li><p>For using a graphical SQL interface, consider <a class="reference external" href="http://sqlitebrowser.org/">DB Browser for SQLite</a>.</p></li>
 <li><p>For using a web application, consider using <a class="reference external" href="http://ngageoint.github.io/geopackage-js/">NGA’s application</a> as long as the GeoPackage file isn’t too big.</p></li>
-<li><p>For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment.</p></li>
+<li><p>For using a desktop application, there are a number of options. We recommend choosing the GeoPackage implementation that is best suited for your operational environment. One open source alternative is <a class="reference external" href="apps/qgis.html">QGIS</a>.</p></li>
+<li><p>There are a number of GeoPackage APIs including the following:
+* <a class="reference external" href="apps/gdal-ogr.html">GDAL / OGR</a>
+* <a class="reference external" href="apps/geopackage-java.html">The GeoPackage-Java library</a></p></li>
 </ul>
 <p>The GeoPackage community tries to maintain a list of operational GeoPackage implementations and this list can be found on the <a class="reference external" href="http://www.geopackage.org/implementations.html">implementations page</a>. Additional information on specific products and versions of products that implement GeoPackage can also be found at <a class="reference external" href="http://www.opengeospatial.org/resource/products">http://www.opengeospatial.org/resource/products</a>. You can search by specific versions of the GeoPackage standard. Note: Search for all implementing products.</p>
 </div>
@@ -458,7 +463,7 @@ To run the ETS, do the following:</p>
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Mar 05, 2021.
+      Last updated on Mar 10, 2021.
     </p>
   </div>
 

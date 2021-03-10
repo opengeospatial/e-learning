@@ -1,4 +1,4 @@
-`Metadata Extension <http://www.geopackage.org/spec120/#extension_metadata>`_
+`Metadata Extension <http://www.geopackage.org/spec130/#extension_metadata>`_
 _____________________________________________________________________________
 
 This extension provides a means to store metadata in a GeoPackage and to relate it to content already in the GeoPackage. 
@@ -20,12 +20,12 @@ To use this extension, add the following rows to this table as described in Tabl
   * - ``gpkg_metadata``
     - *NULL*
     - ``gpkg_metadata``
-    - http://www.geopackage.org/spec120/#extension_metadata
+    - http://www.geopackage.org/spec130/#extension_metadata
     - *read-write*
   * - ``gpkg_metadata_reference``
     - *NULL*
     - ``gpkg_metadata``
-    - http://www.geopackage.org/spec120/#extension_metadata
+    - http://www.geopackage.org/spec130/#extension_metadata
     - *read-write*
 
 gpkg_metadata
@@ -42,7 +42,7 @@ Add a row to this table for each metadata document as described in Table 2.
   * - ``id``
     - primary key
   * - ``md_scope``
-    - `Metadata Scope <http://www.geopackage.org/spec120/#metadata_scopes>`_ - default "dataset"
+    - `Metadata Scope <http://www.geopackage.org/spec130/#metadata_scopes>`_ - default "dataset"
   * - ``md_standard_uri``
     - URI reference to the metadata structure definition authority (e.g., http://metadata.ces.mil/dse/ns/GSIP/nmis/2.2.0/doc for NMIS)
   * - ``mime_type``
