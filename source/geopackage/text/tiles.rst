@@ -1,8 +1,5 @@
-Content Types
-=============
-
 `Tiles <http://www.geopackage.org/spec130/#tiles>`_
----------------------------------------------------
+===================================================
 
 The GeoPackage standard adopts a tile-based pyramid structure for storing imagery and raster maps at multiple resolutions.
 An illustration of this structure is shown below.
@@ -30,7 +27,7 @@ In addition to these tables, each tile pyramid requires a user-defined table tha
 Figure 3: UML Diagram of Tiles tables
 
 `gpkg_tile_matrix_set <http://www.geopackage.org/spec130/#_tile_matrix_set>`_
-*****************************************************************************
+-----------------------------------------------------------------------------
 
 The ``gpkg_tile_matrix_set`` table describes names a tile matrix set (pyramid). The columns in this table are:
 
@@ -41,7 +38,7 @@ This is must be exact so that applications can use this information to geolocate
 (This is in contrast with the extents in ``gpkg_contents`` which are informative and are expected to reflect the extents of *usable content*.)
 
 `gpkg_tile_matrix <http://www.geopackage.org/spec130/#tile_matrix>`_
-********************************************************************
+--------------------------------------------------------------------
 
 Each tile matrix set is composed of one or more tile matrices, each identified by its zoom level. 
 The required columns in this table are:
@@ -55,7 +52,7 @@ The required columns in this table are:
 By default, zoom levels are separated by powers of two, but if this is inappropriate for your scenario, other multiples are possible by using the `Zoom Other Levels <http://www.geopackage.org/spec130/#extension_zoom_other_intervals>`_ extension.
 
 `User Data Tables <http://www.geopackage.org/spec130/#tiles_user_tables>`_
-**************************************************************************
+--------------------------------------------------------------------------
 
 The physical tiles (data) are stored in user data tables with a specific schema. 
 The required columns for these tables are:
