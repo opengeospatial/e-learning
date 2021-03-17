@@ -20,6 +20,6 @@ Contents
    contents.rst
    features.rst
    tiles.rst
-   attributes+extensions.rst
+   attributes_extensions.rst
    modeling.rst
    nsg-gpkg.rst
