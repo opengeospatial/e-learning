@@ -30,4 +30,4 @@ Other than the geometry column and a primary key, the schema of a features table
 Properties (text, integer, or real) provide additional information about each feature. 
 The GeoPackage standard has an `example schema <http://www.geopackage.org/spec130/#example_feature_table_cols>`_.
 
-The `Schema Extension <extensions/schema.rst>`_ can be used to describe columns in more detail than just their name.
+The `Schema Extension <extensions/schema.html>`_ can be used to describe columns in more detail than just their name.
