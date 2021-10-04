@@ -427,8 +427,8 @@
 <div class="section" id="overview-of-resources">
 <h2>Overview of Resources<a class="headerlink" href="#overview-of-resources" title="Permalink to this headline">¶</a></h2>
 <p><strong>OGC API - Environmental Data Retrieval Standard</strong> defines the resources listed in the following table.</p>
-<table class="colwidths-given docutils align-default" id="id1">
-<caption><span class="caption-text">Overview of OGC API - Features resources</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<table class="colwidths-given docutils align-default" id="id2">
+<caption><span class="caption-text">Overview of OGC API - Features resources</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 40%" />
 <col style="width: 40%" />
@@ -478,10 +478,10 @@
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>This <a class="reference external" href="http://labs.metoffice.gov.uk/edr/static/html/query.html">demonstration server</a> publishes spatio-temporal data through an interface that conforms to OGC API - Environmental Data Retrieval.</p>
-<p>An example request that can be used to retrieve data from the METAR Observation collection is <a class="reference external" href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=GeoJSON">http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=GeoJSON</a></p>
+<p>This <a class="reference external" href="http://labs.metoffice.gov.uk/edr">demonstration server</a> publishes environmental data through an interface that conforms to the OGC API - Environmental Data Retrieval standard. A client application is available <a class="reference external" href="http://labs.metoffice.gov.uk/edr/static/html/query.html">here</a> .</p>
+<p>An example request that can be used to retrieve data from the METAR Observation collection is <a class="reference external" href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=GeoJSON">here</a></p>
 <p>Note that the response to the request is GeoJSON in this case.</p>
-<p>Alternatively, the same data can be retrieved in CoverageJSON format, through the request <a class="reference external" href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=CoverageJSON">http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=CoverageJSON</a></p>
+<p>Alternatively, the same data can be retrieved in CoverageJSON format, through <a class="reference external" href="http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&amp;parameter-name=Metar%20observation&amp;datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&amp;crs=CRS84&amp;f=CoverageJSON">this request</a> .</p>
 <p>Note that this demonstration server offers data from recent observations, therefore you may need to update the values of the <cite>datetime</cite> parameter to the current day in order to access available METAR observation.</p>
 </div>
 </div>
