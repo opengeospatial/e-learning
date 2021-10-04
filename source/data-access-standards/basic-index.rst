@@ -14,6 +14,7 @@ Contents:
    :name: acc
 
    ../ogcapi-features/text/basic-index.rst
+   ../ogcapi-edr/text/basic-index.rst   
    ../wfs/text/basic-index.rst
    ../wcs/text/basic-index.rst
    ../sta/text/index.rst

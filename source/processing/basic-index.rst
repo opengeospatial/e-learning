@@ -7,4 +7,5 @@ Contents:
    :maxdepth: 1
    :name: acc
 
+   ../ogcapi-processes/text/basic-index.rst 
    ../wps/text/basic-index.rst
