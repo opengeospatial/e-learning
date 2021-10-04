@@ -385,7 +385,95 @@
 <h1>Resources of OGC API - Environmental Data Retrieval<a class="headerlink" href="#resources-of-ogc-api-environmental-data-retrieval" title="Permalink to this headline">¶</a></h1>
 <p>This section provides basic information about the types of resources that OGC API - Environmental Data Retrieval offers.</p>
 <p>Each resource provides <strong>links</strong> that relate to resources. This enables a client application to navigate the resources, from the landing page through to the individual features. The server identifies the relationship between a resource and other linked resources through a <strong>link relation type</strong>, represented by the attribute ‘rel’. The link relation types used by implementations of the <strong>OGC API - Environmental Data Retrieval</strong> can be found in <a class="reference external" href="https://docs.ogc.org/is/19-086r4/19-086r4.html#toc22">Section 6.2</a> of the standard.</p>
+<div class="section" id="landing-page">
+<span id="ogcapiedr-landingpage"></span><h2>Landing Page<a class="headerlink" href="#landing-page" title="Permalink to this headline">¶</a></h2>
+<p>The landing page is the top-level resource that serves as an entry point. A client application needs to know the location of the landing page of the server. From the landing page, the client application can retrieve links to the Conformance declaration, Collection and API definition paths. An example landing page is at <a class="reference external" href="http://labs.metoffice.gov.uk/edr">http://labs.metoffice.gov.uk/edr</a></p>
+<p>The link to the API definition is identified through the ‘service-desc’ and ‘service-doc’ link relation types.</p>
+<p>The link to the Conformance declaration is identified through the ‘conformance’ link relation type.</p>
+<p>The link to the Collections is identified through the  ‘data’ link relation type.</p>
+<p>An extract from the landing page of a demo server is shown below.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Environmental Data Retrevial API concept demonstrator&quot;</span><span class="p">,</span>
+<span class="nt">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Example EDR API (not for operational use)&quot;</span><span class="p">,</span>
+<span class="nt">&quot;keywords&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;position&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;cube&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;trajectory&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;weather&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;data&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;api&quot;</span>
+<span class="p">],</span>
+<span class="nt">&quot;terms_of_service&quot;</span><span class="p">:</span> <span class="s2">&quot;None&quot;</span><span class="p">,</span>
+<span class="nt">&quot;provider&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Organization Name&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://example.org&quot;</span>
+<span class="p">},</span>
+<span class="nt">&quot;contact&quot;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;you@example.org&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;fax&quot;</span><span class="p">:</span> <span class="s2">&quot;+001-234-567-89&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;hours&quot;</span><span class="p">:</span> <span class="s2">&quot;Hours of Service&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;instructions&quot;</span><span class="p">:</span> <span class="s2">&quot;During hours of service.  Off on weekends.&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="s2">&quot;Mailing Address&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;postalcode&quot;</span><span class="p">:</span> <span class="s2">&quot;Zip or Postal Code&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;City&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;stateorprovince&quot;</span><span class="p">:</span> <span class="s2">&quot;Administrative Area&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;Country&quot;</span>
+<span class="p">},</span>
+<span class="nt">&quot;links&quot;</span><span class="p">:</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://labs.metoffice.gov.uk/edr/api&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hreflang&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;service-doc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/vnd.oai.openapi+json;version=3.0&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://labs.metoffice.gov.uk/edr/conformance&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hreflang&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;conformance&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;http://labs.metoffice.gov.uk/edr/collections&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hreflang&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;rel&quot;</span><span class="p">:</span> <span class="s2">&quot;collection&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="kc">null</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>}</p>
+</div>
+<div class="section" id="conformance-declaration">
+<span id="ogcapiedr-conformance"></span><h2>Conformance declaration<a class="headerlink" href="#conformance-declaration" title="Permalink to this headline">¶</a></h2>
+<p>An implementation of OGC API - Environmental Data Retrieval describes the capabilities that it supports by declaring which conformance classes it implements. The Conformance declaration states the conformance classes from standards or community specifications, identified by a URI, that the API conforms to. Clients can then use this information, although they are not required to. Accessing the Conformance declaration using HTTP GET returns the list of URIs of conformance classes implemented by the server. Conformance classes describe the behavior a server should implement in order to meet one or more sets of requirements specified in a standard.</p>
+<p>Below is an extract from the response to the request <a class="reference external" href="http://labs.metoffice.gov.uk/edr/conformance">http://labs.metoffice.gov.uk/edr/conformance</a></p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+ <span class="nt">&quot;conformsTo&quot;</span><span class="p">:[</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-1/1.0/conf/core&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-common-2/1.0/conf/collections&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/core&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/oas30&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/html&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/geojson&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/coveragejson&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;http://www.opengis.net/spec/ogcapi-edr-1/1.0/conf/wkt&quot;</span>
+ <span class="p">]</span>
+</pre></div>
+</div>
+<p>}</p>
+</div>
+<div class="section" id="collections-metadata">
+<span id="ogcapiedr-collections"></span><h2>Collections metadata<a class="headerlink" href="#collections-metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>TBA</strong></p>
+</div>
 </div>
 
 

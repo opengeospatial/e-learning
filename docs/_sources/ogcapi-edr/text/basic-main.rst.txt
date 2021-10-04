@@ -67,7 +67,7 @@ Example
 
 This `demonstration server <http://labs.metoffice.gov.uk/edr>`_ publishes environmental data through an interface that conforms to the OGC API - Environmental Data Retrieval standard. A client application is available `here <http://labs.metoffice.gov.uk/edr/static/html/query.html>`_ .
 
-An example request that can be used to retrieve data from the METAR Observation collection is `here <http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&parameter-name=Metar%20observation&datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&crs=CRS84&f=GeoJSON>`_
+An example request that can be used to retrieve data from the METAR Observation collection is `here <http://labs.metoffice.gov.uk/edr/collections/metar_demo/area?coords=POLYGON%20((-0.729139443718437%2050.6050890914524,-0.82028187418325%2052.0290614422956,1.84563421691251%2052.0991020742953,2.09627590069075%2050.8071099463535,-0.729139443718437%2050.6050890914524))&parameter-name=Metar%20observation&datetime=2021-10-03T20:00Z/2021-10-04T03:00Z&crs=CRS84&f=GeoJSON>`_ .
 
 Note that the response to the request is GeoJSON in this case.
 
