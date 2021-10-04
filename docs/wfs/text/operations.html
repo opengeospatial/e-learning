@@ -1,0 +1,1372 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>WFS - Operations &mdash; OGC e-Learning 2.0.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Web Feature Service (WFS)" href="basic-index.html"/>
+        <link rel="next" title="Web Coverage Service (WCS)" href="../../wcs/text/basic-index.html"/>
+        <link rel="prev" title="WFS - Introduction" href="basic-main.html"/> 
+
+  
+  <script src="static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> OGC e-Learning
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../fundamental-concepts/text/index.html">Fundamental Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/basic.html">Interoperability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#the-internet-and-the-web">The Internet and the Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/basic.html#interoperability-is-essential">Interoperability Is Essential</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/open.html">Standards Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/open.html#the-need">The Need</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/networking.html">Networking Basics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#url">URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#encodings">Encodings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#http">HTTP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#http-get">HTTP GET</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#http-post">HTTP POST</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#service-interfaces-and-operations">Service, Interfaces and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#service">Service</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#interface">Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#operation">Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#vacuum-cleaning-robot-analogy">Vacuum Cleaning Robot Analogy</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#service-interface-and-operations">Service, Interface and Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../fundamental-concepts/text/networking.html#in-an-ogc-web-service">In an OGC Web Service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc/text/index.html">Introduction to OGC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc/text/intro-ogc.html">OGC - The Organization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/intro-ogc.html#technical-committee">Technical Committee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/intro-ogc.html#domain-working-groups">Domain Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/intro-ogc.html#standards-working-groups">Standards Working Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/intro-ogc.html#ogc-naming-authority-sub-committee">OGC Naming Authority Sub-Committee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc/text/intro-ogc.html#compliance-interoperability-testing-evaluation-cite-sub-committee">Compliance Interoperability &amp; Testing Evaluation (CITE) Sub-Committee</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../ogc-standards/text/index.html">Introduction to OGC Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/overview.html">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#audience">Audience</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html">Understanding OGC Standards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#what-is-a-standard">What is a standard?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#open-standards">Open Standards</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#open-standards-the-definition">Open Standards - the definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#example-of-a-rule-in-a-standard">Example of a rule in a standard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/services-ogc.html#types-of-standards">Types of Standards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogc-standards/text/service-architecture.html">OGC Service Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/service-architecture.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogc-standards/text/service-architecture.html#ows-common">OWS Common</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../data-encoding-standards/basic-index.html">Data Encoding Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../geopackage/text/basic-index.html">GeoPackage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../geopackage/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/overview.html">GeoPackage - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/introduction.html">GeoPackage - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/basic.html">Basic GeoPackage Concepts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/contents.html">Content Types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/features.html">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/tiles.html">Tiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/attributes_extensions.html">Attributes and Extensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/modeling.html">Modeling Guidelines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../geopackage/text/nsg-gpkg.html">NSG Profile of GeoPackage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../gml/text/index.html">Geography Markup Language (GML)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../gml/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gml/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../gml/text/overview.html">GML - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../gml/text/main.html">GML - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../data-access-standards/basic-index.html">Data Access Standards</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../ogcapi-features/text/basic-index.html">OGC API - Features</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-features/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-features/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-features/text/basic-overview.html">Overview, OGC API - Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-features/text/basic-main.html">An Introduction to OGC API - Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-features/text/operations.html">Resources of OGC API - Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../ogcapi-edr/text/basic-index.html">OGC API - Environmental Data Retrieval</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-edr/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-edr/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-edr/text/basic-overview.html">Overview, OGC API - Environmental Data Retrieval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-edr/text/basic-main.html">An Introduction to OGC API - Environmental Data Retrieval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-edr/text/operations.html">Resources of OGC API - Environmental Data Retrieval</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="basic-index.html">Web Feature Service (WFS)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="basic-index.html#contents">Contents</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="basic-overview.html">WFS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="basic-main.html">WFS - Introduction</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">WFS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../wcs/text/basic-index.html">Web Coverage Service (WCS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wcs/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../wcs/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wcs/text/basic-overview.html">WCS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wcs/text/basic-main.html">WCS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wcs/text/operations.html">WCS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sta/text/index.html">SensorThings API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sta/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/overview.html">SensorThings - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/main.html">SensorThings - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sta/text/operations.html">SensorThings - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sos/text/index.html">Sensor Observation Service (SOS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sos/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/overview.html">SOS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/main.html">SOS - Main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sos/text/operations.html">SOS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../processing/basic-index.html">Processing Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../ogcapi-processes/text/basic-index.html">OGC API - Processes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-processes/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../ogcapi-processes/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-processes/text/basic-overview.html">Overview, OGC API - Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-processes/text/basic-main.html">An Introduction to OGC API - Processes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../ogcapi-processes/text/operations.html">Resources of OGC API - Processes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../wps/text/basic-index.html">Web Processing Service (WPS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html">WPS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html">WPS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html">WPS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../visualization-standards/basic-index.html">Visualization Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../wms/text/basic-index.html">Web Map Service (WMS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/basic-overview.html">WMS - Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#audience">Audience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-overview.html#prerequisites">Prerequisites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/basic-main.html">WMS - Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#overview-of-wms-operations">Overview of WMS Operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#client-usage">Client Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/basic-main.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../wms/text/operations.html">WMS - Operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#background">Background</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getcapabilities">GetCapabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getmap">GetMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#getfeatureinfo">GetFeatureInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#exceptions">Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wms/text/operations.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../wmts/text/index.html">Web Map Tile Service (WMTS)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../wmts/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/overview.html">WMTS - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/main.html">WMTS - Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../wmts/text/operations.html">WMTS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../kml/text/basic-index.html">KML</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../kml/text/basic-index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-overview.html">KML Basic Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../kml/text/basic-main.html">KML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../sld/text/index.html">Styled Layer Descriptor (SLD)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../sld/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/overview.html">SLD - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../sld/text/main.html">SLD - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../se/text/index.html">Symbology Encoding (SE)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../se/text/index.html#contents">Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/overview.html">SE - Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../se/text/main.html">SE - Introduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../metadata-catalogue/index.html">Metadata and Catalogue Services Standards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../metadata-catalogue/index.html#contents">Contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cat/text/index.html">Catalogue Services for the Web (CSW)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../cat/text/index.html#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../metadata/text/index.html">Metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../metadata/text/index.html#contents">Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">OGC e-Learning</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../data-access-standards/basic-index.html">Data Access Standards</a> &raquo;</li>
+      
+          <li><a href="basic-index.html">Web Feature Service (WFS)</a> &raquo;</li>
+      
+    <li>WFS - Operations</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/wfs/text/operations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="wfs-operations">
+<h1>WFS - Operations<a class="headerlink" href="#wfs-operations" title="Permalink to this headline">¶</a></h1>
+<p>This section provides detailed information about the types of operations that a WFS server offers. The list includes operations offered by different configurations (formally referred to as conformance classes) of WFS servers.</p>
+<table class="colwidths-given docutils align-default" id="id28">
+<caption><span class="caption-text">WFS Operations</span><a class="headerlink" href="#id28" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operation</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code></p></td>
+<td><p>Retrieves metadata about the service, including supported operations and parameters, and a list of the available feature types.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">DescribeFeatureType</span></code></p></td>
+<td><p>Returns a description of the structure of feature types and feature properties offered or accepted by an instance of a WFS.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetFeature</span></code></p></td>
+<td><p>Returns a selection of feature instances from a data store published through the WFS.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">ListStoredQueries</span></code></p></td>
+<td><p>Returns a list of the queries that have been stored inside the WFS instance.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DescribeStoredQueries</span></code></p></td>
+<td><p>Returns a description of the queries that have been stored inside the WFS instance.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GetPropertyValue</span></code> (optional)</p></td>
+<td><p>Retrieves the value of a feature property or part of the value of a complex feature property for a set of feature instances</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GetFeatureWithLock</span></code> (optional)</p></td>
+<td><p>Serves a similar function to a GetFeature request but with the additional ability to lock a feature, presumably for subsequent updating or changes.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">LockFeature</span></code> (optional)</p></td>
+<td><p>Locks a set of feature instances such that no other operations may modify the data while the lock is in place.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Transaction</span></code> (optional)</p></td>
+<td><p>Allows the feature instances and their properties to modified or deleted.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">CreateStoredQuery</span></code> (optional)</p></td>
+<td><p>Creates and stores a query that can be rapidly and easily triggered by a client at a later point in time.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">DropStoredQuery</span></code> (optional)</p></td>
+<td><p>Deletes a previously stored query from the server.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The following are examples of requests that can be sent to operations offered by simple and basic WFS configurations.</p>
+<div class="section" id="getcapabilities">
+<span id="wfs-getcap"></span><h2>GetCapabilities<a class="headerlink" href="#getcapabilities" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="request">
+<h3>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h3>
+<p>A WFS server responding to a <strong>GetCapabilities</strong> request returns metadata about the service, including supported operations and parameters, and a list of the available feature types.</p>
+<p>An example of a GetCapabilities request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?</span>
+<span class="na">SERVICE</span><span class="o">=</span><span class="s">WFS&amp;</span>
+<span class="na">REQUEST</span><span class="o">=</span><span class="s">GetCapabilities&amp;</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">2.0.0</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&amp;REQUEST=GetCapabilities&amp;VERSION=2.0.0">This is a link to a GetCapabilities request.</a></p>
+<p>There are three parameters (and values) being passed to the WFS server, <code class="docutils literal notranslate"><span class="pre">SERVICE=WFS</span></code>, <code class="docutils literal notranslate"><span class="pre">VERSION=2.0.0</span></code>, and <code class="docutils literal notranslate"><span class="pre">REQUEST=GetCapabilities</span></code>.</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SERVICE</span></code> parameter tells the server that a WFS request is forthcoming.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">VERSION</span></code> parameter tells the server what version of the service is being requested.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">REQUEST</span></code> parameter tells the server that the operation requested is the <cite>GetCapabilities</cite> operation.</p></li>
+</ul>
+<p>The WFS standard requires that requests always includes these three parameters.
+The table bellow summarizes the parameters and values required to perform the request.</p>
+<table class="colwidths-given docutils align-default" id="id29">
+<caption><span class="caption-text">Parameters of the GetCapabilities Operation</span><a class="headerlink" href="#id29" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 15%" />
+<col style="width: 15%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Parameter</strong></p></th>
+<th class="head"><p><strong>Required</strong></p></th>
+<th class="head"><p><strong>Description</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">SERVICE</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service name. Value is <code class="docutils literal notranslate"><span class="pre">WFS</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Service version. Value is one of <code class="docutils literal notranslate"><span class="pre">1.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1.1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>, <code class="docutils literal notranslate"><span class="pre">2.0.2</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">REQUEST</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Operation name. Value is <code class="docutils literal notranslate"><span class="pre">GetCapabilities</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="response">
+<h3>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<p>The response is a Capabilities XML document with a detailed description of the WFS service.  It contains three main sections:</p>
+<table class="colwidths-given docutils align-default" id="id30">
+<caption><span class="caption-text">Sections Capabilities Document</span><a class="headerlink" href="#id30" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Service</strong></p></th>
+<th class="head"><p>Contains service metadata such as the service name, keywords, and contact information for the organization operating the server.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>FeatureTypeList</strong></p></td>
+<td><p>Lists and describes the feature types that are provided by the service.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Operations</strong></p></td>
+<td><p>Lists the available operations that can be requested from the service.</p></td>
+</tr>
+</tbody>
+</table>
+<p>An example GetCapabilities response from a WFS is shown below, with some sections omitted for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;WFS_Capabilities</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;ows:ServiceIdentification&gt;</span>
+    <span class="nt">&lt;ows:Title&gt;</span>WFS 2.0.0 CITE Setup<span class="nt">&lt;/ows:Title&gt;</span>
+    <span class="nt">&lt;ows:Abstract&gt;&lt;/ows:Abstract&gt;</span>
+    <span class="nt">&lt;ows:ServiceType</span> <span class="na">codeSpace=</span><span class="s">&quot;http://www.opengeospatial.org/&quot;</span><span class="nt">&gt;</span>WFS<span class="nt">&lt;/ows:ServiceType&gt;</span>
+    <span class="nt">&lt;ows:ServiceTypeVersion&gt;</span>2.0.0<span class="nt">&lt;/ows:ServiceTypeVersion&gt;</span>
+  <span class="nt">&lt;/ows:ServiceIdentification&gt;</span>
+  <span class="nt">&lt;ows:OperationsMetadata&gt;</span>
+    <span class="nt">&lt;ows:Operation</span> <span class="na">name=</span><span class="s">&quot;GetCapabilities&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ows:DCP&gt;</span>
+        <span class="nt">&lt;ows:HTTP&gt;</span>
+          <span class="nt">&lt;ows:Get</span> <span class="na">xlink:href=</span><span class="s">&quot;http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ows:Post</span> <span class="na">xlink:href=</span><span class="s">&quot;http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ows:HTTP&gt;</span>
+      <span class="nt">&lt;/ows:DCP&gt;</span>
+      <span class="nt">&lt;ows:Parameter</span> <span class="na">name=</span><span class="s">&quot;AcceptVersions&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ows:AllowedValues&gt;</span>
+          <span class="nt">&lt;ows:Value&gt;</span>2.0.0<span class="nt">&lt;/ows:Value&gt;</span>
+        <span class="nt">&lt;/ows:AllowedValues&gt;</span>
+      <span class="nt">&lt;/ows:Parameter&gt;</span>
+    <span class="nt">&lt;/ows:Operation&gt;</span>
+    <span class="nt">&lt;ows:Operation</span> <span class="na">name=</span><span class="s">&quot;GetFeature&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ows:DCP&gt;</span>
+        <span class="nt">&lt;ows:HTTP&gt;</span>
+          <span class="nt">&lt;ows:Get</span> <span class="na">xlink:href=</span><span class="s">&quot;http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?&quot;</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;ows:Post</span> <span class="na">xlink:href=</span><span class="s">&quot;http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/ows:HTTP&gt;</span>
+      <span class="nt">&lt;/ows:DCP&gt;</span>
+    <span class="nt">&lt;/ows:Operation&gt;</span>
+<span class="nt">&lt;/ows:OperationsMetadata&gt;</span>
+  <span class="nt">&lt;FeatureTypeList&gt;</span>
+    <span class="nt">&lt;FeatureType&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">xmlns:gn=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:GeographicalNames:3.0&quot;</span><span class="nt">&gt;</span>gn:NamedPlace<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Title&gt;</span>gn:NamedPlace<span class="nt">&lt;/Title&gt;</span>
+      <span class="nt">&lt;DefaultCRS&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultCRS&gt;</span>
+      <span class="nt">&lt;OutputFormats&gt;</span>
+        <span class="nt">&lt;Format&gt;</span>application/xml; subtype=&quot;gml/3.2.1&quot;<span class="nt">&lt;/Format&gt;</span>
+      <span class="nt">&lt;/OutputFormats&gt;</span>
+      <span class="nt">&lt;ows:WGS84BoundingBox&gt;</span>
+        <span class="nt">&lt;ows:LowerCorner&gt;</span>-180.000000 -90.000000<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+        <span class="nt">&lt;ows:UpperCorner&gt;</span>180.000000 90.000000<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+      <span class="nt">&lt;/ows:WGS84BoundingBox&gt;</span>
+    <span class="nt">&lt;/FeatureType&gt;</span>
+    <span class="nt">&lt;FeatureType&gt;</span>
+      <span class="nt">&lt;Name</span> <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span><span class="nt">&gt;</span>ps:ProtectedSite<span class="nt">&lt;/Name&gt;</span>
+      <span class="nt">&lt;Title&gt;</span>ps:ProtectedSite<span class="nt">&lt;/Title&gt;</span>
+      <span class="nt">&lt;DefaultCRS&gt;</span>urn:ogc:def:crs:EPSG::4326<span class="nt">&lt;/DefaultCRS&gt;</span>
+      <span class="nt">&lt;OutputFormats&gt;</span>
+        <span class="nt">&lt;Format&gt;</span>application/xml; subtype=&quot;gml/3.2.1&quot;<span class="nt">&lt;/Format&gt;</span>
+      <span class="nt">&lt;/OutputFormats&gt;</span>
+      <span class="nt">&lt;ows:WGS84BoundingBox&gt;</span>
+        <span class="nt">&lt;ows:LowerCorner&gt;</span>4.486395 51.604992<span class="nt">&lt;/ows:LowerCorner&gt;</span>
+        <span class="nt">&lt;ows:UpperCorner&gt;</span>5.928631 51.680515<span class="nt">&lt;/ows:UpperCorner&gt;</span>
+      <span class="nt">&lt;/ows:WGS84BoundingBox&gt;</span>
+    <span class="nt">&lt;/FeatureType&gt;</span>
+  <span class="nt">&lt;/FeatureTypeList&gt;</span>
+  <span class="nt">&lt;fes:Spatial_Capabilities&gt;</span>
+    <span class="nt">&lt;fes:GeometryOperands</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span> <span class="na">xmlns:gml32=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:Box&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:Envelope&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:Point&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:LineString&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:Curve&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:GeometryOperand</span> <span class="na">name=</span><span class="s">&quot;gml:Polygon&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fes:GeometryOperands&gt;</span>
+    <span class="nt">&lt;fes:SpatialOperators&gt;</span>
+      <span class="nt">&lt;fes:SpatialOperator</span> <span class="na">name=</span><span class="s">&quot;BBOX&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:SpatialOperator</span> <span class="na">name=</span><span class="s">&quot;Intersects&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:SpatialOperator</span> <span class="na">name=</span><span class="s">&quot;Contains&quot;</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;fes:SpatialOperator</span> <span class="na">name=</span><span class="s">&quot;Beyond&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/fes:SpatialOperators&gt;</span>
+  <span class="nt">&lt;/fes:Spatial_Capabilities&gt;</span>
+<span class="nt">&lt;/WFS_Capabilities&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getfeature">
+<span id="wfs-getfeature"></span><h2>GetFeature<a class="headerlink" href="#getfeature" title="Permalink to this headline">¶</a></h2>
+<p>A WFS server responding to a <strong>GetFeature</strong> request returns a collection of geographic feature instances filtered according to a criteria set by the requesting client.</p>
+<p>The requests can be sent through HTTP GET or HTTP POST. For simplicity, the following example requests are sent through through HTTP GET only.</p>
+<div class="section" id="id1">
+<h3>Request<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The most simple GetFeature request is one that downloads the feature collection without any constraints to filter the content by. An example of this type of request is shown below. The <code class="docutils literal notranslate"><span class="pre">GetFeature</span></code> request queries the server with a set of parameters describing the geographic features to return. The TYPENAMES parameter determines the collection of feature instances to return.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?</span>
+<span class="na">SERVICE</span><span class="o">=</span><span class="s">WFS&amp;</span>
+<span class="na">VERSION</span><span class="o">=</span><span class="s">2.0.0&amp;</span>
+<span class="na">REQUEST</span><span class="o">=</span><span class="s">GetFeature&amp;</span>
+<span class="na">TYPENAMES</span><span class="o">=</span><span class="s">ps:ProtectedSite</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="hhttp://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&amp;VERSION=2.0.0&amp;REQUEST=GetFeature&amp;TYPENAMES=ps:ProtectedSite">This is a link to an example of a simple GetFeature request.</a></p>
+</div>
+<div class="section" id="id2">
+<h3>Response<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>An extract of the response resulting from the above request is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span>
+   <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T18:59:13&quot;</span>
+   <span class="na">numberMatched=</span><span class="s">&quot;16&quot;</span>
+   <span class="na">numberReturned=</span><span class="s">&quot;16&quot;</span>
+   <span class="na">next=</span><span class="s">&quot;https://wfst.axl.aero/AxlRest/wfs?SERVICE=WFS&amp;amp;VERSION=2.0.2&amp;amp;REQUEST=GetFeature&amp;amp;TYPENAMES=ps:ProtectedSite&amp;amp;STARTINDEX=2&amp;amp;COUNT=1&quot;</span>
+   <span class="na">xmlns:gts=</span><span class="s">&quot;http://www.isotc211.org/2005/gts&quot;</span>
+   <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span>
+   <span class="na">xmlns:sch=</span><span class="s">&quot;http://purl.oclc.org/dsdl/schematron&quot;</span>
+   <span class="na">xmlns:xml=</span><span class="s">&quot;http://www.w3.org/XML/1998/namespace&quot;</span>
+   <span class="na">xmlns:base=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:BaseTypes:3.2&quot;</span>
+   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+   <span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span>
+   <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+   <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+   <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+   <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span>
+   <span class="na">xmlns:gmx=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+   <span class="na">xmlns:gss=</span><span class="s">&quot;http://www.isotc211.org/2005/gss&quot;</span>
+   <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span>
+   <span class="na">xmlns:gsr=</span><span class="s">&quot;http://www.isotc211.org/2005/gsr&quot;</span>
+   <span class="na">xmlns:gn=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:GeographicalNames:3.0&quot;</span>
+   <span class="na">xmlns:smil20=</span><span class="s">&quot;http://www.w3.org/2001/SMIL20/&quot;</span>
+   <span class="na">xmlns:sqm=</span><span class="s">&quot;http://axl.avitech.aero/aviWfsSqm/1.0&quot;</span>
+   <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span>
+   <span class="na">xmlns:smil20lang=</span><span class="s">&quot;http://www.w3.org/2001/SMIL20/Language&quot;</span>
+   <span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- oldId=none ;oldTime=1487178040 ; oldExpiry=0 ;  ; currentTime=1506020133 ; expired=true;--&gt;</span>
+  <span class="nt">&lt;ps:ProtectedSite</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span> <span class="na">gml:id=</span><span class="s">&quot;PS_PROTECTEDSITE_16cbb8db-cce1-4e8b-8733-83d53a910ebe&quot;</span><span class="nt">&gt;</span>
+...
+  <span class="nt">&lt;/ps:ProtectedSite&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="count-parameter">
+<h3>Count parameter<a class="headerlink" href="#count-parameter" title="Permalink to this headline">¶</a></h3>
+<p>Additional parameters can be added to further filter or convert the response from the WFS. The information needed to specify values for parameters, including other parameters that we shall introduce below, can be obtained from the Capabilities document.</p>
+<p>To include additional parameters to the GetFeature request above, simply add an ampersand (&amp;) at the end of the URL, then add the name of the parameter, an equal sign and the value to assign to the parameter. For example, the following GetFeature request limits the number of features returned by the server to a single feature instance. The number to limit the response by is determined by the value of the count parameter.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//wfst.axl.aero/AxlRest/wfs?</span>
+<span class="na">service</span><span class="o">=</span><span class="s">WFS&amp;</span>
+<span class="na">version</span><span class="o">=</span><span class="s">2.0.0&amp;</span>
+<span class="na">request</span><span class="o">=</span><span class="s">GetFeature&amp;</span>
+<span class="na">TypeNames</span><span class="o">=</span><span class="s">ps:ProtectedSite&amp;</span>
+<span class="na">count</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://wfst.axl.aero/AxlRest/wfs?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;count=1">This is a link to the request shown above.</a></p>
+<p>The response generated by the request is shown below. Notice that the number of returned feature instances is 1 (shown by the numberReturned attribute in the root wfs:FeatureCollection element).</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span>
+   <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T18:55:33&quot;</span>
+   <span class="na">numberMatched=</span><span class="s">&quot;16&quot;</span>
+   <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span>
+   <span class="na">next=</span><span class="s">&quot;https://wfst.axl.aero/AxlRest/wfs?SERVICE=WFS&amp;amp;VERSION=2.0.2&amp;amp;REQUEST=GetFeature&amp;amp;TYPENAMES=ps:ProtectedSite&amp;amp;STARTINDEX=2&amp;amp;COUNT=1&quot;</span>
+   <span class="na">xmlns:gts=</span><span class="s">&quot;http://www.isotc211.org/2005/gts&quot;</span>
+   <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span>
+   <span class="na">xmlns:sch=</span><span class="s">&quot;http://purl.oclc.org/dsdl/schematron&quot;</span>
+   <span class="na">xmlns:xml=</span><span class="s">&quot;http://www.w3.org/XML/1998/namespace&quot;</span>
+   <span class="na">xmlns:base=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:BaseTypes:3.2&quot;</span>
+   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+   <span class="na">xmlns:gco=</span><span class="s">&quot;http://www.isotc211.org/2005/gco&quot;</span>
+   <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+   <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span>
+   <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span>
+   <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span>
+   <span class="na">xmlns:gmx=</span><span class="s">&quot;http://www.isotc211.org/2005/gmx&quot;</span>
+   <span class="na">xmlns:gss=</span><span class="s">&quot;http://www.isotc211.org/2005/gss&quot;</span>
+   <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span>
+   <span class="na">xmlns:gsr=</span><span class="s">&quot;http://www.isotc211.org/2005/gsr&quot;</span>
+   <span class="na">xmlns:gn=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:GeographicalNames:3.0&quot;</span>
+   <span class="na">xmlns:smil20=</span><span class="s">&quot;http://www.w3.org/2001/SMIL20/&quot;</span>
+   <span class="na">xmlns:sqm=</span><span class="s">&quot;http://axl.avitech.aero/aviWfsSqm/1.0&quot;</span>
+   <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span>
+   <span class="na">xmlns:smil20lang=</span><span class="s">&quot;http://www.w3.org/2001/SMIL20/Language&quot;</span>
+   <span class="na">xmlns:gmd=</span><span class="s">&quot;http://www.isotc211.org/2005/gmd&quot;</span>
+   <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 http://schemas.opengis.net/gml/3.2.1/gml.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span><span class="nt">&gt;</span>
+  <span class="c">&lt;!-- oldId=none ;oldTime=1487178040 ; oldExpiry=0 ;  ; currentTime=1506020133 ; expired=true;--&gt;</span>
+  <span class="nt">&lt;ps:ProtectedSite</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span> <span class="na">gml:id=</span><span class="s">&quot;PS_PROTECTEDSITE_16cbb8db-cce1-4e8b-8733-83d53a910ebe&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;gml:name&gt;</span>ProtectedSite1<span class="nt">&lt;/gml:name&gt;</span>
+    <span class="nt">&lt;ps:geometry&gt;</span>
+      <span class="nt">&lt;gml:MultiSurface</span> <span class="na">gml:id=</span><span class="s">&quot;PS_PROTECTEDSITE_16cbb8db-cce1-4e8b-8733-83d53a910ebe_PS_GEOMETRY&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;gml:surfaceMember&gt;</span>
+          <span class="nt">&lt;gml:Polygon</span> <span class="na">gml:id=</span><span class="s">&quot;GEOMETRY_7fd8f3e7-d283-4ce5-9722-e612bf465a3b&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;gml:exterior&gt;</span>
+              <span class="nt">&lt;gml:LinearRing&gt;</span>
+                <span class="nt">&lt;gml:posList&gt;</span>
+                                                                          51.628734 5.507951 51.629015 5.508402 51.629694 5.507409 51.628721 5.507150 51.628734
+                                                                          5.507951
+                                                                  <span class="nt">&lt;/gml:posList&gt;</span>
+              <span class="nt">&lt;/gml:LinearRing&gt;</span>
+            <span class="nt">&lt;/gml:exterior&gt;</span>
+          <span class="nt">&lt;/gml:Polygon&gt;</span>
+        <span class="nt">&lt;/gml:surfaceMember&gt;</span>
+      <span class="nt">&lt;/gml:MultiSurface&gt;</span>
+    <span class="nt">&lt;/ps:geometry&gt;</span>
+    <span class="nt">&lt;ps:inspireID&gt;</span>
+      <span class="nt">&lt;base:Identifier&gt;</span>
+        <span class="nt">&lt;base:localId&gt;</span>FB8DCB4E-03BB-4E8A-BB9D-04A44295DF58<span class="nt">&lt;/base:localId&gt;</span>
+        <span class="nt">&lt;base:namespace&gt;</span>NL.9930.EHS<span class="nt">&lt;/base:namespace&gt;</span>
+      <span class="nt">&lt;/base:Identifier&gt;</span>
+    <span class="nt">&lt;/ps:inspireID&gt;</span>
+    <span class="nt">&lt;ps:siteDesignation&gt;</span>
+      <span class="nt">&lt;ps:DesignationType&gt;</span>
+        <span class="nt">&lt;ps:designationScheme&gt;</span>ecologischeHoofdstructuur<span class="nt">&lt;/ps:designationScheme&gt;</span>
+        <span class="nt">&lt;ps:designation&gt;</span>ecologischeHoofdstructuur<span class="nt">&lt;/ps:designation&gt;</span>
+        <span class="nt">&lt;ps:percentageUnderDesignation&gt;</span>100<span class="nt">&lt;/ps:percentageUnderDesignation&gt;</span>
+      <span class="nt">&lt;/ps:DesignationType&gt;</span>
+    <span class="nt">&lt;/ps:siteDesignation&gt;</span>
+  <span class="nt">&lt;/ps:ProtectedSite&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bounding-box-bbox-parameter">
+<h3>Bounding Box (BBOX) parameter<a class="headerlink" href="#bounding-box-bbox-parameter" title="Permalink to this headline">¶</a></h3>
+<p>Another parameter that can be added to a GetFeature request is that of the Bounding Box (BBOX). This parameter is a comma-separated list of four numbers that indicate the minimum and maximum bounding coordinates of the feature instances that should be returned. An example of the use of the BBOX parameter is shown below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;BBOX=51.607317,5.106151,51.629884,5.228022</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;BBOX=51.607317,5.106151,51.629884,5.228022">This is a link to the request shown above.</a></p>
+<p>The response returned by the request above is shown below. The response is presented here with some content missing for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T18:14:50Z&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;1&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;ps:ProtectedSite</span> <span class="na">xmlns:ps=</span><span class="s">&quot;urn:x-inspire:specification:gmlas:ProtectedSites:3.0&quot;</span> <span class="na">gml:id=</span><span class="s">&quot;PS_PROTECTEDSITE_a367af0b-9457-4445-9cbd-eb48ae7a844a&quot;</span><span class="nt">&gt;</span>
+...
+<span class="nt">&lt;/ps:ProtectedSite&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="propetyname-parameter">
+<h3>PropetyName parameter<a class="headerlink" href="#propetyname-parameter" title="Permalink to this headline">¶</a></h3>
+<p>Another parameter that can be added to a GetFeature request is the propertyName. This parameter returns feature instances with only the specified property included. This functionality is particularly useful in situations where feature types with several properties are being served over a network with limited bandwidth. The client application can pick and choose which properties they want returned within the feature instances. An example of the use of this parameter is shown below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;count=3&amp;propertyName=inhabitants</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;count=3&amp;propertyName=inhabitants">This is a link to the request shown above.</a></p>
+<p>The response returned by the request above is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T21:17:32.296+02:00&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;3&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;unknown&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.10&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.10.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>486890.340 5881020.962<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>547300<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.11&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.11.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>364883.268 5620035.394<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>324800<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.9&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.9.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>361905.275 5702287.179<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>574600<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sortby-parameter">
+<h3>sortBy parameter<a class="headerlink" href="#sortby-parameter" title="Permalink to this headline">¶</a></h3>
+<p>The results returned by a WFS can also be organised in a particular order through the sortBy parameter. This parameter returns feature instances in a sequence determined by the specified parameter. This functionality is particularly useful in situations where feature types have properties representing quantities or populations. An example of the use of this parameter is shown below.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;sortBy=inhabitants&amp;propertyName=inhabitants</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;sortBy=inhabitants&amp;propertyName=inhabitants">The link to the request above is shown below.</a></p>
+<p>The response resulting from the request above is shown below. Some content has been omitted for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span>
+<span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T21:17:32.296+02:00&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;11&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;unknown&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.11&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.11.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>364883.268 5620035.394<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>324800<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.10&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.10.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>486890.340 5881020.962<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>547300<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.9&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.9.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>361905.275 5702287.179<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>574600<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="srsname-parameter">
+<h3>srsName parameter<a class="headerlink" href="#srsname-parameter" title="Permalink to this headline">¶</a></h3>
+<p>This parameter is used to specify the spatial reference system to encode feature geometries in. The spatial reference systems allowed for each feature type can be identified from the GetCapabilities response.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;count=1&amp;srsName=urn:ogc:def:crs:EPSG::4326</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;count=1&amp;srsName=urn:ogc:def:crs:EPSG::4326">The link to the request above is shown below.</a></p>
+<p>The response resulting from the request above is shown below. Some content has been omitted for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T21:26:02.213+02:00&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;unknown&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:boundedBy&gt;</span>
+<span class="nt">&lt;gml:Envelope</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:lowerCorner&gt;</span>52.521400003005 13.405700006106<span class="nt">&lt;/gml:lowerCorner&gt;</span>
+<span class="nt">&lt;gml:upperCorner&gt;</span>52.521400003005 13.405700006106<span class="nt">&lt;/gml:upperCorner&gt;</span>
+<span class="nt">&lt;/gml:Envelope&gt;</span>
+<span class="nt">&lt;/wfs:boundedBy&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>Berlin<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.1.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>52.521400003005 13.405700006106<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;country&gt;</span>Germany<span class="nt">&lt;/country&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>3460700<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;lzi&gt;</span>2011-03-17T15:32:54Z<span class="nt">&lt;/lzi&gt;</span>
+<span class="nt">&lt;function&gt;</span>capital<span class="nt">&lt;/function&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="featureid-parameter">
+<h3>featureId parameter<a class="headerlink" href="#featureid-parameter" title="Permalink to this headline">¶</a></h3>
+<p>This parameter is used to filter the features returned by the request.</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wfs?</span>
+<span class="na">request</span><span class="o">=</span><span class="s">GetFeature&amp;</span>
+<span class="na">version</span><span class="o">=</span><span class="s">2.0.0&amp;</span>
+<span class="na">typeName</span><span class="o">=</span><span class="s">topp:states&amp;</span>
+<span class="na">FEATUREID</span><span class="o">=</span><span class="s">states.3</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://localhost:8080/geoserver/wfs?request=GetFeature&amp;version=2.0.0&amp;typeName=topp:states&amp;FEATUREID=states.3">The link to the request above is shown below.</a></p>
+<p>The response resulting from the request above is shown below. Some content has been omitted for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:topp=</span><span class="s">&quot;http://www.openplans.org/topp&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;1&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-21T19:38:52.788Z&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;topp:states</span> <span class="na">gml:id=</span><span class="s">&quot;states.3&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;topp:the_geom&gt;</span>
+<span class="nt">&lt;gml:MultiSurface</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:surfaceMember&gt;&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;</span>38.557476 -75.70742 38.649551 -75.71106 38.83017 -75.724937 39.141548 -75.752922 39.247753 -75.761658 38.450451 -75.093094 38.455208 -75.350204 38.463066 -75.69915 38.557476 -75.70742<span class="nt">&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;&lt;/gml:surfaceMember&gt;</span>
+<span class="nt">&lt;/gml:MultiSurface&gt;</span>
+<span class="nt">&lt;/topp:the_geom&gt;</span>
+<span class="nt">&lt;topp:STATE_NAME&gt;</span>Delaware<span class="nt">&lt;/topp:STATE_NAME&gt;</span>
+<span class="nt">&lt;topp:SAMP_POP&gt;</span>102776.0<span class="nt">&lt;/topp:SAMP_POP&gt;</span>
+<span class="nt">&lt;/topp:states&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="query-action">
+<h3>query action<a class="headerlink" href="#query-action" title="Permalink to this headline">¶</a></h3>
+<p>Up to now, we have only presented GetFeature request examples sent as URLs through the HTTP Get method. It is also possible to send the body of the request as an XML document through the HTTP Post method.</p>
+<p>The following is an example of a GetFeature request that contains a query action and is sent through the HTTP Post method.</p>
+<p>The request is sent to the following URL <a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs">https://services.interactive-instruments.de/ogc-reference/simple/wfs</a></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:GetFeature</span> <span class="na">service=</span><span class="s">&quot;WFS&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span>
+    <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:ci=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+    <span class="na">xmlns:sf=</span><span class="s">&quot;http://www.openplans.org/spearfish&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;wfs:Query</span> <span class="na">typeNames=</span><span class="s">&quot;ci:City&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;wfs:PropertyName</span> <span class="na">resolve=</span><span class="s">&quot;local&quot;</span><span class="nt">&gt;</span>ci:inhabitants<span class="nt">&lt;/wfs:PropertyName&gt;</span>
+        <span class="nt">&lt;fes:Filter&gt;</span>
+            <span class="nt">&lt;fes:PropertyIsLessThan&gt;</span>
+               <span class="nt">&lt;fes:ValueReference&gt;</span>ci:inhabitants<span class="nt">&lt;/fes:ValueReference&gt;</span>
+               <span class="nt">&lt;fes:Literal&gt;</span>400000<span class="nt">&lt;/fes:Literal&gt;</span>
+            <span class="nt">&lt;/fes:PropertyIsLessThan&gt;</span>
+        <span class="nt">&lt;/fes:Filter&gt;</span>
+    <span class="nt">&lt;/wfs:Query&gt;</span>
+<span class="nt">&lt;/wfs:GetFeature&gt;</span>
+</pre></div>
+</div>
+<p>The response returned by the request above is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-22T09:56:55.908+02:00&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;unknown&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities https://services.interactive-instruments.de/ogc-reference/schema/demo/cities/4.1/Cities.xsd http://www.opengis.net/wfs/2.0 https://services.interactive-instruments.de/ogc-reference/schema/ogc/wfs/2.0/wfs.xsd http://www.opengis.net/gml/3.2 https://services.interactive-instruments.de/ogc-reference/schema/ogc/gml/3.2.1/gml.xsd http://www.opengis.net/gml/3.2 https://services.interactive-instruments.de/ogc-reference/schema/ogc/gml/3.2.1/gml.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:boundedBy&gt;</span>
+<span class="nt">&lt;gml:Envelope</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:lowerCorner&gt;</span>364883.268 5620035.394<span class="nt">&lt;/gml:lowerCorner&gt;</span>
+<span class="nt">&lt;gml:upperCorner&gt;</span>364883.268 5620035.394<span class="nt">&lt;/gml:upperCorner&gt;</span>
+<span class="nt">&lt;/gml:Envelope&gt;</span>
+<span class="nt">&lt;/wfs:boundedBy&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;City</span> <span class="na">gml:id=</span><span class="s">&quot;City.11&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>Bonn<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;location&gt;</span>
+<span class="nt">&lt;gml:Point</span> <span class="na">gml:id=</span><span class="s">&quot;city.id.11.location.Geom_0&quot;</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::25832&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;gml:pos&gt;</span>364883.268 5620035.394<span class="nt">&lt;/gml:pos&gt;</span>
+<span class="nt">&lt;/gml:Point&gt;</span>
+<span class="nt">&lt;/location&gt;</span>
+<span class="nt">&lt;country&gt;</span>Germany<span class="nt">&lt;/country&gt;</span>
+<span class="nt">&lt;inhabitants&gt;</span>324800<span class="nt">&lt;/inhabitants&gt;</span>
+<span class="nt">&lt;/City&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getpropertyvalue">
+<span id="wfs-getpropertyvalue"></span><h2>GetPropertyValue<a class="headerlink" href="#getpropertyvalue" title="Permalink to this headline">¶</a></h2>
+<p>Returns the value of the feature property specified in the request. This operation is most useful when the server is being accessed over networks with limited bandwidth because it returns only the property value rather than the complete feature instance data.</p>
+<div class="section" id="id7">
+<h3>Request<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>The following is an example of a GetPropertyValue request that contains a query action and is sent through the HTTP POST method.</p>
+<p>The request is sent to the following URL <a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs">https://services.interactive-instruments.de/ogc-reference/simple/wfs</a></p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:GetPropertyValue</span> <span class="na">service=</span><span class="s">&quot;WFS&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span>
+   <span class="na">valueReference=</span><span class="s">&quot;ci:inhabitants&quot;</span>
+   <span class="na">resolve=</span><span class="s">&quot;local&quot;</span>
+   <span class="na">resolveDepth=</span><span class="s">&quot;*&quot;</span>
+    <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:ci=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+    <span class="na">xmlns:sf=</span><span class="s">&quot;http://www.openplans.org/spearfish&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;wfs:Query</span> <span class="na">typeNames=</span><span class="s">&quot;ci:City&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fes:Filter&gt;</span>
+            <span class="nt">&lt;fes:PropertyIsLessThan&gt;</span>
+               <span class="nt">&lt;fes:ValueReference&gt;</span>ci:inhabitants<span class="nt">&lt;/fes:ValueReference&gt;</span>
+               <span class="nt">&lt;fes:Literal&gt;</span>400000<span class="nt">&lt;/fes:Literal&gt;</span>
+            <span class="nt">&lt;/fes:PropertyIsLessThan&gt;</span>
+        <span class="nt">&lt;/fes:Filter&gt;</span>
+    <span class="nt">&lt;/wfs:Query&gt;</span>
+<span class="nt">&lt;/wfs:GetPropertyValue&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>Response<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>The response resulting from the above request is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:ValueCollection</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-22T10:06:30.991+02:00&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;unknown&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>324800<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:ValueCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="describefeaturetype">
+<span id="wfs-describefeaturetype"></span><h2>DescribeFeatureType<a class="headerlink" href="#describefeaturetype" title="Permalink to this headline">¶</a></h2>
+<p>Returns a description of the structure, including properties, of the feature type specified in the request.</p>
+<div class="section" id="id10">
+<h3>Request<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>An example of a DescribeFeatureType request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//services.interactive-instruments.de/ogc-reference/simple/wfs?</span>
+<span class="na">version</span><span class="o">=</span><span class="s">2.0.0&amp;</span>
+<span class="na">request</span><span class="o">=</span><span class="s">describeFeatureType&amp;</span>
+<span class="na">service</span><span class="o">=</span><span class="s">wfs&amp;</span>
+<span class="na">typenames</span><span class="o">=</span><span class="s">ci:City</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=describeFeatureType&amp;service=wfs&amp;typenames=ci:City">This is a link to the request presented above.</a></p>
+</div>
+<div class="section" id="id11">
+<h3>Response<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>The response is an XML schema definition document with a detailed description of the specified feature type. Note that in some cases the XML schema definition document may import externally hosted definitions.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;schema</span> <span class="na">targetNamespace=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">elementFormDefault=</span><span class="s">&quot;qualified&quot;</span> <span class="na">xmlns:ci=</span><span class="s">&quot;http://www.interactive-instruments.de/namespaces/demo/cities/4.1/cities&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;import</span> <span class="na">namespace=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">schemaLocation=</span><span class="s">&quot;https://services.interactive-instruments.de/ogc-reference/schema/ogc/gml/3.2.1/gml.xsd&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;City&quot;</span> <span class="na">substitutionGroup=</span><span class="s">&quot;ci:NamedGeoObject&quot;</span> <span class="na">type=</span><span class="s">&quot;ci:CityType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">abstract=</span><span class="s">&quot;true&quot;</span> <span class="na">name=</span><span class="s">&quot;NamedGeoObject&quot;</span> <span class="na">substitutionGroup=</span><span class="s">&quot;gml:AbstractFeature&quot;</span> <span class="na">type=</span><span class="s">&quot;ci:NamedGeoObjectType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;complexType</span> <span class="na">name=</span><span class="s">&quot;CityType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;complexContent&gt;</span>
+<span class="nt">&lt;extension</span> <span class="na">base=</span><span class="s">&quot;ci:NamedGeoObjectType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sequence&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;location&quot;</span> <span class="na">type=</span><span class="s">&quot;gml:PointPropertyType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">name=</span><span class="s">&quot;alternativeName&quot;</span> <span class="na">type=</span><span class="s">&quot;ci:AlternativeNamePropertyType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;country&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;inhabitants&quot;</span> <span class="na">type=</span><span class="s">&quot;integer&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;lzi&quot;</span> <span class="na">type=</span><span class="s">&quot;dateTime&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;function&quot;</span> <span class="na">nillable=</span><span class="s">&quot;true&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">name=</span><span class="s">&quot;district&quot;</span> <span class="na">type=</span><span class="s">&quot;gml:ReferenceType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">maxOccurs=</span><span class="s">&quot;unbounded&quot;</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">name=</span><span class="s">&quot;passingRiver&quot;</span> <span class="na">type=</span><span class="s">&quot;gml:ReferenceType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/sequence&gt;</span>
+<span class="nt">&lt;/extension&gt;</span>
+<span class="nt">&lt;/complexContent&gt;</span>
+<span class="nt">&lt;/complexType&gt;</span>
+<span class="nt">&lt;complexType</span> <span class="na">name=</span><span class="s">&quot;NamedGeoObjectType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;complexContent&gt;</span>
+<span class="nt">&lt;extension</span> <span class="na">base=</span><span class="s">&quot;gml:AbstractFeatureType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sequence&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">minOccurs=</span><span class="s">&quot;0&quot;</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/sequence&gt;</span>
+<span class="nt">&lt;/extension&gt;</span>
+<span class="nt">&lt;/complexContent&gt;</span>
+<span class="nt">&lt;/complexType&gt;</span>
+<span class="nt">&lt;complexType</span> <span class="na">name=</span><span class="s">&quot;AlternativeNamePropertyType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sequence&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">ref=</span><span class="s">&quot;ci:AlternativeName&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/sequence&gt;</span>
+<span class="nt">&lt;/complexType&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;AlternativeName&quot;</span> <span class="na">substitutionGroup=</span><span class="s">&quot;gml:AbstractObject&quot;</span> <span class="na">type=</span><span class="s">&quot;ci:AlternativeNameType&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;complexType</span> <span class="na">name=</span><span class="s">&quot;AlternativeNameType&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;sequence&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;name&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;element</span> <span class="na">name=</span><span class="s">&quot;language&quot;</span> <span class="na">type=</span><span class="s">&quot;string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/sequence&gt;</span>
+<span class="nt">&lt;/complexType&gt;</span>
+<span class="nt">&lt;/schema&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="stored-queries">
+<h2>Stored Queries<a class="headerlink" href="#stored-queries" title="Permalink to this headline">¶</a></h2>
+<p>With a brief single-line URL, stored queries allow client applications to invoke what may originally have been a query formed of multiple lines of XML.</p>
+<p>A stored query expression may be used in a GetPropertyValue, GetFeature, GetFeatureWithLock or LockFeature operation. Parameters can be passed to the stored query to be acted upon by the requested operation.</p>
+<p>All servers shall implement the ability to list, describe and execute a stored query that fetches features based on their identifier. Additional stored queries may also be offered.</p>
+</div>
+<div class="section" id="liststoredqueries">
+<span id="wfs-liststoredqueries"></span><h2>ListStoredQueries<a class="headerlink" href="#liststoredqueries" title="Permalink to this headline">¶</a></h2>
+<p>Returns a list of the queries that have been stored inside the server.</p>
+<div class="section" id="id12">
+<h3>Request<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>An example of a ListStoredQueries request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wfs?</span>
+<span class="na">request</span><span class="o">=</span><span class="s">ListStoredQueries&amp;</span>
+<span class="na">version</span><span class="o">=</span><span class="s">2.0.0</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://localhost:8080/geoserver/wfs?request=ListStoredQueries&amp;version=2.0.0">This is a link to the request presented above.</a></p>
+</div>
+<div class="section" id="id14">
+<h3>Response<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>The response is an XML document that presents the identifier and name of each query stored in the server. The identifier is used when calling the stored query through the STOREDQUERY_ID parameter in a GetFeature request for example.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:ListStoredQueriesResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:StoredQuery</span> <span class="na">id=</span><span class="s">&quot;urn:ogc:def:query:OGC-WFS::GetFeatureById&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:Title</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Get feature by identifier<span class="nt">&lt;/wfs:Title&gt;</span>
+<span class="nt">&lt;wfs:ReturnFeatureType/&gt;</span>
+<span class="nt">&lt;/wfs:StoredQuery&gt;</span>
+<span class="nt">&lt;/wfs:ListStoredQueriesResponse&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="describestoredqueries">
+<span id="wfs-describestoredqueries"></span><h2>DescribeStoredQueries<a class="headerlink" href="#describestoredqueries" title="Permalink to this headline">¶</a></h2>
+<p>Returns a description of the stored queries referenced in the request parameters.</p>
+<div class="section" id="id15">
+<h3>Request<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<p>An example of a DescribeStoredQueries request is:</p>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//localhost:8080/geoserver/wfs?</span>
+<span class="na">request</span><span class="o">=</span><span class="s">DescribeStoredQueries&amp;</span>
+<span class="na">STOREDQUERY_ID</span><span class="o">=</span><span class="s">urn:ogc:def:query:OGC-WFS::GetFeatureById&amp;</span>
+<span class="na">version</span><span class="o">=</span><span class="s">2.0.0</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="http://localhost:8080/geoserver/wfs?request=DescribeStoredQueries&amp;version=2.0.0&amp;STOREDQUERY_ID=urn:ogc:def:query:OGC-WFS::GetFeatureById">This is a link to the request presented above.</a></p>
+</div>
+<div class="section" id="id17">
+<h3>Response<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<p>The response is an XML document that describes the stored query specified by the identifier specified by the STOREDQUERY_ID parameter.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:DescribeStoredQueriesResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:StoredQueryDescription</span> <span class="na">id=</span><span class="s">&quot;urn:ogc:def:query:OGC-WFS::GetFeatureById&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:Title</span> <span class="na">xml:lang=</span><span class="s">&quot;en&quot;</span><span class="nt">&gt;</span>Get feature by identifier<span class="nt">&lt;/wfs:Title&gt;</span>
+<span class="nt">&lt;wfs:Parameter</span> <span class="na">name=</span><span class="s">&quot;ID&quot;</span> <span class="na">type=</span><span class="s">&quot;xs:string&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;wfs:QueryExpressionText</span> <span class="na">isPrivate=</span><span class="s">&quot;true&quot;</span> <span class="na">language=</span><span class="s">&quot;urn:ogc:def:queryLanguage:OGC-WFS::WFS_QueryExpression&quot;</span> <span class="na">returnFeatureTypes=</span><span class="s">&quot;&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wfs:StoredQueryDescription&gt;</span>
+<span class="nt">&lt;/wfs:DescribeStoredQueriesResponse&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transaction">
+<span id="wfs-transaction"></span><h2>Transaction<a class="headerlink" href="#transaction" title="Permalink to this headline">¶</a></h2>
+<p>This optional operation allows the feature instances and their properties to be updated or deleted. The operation can also be used to insert new features. The WFS standard does not enforce any particular security model, therefore implementations are expected to implement a security model appropriate for their own infrastructure.</p>
+<div class="section" id="id18">
+<h3>Request<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<p>An example request is shown below. Since the request modifies data, we suggest installing a local instance of a WFS. The following example was tested against a WFS instance hosted locally at &lt;<a class="reference external" href="http://localhost:8080/geoserver/wfs">http://localhost:8080/geoserver/wfs</a>&gt;</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:Transaction</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span> <span class="na">service=</span><span class="s">&quot;WFS&quot;</span>
+ <span class="na">xmlns=</span><span class="s">&quot;http://www.someserver.com/myns&quot;</span>
+ <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+ <span class="na">xmlns:topp=</span><span class="s">&quot;http://www.openplans.org/topp&quot;</span>
+ <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span>
+ <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+ <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://schemas.opengis.net/wfs/2.0.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;wfs:Update</span> <span class="na">typeName=</span><span class="s">&quot;topp:tasmania_roads&quot;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;wfs:Property&gt;</span>
+ <span class="nt">&lt;wfs:ValueReference&gt;</span>TYPE<span class="nt">&lt;/wfs:ValueReference&gt;</span>
+ <span class="nt">&lt;wfs:Value&gt;</span>road<span class="nt">&lt;/wfs:Value&gt;</span>
+ <span class="nt">&lt;/wfs:Property&gt;</span>
+ <span class="nt">&lt;fes:Filter&gt;</span>
+ <span class="nt">&lt;fes:ResourceId</span> <span class="na">rid=</span><span class="s">&quot;tasmania_roads.1&quot;</span><span class="nt">/&gt;</span>
+ <span class="nt">&lt;/fes:Filter&gt;</span>
+ <span class="nt">&lt;/wfs:Update&gt;</span>
+<span class="nt">&lt;/wfs:Transaction&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>Response<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p>The response is an XML document that confirms whether the transaction was successful.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:TransactionResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:TransactionSummary&gt;</span>
+<span class="nt">&lt;wfs:totalInserted&gt;</span>0<span class="nt">&lt;/wfs:totalInserted&gt;</span>
+<span class="nt">&lt;wfs:totalUpdated&gt;</span>1<span class="nt">&lt;/wfs:totalUpdated&gt;</span>
+<span class="nt">&lt;wfs:totalReplaced&gt;</span>0<span class="nt">&lt;/wfs:totalReplaced&gt;</span>
+<span class="nt">&lt;wfs:totalDeleted&gt;</span>0<span class="nt">&lt;/wfs:totalDeleted&gt;</span>
+<span class="nt">&lt;/wfs:TransactionSummary&gt;</span>
+<span class="nt">&lt;wfs:UpdateResults&gt;&lt;wfs:Feature&gt;</span>
+<span class="nt">&lt;fes:ResourceId</span> <span class="na">rid=</span><span class="s">&quot;tasmania_roads.1&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wfs:Feature&gt;</span>
+<span class="nt">&lt;/wfs:UpdateResults&gt;</span>
+<span class="nt">&lt;/wfs:TransactionResponse&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="getfeaturewithlock">
+<span id="wfs-getfeaturewithlock"></span><h2>GetFeatureWithLock<a class="headerlink" href="#getfeaturewithlock" title="Permalink to this headline">¶</a></h2>
+<p>Serves a similar function to a GetFeature request but with the additional ability to lock a feature, presumably for subsequent updating or changes.</p>
+<div class="section" id="id20">
+<h3>Request<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p>An example request is shown below. Since the request modifies the state of a data source, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at &lt;<a class="reference external" href="http://localhost:8080/geoserver/wfs">http://localhost:8080/geoserver/wfs</a>&gt;</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:GetFeatureWithLock</span> <span class="na">service=</span><span class="s">&quot;WFS&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span>
+ <span class="na">handle=</span><span class="s">&quot;GetFeatureWithLock-tc1&quot;</span> <span class="na">expiry=</span><span class="s">&quot;5&quot;</span> <span class="na">resultType=</span><span class="s">&quot;results&quot;</span>
+ <span class="na">xmlns:topp=</span><span class="s">&quot;http://www.openplans.org/topp&quot;</span>
+ <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+ <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span>
+ <span class="na">valueReference=</span><span class="s">&quot;the_geom&quot;</span>  <span class="na">count=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;wfs:Query</span> <span class="na">typeNames=</span><span class="s">&quot;topp:states&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/wfs:GetFeatureWithLock&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id21">
+<h3>Response<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<p>The response is a feature collection similar to that received from a GetFeature response. The example below has been shortened for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:FeatureCollection</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:topp=</span><span class="s">&quot;http://www.openplans.org/topp&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">lockId=</span><span class="s">&quot;GetFeatureWithLock-tc1_6badb1c771c6ee70&quot;</span> <span class="na">numberMatched=</span><span class="s">&quot;49&quot;</span> <span class="na">numberReturned=</span><span class="s">&quot;1&quot;</span> <span class="na">timeStamp=</span><span class="s">&quot;2017-09-29T07:25:43.601Z&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd http://www.openplans.org/topp http://localhost:8080/geoserver/wfs?service=WFS&amp;amp;version=2.0.0&amp;amp;request=DescribeFeatureType&amp;amp;typeName=topp%3Astates http://www.opengis.net/gml/3.2 http://localhost:8080/geoserver/schemas/gml/3.2.1/gml.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;wfs:member&gt;</span>
+<span class="nt">&lt;topp:states</span> <span class="na">gml:id=</span><span class="s">&quot;states.1&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;topp:the_geom&gt;</span>
+<span class="nt">&lt;gml:MultiSurface</span> <span class="na">srsName=</span><span class="s">&quot;urn:ogc:def:crs:EPSG::4326&quot;</span> <span class="na">srsDimension=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;&lt;gml:surfaceMember&gt;&lt;gml:Polygon&gt;&lt;gml:exterior&gt;&lt;gml:LinearRing&gt;&lt;gml:posList&gt;</span>37.51099 -88.071564 37.476273 -88.087883 37.628479 -88.157631 37.583572 -88.134171 37.51099 -88.071564<span class="nt">&lt;/gml:posList&gt;&lt;/gml:LinearRing&gt;&lt;/gml:exterior&gt;&lt;/gml:Polygon&gt;&lt;/gml:surfaceMember&gt;&lt;/gml:MultiSurface&gt;</span>
+<span class="nt">&lt;/topp:the_geom&gt;</span>
+<span class="nt">&lt;topp:STATE_NAME&gt;</span>Illinois<span class="nt">&lt;/topp:STATE_NAME&gt;</span>
+<span class="nt">&lt;topp:STATE_FIPS&gt;</span>17<span class="nt">&lt;/topp:STATE_FIPS&gt;</span>
+<span class="nt">&lt;topp:SAMP_POP&gt;</span>1747776.0<span class="nt">&lt;/topp:SAMP_POP&gt;</span>
+<span class="nt">&lt;/topp:states&gt;</span>
+<span class="nt">&lt;/wfs:member&gt;</span>
+<span class="nt">&lt;/wfs:FeatureCollection&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="lockfeature">
+<span id="wfs-lockfeature"></span><h2>LockFeature<a class="headerlink" href="#lockfeature" title="Permalink to this headline">¶</a></h2>
+<p>Locks a set of feature instances such that no other operations may modify the data while the lock is in place.</p>
+<div class="section" id="id22">
+<h3>Request<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<p>An example request is shown below. Since the request modifies the state of a data source, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at &lt;<a class="reference external" href="http://localhost:8080/geoserver/wfs">http://localhost:8080/geoserver/wfs</a>&gt;</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:LockFeature</span>
+   <span class="na">service=</span><span class="s">&quot;WFS&quot;</span>
+   <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span>
+   <span class="na">expiry=</span><span class="s">&quot;5&quot;</span>
+   <span class="na">xmlns:topp=</span><span class="s">&quot;http://www.openplans.org/topp&quot;</span>
+   <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span>
+   <span class="na">xmlns:ogc=</span><span class="s">&quot;http://www.opengis.net/ogc&quot;</span>
+   <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span>
+   <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml&quot;</span>
+   <span class="na">xmlns:myns=</span><span class="s">&quot;http://www.example.com/myns&quot;</span>
+   <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="nt">&gt;</span>
+   <span class="nt">&lt;wfs:Query</span> <span class="na">typeNames=</span><span class="s">&quot;topp:states&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fes:Filter&gt;</span>
+            <span class="nt">&lt;fes:PropertyIsEqualTo&gt;</span>
+               <span class="nt">&lt;fes:ValueReference&gt;</span>topp:STATE_NAME<span class="nt">&lt;/fes:ValueReference&gt;</span>
+               <span class="nt">&lt;fes:Literal&gt;</span>Illinois<span class="nt">&lt;/fes:Literal&gt;</span>
+            <span class="nt">&lt;/fes:PropertyIsEqualTo&gt;</span>
+        <span class="nt">&lt;/fes:Filter&gt;</span>
+   <span class="nt">&lt;/wfs:Query&gt;</span>
+<span class="nt">&lt;/wfs:LockFeature&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3>Response<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>The response is a feature collection similar to that received from a GetFeature response. The example below has been shortened for brevity.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:LockFeatureResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">lockId=</span><span class="s">&quot;GeoServer_5dcc3c771e1b15c&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;wfs:FeaturesLocked&gt;&lt;fes:ResourceId</span> <span class="na">rid=</span><span class="s">&quot;states.1&quot;</span><span class="nt">/&gt;&lt;/wfs:FeaturesLocked&gt;</span>
+<span class="nt">&lt;/wfs:LockFeatureResponse&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="createstoredquery">
+<span id="wfs-createstoredquery"></span><h2>CreateStoredQuery<a class="headerlink" href="#createstoredquery" title="Permalink to this headline">¶</a></h2>
+<p>Creates and stores a query that can be rapidly and easily triggered by a client at a later point in time.</p>
+<div class="section" id="id24">
+<h3>Request<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<p>An example request is shown below. Since the request persists a query, we suggest using a local instance of a WFS. The following example was tested against a WFS instance hosted locally at &lt;<a class="reference external" href="http://localhost:8080/geoserver/wfs">http://localhost:8080/geoserver/wfs</a>&gt;</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:CreateStoredQuery</span> <span class="na">service=</span><span class="s">&#39;WFS&#39;</span> <span class="na">version=</span><span class="s">&#39;2.0.0&#39;</span>
+ <span class="na">xmlns:wfs=</span><span class="s">&#39;http://www.opengis.net/wfs/2.0&#39;</span>
+ <span class="na">xmlns:fes=</span><span class="s">&#39;http://www.opengis.org/fes/2.0&#39;</span>
+ <span class="na">xmlns:gml=</span><span class="s">&#39;http://www.opengis.net/gml/3.2&#39;</span>
+ <span class="na">xmlns:myns=</span><span class="s">&#39;http://www.someserver.com/myns&#39;</span>
+ <span class="na">xmlns:xsd=</span><span class="s">&#39;http://www.w3.org/2001/XMLSchema&#39;</span>
+ <span class="na">xmlns:topp=</span><span class="s">&#39;http://www.openplans.org/topp&#39;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;wfs:StoredQueryDefinition</span> <span class="na">id=</span><span class="s">&#39;stateStoredQuery&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;wfs:Parameter</span> <span class="na">name=</span><span class="s">&#39;stateName&#39;</span> <span class="na">type=</span><span class="s">&#39;xsd:String&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;wfs:QueryExpressionText</span>
+     <span class="na">returnFeatureTypes=</span><span class="s">&#39;topp:states&#39;</span>
+     <span class="na">language=</span><span class="s">&#39;urn:ogc:def:queryLanguage:OGC-WFS::WFS_QueryExpression&#39;</span>
+     <span class="na">isPrivate=</span><span class="s">&#39;false&#39;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;wfs:Query</span> <span class="na">typeNames=</span><span class="s">&#39;topp:states&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;fes:Filter&gt;</span>
+            <span class="nt">&lt;fes:PropertyIsEqualTo&gt;</span>
+               <span class="nt">&lt;fes:ValueReference&gt;</span>topp:STATE_NAME<span class="nt">&lt;/fes:ValueReference&gt;</span>
+               <span class="nt">&lt;fes:Literal&gt;</span>${stateName}<span class="nt">&lt;/fes:Literal&gt;</span>
+            <span class="nt">&lt;/fes:PropertyIsEqualTo&gt;</span>
+        <span class="nt">&lt;/fes:Filter&gt;</span>
+      <span class="nt">&lt;/wfs:Query&gt;</span>
+    <span class="nt">&lt;/wfs:QueryExpressionText&gt;</span>
+  <span class="nt">&lt;/wfs:StoredQueryDefinition&gt;</span>
+<span class="nt">&lt;/wfs:CreateStoredQuery&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id25">
+<h3>Response<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>An example response is shown below.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:CreateStoredQueryResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">status=</span><span class="s">&quot;OK&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dropstoredquery">
+<span id="wfs-dropstoredquery"></span><h2>DropStoredQuery<a class="headerlink" href="#dropstoredquery" title="Permalink to this headline">¶</a></h2>
+<p>Deletes a previously stored query from the server.</p>
+<div class="section" id="id26">
+<h3>Request<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>An example request is shown below. Since the request deletes a previously stored query, we suggest installing a local instance of a WFS. The following example was tested against a WFS instance hosted locally at &lt;<a class="reference external" href="http://localhost:8080/geoserver/wfs">http://localhost:8080/geoserver/wfs</a>&gt;</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:DropStoredQuery</span>
+ <span class="na">xmlns:wfs=</span><span class="s">&#39;http://www.opengis.net/wfs/2.0&#39;</span>
+ <span class="na">service=</span><span class="s">&#39;WFS&#39;</span> <span class="na">id=</span><span class="s">&#39;myStoredQuery&#39;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id27">
+<h3>Response<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<p>An example response is shown below:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;wfs:DropStoredQueryResponse</span> <span class="na">xmlns:xs=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema&quot;</span> <span class="na">xmlns:fes=</span><span class="s">&quot;http://www.opengis.net/fes/2.0&quot;</span> <span class="na">xmlns:wfs=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0&quot;</span> <span class="na">xmlns:gml=</span><span class="s">&quot;http://www.opengis.net/gml/3.2&quot;</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xlink=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">status=</span><span class="s">&quot;OK&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/wfs/2.0 http://localhost:8080/geoserver/schemas/wfs/2.0/wfs.xsd&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exceptions">
+<span id="wfs-exceptions"></span><h2>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h2>
+<p>When a request from a client to a WFS Server is not performed properly, a Server needs to report an exception.
+Where an exception occurs, the server will return a report containing details of the exception.</p>
+<p>The following exception report is an example of what is returned when a request for a feature type that is not supported is sent to the server.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;ows:ExceptionReport</span> <span class="na">xmlns:ows=</span><span class="s">&quot;http://www.opengis.net/ows/1.1&quot;</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.opengis.net/ows/1.1 http://schemas.opengis.net/ows/1.1.0/owsExceptionReport.xsd&quot;</span> <span class="na">version=</span><span class="s">&quot;2.0.0&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:Exception</span> <span class="na">exceptionCode=</span><span class="s">&quot;InvalidParameterValue&quot;</span> <span class="na">locator=</span><span class="s">&quot;typeName&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;ows:ExceptionText&gt;</span>Feature type with name &#39;AllProtectedSite&#39; is not served by this WFS.<span class="nt">&lt;/ows:ExceptionText&gt;</span>
+<span class="nt">&lt;/ows:Exception&gt;</span>
+<span class="nt">&lt;/ows:ExceptionReport&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="http://download.deegree.org/documentation/3.3.20/html/">Deegree WFS reference</a></p></li>
+<li><p><a class="reference external" href="http://docs.geoserver.org/stable/en/user/services/wfs/reference.html">GeoServer WFS reference</a></p></li>
+<li><p><a class="reference external" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons 3.0</a></p></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../wcs/text/basic-index.html" class="btn btn-neutral float-right" title="Web Coverage Service (WCS)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic-main.html" class="btn btn-neutral" title="WFS - Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
+      Last updated on Oct 04, 2021.
+    </p>
+  </div>
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'2.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../static/jquery.js"></script>
+      <script type="text/javascript" src="../../static/underscore.js"></script>
+      <script type="text/javascript" src="../../static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

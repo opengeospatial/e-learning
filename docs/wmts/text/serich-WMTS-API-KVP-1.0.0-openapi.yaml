@@ -1,0 +1,1029 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0-alpha
+  title: Draft WMTS API KVP version for Discussion Purposes Only
+  description: >
+    Draft (unofficial for discussion purposes only) WMTS API for getting OGC WMTS resources under a key-value-pair (KVP) procedural-oriented architectural style described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.
+  termsOfService: http://cite.deegree.org/deegree-webservices-3.4-RC3/
+  contact:
+    name: OGC Tech Desk
+    email: techdesk@opengeospatial.org
+  license:
+    name: CC-BY 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+  - url: http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100
+paths:
+  /:
+    get:
+      summary: WMTS GetCapabilities.
+      description: Retrieve WMTS capabilities using a KVP request.
+      parameters:
+        - in: query
+          name: service
+          required: true
+          schema:
+            type: string
+            enum:
+              - WMTS
+        - in: query
+          name: version
+          required: true
+          schema:
+            type: string
+            enum:
+              - 1.0.0
+        - in: query
+          name: request
+          required: true
+          schema:
+            type: string
+            enum:
+              - GetCapabilities
+        - in: query
+          name: acceptVersions
+          required: false
+          schema:
+            type: string
+            enum:
+              - 1.0.0
+        - in: query
+          name: updateSequence
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: acceptFormats
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Capabilities'
+        '400':
+          description: Known exception.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - MissingParameterValue
+                      - InvalidParameterValue
+                      - VersionNegotiationFailed
+                      - InvalideUpdateSequence
+                  message:
+                    type: string
+                    enum:
+                      - Bad request
+        '500':
+          description: No other execption code specified by this service.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - NoApplicableCode
+                  message:
+                    type: string
+                    enum:
+                      - Internal server error
+  /getTile:
+    get:
+      summary: WMTS GetTile.
+      description: Retrieve a Tile using a KVP request.
+      parameters:
+        - $ref: "#/components/parameters/serviceParam"
+        - $ref: "#/components/parameters/requestParam"
+        - $ref: "#/components/parameters/versionParam"
+        - $ref: "#/components/parameters/layerParam"
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/formatParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+      responses:
+        '200':
+          description: OK
+          content:
+            'image/*':
+              schema:
+                type: string
+                format: binary
+        '400':
+          description: Known exception.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - MissingParameterValue
+                      - InvalidParameterValue
+                      - InvalideUpdateSequence
+                  message:
+                    type: string
+                    enum:
+                      - Bad request
+        '500':
+          description: No other execption code specified by this service.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - NoApplicableCode
+                  message:
+                    type: string
+                    enum:
+                      - Internal server error
+        '501':
+          description: Operation not supported by this service.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - OperationNotSupported
+                  message:
+                    type: string
+                    enum:
+                      - Not implemented
+  /getFeatureInfo:
+    get:
+      summary: WMTS GetFeatureInfo.
+      description: Retrieve FeatureInfo using a KVP request (optional for conformance).
+      parameters:
+        - $ref: "#/components/parameters/serviceParam"
+        - $ref: "#/components/parameters/requestParam"
+        - $ref: "#/components/parameters/versionParam"
+        - $ref: "#/components/parameters/layerParam"
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/formatParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+        - $ref: "#/components/parameters/jParam"
+        - $ref: "#/components/parameters/iParam"
+        - $ref: "#/components/parameters/infoFormatParam"
+      responses:
+        '200':
+          description: OK
+          content:
+            'application/gml+xml':
+              schema:
+                $ref: '#/components/schemas/featureGML'
+        '400':
+          description: Known exception.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - MissingParameterValue
+                      - InvalidParameterValue
+                      - TileOutOfRange
+                      - PointIJOutOfRange
+                  message:
+                    type: string
+                    enum:
+                      - Bad request
+        '500':
+          description: No other execption code specified by this service.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - NoApplicableCode
+                  message:
+                    type: string
+                    enum:
+                      - Internal server error
+        '501':
+          description: Operation not supported by this service.
+          content:
+            text/plain:
+              schema:
+                type: object
+                required:
+                  - code
+                  - message
+                properties:
+                  code:
+                    type: string
+                    enum:
+                      - OperationNotSupported
+                  message:
+                    type: string
+                    enum:
+                      - Not implemented
+components:
+  parameters:
+    serviceParam:
+      in: query
+      name: service
+      required: true
+      schema:
+        type: string
+        enum:
+          - WMTS
+    requestParam:
+      in: query
+      name: request
+      required: true
+      schema:
+        type: string
+        enum:
+          - GetCapabilities
+    versionParam:
+      in: query
+      name: version
+      required: true
+      schema:
+        type: string
+        enum:
+          - 1.0.0
+    layerParam:
+      in: query
+      name: layer
+      required: true
+      schema:
+        type: string
+      example: 'coastlines'
+    styleParam:
+      in: query
+      name: style
+      required: true
+      schema:
+        type: string  # ows:CodeType per WMTS Spec Table 7
+      example: 'blue'
+    formatParam:
+      in: query
+      name: format
+      required: true
+      schema:
+        type: string
+      example: 'image/png'
+    dimensionParam:  # Refer to WMS 1.3.0 Annex C
+      in: query
+      name: dimension
+      schema:
+        type: string
+      example: '2007-05' # assumes <Dimension><Identifier> is 'TIME'
+    tileMatrixSetParam:
+      in: query
+      name: tileMatrixSet
+      required: true
+      schema:
+        type: string
+      example: 'coastlinesInCrs84'
+    tileMatrixParam:  # scale
+      in: query
+      name: tileMatrix
+      required: true
+      schema:
+        type: string
+      example: '5e6'
+    tileRowParam:
+      in: query
+      name: tileRow
+      required: true
+      schema:
+        type: string
+      example: '42'
+    tileColParam:
+      in: query
+      name: tileCol
+      required: true
+      schema:
+        type: string
+      example: '112'
+    jParam:
+      in: query
+      name: j
+      required: true
+      schema:
+        type: string
+      example: '23'
+    iParam:
+      in: query
+      name: i
+      required: true
+      schema:
+        type: string
+      example: '35'
+    infoFormatParam:
+      in: query
+      name: infoFormat
+      required: true
+      schema:
+        type: string
+      example: 'text/html'
+  schemas:
+    Capabilities:
+      type: object
+      required:
+        - Version
+      properties:
+        xmlns:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.opengis.net/wmts/1.0'
+        xnlns:ows:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.opengis.net/ows/1.1'
+        xnlns:xlink:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.w3.org/1999/xlink'
+        xnlns:xsi:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.w3.org/2001/XMLSchema-instance'
+        xnlns:gml:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.opengis.net/gml'
+        xsi:schemaLocation:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'http://www.opengis.net/wmts/1.0 http://schemas.opengis.net/wmts/1.0/wmtsGetCapabilities_response.xsd'
+        Version:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - '1.0.0'
+        updateSequence:
+          type: string
+          example: 'ABC123'
+        ows:ServiceIdentification:
+          $ref: '#/components/schemas/ows:ServiceIdentification'
+        ows:ServiceProvider:
+          $ref: '#/components/schemas/ows:ServiceProvider'
+        ows:OperationsMetadata:
+          $ref: '#/components/schemas/ows:OperationsMetadata'
+        Contents:
+          $ref: '#/components/schemas/Contents'
+        Themes:
+          $ref: '#/components/schemas/Themes'
+    ows:ServiceIdentification: # OWS Common 7.4.4
+      type: object
+      required:
+        - ows:ServiceType
+        - ows:ServiceVersion
+        - ows:Title
+      properties:
+        ows:ServiceType:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'OGC WMTS'
+        ows:ServiceTypeVersion:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: '1.0.0'
+        ows:Profile:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:Title:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Web Map Tile Service'
+        ows:Abstract:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Service that contrains the map access interface to some TileMatrixSets'
+        ows:Keywords:
+          type: array
+          items:
+            $ref: '#/components/schemas/ows:Keyword'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:Fees:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'NONE'
+        ows:AccessConstraints:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'NONE'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Keyword:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example:
+        oneOf:
+          tileExample: 'tile'
+          tileMatrixSetExample: 'tile matrix set'
+          mapExample: 'map'
+    ows:ServiceProvider: # OWS Common 7.4.5
+      type: object
+      required:
+        - ows:IndividualName
+      properties:
+        ows:IndividualName:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Firstname Lastname'
+        ows:PositionName:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Senior Software Engineer'
+        ows:ContactInfo:
+          type: object
+          properties:
+            ows:Phone:
+              $ref: '#/components/schemas/ows:Phone'
+            ows:Address:
+              $ref: '#/components/schemas/ows:Address'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Phone:
+      type: object
+      properties:
+        ows:Voice:
+          $ref: '#/components/schemas/ows:Voice'
+        ows:Facsimile:
+          $ref: '#/components/schemas/ows:Facsimile'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Voice:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '+34 93 581 1312'
+    ows:Facsimile:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '+34 93 581 4151'
+    ows:Address:
+      type: object
+      properties:
+        ows:DeliveryPoint:
+          $ref: '#/components/schemas/ows:DeliveryPoint'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:City:
+          $ref: '#/components/schemas/ows:City'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:AdministrativeArea:
+          $ref: '#/components/schemas/ows:AdministrativeArea'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:PostalCode:
+          $ref: '#/components/schemas/ows:PostalCode'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:Country:
+          $ref: '#/components/schemas/ows:Country'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:ElectronicMailAddress:
+          $ref: '#/components/schemas/ows:ElectronicMailAddress'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:DeliveryPoint:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Fac Ciencies UAB'
+    ows:City:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Bellaterra'
+    ows:AdministrativeArea:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Barcelona'
+    ows:PostalCode:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: '08193'
+    ows:Country:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'Spain'
+    ows:ElectronicMailAddress:
+      type: string
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+      example: 'techdesk@opengeospatial.org'
+    ows:OperationsMetadata: # OWS Common 7.4.6
+      type: object
+      required:
+        - getCapabilitiesOperation
+        - getTileOperation
+      properties:
+        getCapabilitiesOperation:
+          $ref: '#/components/schemas/getCapabilitiesOperation'
+        getTileOperation:
+          $ref: '#/components/schemas/getTileOperation'
+        getFeatureInfoOperation:
+          $ref: '#/components/schemas/getFeatureInfoOperation'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    getCapabilitiesOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetCapabilities'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    getTileOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetTile'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    getFeatureInfoOperation:
+      type: object
+      required:
+        - name
+        - ows:DCP
+      properties:
+        name:
+          type: string
+          xml:
+            attribute: true
+          enum:
+            - 'GetFeatureInfo'
+        ows:DCP:
+          $ref: '#/components/schemas/ows:DCP'
+    ows:DCP:
+      type: object
+      required:
+        - ows:HTTP
+      properties:
+        ows:HTTP:
+          $ref: '#/components/schemas/ows:HTTP'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:HTTP:
+      type: object
+      required:
+        - ows:Get
+      properties:
+        ows:Get:
+          $ref: '#/components/schemas/ows:Get'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Get:
+      type: object
+      required:
+        - xlink:href
+      properties:
+        xlink:href:
+          type: string
+          example: 'http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100'
+        ows:AllowedValues:
+          $ref: '#/components/schemas/ows:AllowedValues'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:AllowedValues:
+      type: object
+      required:
+        - ows:Value
+      properties:
+        ows:Value:
+          $ref: '#/components/schemas/ows:Value'
+      xml:
+        prefix: "ows"
+        namespace: 'http://www.opengis.net/ows/1.1'
+    ows:Value:
+      type: string
+      enum:
+        - 'KVP'
+    Contents:
+      type: object
+      properties:
+        Layer:
+          $ref: '#/components/schemas/Layer'
+        tileMatrixSet:
+          $ref: '#/components/schemas/tileMatrixSet'
+        otherSource:
+          type: string
+    Layer:
+      type: object
+      required:
+        - owsIdentifier
+        - Style
+        - Format
+        - tileMatrixSetLink
+      properties:
+        ows:Identifier:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'coastlines'
+        ows:Title:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Coastlines'
+        ows:Abstract:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'Coastline/shorelines (BA010)'
+        ows:Keywords:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:BoundingBox:
+          type: object
+          required:
+            - lowerCorner
+            - upperCorner
+          properties:
+            lowerCorner:
+              type: string
+              example: '-180 -90'
+            upperCorner:
+              type: string
+              example: '180 90'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        ows:WGS84BoundingBox:
+          type: object
+          required:
+            - lowerCorner
+            - upperCorner
+          properties:
+            lowerCorner:
+              type: string
+              example: '-180 -90'
+            upperCorner:
+              type: string
+              example: '180 90'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        Style:
+          $ref: '#/components/schemas/Style'
+        Format:
+          type: string
+          example:
+            oneOf:
+              pngExample: 'image/png'
+              gifExample: 'image/gif'
+        infoFormat:
+          type: string
+          example: 'application/gml+xml'
+        Dimension:
+          $ref: '#/components/schemas/Dimension'
+        ows:Metadata:
+          type: object
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        tileMatrixSetLink:
+          $ref: '#/components/schemas/tileMatrixSetLink'
+    Style:
+      type: object
+      properties:
+        ows:Identifier:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'DarkBlue'
+              Example2: 'ThickAndRed'
+        ows:Title:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'Dark Blue'
+              Example2: 'Thick and Red'
+        ows:Abstract:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example:
+            oneOf:
+              Example1: 'Specify this style if you want your maps to have dark blue coastlines'
+              Example2: 'Specify this style if you want your maps to have thick red coastlines'
+    Dimension:
+          type: string
+          example:
+            oneOf:
+              timeExample: 'time'
+              elevationExample: 'elevation'
+              otherExample: 'temperature'
+    tileMatrixSetLink:
+      type: object
+      required:
+        - tileMatrixSet
+      properties:
+        tileMatrixSet:
+          $ref: '#/components/schemas/tileMatrixSet'
+        tileMatrixLimits:
+          $ref: '#/components/schemas/tileMatrixSetLimits'
+    tileMatrixSet:
+      type: object
+      required:
+        - matrixSetID
+        - owsSupportedCRS
+        - tileMatrix
+      properties:
+        matrixSetID:
+          type: string
+          example: 'BigWorld'
+        matrixSetTitle:
+          type: string
+        matrixSetAsbtract:
+          type: string
+        matrixSetKeywords:
+          type: string
+        matrixSetBoundingBox:
+          type: object
+          required:
+            - lowerCorner
+            - upperCorner
+          properties:
+            lowerCorner:
+              type: string
+              example: '-180 -90'
+            upperCorner:
+              type: string
+              example: '180 90'
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+        owsSupportedCRS:
+          type: string
+          xml:
+            prefix: "ows"
+            namespace: 'http://www.opengis.net/ows/1.1'
+          example: 'urn:ogc:def:crs:OGC:1.3:CRS84'
+        wellKnownScaleSet:
+          type: string
+        tileMatrix:
+          $ref: '#/components/schemas/tileMatrix'
+    tileMatrixSetLimits:
+      type: object
+      required:
+        - tileMatrixID
+        - minTileRow
+        - maxTileRow
+        - minTileCol
+        - maxTileCol
+      properties:
+        tileMatrixID:
+          type: string
+          example: 'BigWorld'
+        minTileRow:
+          type: integer
+          format: int32
+          minimum: 0
+        maxTileRow:
+          type: integer
+          format: int32
+        minTileCol:
+          type: integer
+          format: int32
+          minimum: 0
+        maxTileCol:
+          type: integer
+          format: int32
+    tileMatrix:
+      type: object
+      required:
+        - tileMatrixIdentifier
+        - scaleDenominator
+        - topLeftCorner
+        - tileWidth
+        - tileHeight
+        - matrixWidth
+        - matrixHeight
+      properties:
+        tileMatrixIdentifier:
+          type: string
+          example: '2.5e6'
+        tileMatrixTitle:
+          type: string
+        tileMatrixAsbtract:
+          type: string
+        tileMatrixKeywords:
+          type: string
+        scaleDenominator:
+          type: number
+          format: double
+          example: 2.5e6
+        topLeftCorner:
+          $ref: '#/components/schemas/tilePosition'
+        tileWidthInPixels:
+          type: integer
+          format: int32
+          minimum: 0
+        tileHeightInPixels:
+          type: integer
+          format: int32
+          minimum: 0
+        matrixWidthInTiles:
+          type: integer
+          format: int32
+          minimum: 0
+        matrixHeightInTiles:
+          type: integer
+          format: int32
+          minimum: 0
+    tilePosition:
+      type: object
+      required:
+        - firstCoordinate
+        - secondCoordinate
+      properties:
+        firstCoordinate:
+          type: number
+          format: double
+          example: -180
+        secondCoordinate:
+          type: number
+          format: double
+          example: 84
+    Themes:
+      type: array
+      items:
+        $ref: '#/components/schemas/Theme'
+    Theme:
+      type: object
+      required:
+        - themeIdentifier
+      properties:
+        themeIdentifier:
+          type: string
+          example: 'Boundaries'
+        themeTitle:
+          type: string
+          example: 'Boundaries'
+        themeAbstract:
+          type: string
+        themeKeywords:
+          type: string
+        Theme:
+          $ref: '#/components/schemas/Theme'
+        layerRef:
+          type: string
+          example:
+            oneOf:
+              Example1: 'coastlines'
+              Example2: 'politicalBoundaries'
+              Example3: 'depthContours'
+    featureGML:
+      type: object
+      required:
+        - 'gml:id'
+      xml:
+        name: AbstractFeature
+        namespace: 'http://www.opengis.net/gml/3.2'
+        prefix: gml
+      properties:
+        'gml:id':
+          type: string
+          xml:
+            namespace: 'http://www.opengis.net/gml/3.2'
+            prefix: gml
+            attribute: true

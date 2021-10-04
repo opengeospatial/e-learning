@@ -1,0 +1,525 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0-alpha
+  title: Draft WMTS API for Discussion Purposes Only
+  description: >
+    Draft (unofficial for discussion purposes only) WMTS API for retrieval of OGC WMTS resources. The design of this API roughly corresponds to the "resource-oriented style" described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.
+  termsOfService: http://cite.deegree.org/deegree-webservices-3.4-RC3/
+  contact:
+    name: OGC Tech Desk
+    email: techdesk@opengeospatial.org
+  license:
+    name: CC-BY 4.0 license
+    url: https://creativecommons.org/licenses/by/4.0/
+servers:
+  - url: http://cite.deegree.org/{basePath}
+    description: Server on which the API is implemented
+    variables:
+      basePath:
+        default: '1.0.0'
+paths:
+  /{serviceMetadataDocumentName}:
+    get:
+      summary: Retrieve WMTS ServiceMetadata.
+      description: This endpoint returns a WMTS ServiceMetadata resource.
+      parameters:
+        - $ref: "#/components/parameters/serviceMetadataDocumentNameParam"
+      responses:
+        '200':
+          description: ServiceMetadata resource available
+          content:
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/Capabilities'
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /retrieveTile/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}:
+    get:
+      summary: Retrieve a WMTS Tile.
+      description: This endpoint returns a Tile resource.
+      parameters:
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+      responses:
+        '200':
+          description: Tile matched the specified criteria
+          content:
+            'image/*':
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /retrieveFeatureInfo/{Style}/{Dimension}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}:
+    get:
+      summary: Retrieve FeatureInfo.
+      description: This endpoint returns a Feature resource.
+      parameters:
+        - $ref: "#/components/parameters/styleParam"
+        - $ref: "#/components/parameters/dimensionParam"
+        - $ref: "#/components/parameters/tileMatrixSetParam"
+        - $ref: "#/components/parameters/tileMatrixParam"
+        - $ref: "#/components/parameters/tileRowParam"
+        - $ref: "#/components/parameters/tileColParam"
+        - $ref: "#/components/parameters/jParam"
+        - $ref: "#/components/parameters/iParam"
+      responses:
+        '200':
+          description: Feature information matched the specified criteria
+          content:
+            'application/gml+xml':
+              schema:
+                $ref: '#/components/schemas/featureGML'
+            'application/json':
+              schema:
+                $ref: '#/components/schemas/featureGeoJSON'
+        '404':
+          description: File Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  parameters:
+    serviceMetadataDocumentNameParam:
+      name: serviceMetadataDocumentName
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 'WMTSCapabilities.xml'
+    styleParam:
+      name: style
+      in: path
+      required: true
+      schema:
+        type: string  # per WMTS Spec Table 7
+      example: 'blue'
+    dimensionParam:  # Refer to WMS 1.3.0 Annex C
+      name: dimension
+      in: path
+      required: true  # Note: the WMTS Spec allows 0..*
+      schema:
+        type: string
+      example: '2007-05' # assumes ServiceMetadata Dimension-Identifier is 'TIME'
+    tileMatrixSetParam:
+      name: tileMatrixSet
+      in: path
+      required: true
+      schema:
+        type: string
+      example: 'coastlinesInCrs84'
+    tileMatrixParam:  # scale
+      name: tileMatrix
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '5e6'
+    tileRowParam:
+      name: tileRow
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '42'
+    tileColParam:
+      name: tileCol
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '112'
+    jParam:
+      name: j
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '23'
+    iParam:
+      name: i
+      in: path
+      required: true
+      schema:
+        type: string
+      example: '35'
+  schemas:
+    Capabilities:
+      type: object
+      required:
+        - Version
+        - serviceMetadataURL
+      properties:
+        Version:
+          type: string
+          example: '1.0.0'
+        updateSequence:
+          type: string
+        ServiceIdentification:
+          $ref: '#/components/schemas/ServiceIdentification'
+        ServiceProvider:
+          $ref: '#/components/schemas/ServiceProvider'
+        Contents:
+          $ref: '#/components/schemas/Contents'
+        serviceMetadataURL:
+          type: string
+          example: 'http://cite.deegree.org/1.0.0/WMTSCapabilities.xml'
+        Themes:
+          $ref: '#/components/schemas/Themes'
+    ServiceIdentification:
+      type: object
+      required:
+        - Title
+      properties:
+        Title:
+          type: object
+        Abstract:
+          type: object
+        Keywords:
+          type: object
+        ServiceType:
+          type: object
+        ServiceTypeVersion:
+          type: object
+        Fees:
+          type: object
+        AccessConstraints:
+          type: object
+    ServiceProvider:
+      type: object
+      required:
+        - IndividualName
+      properties:
+        IndividualName:
+          type: object
+        PositionName:
+          type: object
+        ContactInfo:
+          type: object
+    Contents:
+      type: object
+      properties:
+        Layer:
+          $ref: '#/components/schemas/Layer'
+        tileMatrixSet:
+          $ref: '#/components/schemas/tileMatrixSet'
+        otherSource:
+          type: string
+    Layer:
+      type: object
+      required:
+        - Identifier
+        - Style
+        - Format
+        - tileMatrixSetLink
+        - resourceURL
+      properties:
+        Identifier:
+          type: string
+          example: 'coastlines'
+        Title:
+          type: string
+          example: 'Coastlines'
+        Abstract:
+          type: string
+          example: 'Coastline/shorelines (BA010)'
+        Keywords:
+          type: string
+        BoundingBox:
+          $ref: '#/components/schemas/boundingBox'
+        WGS84BoundingBox:
+          $ref: '#/components/schemas/boundingBox'
+        Style:
+          type: object
+        Format:
+          type: string
+          example:
+            oneOf:
+              pngExample: 'image/png'
+              gifExample: 'image/gif'
+        infoFormat:
+          type: string
+          example: 'application/gml+xml'
+        Dimension:
+          $ref: '#/components/schemas/Dimension'
+        Metadata:
+          type: object
+        tileMatrixSetLink:
+          $ref: '#/components/schemas/tileMatrixSetLink'
+        resourceURL:
+          $ref: '#/components/schemas/resourceURL'
+    boundingBox:
+      type: object
+      required:
+        - lowerCorner
+        - upperCorner
+      properties:
+        lowerCorner:
+          type: string
+          example: '-180 -90'
+        upperCorner:
+          type: string
+          example: '180 90'
+    Dimension:
+          type: string
+          example:
+            oneOf:
+              timeExample: 'time'
+              elevationExample: 'elevation'
+              otherExample: 'temperature'
+    tileMatrixSetLink:
+      type: object
+      required:
+        - tileMatrixSet
+      properties:
+        tileMatrixSet:
+          $ref: '#/components/schemas/tileMatrixSet'
+        tileMatrixLimits:
+          $ref: '#/components/schemas/tileMatrixSetLimits'
+    tileMatrixSet:
+      type: object
+      required:
+        - matrixSetID
+        - SupportedCRS
+        - tileMatrix
+      properties:
+        matrixSetID:
+          type: string
+          example: 'BigWorld'
+        matrixSetTitle:
+          type: string
+        matrixSetAsbtract:
+          type: string
+        matrixSetKeywords:
+          type: string
+        matrixSetBoundingBox:
+          $ref: '#/components/schemas/boundingBox'
+        SupportedCRS:
+          type: string
+          example: 'urn:ogc:def:crs:OGC:1.3:CRS84'
+        wellKnownScaleSet:
+          type: string
+        tileMatrix:
+          $ref: '#/components/schemas/tileMatrix'
+    tileMatrixSetLimits:
+      type: object
+      required:
+        - tileMatrixID
+        - minTileRow
+        - maxTileRow
+        - minTileCol
+        - maxTileCol
+      properties:
+        tileMatrixID:
+          type: string
+          example: 'BigWorld'
+        minTileRow:
+          type: integer
+          format: int32
+          minimum: 0
+        maxTileRow:
+          type: integer
+          format: int32
+        minTileCol:
+          type: integer
+          format: int32
+          minimum: 0
+        maxTileCol:
+          type: integer
+          format: int32
+    tileMatrix:
+      type: object
+      required:
+        - tileMatrixIdentifier
+        - scaleDenominator
+        - topLeftCorner
+        - tileWidth
+        - tileHeight
+        - matrixWidth
+        - matrixHeight
+      properties:
+        tileMatrixIdentifier:
+          type: string
+          example: '2.5e6'
+        tileMatrixTitle:
+          type: string
+        tileMatrixAsbtract:
+          type: string
+        tileMatrixKeywords:
+          type: string
+        scaleDenominator:
+          type: number
+          format: double
+          example: 2.5e6
+        topLeftCorner:
+          $ref: '#/components/schemas/tilePosition'
+        tileWidthInPixels:
+          type: integer
+          format: int32
+          minimum: 0
+        tileHeightInPixels:
+          type: integer
+          format: int32
+          minimum: 0
+        matrixWidthInTiles:
+          type: integer
+          format: int32
+          minimum: 0
+        matrixHeightInTiles:
+          type: integer
+          format: int32
+          minimum: 0
+    tilePosition:
+      type: object
+      required:
+        - firstCoordinate
+        - secondCoordinate
+      properties:
+        firstCoordinate:
+          type: number
+          format: double
+          example: -180
+        secondCoordinate:
+          type: number
+          format: double
+          example: 84
+    Themes:
+      type: array
+      items:
+        $ref: '#/components/schemas/Theme'
+    Theme:
+      type: object
+      required:
+        - themeIdentifier
+      properties:
+        themeIdentifier:
+          type: string
+          example: 'Boundaries'
+        themeTitle:
+          type: string
+          example: 'Boundaries'
+        themeAbstract:
+          type: string
+        themeKeywords:
+          type: string
+        Theme:
+          $ref: '#/components/schemas/Theme'
+        layerRef:
+          type: string
+          example:
+            oneOf:
+              Example1: 'coastlines'
+              Example2: 'politicalBoundaries'
+              Example3: 'depthContours'
+    resourceURL:  # one per layer
+      type: object
+      required:
+        - format
+        - resourceType
+        - hrefTemplate
+      properties:
+        format:
+          type: string  # per WMTS Spec Tables 31 and 33
+          enum:
+            - image/png
+            - application/gml+xml
+        resourceType:
+          type: string  # per WMTS Spec Tables 31 and 33
+          enum:
+            - tile
+            - FeatureInfo
+        hrefTemplate:
+          type: string  # per WMTS Spec Tables 32 and 34
+          example:
+            oneOf:
+              tileTemplate: 'http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.png'
+              FeatureInfoTemplate: 'http://www.maps.bob/etopo2/default/ {TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}/{J}/{I}.xml'
+    featureGML:
+      type: object
+      required:
+        - 'gml:id'
+      xml:
+        name: AbstractFeature
+        namespace: 'http://www.opengis.net/gml/3.2'
+        prefix: gml
+      properties:
+        'gml:id':
+          type: string
+          xml:
+            namespace: 'http://www.opengis.net/gml/3.2'
+            prefix: gml
+            attribute: true
+    featureGeoJSON:
+      type: object
+      required:
+        - type
+        - geometry
+        - properties
+      properties:
+        type:
+          type: string
+          enum:
+            - Feature
+        geometry:
+          $ref: '#/components/schemas/geometryGeoJSON'
+          nullable: true
+        properties:
+          type: object
+          nullable: true
+    geometryGeoJSON:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          enum:
+            - Point
+            - MultiPoint
+            - LineString
+            - MultiLineString
+            - Polygon
+            - MultiPolygon
+            - GeometryCollection
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
