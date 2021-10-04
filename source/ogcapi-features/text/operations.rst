@@ -3,7 +3,7 @@ Resources of OGC API - Features
 
 This section provides basic information about the types of resources that OGC API - Features offers.
 
-Each resource provides **links** to relates resources. This enables a client application to navigate the resources, from the landing page through to the individual features. The server identifies the relationship between a resource and other linked resources through a **link relation type**, represented by the attribute 'rel'. The link relation types used by implementations of the **OGC API - Features - Part 1: Core** can be found in `Section 5.2 <http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations>`_ of the standard.
+Each resource provides **links** to related resources. This enables a client application to navigate the resources, from the landing page through to the individual features. The server identifies the relationship between a resource and other linked resources through a **link relation type**, represented by the attribute 'rel'. The link relation types used by implementations of the **OGC API - Features - Part 1: Core** can be found in `Section 5.2 <http://docs.opengeospatial.org/is/17-069r3/17-069r3.html#_link_relations>`_ of the standard.
 
 .. _ogcapif_landingpage:
 
