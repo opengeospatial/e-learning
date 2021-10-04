@@ -18,3 +18,4 @@ Contents
    basic-overview.rst
    basic-main.rst
    operations.rst
+   advanced.rst
