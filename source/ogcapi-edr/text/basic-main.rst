@@ -4,66 +4,65 @@ An Introduction to OGC API - Environmental Data Retrieval
 Introduction
 ------------
 
-OGC API - Features is a multi-part standard that offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data. The Core part of the standard is called **OGC API - Features - Part 1: Core**. The Core part of the specification describes the mandatory capabilities that every implementing service has to support and is restricted to read-access to spatial data. Additional capabilities that address specific needs will be specified in additional parts. Envisaged future capabilities include, for example, support for creating and modifying data, more complex data models, richer queries, and additional coordinate reference systems.
+OGC API - Environmental Data Retrieval is a standard that provides a family of lightweight interfaces to access Environmental Data resources. The standard, which is also called the Environmental Data Retrieval (EDR) API, addresses two fundamental operations; discovery and query. Discovery operations allow the API to be interrogated to determine its capabilities and retrieve information (metadata) about this distribution of a resource. This includes the API definition of the server as well as metadata about the Environmental Data resources provided by the server. Query operations allow Environmental Data resources to be retrieved from the underlying data store based upon simple selection criteria, defined by this standard and selected by the client.
 
 
-.. note::  This tutorial module is not intended to be a replacement to the actual **OGC API - Features - Part 1: Core** standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the **OGC API - Features - Part 1: Core** standard for additional detail.
+.. note::  This tutorial module is not intended to be a replacement to the actual **OGC API - Environmental Data Retrieval** standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the **OGC API - Environmental Data Retrieval** standard for additional detail.
 
 
 Background
 --------------------
 
 History
-    While in draft form and prior to February 2019, **OGC API - Features - Part 1: Core** was referred to as WFS3.0.
+    Version 1.0.0 was published on 2021-08-13.
 Versions
-    **OGC API - Features - Part 1: Core** version 1.0.0 is the current latest version
+    **OGC API - Environmental Data Retrieval** version 1.0.0 is the current latest version
 Test Suite
-  Test suites are available for:
-      - `OGC API - Features <https://github.com/opengeospatial/ets-ogcapi-features10>`_
+    A draft test suite is available for:
+      - `OGC API - Environmental Data Retrieval <https://github.com/opengeospatial/ets-ogcapi-edr10>`_
 Implementations
-    Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
+    Implementations can be found on the OGC Product Database here <http://www.opengeospatial.org/resource/products/byspec>
 
 Usage
 ^^^^^^
 
-**OGC API - Features - Part 1: Core** specifies discovery and query operations that are implemented using the HTTP GET method. Support for additional methods (in particular POST, PUT, DELETE, PATCH) will be specified in additional parts. Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.
+**OGC API - Environmental Data Retrieval** provides a family of lightweight query interfaces to access spatio-temporal data resources by requesting data at a Position, within an Area, along a Trajectory or through a Corridor. A spatio-temporal data resource is a collection of spatio-temporal data that can be sampled using the EDR query pattern geometries.
 
 The standard provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that client applications can request source data from multiple implementations of the API, and then render the data for display or process the data further as part of a workflow. The standard enables the data to be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.
 
 Relation to other OGC Standards
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- OGC Web Feature Service Interface Standard (WFS): The WFS standard is more appropriate when working with client applications that only support classic OGC Web Services. Note as well that WFS adopts the Geography Markup Language (`GML <https://www.ogc.org/standards/gml>`_) as a default data format. In contrast, OGC API - Features includes recommendations to support `HTML <https://html.spec.whatwg.org>`_ and `GeoJSON <https://geojson.org>`_ as encodings, where practical. Implementations of OGC API - Features may also optionally support GML.
+- OGC API-Features: The EDR API is completely compatible with OGC API — Features — Part 1: Core (OGC 17-069r3), in that it supports Collections and Items. It extends the Collection functionality by allowing ‘Instances’, a form of ‘collection of collections’. The EDR API also supports the retrieval of spatiotemporal data by named location as well as coordinates.
 
+- Moving Features: The Moving Features Standards are concerned with things that move along a trajectory, and simultaneously change their orientation through rigid body rotation. The EDR API does not have the concept of orientation, or foliation or prisms. Moving Features and EDR API do share a common conceptual definition, from ISO, of a Trajectory, but the Moving Features Standards encode trajectories in GML, CSV and Moving Features JSON, whereas the EDR API encodes trajectories in WKT.
+
+- Web Coverage Service (WCS) and Coverage Implementation Schema (CIS): The primary messaging mechanism of the EDR API is JSON, including CoverageJSON, over HTTP(S). Implementations of the EDR API are described using the OpenAPI V3.0 specification. The EDR API is consistent with the WCS and CIS standards but does not require the end user or developer to use the terms Domain and RangeSet. The EDR API can also be used to generate a single query against a collection of coverages, providing the data coordinate reference systems are consistent.
+
+- The OGC SensorThings API: SensorThings API follows OData’s specification for requesting entities. In contrast, the EDR API makes use of the OpenAPI V3.0 specification for describing resource paths, query options, JSON schema, and other aspects. Further, the EDR API allows for retrieval of coverage data and HTML responses – both of which are not supported by the SensorThings API.
+
+- Sensor Observation Service (SOS): The EDR API allows for retrieval of coverage data and HTML responses – both of which are not supported by the SOS standard. Further, SOS implementations use the GetCapabilities operation for providing descriptions of available resources. In contrast, the EDR API uses OpenAPI definition documents for describing available interfaces.
 
 Overview of Resources
 ----------------------------
 
-**OGC API - Features - Part 1: Core** defines the resources listed in the following table.
+**OGC API - Environmental Data Retrieval Standard** defines the resources listed in the following table.
 
 
 .. csv-table:: Overview of OGC API - Features resources
    :header: "Resource ", "Path", "Purpose"
    :widths: 20, 20, 10
 
-   "Landing page", "/", "This is the top-level resource, which serves as an entry point."
-   "Conformance declaration", "/conformance", "This resource presents information about the functionality that is implemented by the server."
-   "API definition", "/api", "This resource provides metadata about the API itself. Note use of **/api** on the server is optional and the API definition may be hosted on completely separate server"
-   "Feature collections", "/collections", "This resource lists the feature collections that are offered through the API."
-   "Feature collection", "/collections/{collectionId}", "This resource describes the feature collection identified in the path."
-   "Features", "/collections/{collectionId}/items", "This resource presents the features that are contained in the collection."
-   "Feature", "/collections/{collectionId}/items/{featureId}", "This resource presents the feature that is identified in the path"
-
+   "Landing page", "{root}/", "This is the top-level resource, which serves as an entry point."
+   "Conformance declaration", "{root}/conformance", "This resource presents information about the functionality that is implemented by the server."
+   "API definition", "{root}/api", "This resource provides metadata about the API itself. Note use of **/api** on the server is optional and the API definition may be hosted on completely separate server"
+   "All Collections metadata", "{root}/collections", "Metadata describing the collections of data available from this API."
+   "Collection metadata", "{root}/collections/{collectionId}", "Metadata describing the collection of data which has the unique identifier {collectionId}"
+   "Items metadata", "{root}/collections/{collectionId}/items", "Retrieve metadata about available items"
+   "Query data", "{root}/collections/{collectionId}/{queryType}", "Retrieve data according to the query pattern"
+   "Query instances", "{root}/collections/{collectionId}/instances", "Retrieve metadata about instances of a collection"
 
 
 Example
 -------
 
-This `demonstration server <https://services.interactive-instruments.de/t15/daraa/>`_ publishes vector geospatial data through an interface that conforms to OGC API - Features.
-
-An example request that can be used to retrieve data from the Vegetation surface feature collection is https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html
-
-Note that the response to the request is HTML in this case.
-
-Alternatively, the same data can be retrieved in GeoJSON format, through the request https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json
-
-A client application can then retrieve the GeoJSON document and display or process it.
+This `demonstration server <http://labs.metoffice.gov.uk/edr/static/html/query.html>`_ publishes environmental data through an interface that conforms to OGC API - Environmental Data Retrieval.
