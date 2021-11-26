@@ -4,7 +4,7 @@ GeoPackage - Introduction
 Introduction
 ------------
 
-The GeoPackage Encoding Standard describes a set of rules and conventions for storing vector features, imagery tile matrix sets, raster map tile matrix sets and non-spatial tabular data in an SQLite database. The standard also describes rules for extending the capabilities of a GeoPackage.
+The GeoPackage Encoding Standard describes a set of rules and conventions for storing vector features, imagery tile matrix sets, raster map tile matrix sets and non-spatial tabular data in an `SQLite <https://sqlite.org>`_ database. The standard also describes rules for extending the capabilities of a GeoPackage.
 
 History
   GeoPackage 1.0 was approved as a standard in January 2014.
@@ -32,16 +32,16 @@ Implementation Summary
 ----------------------
 
 - Implemented in an SQLite database
-- Feature geometry is encoded in Well Known Text (WKT) based on the OGC OpenGIS® Simple Features Interface Standard (SFS)
+- Feature geometry is encoded in Well-Known Binary (WKB) based on the OGC standard ”Simple Feature Access” (`Part 1: Common architecture (OGC 06-103r4) <http://portal.opengeospatial.org/files/?artifact_id=25355>`_, `Part 2: SQL option (OGC 06-104r4) <http://portal.opengeospatial.org/files/?artifact_id=25354>`_)
 - Supports both vector feature data and tile matrix sets of imagery and maps
 - Ideal format for encoding geospatial data where Size, Weight and Power (SWaP) are limited
 
 Relation to other OGC Standards
 -------------------------------
 
-Due to its XML serialization, GML is well suited to geospatial data exchange across networks.
+Due to its XML serialization, `Geography Markup Language (GML) <https://www.ogc.org/standards/gml>`_ is well suited to geospatial data exchange across networks.
 In contrast, GeoPackage is better suited to storage and random access of geospatial data on a file system.
-GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS) which provides a common way for applications to store and access feature data in relational or object-relational databases.
+GeoPackage implements the OGC standard ”Simple Feature Access” (see above) which provides a common way for applications to store and access feature data in relational or object-relational databases.
 
 External links
 --------------
