@@ -7,11 +7,11 @@ The web page created from this material is available [here](http://opengeospatia
 
 ## Building the source
 
-The source is build in rst format and avialable in GitHub: https://github.com/opengeospatial/e-learning
+The source is build in rst format and available in GitHub: https://github.com/opengeospatial/e-learning
 
 ### Requirements
 - To build it, [SPHINX] (http://sphinx-doc.org) is needed
-- A [git client](https://git-scm.com) to clone the respository
+- A [git client](https://git-scm.com) to clone the repository
 
 ### Process
 
