@@ -386,7 +386,7 @@
 <h1>GeoPackage - Introduction<a class="headerlink" href="#geopackage-introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>The GeoPackage Encoding Standard describes a set of rules and conventions for storing vector features, imagery tile matrix sets, raster map tile matrix sets and non-spatial tabular data in an SQLite database. The standard also describes rules for extending the capabilities of a GeoPackage.</p>
+<p>The GeoPackage Encoding Standard describes a set of rules and conventions for storing vector features, imagery tile matrix sets, raster map tile matrix sets and non-spatial tabular data in an <a class="reference external" href="https://sqlite.org">SQLite</a> database. The standard also describes rules for extending the capabilities of a GeoPackage.</p>
 <dl class="simple">
 <dt>History</dt><dd><p>GeoPackage 1.0 was approved as a standard in January 2014.
 GeoPackage 1.1 was approved as a standard in August 2015.
@@ -414,16 +414,16 @@ GeoPackage 1.3 was approved as a standard in November 2020.</p>
 <h2>Implementation Summary<a class="headerlink" href="#implementation-summary" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Implemented in an SQLite database</p></li>
-<li><p>Feature geometry is encoded in Well Known Text (WKT) based on the OGC OpenGIS® Simple Features Interface Standard (SFS)</p></li>
+<li><p>Feature geometry is encoded in Well-Known Binary (WKB) based on the OGC standard ”Simple Feature Access” (<a class="reference external" href="http://portal.opengeospatial.org/files/?artifact_id=25355">Part 1: Common architecture (OGC 06-103r4)</a>, <a class="reference external" href="http://portal.opengeospatial.org/files/?artifact_id=25354">Part 2: SQL option (OGC 06-104r4)</a>)</p></li>
 <li><p>Supports both vector feature data and tile matrix sets of imagery and maps</p></li>
 <li><p>Ideal format for encoding geospatial data where Size, Weight and Power (SWaP) are limited</p></li>
 </ul>
 </div>
 <div class="section" id="relation-to-other-ogc-standards">
 <h2>Relation to other OGC Standards<a class="headerlink" href="#relation-to-other-ogc-standards" title="Permalink to this headline">¶</a></h2>
-<p>Due to its XML serialization, GML is well suited to geospatial data exchange across networks.
+<p>Due to its XML serialization, <a class="reference external" href="https://www.ogc.org/standards/gml">Geography Markup Language (GML)</a> is well suited to geospatial data exchange across networks.
 In contrast, GeoPackage is better suited to storage and random access of geospatial data on a file system.
-GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS) which provides a common way for applications to store and access feature data in relational or object-relational databases.</p>
+GeoPackage implements the OGC standard ”Simple Feature Access” (see above) which provides a common way for applications to store and access feature data in relational or object-relational databases.</p>
 </div>
 <div class="section" id="external-links">
 <h2>External links<a class="headerlink" href="#external-links" title="Permalink to this headline">¶</a></h2>
@@ -450,7 +450,7 @@ GeoPackage implements the OGC OpenGIS® Simple Features Interface Standard (SFS)
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Oct 04, 2021.
+      Last updated on Jan 28, 2022.
     </p>
   </div>
 
