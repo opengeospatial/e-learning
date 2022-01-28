@@ -19,3 +19,12 @@ Contents
    basic-main.rst
    operations.rst
    advanced.rst
+   pointquery.rst
+   areaquery.rst
+   cubequery.rst
+   trajectoryquery.rst
+   corridorquery.rst
+   radiusquery.rst
+   instancesquery.rst
+   locationsquery.rst
+   itemsquery.rst

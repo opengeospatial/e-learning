@@ -35,7 +35,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/>
         <link rel="up" title="OGC API - Environmental Data Retrieval" href="basic-index.html"/>
-        <link rel="next" title="Web Feature Service (WFS)" href="../../wfs/text/basic-index.html"/>
+        <link rel="next" title="Area Query Resources of OGC API - EDR" href="areaquery.html"/>
         <link rel="prev" title="Information Resources of OGC API - Environmental Data Retrieval" href="operations.html"/> 
 
   
@@ -200,6 +200,14 @@
 <li class="toctree-l4"><a class="reference internal" href="basic-main.html">An Introduction to OGC API - Environmental Data Retrieval</a></li>
 <li class="toctree-l4"><a class="reference internal" href="operations.html">Information Resources of OGC API - Environmental Data Retrieval</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Query Resources of OGC API - Environmental Data Retrieval</a></li>
+<li class="toctree-l4"><a class="reference internal" href="areaquery.html">Area Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cubequery.html">Cube Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="trajectoryquery.html">Trajectory Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="corridorquery.html">Corridor Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="radiusquery.html">Radius Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="instancesquery.html">Instances Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="locationsquery.html">Locations Query Resources of OGC API - EDR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="itemsquery.html">Items (Features) Query Resources of OGC API - EDR</a></li>
 </ul>
 </li>
 </ul>
@@ -384,73 +392,24 @@
             
   <div class="section" id="query-resources-of-ogc-api-environmental-data-retrieval">
 <h1>Query Resources of OGC API - Environmental Data Retrieval<a class="headerlink" href="#query-resources-of-ogc-api-environmental-data-retrieval" title="Permalink to this headline">¶</a></h1>
-<p>This section provides information about the query resources that OGC API - Environmental Data Retrieval offers.</p>
-<div class="section" id="position">
-<span id="ogcapiedr-position"></span><h2>Position<a class="headerlink" href="#position" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-<p>Items
-Locations
-Instances</p>
-</div>
-<div class="section" id="radius">
-<span id="ogcapiedr-radius"></span><h2>Radius<a class="headerlink" href="#radius" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="area">
-<span id="ogcapiedr-area"></span><h2>Area<a class="headerlink" href="#area" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="cube">
-<span id="ogcapiedr-cube"></span><h2>Cube<a class="headerlink" href="#cube" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="trajectory">
-<span id="ogcapiedr-trajectory"></span><h2>Trajectory<a class="headerlink" href="#trajectory" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="corridor">
-<span id="ogcapiedr-corridor"></span><h2>Corridor<a class="headerlink" href="#corridor" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="items">
-<span id="ogcapiedr-items"></span><h2>Items<a class="headerlink" href="#items" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="locations">
-<span id="ogcapiedr-locations"></span><h2>Locations<a class="headerlink" href="#locations" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="instances">
-<span id="ogcapiedr-instances"></span><h2>Instances<a class="headerlink" href="#instances" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{}</span>
-</pre></div>
-</div>
-</div>
+<p>Query resources are spatio-temporal queries which support operation of the API for the access and use of the spatio-temporal data resources.</p>
+<p>Query resources share several common parameters, which makes it easier for developers to implement the queries.</p>
+<p>Where the query applies to a collection, the pattern is as follows:</p>
+<p><cite>/collections/{collectionId}/{queryType}</cite></p>
+<p>The parameter <cite>queryType</cite> can be one of the following:</p>
+<ul class="simple">
+<li><p>position</p></li>
+<li><p>area</p></li>
+<li><p>cube</p></li>
+<li><p>trajectory</p></li>
+<li><p>corridor</p></li>
+<li><p>radius</p></li>
+<li><p>instances</p></li>
+<li><p>locations</p></li>
+<li><p>items</p></li>
+</ul>
+<p>Where the query applies to an instance, the pattern is as follows:</p>
+<p><cite>/collections/{collectionId}/instances/{instanceId}/{queryType}</cite></p>
 </div>
 
 
@@ -459,7 +418,7 @@ Instances</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../wfs/text/basic-index.html" class="btn btn-neutral float-right" title="Web Feature Service (WFS)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="areaquery.html" class="btn btn-neutral float-right" title="Area Query Resources of OGC API - EDR" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="operations.html" class="btn btn-neutral" title="Information Resources of OGC API - Environmental Data Retrieval" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -1,116 +1,26 @@
 Query Resources of OGC API - Environmental Data Retrieval
 ================
 
-This section provides information about the query resources that OGC API - Environmental Data Retrieval offers.
+Query resources are spatio-temporal queries which support operation of the API for the access and use of the spatio-temporal data resources.
 
-.. _ogcapiedr_position:
+Query resources share several common parameters, which makes it easier for developers to implement the queries.
 
-Position
-------------------------
+Where the query applies to a collection, the pattern is as follows:
 
-TBA
+`/collections/{collectionId}/{queryType}`
 
-.. code-block:: json
+The parameter `queryType` can be one of the following:
 
-  {}
+- position
+- area
+- cube
+- trajectory
+- corridor
+- radius
+- instances
+- locations
+- items
 
+Where the query applies to an instance, the pattern is as follows:
 
-
-Items
-Locations
-Instances
-
-.. _ogcapiedr_radius:
-
-Radius
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_area:
-
-Area
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_cube:
-
-Cube
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_trajectory:
-
-Trajectory
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_corridor:
-
-Corridor
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_items:
-
-Items
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_locations:
-
-Locations
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
-
-
-.. _ogcapiedr_instances:
-
-Instances
-------------------------
-
-TBA
-
-.. code-block:: json
-
-  {}
+`/collections/{collectionId}/instances/{instanceId}/{queryType}`
