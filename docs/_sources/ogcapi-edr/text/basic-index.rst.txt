@@ -19,7 +19,7 @@ Contents
    basic-main.rst
    operations.rst
    advanced.rst
-   pointquery.rst
+   positionquery.rst
    areaquery.rst
    cubequery.rst
    trajectoryquery.rst
