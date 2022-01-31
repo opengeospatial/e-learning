@@ -1,6 +1,11 @@
 Radius Query Resources of OGC API - EDR
 ================
 
+A radius is a region specified with a geographic position and radial distance. An illustration is shown below.
+
+.. image:: ../img/radius.png
+   :width: 80%
+
 The `radius` query resource returns data for a defined radius. The resource offers a convenience mechanism for querying the API by radius.
 
 The path to the resource is shown below:

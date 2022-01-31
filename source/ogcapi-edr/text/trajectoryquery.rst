@@ -1,6 +1,11 @@
 Trajectory Query Resources of OGC API - EDR
 ================
 
+A trajectory is a path of a moving point described by a one parameter set of points. An illustration is shown below.
+
+.. image:: ../img/trajectory.png
+   :width: 80%
+
 The `trajectory` query resource returns data for the defined trajectory. The resource offers a convenience mechanism for querying the API by trajectory, using a Well Known Text (WKT) LINESTRING geometry, or alternatively the specializations LINESTRINGZ, LINESTRINGM, LINESTRINGZM.
 
 The path to the resource is shown below:
