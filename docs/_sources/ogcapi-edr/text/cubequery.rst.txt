@@ -1,7 +1,7 @@
 Cube Query Resources of OGC API - EDR
 ================
 
-A cube is a rectangular area, with a vertical extent. An illustration is shown below.
+A cube is a rectangular area, with a vertical extent. An illustration, created using NASA Web WorldWind, is shown below.
 
 .. image:: ../img/cube.png
    :width: 80%

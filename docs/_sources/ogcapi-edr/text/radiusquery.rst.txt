@@ -1,7 +1,7 @@
 Radius Query Resources of OGC API - EDR
 ================
 
-A radius is a region specified with a geographic position and radial distance. An illustration is shown below.
+A radius is a region specified with a geographic position and radial distance. An illustration, created using NASA Web WorldWind, is shown below.
 
 .. image:: ../img/radius.png
    :width: 80%

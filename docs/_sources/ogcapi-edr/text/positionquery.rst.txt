@@ -1,6 +1,11 @@
 Position Query Resources of OGC API - EDR
 ================
 
+A position is a data type that describes a point or geometry potentially occupied by an object or person. An illustration, created using NASA Web WorldWind, is shown below.
+
+.. image:: ../img/position.png
+   :width: 80%
+
 The `position` query resource returns data for the requested position. The resource offers a convenience mechanism for querying the API using a Well Known Text (WKT) POINT geometry defining a position.
 
 The path to the resource is shown below:
