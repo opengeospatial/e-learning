@@ -1,6 +1,12 @@
 Area Query Resources of OGC API - EDR
 ================
 
+An area is a region specified with a geographic envelope that may have vertical dimension. An illustration, created using NASA Web WorldWind, is shown below.
+
+.. image:: ../img/area.png
+   :width: 80%
+
+
 The `area` query resource returns data for the defined area. The resource offers a convenience mechanism for querying the API by area, using a Well Known Text (WKT) POLYGON geometry.
 
 The path to the resource is shown below:
