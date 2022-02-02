@@ -16,5 +16,6 @@ def findReplace(directory, find, replace, filePattern):
             with open(filepath, "w") as f:
                 f.write(s)
 
-findReplace("/Users/gobehobona/Documents/GitHub/e-learning/build", "_static", "static", "*.html")
-findReplace("/Users/gobehobona/Documents/GitHub/e-learning/build", "_images", "images", "*.html")
+build_directory = os.getcwd()+"/build"
+findReplace(build_directory, "_static", "static", "*.html")
+findReplace(build_directory, "_images", "images", "*.html")

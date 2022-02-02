@@ -37,14 +37,14 @@ What is Missing ?
 .. image:: ../img/nutrition_label.jpg
       :width: 80%
 
-      
+
 What is Missing ?
 -----------------
 
 .. image:: ../img/cans.jpg
       :width: 80%
-      
-      
+
+
 Metadata - Who
 --------------
 - Who collected the data?
@@ -128,14 +128,14 @@ Catalog
 -------
 .. image:: ../img/library.jpg
       :height: 1254
-      :width: 2249   
-      
+      :width: 2249
+
 Catalog Service
 ---------------
 .. image:: ../img/catalogservice.jpg
       :height: 1254
-      :width: 2249   
-         
+      :width: 2249
+
 
 
 Trader
@@ -150,31 +150,31 @@ Discovery using SOA
 .. image:: ../img/soa_triangle.jpg
       :height: 930
       :width: 1800
-      
+
 Example: Geospatial Platform
 ----------------------------
 .. image:: ../img/geoplatform.jpg
       :height: 1329
       :width: 2487
-      
+
 Metadata for Hurricane Map
 --------------------------
 .. image:: ../img/metadata1.jpg
       :height: 954
       :width: 1933
-      
+
 Metadata for Hurricane Map
 --------------------------
 .. image:: ../img/metadata2.jpg
       :height: 1045
       :width: 1608
-      :scale: 70    
-      
+      :scale: 70
+
 
 Metadata Standards
 ------------------
 Need for consistency
- 
+
 
 FGDC
 ----
@@ -188,28 +188,28 @@ ISO 19115 Geographic Information
 .. image:: ../img/iso1.jpg
       :height: 1254
       :width: 2249
-       
+
 ISO 19115 Geographic Information
 --------------------------------
 .. image:: ../img/iso2.jpg
       :height: 1254
       :width: 2249
-          
+
 
 
 Profiles
 --------
 .. image:: ../img/profiles.jpg
       :height: 1254
-      :width: 2249 
-      
+      :width: 2249
+
 Catalog Service
 ---------------
 .. image:: ../img/catalogservices.jpg
       :height: 1254
-      :width: 2249     
-      
-     
+      :width: 2249
+
+
 Catalog Services
 ----------------
 
@@ -220,30 +220,30 @@ Catalog Services
 - OpenSearch
 
 
-                          
+
 CSW Record
 ----------
-.. code-block:: xml   
-                   
+.. code-block:: xml
+
     ...
-    <Record> ...                      
+    <Record> ...
       <dc:identifier>00180e67-b7cf-40a3-861d-b3a09337b195</dc:identifier>
       <dc:title>Image2000 Product 1 (at1) Multispectral</dc:title>
       <dct:modified>2004-10-04 00:00:00</dct:modified>
-      <dct:abstract>IMAGE2000 product 1 individual orthorectified 
-            scenes. IMAGE2000 was  produced from ETM+ Landsat 7 
-            satellite data and provides a consistent European 
-            coverage of individual orthorectified scenes in national 
+      <dct:abstract>IMAGE2000 product 1 individual orthorectified
+            scenes. IMAGE2000 was  produced from ETM+ Landsat 7
+            satellite data and provides a consistent European
+            coverage of individual orthorectified scenes in national
             map projection systems.</dct:abstract>
       <dc:type>dataset</dc:type>
-      
+
 CSW Record (cont.)
-----------
-.. code-block:: xml      
-      
+-------------------
+.. code-block:: xml
+
     ...
     <Record>
-      ...                      
+      ...
       <dc:subject>imagery</dc:subject>
       <dc:subject>baseMaps</dc:subject>
       <dc:subject>earthCover</dc:subject>
@@ -255,13 +255,13 @@ CSW Record (cont.)
          <ows:UpperCorner>17.24 48.42</ows:UpperCorner>
       </ows:WGS84BoundingBox>
    </Record>
-   
-   
+
+
 
 Queryable Terms
 ---------------
 =========== ==================
-Title       dc:title  
+Title       dc:title
 Subject     dc:subject
 Abstract    dc:description
 Modified    dc:modified
@@ -270,17 +270,17 @@ Format      dc:format
 Identifier  dc:identifier
 Source      dc:source
 Association dc:relation
-BoundingBox ows:BoundingBox         
+BoundingBox ows:BoundingBox
 =========== ==================
 
 OGC Queryable Terms
 -------------------
 
 AnyText
-   Full text search    
+   Full text search
 CRS
-   Coordinate Reference System         
-BoundingBox 
+   Coordinate Reference System
+BoundingBox
    For identifying a geographic area of interest
 
 
@@ -299,13 +299,13 @@ CSW Operations
 - DescribeRecord
 - GetRecordById
 - GetRecords
-- Harvest   
+- Harvest
 
 
 CSW GetCapabilities
 -------------------
 
-.. code-block:: JavaScript   
+.. code-block:: JavaScript
 
    http://23.21.100.193/
    gi-cat-RI/services/cswiso?
@@ -320,7 +320,7 @@ CSW GetCapabilities
 CSW DescribeRecord
 ------------------
 
-.. code-block:: JavaScript   
+.. code-block:: JavaScript
 
    http://23.21.100.193/
    gi-cat-RI/services/cswiso?
@@ -335,7 +335,7 @@ CSW DescribeRecord
 CSW GetRecords
 --------------
 
-.. code-block:: JavaScript   
+.. code-block:: JavaScript
 
    http://23.21.100.193/
    gi-cat-RI/services/cswiso?
@@ -356,12 +356,12 @@ Advanced Queries
 ----------------
 Performed:
  - CQLTEXT
- - FILTER 
+ - FILTER
 
 Asynchronous CSW Harvest Request
 --------------------------------
 
-.. code-block:: xml  
+.. code-block:: xml
 
       <?xml version="1.0" encoding="ISO-8859-1"?>
       <Harvest
@@ -383,10 +383,10 @@ Asynchronous CSW Harvest Request
 Asynchronous CSW Harvest Response
 ---------------------------------
 
-.. code-block:: xml  
+.. code-block:: xml
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <csw:HarvestResponse 
+   <csw:HarvestResponse
          xmlns:csw="http://www.opengis.net/cat/csw/2.0.2">
      <csw:Acknowledgement timeStamp="2011-12-05T15:13:59">
        <csw:EchoedRequest>
@@ -403,12 +403,12 @@ Asynchronous CSW Harvest Response
 Synchronous CSW Harvest Request
 -------------------------------
 
-.. code-block:: xml  
+.. code-block:: xml
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <csw:Harvest 
-            xmlns:csw="http://www.opengis.net/cat/csw/2.0.2" 
-            xmlns:gmd="http://www.isotc211.org/2005/gmd" 
+   <csw:Harvest
+            xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
+            xmlns:gmd="http://www.isotc211.org/2005/gmd"
             service="CSW" version="2.0.2">
       <csw:Source>
          http://[ URL to the target CSW server ]?
@@ -422,10 +422,10 @@ Synchronous CSW Harvest Request
 
 Synchronous CSW Harvest Response
 ---------------------------------
-.. code-block:: xml  
+.. code-block:: xml
 
    <?xml version="1.0" encoding="UTF-8"?>
-   <csw:HarvestResponse 
+   <csw:HarvestResponse
       xmlns:csw="http://www.opengis.net/cat/csw/2.0.2">
        <csw:TransactionResponse>
            <csw:TransactionSummary>
@@ -516,12 +516,11 @@ OpenSearch Template to do a request
 
 
 
-   
-      
-        
+
+
+
 
 Credits
 -------
 
 - `NOAA NCDDC Metadata training materials <http://www.ncddc.noaa.gov>`_
-

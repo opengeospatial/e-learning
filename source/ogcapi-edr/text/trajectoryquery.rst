@@ -1,7 +1,7 @@
 Trajectory Query Resources of OGC API - EDR
 ================
 
-A trajectory is a path of a moving point described by a one parameter set of points. An illustration, created using NASA Web WorldWind, is shown below.
+A trajectory is a path of a moving point described by a one parameter set of points. An illustration, created using NASA WorldWind, is shown below.
 
 .. image:: ../img/trajectory.png
    :width: 80%

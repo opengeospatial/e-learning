@@ -48,6 +48,7 @@ help:
 
 clean:
 	rm -rf $(BUILDDIR)/*
+	rm -rf ./docs
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
@@ -55,14 +56,18 @@ html:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 ogc:
+	rm -rf $(BUILDDIR)/*
+	rm -rf ./docs	
 	$(SPHINXBUILD) -b html source build
 	cp ./source/wmts/text/*.yaml ./build/wmts/text
 	cp -r ./source/wmts/text/target-api ./build/wmts/text
 	cp -r ./source/wmts/text/target-api-kvp ./build/wmts/text
 	mv ./build/_static ./build/static
 	mv ./build/_images ./build/images
+	python replacestatic.py
+	mv ./build ./docs
 	@echo
-	@echo "OGC Build finished. Now run replacestatic and rename build to docs."
+	@echo "OGC Build finished."
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml

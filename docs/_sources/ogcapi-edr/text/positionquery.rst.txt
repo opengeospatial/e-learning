@@ -1,7 +1,7 @@
 Position Query Resources of OGC API - EDR
 ================
 
-A position is a data type that describes a point or geometry potentially occupied by an object or person. An illustration, created using NASA Web WorldWind, is shown below.
+A position is a data type that describes a point or geometry potentially occupied by an object or person. An illustration, created using NASA WorldWind, is shown below.
 
 .. image:: ../img/position.png
    :width: 80%

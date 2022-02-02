@@ -1,7 +1,7 @@
 Corridor Query Resources of OGC API - EDR
 ================
 
-A corridor is a two parameter set of points around a trajectory. An illustration, created using NASA Web WorldWind, is shown below.
+A corridor is a two parameter set of points around a trajectory. An illustration, created using NASA WorldWind, is shown below.
 
 .. image:: ../img/corridor.png
    :width: 80%

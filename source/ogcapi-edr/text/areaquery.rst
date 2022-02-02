@@ -1,7 +1,7 @@
 Area Query Resources of OGC API - EDR
 ================
 
-An area is a region specified with a geographic envelope that may have vertical dimension. An illustration, created using NASA Web WorldWind, is shown below.
+An area is a region specified with a geographic envelope that may have vertical dimension. An illustration, created using NASA WorldWind, is shown below.
 
 .. image:: ../img/area.png
    :width: 80%
