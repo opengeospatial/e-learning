@@ -18,7 +18,7 @@ History
 Versions
     **OGC API - Environmental Data Retrieval** version 1.0.0 is the current latest version
 Test Suite
-    A draft test suite is available for:
+    A draft executable test suite is available for:
       - `OGC API - Environmental Data Retrieval <https://github.com/opengeospatial/ets-ogcapi-edr10>`_
 Implementations
     Implementations can be found on the OGC Product Database here <http://www.opengeospatial.org/resource/products/byspec>
