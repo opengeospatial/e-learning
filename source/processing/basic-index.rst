@@ -8,3 +8,4 @@ Contents:
    :name: acc
 
    ../wps/text/basic-index.rst
+   ../ogcapi-processes/text/basic-index.rst

@@ -33,7 +33,10 @@
         <link rel="index" title="Index"
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/> 
+    <link rel="top" title="OGC e-Learning 2.0.0 documentation" href="../../index.html"/>
+        <link rel="up" title="OGC API - Processes" href="basic-index.html"/>
+        <link rel="next" title="Visualization Standards" href="../../visualization-standards/basic-index.html"/>
+        <link rel="prev" title="Overview, OGC API - Processes" href="basic-overview.html"/> 
 
   
   <script src="static/js/modernizr.min.js"></script>
@@ -72,7 +75,7 @@
         
           
           
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../fundamental-concepts/text/index.html">Fundamental Concepts</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../fundamental-concepts/text/overview.html">Overview</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../fundamental-concepts/text/overview.html#audience">Audience</a></li>
@@ -252,13 +255,22 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../processing/basic-index.html">Processing Standards</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../processing/basic-index.html">Processing Standards</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../wps/text/basic-index.html">Web Processing Service (WPS)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-index.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../wps/text/basic-index.html#contents">Contents</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-overview.html">WPS - Overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../wps/text/basic-main.html">WPS - Introduction</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../wps/text/operations.html">WPS - Operations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="basic-index.html">OGC API - Processes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic-index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="basic-index.html#contents">Contents</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="basic-overview.html">Overview, OGC API - Processes</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">An Introduction to OGC API - Processes</a></li>
 </ul>
 </li>
 </ul>
@@ -371,6 +383,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../index.html">Docs</a> &raquo;</li>
       
+          <li><a href="../../processing/basic-index.html">Processing Standards</a> &raquo;</li>
+      
+          <li><a href="basic-index.html">OGC API - Processes</a> &raquo;</li>
+      
     <li>An Introduction to OGC API - Processes</li>
       <li class="wy-breadcrumbs-aside">
         
@@ -388,44 +404,43 @@
 <h1>An Introduction to OGC API - Processes<a class="headerlink" href="#an-introduction-to-ogc-api-processes" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>OGC API - Features is a multi-part standard that offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data. The Core part of the standard is called <strong>OGC API - Features - Part 1: Core</strong>. The Core part of the specification describes the mandatory capabilities that every implementing service has to support and is restricted to read-access to spatial data. Additional capabilities that address specific needs will be specified in additional parts. Envisaged future capabilities include, for example, support for creating and modifying data, more complex data models, richer queries, and additional coordinate reference systems.</p>
+<p>The OGC API — Processes standard supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application. The standard specifies a processing interface to communicate over a RESTful protocol using JavaScript Object Notation (JSON) encodings. The standard leverages concepts from the OGC Web Processing Service (WPS) 2.0 Interface Standard but does not require implementation of a WPS. The Core part of the standard is called <strong>OGC API - Processes - Part 1: Core</strong>. The Core part of the standard supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application either synchronously or asynchronously. Examples of computational processes that can be supported by implementations of this specification include raster algebra, geometry buffering, constructive area geometry, routing, imagery analysis and several others.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This tutorial module is not intended to be a replacement to the actual <strong>OGC API - Features - Part 1: Core</strong> standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the <strong>OGC API - Features - Part 1: Core</strong> standard for additional detail.</p>
+<p>This tutorial module is not intended to be a replacement to the actual <strong>OGC API - Processes - Part 1: Core</strong> standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the <strong>OGC API - Processes - Part 1: Core</strong> standard for additional detail.</p>
 </div>
 </div>
 <div class="section" id="background">
 <h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <dl class="simple">
-<dt>History</dt><dd><p>While in draft form and prior to February 2019, <strong>OGC API - Features - Part 1: Core</strong> was referred to as WFS3.0.</p>
+<dt>History</dt><dd><p>Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS 2.0 was changed to focus on OGC API - Processes.</p>
 </dd>
-<dt>Versions</dt><dd><p><strong>OGC API - Features - Part 1: Core</strong> version 1.0.0 is the current latest version</p>
+<dt>Versions</dt><dd><p><strong>OGC API - Processes - Part 1: Core</strong> version 1.0.0 is the current latest version</p>
 </dd>
 <dt>Test Suite</dt><dd><dl class="simple">
-<dt>Test suites are available for:</dt><dd><ul class="simple">
-<li><p><a class="reference external" href="https://github.com/opengeospatial/ets-ogcapi-features10">OGC API - Features</a></p></li>
+<dt><strong>Draft</strong> Test suites are available for:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/opengeospatial/ets-ogcapi-processes10">OGC API - Processes</a></p></li>
 </ul>
 </dd>
 </dl>
 </dd>
-<dt>Implementations</dt><dd><p>Implementations can be found on the Compliance Database here &lt;<a class="reference external" href="http://www.opengeospatial.org/resource/products/byspec">http://www.opengeospatial.org/resource/products/byspec</a>&gt;</p>
+<dt>Implementations</dt><dd><p>Implementations can be found here &lt;<a class="reference external" href="https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc">https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc</a>&gt;</p>
 </dd>
 </dl>
 <div class="section" id="usage">
 <h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
-<p><strong>OGC API - Features - Part 1: Core</strong> specifies discovery and query operations that are implemented using the HTTP GET method. Support for additional methods (in particular POST, PUT, DELETE, PATCH) will be specified in additional parts. Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.</p>
-<p>The standard provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that client applications can request source data from multiple implementations of the API, and then render the data for display or process the data further as part of a workflow. The standard enables the data to be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.</p>
+<p><strong>OGC API - Processes - Part 1: Core</strong> supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application. Government agencies, private organisations and academic institutes use the OGC API - Processes standard to provide implementations of geospatial algorithms that process data. The benefit of this is that the processing of geospatial data, including data from sensors, can be distributed thereby allowing for more capacity to process larger amounts of data.</p>
 </div>
 <div class="section" id="relation-to-other-ogc-standards">
 <h3>Relation to other OGC Standards<a class="headerlink" href="#relation-to-other-ogc-standards" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>OGC Web Feature Service Interface Standard (WFS): The WFS standard is more appropriate when working with client applications that only support classic OGC Web Services. Note as well that WFS adopts the Geography Markup Language (<a class="reference external" href="https://www.ogc.org/standards/gml">GML</a>) as a default data format. In contrast, OGC API - Features includes recommendations to support <a class="reference external" href="https://html.spec.whatwg.org">HTML</a> and <a class="reference external" href="https://geojson.org">GeoJSON</a> as encodings, where practical. Implementations of OGC API - Features may also optionally support GML.</p></li>
+<li><p>OGC Web Processing Service Interface Standard (WPS): The WPS Standard provides a standard interface that simplifies the task of making simple or complex computational geospatial processing services accessible via web services. The OGC API — Processes Standard is a newer and more modern way of programming and interacting with resources over the web while allowing better integration into existing software packages. The OGC API — Processes Standard addresses all of the use cases that were addressed by the WPS Standard, while also leveraging the OpenAPI specification and a resource-oriented approach.</p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="overview-of-resources">
 <h2>Overview of Resources<a class="headerlink" href="#overview-of-resources" title="Permalink to this headline">¶</a></h2>
-<p><strong>OGC API - Features - Part 1: Core</strong> defines the resources listed in the following table.</p>
+<p><strong>OGC API - Processes - Part 1: Core</strong> defines the resources listed in the following table.</p>
 <table class="colwidths-given docutils align-default" id="id1">
 <caption><span class="caption-text">Overview of OGC API - Features resources</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -448,36 +463,45 @@
 <td><p>/conformance</p></td>
 <td><p>This resource presents information about the functionality that is implemented by the server.</p></td>
 </tr>
-<tr class="row-even"><td><p>API definition</p></td>
+<tr class="row-even"><td><p>API Definition</p></td>
 <td><p>/api</p></td>
-<td><p>This resource provides metadata about the API itself. Note use of <strong>/api</strong> on the server is optional and the API definition may be hosted on completely separate server</p></td>
+<td><p>This resource provides metadata about the API itself. Note use of <strong>/api</strong> on the server is optional and the API definition may be hosted on completely separate server.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Feature collections</p></td>
-<td><p>/collections</p></td>
-<td><p>This resource lists the feature collections that are offered through the API.</p></td>
+<tr class="row-odd"><td><p>Process list</p></td>
+<td><p>/processes</p></td>
+<td><p>Process identifiers, links to process descriptions.</p></td>
 </tr>
-<tr class="row-even"><td><p>Feature collection</p></td>
-<td><p>/collections/{collectionId}</p></td>
-<td><p>This resource describes the feature collection identified in the path.</p></td>
+<tr class="row-even"><td><p>Process description</p></td>
+<td><p>/processes/{processID}</p></td>
+<td><p>Retrieves a process description.</p></td>
 </tr>
-<tr class="row-odd"><td><p>Features</p></td>
-<td><p>/collections/{collectionId}/items</p></td>
-<td><p>This resource presents the features that are contained in the collection.</p></td>
+<tr class="row-odd"><td><p>Process execution</p></td>
+<td><p>/processes/{processID}/execution</p></td>
+<td><p>Creates and executes a job.</p></td>
 </tr>
-<tr class="row-even"><td><p>Feature</p></td>
-<td><p>/collections/{collectionId}/items/{featureId}</p></td>
-<td><p>This resource presents the feature that is identified in the path</p></td>
+<tr class="row-even"><td><p>Job status info</p></td>
+<td><p>/jobs/{jobID}</p></td>
+<td><p>Retrieves information about the status of a job.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job results</p></td>
+<td><p>/jobs/{jobID}/results</p></td>
+<td><p>Retrieves the result(s) of a job.</p></td>
+</tr>
+<tr class="row-even"><td><p>Job list</p></td>
+<td><p>/jobs</p></td>
+<td><p>Retrieves the list of jobs.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Job Deletion</p></td>
+<td><p>/jobs/{jobID}</p></td>
+<td><p>Cancels and deletes a job.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>This <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/">demonstration server</a> publishes vector geospatial data through an interface that conforms to OGC API - Features.</p>
-<p>An example request that can be used to retrieve data from the Vegetation surface feature collection is <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html">https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html</a></p>
-<p>Note that the response to the request is HTML in this case.</p>
-<p>Alternatively, the same data can be retrieved in GeoJSON format, through the request <a class="reference external" href="https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json">https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json</a></p>
-<p>A client application can then retrieve the GeoJSON document and display or process it.</p>
+<p>This ZOO-Project <a class="reference external" href="http://tb17.geolabs.fr:8090/ogc-api/index.html">demonstration server</a> from OGC Testbed-17 implements a variety of processing algorithms through an interface that conforms to OGC API - Processes.</p>
+<p>The processes offered by the server can be browsed at <a class="reference external" href="http://tb17.geolabs.fr:8090/ogc-api/processes.html">http://tb17.geolabs.fr:8090/ogc-api/processes.html</a></p>
 </div>
 </div>
 
@@ -485,13 +509,22 @@
           </div>
           <footer>
   
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../visualization-standards/basic-index.html" class="btn btn-neutral float-right" title="Visualization Standards" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="basic-overview.html" class="btn btn-neutral" title="Overview, OGC API - Processes" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Feb 02, 2022.
+      Last updated on Feb 14, 2022.
     </p>
   </div>
 

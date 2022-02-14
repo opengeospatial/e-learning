@@ -4,66 +4,61 @@ An Introduction to OGC API - Processes
 Introduction
 ------------
 
-OGC API - Features is a multi-part standard that offers the capability to create, modify, and query spatial data on the Web and specifies requirements and recommendations for APIs that want to follow a standard way of sharing feature data. The Core part of the standard is called **OGC API - Features - Part 1: Core**. The Core part of the specification describes the mandatory capabilities that every implementing service has to support and is restricted to read-access to spatial data. Additional capabilities that address specific needs will be specified in additional parts. Envisaged future capabilities include, for example, support for creating and modifying data, more complex data models, richer queries, and additional coordinate reference systems.
+The OGC API — Processes standard supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application. The standard specifies a processing interface to communicate over a RESTful protocol using JavaScript Object Notation (JSON) encodings. The standard leverages concepts from the OGC Web Processing Service (WPS) 2.0 Interface Standard but does not require implementation of a WPS. The Core part of the standard is called **OGC API - Processes - Part 1: Core**. The Core part of the standard supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application either synchronously or asynchronously. Examples of computational processes that can be supported by implementations of this specification include raster algebra, geometry buffering, constructive area geometry, routing, imagery analysis and several others.
 
-
-.. note::  This tutorial module is not intended to be a replacement to the actual **OGC API - Features - Part 1: Core** standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the **OGC API - Features - Part 1: Core** standard for additional detail.
+.. note::  This tutorial module is not intended to be a replacement to the actual **OGC API - Processes - Part 1: Core** standard. The tutorial intentionally focuses on a subset of capabilities in order to get the student started with using the standard. Please refer to the **OGC API - Processes - Part 1: Core** standard for additional detail.
 
 
 Background
 --------------------
 
 History
-    While in draft form and prior to February 2019, **OGC API - Features - Part 1: Core** was referred to as WFS3.0.
+    Several of the concepts specified in OGC API - Processes originated in work specifying a RESTful interface for WPS 2.0. From February 2019 onwards, all work relating to a RESTful interface for the WPS 2.0 was changed to focus on OGC API - Processes.
 Versions
-    **OGC API - Features - Part 1: Core** version 1.0.0 is the current latest version
+    **OGC API - Processes - Part 1: Core** version 1.0.0 is the current latest version
 Test Suite
-  Test suites are available for:
-      - `OGC API - Features <https://github.com/opengeospatial/ets-ogcapi-features10>`_
+  **Draft** Test suites are available for:
+      - `OGC API - Processes <https://github.com/opengeospatial/ets-ogcapi-processes10>`_
 Implementations
-    Implementations can be found on the Compliance Database here <http://www.opengeospatial.org/resource/products/byspec>
+    Implementations can be found here <https://github.com/opengeospatial/ogcapi-processes/blob/master/implementations.adoc>
 
 Usage
 ^^^^^^
 
-**OGC API - Features - Part 1: Core** specifies discovery and query operations that are implemented using the HTTP GET method. Support for additional methods (in particular POST, PUT, DELETE, PATCH) will be specified in additional parts. Government agencies, private organisations and academic institutes use this standard to publish vector geospatial datasets in a way that makes it easier for receiving organisations to compile new maps or conduct analysis on the supplied data.
-
-The standard provides a standard interface for requesting vector geospatial data consisting of geographic features and their properties. The benefit of this is that client applications can request source data from multiple implementations of the API, and then render the data for display or process the data further as part of a workflow. The standard enables the data to be accessed consistently with other data. Feature properties encoded using common data types such as text strings, date and time can also be accessed consistently.
+**OGC API - Processes - Part 1: Core** supports the wrapping of computational tasks into executable processes that can be offered by a server through a Web API and be invoked by a client application. Government agencies, private organisations and academic institutes use the OGC API - Processes standard to provide implementations of geospatial algorithms that process data. The benefit of this is that the processing of geospatial data, including data from sensors, can be distributed thereby allowing for more capacity to process larger amounts of data.
 
 Relation to other OGC Standards
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-- OGC Web Feature Service Interface Standard (WFS): The WFS standard is more appropriate when working with client applications that only support classic OGC Web Services. Note as well that WFS adopts the Geography Markup Language (`GML <https://www.ogc.org/standards/gml>`_) as a default data format. In contrast, OGC API - Features includes recommendations to support `HTML <https://html.spec.whatwg.org>`_ and `GeoJSON <https://geojson.org>`_ as encodings, where practical. Implementations of OGC API - Features may also optionally support GML.
+- OGC Web Processing Service Interface Standard (WPS): The WPS Standard provides a standard interface that simplifies the task of making simple or complex computational geospatial processing services accessible via web services. The OGC API — Processes Standard is a newer and more modern way of programming and interacting with resources over the web while allowing better integration into existing software packages. The OGC API — Processes Standard addresses all of the use cases that were addressed by the WPS Standard, while also leveraging the OpenAPI specification and a resource-oriented approach.
 
 
 Overview of Resources
 ----------------------------
 
-**OGC API - Features - Part 1: Core** defines the resources listed in the following table.
+**OGC API - Processes - Part 1: Core** defines the resources listed in the following table.
 
 
 .. csv-table:: Overview of OGC API - Features resources
    :header: "Resource ", "Path", "Purpose"
    :widths: 20, 20, 10
 
-   "Landing page", "/", "This is the top-level resource, which serves as an entry point."
-   "Conformance declaration", "/conformance", "This resource presents information about the functionality that is implemented by the server."
-   "API definition", "/api", "This resource provides metadata about the API itself. Note use of **/api** on the server is optional and the API definition may be hosted on completely separate server"
-   "Feature collections", "/collections", "This resource lists the feature collections that are offered through the API."
-   "Feature collection", "/collections/{collectionId}", "This resource describes the feature collection identified in the path."
-   "Features", "/collections/{collectionId}/items", "This resource presents the features that are contained in the collection."
-   "Feature", "/collections/{collectionId}/items/{featureId}", "This resource presents the feature that is identified in the path"
+   "Landing page","/","This is the top-level resource, which serves as an entry point."
+   "Conformance declaration","/conformance","This resource presents information about the functionality that is implemented by the server."
+   "API Definition","/api","This resource provides metadata about the API itself. Note use of **/api** on the server is optional and the API definition may be hosted on completely separate server."
+   "Process list","/processes","Process identifiers, links to process descriptions."
+   "Process description","/processes/{processID}","Retrieves a process description."
+   "Process execution","/processes/{processID}/execution","Creates and executes a job."
+   "Job status info","/jobs/{jobID}","Retrieves information about the status of a job."
+   "Job results","/jobs/{jobID}/results","Retrieves the result(s) of a job."
+   "Job list","/jobs","Retrieves the list of jobs."
+   "Job Deletion","/jobs/{jobID}","Cancels and deletes a job."
+
 
 
 
 Example
 -------
 
-This `demonstration server <https://services.interactive-instruments.de/t15/daraa/>`_ publishes vector geospatial data through an interface that conforms to OGC API - Features.
+This ZOO-Project `demonstration server <http://tb17.geolabs.fr:8090/ogc-api/index.html>`_ from OGC Testbed-17 implements a variety of processing algorithms through an interface that conforms to OGC API - Processes.
 
-An example request that can be used to retrieve data from the Vegetation surface feature collection is https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=html
-
-Note that the response to the request is HTML in this case.
-
-Alternatively, the same data can be retrieved in GeoJSON format, through the request https://services.interactive-instruments.de/t15/daraa/collections/VegetationSrf/items?f=json
-
-A client application can then retrieve the GeoJSON document and display or process it.
+The processes offered by the server can be browsed at http://tb17.geolabs.fr:8090/ogc-api/processes.html
