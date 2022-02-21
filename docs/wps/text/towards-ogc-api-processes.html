@@ -564,7 +564,37 @@
 </div>
 <div class="section" id="creating-an-ogc-api-processes-proxy-in-front-of-the-wps">
 <h2>Creating an OGC API - Processes proxy in front of the WPS<a class="headerlink" href="#creating-an-ogc-api-processes-proxy-in-front-of-the-wps" title="Permalink to this headline">¶</a></h2>
-<p>TBA</p>
+<p>To demonstrate how one could create a proxy that implements OGC API - Processes in front of a WPS, we use an instance of <a class="reference external" href="https://pygeoapi.io/">pygeoapi</a> - a Python server implementation of a number of OGC API Standards.</p>
+<p>First, install pygeoapi as described on the <a class="reference external" href="https://pygeoapi.io/">pygeoapi</a> homepage.</p>
+<p>Here are the series of steps.</p>
+<div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>python3 -m venv pygeoapi
+cd pygeoapi
+. bin/activate
+git clone https://github.com/geopython/pygeoapi.git
+cd pygeoapi
+pip3 install -r requirements.txt
+python3 setup.py install
+cp pygeoapi-config.yml example-config.yml
+vi example-config.yml  # edit as required
+export PYGEOAPI_CONFIG=example-config.yml
+export PYGEOAPI_OPENAPI=example-openapi.yml
+pygeoapi openapi generate $PYGEOAPI_CONFIG &gt; $PYGEOAPI_OPENAPI
+pygeoapi serve
+# in another terminal
+curl http://localhost:5000  # or open in a web browser
+</pre></div>
+</div>
+<p>Once you have installed pygeoapi, verify that you can access <a class="reference external" href="http://localhost:5000">landing page</a> and the <a class="reference external" href="http://localhost:5000/processes">process list</a>.</p>
+<p>A screenshot of the landing page is shown below. Amongst the paths listed will be the processes resource, through which the process list can be retrieved.</p>
+<a class="reference internal image-reference" href="../../images/pygeoapi_1.png"><img alt="../../images/pygeoapi_1.png" src="../../images/pygeoapi_1.png" style="height: 800px;" /></a>
+<p>A screenshot of the process list is shown below. The processes list will show a single process, named “Hello World”.</p>
+<a class="reference internal image-reference" href="../../images/pygeoapi_2.png"><img alt="../../images/pygeoapi_2.png" src="../../images/pygeoapi_2.png" style="height: 800px;" /></a>
+<p>Clicking on the name of the process takes you to the process description. The <a class="reference external" href="http://localhost:5000/processes/hello-world">description</a> of the Hello World process states that the process accepts two strings as input, one named ‘name’ and the other named ‘message’.</p>
+<a class="reference internal image-reference" href="../../images/pygeoapi_3.png"><img alt="../../images/pygeoapi_3.png" src="../../images/pygeoapi_3.png" style="height: 800px;" /></a>
+<p>A JSON encoding of the process description can be obtained at <a class="reference external" href="http://localhost:5000/processes/hello-world?f=json">http://localhost:5000/processes/hello-world?f=json</a></p>
+<p>Having reviewed the process description, we can then create a processing job using web tool such as curl or Postman. A screenshot of a request and response sent using Postman is shown below.</p>
+<a class="reference internal image-reference" href="../../images/pygeoapi_5.png"><img alt="../../images/pygeoapi_5.png" src="../../images/pygeoapi_5.png" style="height: 800px;" /></a>
+<p>TO BE COMPLETED</p>
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>

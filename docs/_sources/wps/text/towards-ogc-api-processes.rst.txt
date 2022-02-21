@@ -177,7 +177,55 @@ The response from the example Execute request is shown below.
 Creating an OGC API - Processes proxy in front of the WPS
 ---------------------------------------------------------
 
-TBA
+To demonstrate how one could create a proxy that implements OGC API - Processes in front of a WPS, we use an instance of `pygeoapi <https://pygeoapi.io/>`_ - a Python server implementation of a number of OGC API Standards.
+
+First, install pygeoapi as described on the `pygeoapi <https://pygeoapi.io/>`_ homepage.
+
+Here are the series of steps.
+
+.. code-block:: txt
+
+  python3 -m venv pygeoapi
+  cd pygeoapi
+  . bin/activate
+  git clone https://github.com/geopython/pygeoapi.git
+  cd pygeoapi
+  pip3 install -r requirements.txt
+  python3 setup.py install
+  cp pygeoapi-config.yml example-config.yml
+  vi example-config.yml  # edit as required
+  export PYGEOAPI_CONFIG=example-config.yml
+  export PYGEOAPI_OPENAPI=example-openapi.yml
+  pygeoapi openapi generate $PYGEOAPI_CONFIG > $PYGEOAPI_OPENAPI
+  pygeoapi serve
+  # in another terminal
+  curl http://localhost:5000  # or open in a web browser
+
+Once you have installed pygeoapi, verify that you can access `landing page <http://localhost:5000>`_ and the `process list <http://localhost:5000/processes>`_.
+
+A screenshot of the landing page is shown below. Amongst the paths listed will be the processes resource, through which the process list can be retrieved.
+
+.. image:: ../img/pygeoapi_1.png
+      :height: 800
+
+A screenshot of the process list is shown below. The processes list will show a single process, named "Hello World".
+
+.. image:: ../img/pygeoapi_2.png
+      :height: 800
+
+Clicking on the name of the process takes you to the process description. The `description <http://localhost:5000/processes/hello-world>`_ of the Hello World process states that the process accepts two strings as input, one named 'name' and the other named 'message'.
+
+.. image:: ../img/pygeoapi_3.png
+      :height: 800
+
+A JSON encoding of the process description can be obtained at http://localhost:5000/processes/hello-world?f=json
+
+Having reviewed the process description, we can then create a processing job using web tool such as curl or Postman. A screenshot of a request and response sent using Postman is shown below.
+
+.. image:: ../img/pygeoapi_5.png
+      :height: 800
+
+TO BE COMPLETED
 
 Acknowledgements
 ----------------
