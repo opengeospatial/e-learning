@@ -331,8 +331,24 @@ Next, we add the new process to the plugin.py configuration file under the `proc
 
 Having completed the configuration, we next implement the process.
 
-TO BE COMPLETED
+TO BE COMPLETED - Add a link to the Python code.
 
+Now, let's rebuild pygeoapi again by executing `python3 setup.py install` from the command line, and then running pygeoapi by executing `pygeoapi serve` from the command line.
+
+We can now see the proxy-cfchecker process listed on the Process List.
+
+.. image:: ../img/cfcheckerapi_1.png
+      :height: 800
+
+Opening the description of the proxy-cfchecker, we can see the input that it accepts.
+
+.. image:: ../img/cfcheckerapi_2.png
+      :height: 800
+
+We can now create a processing job by sending a request using a tool such as curl or Postman.
+
+.. image:: ../img/cfcheckerapi_3.png
+      :height: 800
 
 Acknowledgements
 ----------------
