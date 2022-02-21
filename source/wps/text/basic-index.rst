@@ -17,3 +17,4 @@ Contents
    basic-overview.rst
    basic-main.rst
    operations.rst
+   towards-ogc-api-processes.rst
