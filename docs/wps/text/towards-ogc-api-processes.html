@@ -424,7 +424,7 @@
 </ul>
 <div class="section" id="an-example-of-a-wps">
 <h2>An Example of a WPS<a class="headerlink" href="#an-example-of-a-wps" title="Permalink to this headline">¶</a></h2>
-<p>To explain how a WPS could be extended to support OGC API - Processes by deploying OGC API - Processes implementations alongside the WPS, we present this example which references the CF Checker process. The CF-checker was <cite>developed &lt;https://pavics-sdi.readthedocs.io/en/latest/notebooks/WPS_example.html&gt;_</cite> at the Hadley Centre for Climate Prediction and Research, UK Met Office. Development and maintenance for the CF-checker has now been taken over by the NCAS Computational Modelling Services (NCAS-CMS).</p>
+<p>To explain how a WPS could be extended to support OGC API - Processes by deploying OGC API - Processes implementations alongside the WPS, we present this example which references the CF Checker process. The CF-checker was <a class="reference external" href="https://pavics-sdi.readthedocs.io/en/latest/notebooks/WPS_example.html">developed</a> at the Hadley Centre for Climate Prediction and Research, UK Met Office. Development and maintenance for the CF-checker has now been taken over by the NCAS Computational Modelling Services (NCAS-CMS).</p>
 <p>An example DescribeProcess request, sent through an HTTP GET operation, for the <cite>cfchecker</cite> process is shown below.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//pavics.ouranos.ca/twitcher/ows/proxy/hummingbird/wps?</span>
 <span class="na">service</span><span class="o">=</span><span class="s">WPS&amp;</span>
@@ -565,6 +565,8 @@
 <div class="section" id="creating-an-ogc-api-processes-proxy-in-front-of-the-wps">
 <h2>Creating an OGC API - Processes proxy in front of the WPS<a class="headerlink" href="#creating-an-ogc-api-processes-proxy-in-front-of-the-wps" title="Permalink to this headline">¶</a></h2>
 <p>To demonstrate how one could create a proxy that implements OGC API - Processes in front of a WPS, we use an instance of <a class="reference external" href="https://pygeoapi.io/">pygeoapi</a> - a Python server implementation of a number of OGC API Standards.</p>
+<div class="section" id="installing-pygeoapi">
+<h3>Installing pygeoapi<a class="headerlink" href="#installing-pygeoapi" title="Permalink to this headline">¶</a></h3>
 <p>First, install pygeoapi as described on the <a class="reference external" href="https://pygeoapi.io/">pygeoapi</a> homepage.</p>
 <p>Here are the series of steps.</p>
 <div class="highlight-txt notranslate"><div class="highlight"><pre><span></span>python3 -m venv pygeoapi
@@ -603,7 +605,86 @@ curl http://localhost:5000  # or open in a web browser
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="creating-the-proxy-cfchecker-process">
+<h3>Creating the Proxy cfchecker process<a class="headerlink" href="#creating-the-proxy-cfchecker-process" title="Permalink to this headline">¶</a></h3>
+<p>Now that we have installed pygeoapi, let’s create the process in pygeoapi that will expose the cfchecker through an interface that implements OGC API - Processes.</p>
+<p>First, we add the new process to the example-config.yml configuration file under the <cite>resources</cite> element.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">resources</span><span class="p">:</span>
+     <span class="nt">proxy-cfchecker</span><span class="p">:</span>
+         <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">process</span>
+         <span class="nt">processor</span><span class="p">:</span>
+             <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ProxyCFChecker</span>
+</pre></div>
+</div>
+<p>Then we add the new process to the example-openapi.yml configuration file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">/processes/proxy-cfchecker</span><span class="p">:</span>
+     <span class="nt">get</span><span class="p">:</span>
+       <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">An example process that checks the validity of a NetCDF-CF file.</span>
+       <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">describeProxy-cfcheckerProcess</span>
+       <span class="nt">parameters</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="nt">$ref</span><span class="p">:</span> <span class="s">&#39;#/components/parameters/f&#39;</span>
+       <span class="nt">responses</span><span class="p">:</span>
+         <span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="s">&#39;#/components/responses/200&#39;</span>
+         <span class="nt">default</span><span class="p">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="s">&#39;#/components/responses/default&#39;</span>
+       <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Get process metadata</span>
+       <span class="nt">tags</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">proxy-cfchecker</span>
+<span class=" -Error">   </span><span class="nt">/processes/proxy-cfchecker/execution</span><span class="p">:</span>
+     <span class="nt">post</span><span class="p">:</span>
+       <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">An example process that checks the validity of a NetCDF-CF file.</span>
+       <span class="nt">operationId</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">executeProxy-cfcheckerJob</span>
+       <span class="nt">requestBody</span><span class="p">:</span>
+         <span class="nt">content</span><span class="p">:</span>
+           <span class="nt">application/json</span><span class="p">:</span>
+             <span class="nt">example</span><span class="p">:</span>
+               <span class="nt">inputs</span><span class="p">:</span>
+                 <span class="nt">dataset_opendap</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis2.dailyavgs/surface/mslp.2016.nc</span>
+             <span class="nt">schema</span><span class="p">:</span>
+               <span class="nt">$ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/execute.yaml</span>
+         <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Mandatory execute request JSON</span>
+         <span class="nt">required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+       <span class="nt">responses</span><span class="p">:</span>
+         <span class="s">&#39;200&#39;</span><span class="p p-Indicator">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="s">&#39;#/components/responses/200&#39;</span>
+         <span class="s">&#39;201&#39;</span><span class="p p-Indicator">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/ExecuteAsync.yaml</span>
+         <span class="s">&#39;404&#39;</span><span class="p p-Indicator">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/NotFound.yaml</span>
+         <span class="s">&#39;500&#39;</span><span class="p p-Indicator">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/ServerError.yaml</span>
+         <span class="nt">default</span><span class="p">:</span>
+           <span class="nt">$ref</span><span class="p">:</span> <span class="s">&#39;#/components/responses/default&#39;</span>
+       <span class="nt">summary</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Process Proxy CFChecker execution</span>
+       <span class="nt">tags</span><span class="p">:</span>
+       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">proxy-cfchecker</span>
+</pre></div>
+</div>
+<p>We also add a tag for the new process to the example-openapi.yml configuration file.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tags</span><span class="p">:</span>
+ <span class="p p-Indicator">-</span> <span class="nt">description</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">An example process that checks the validity of a NetCDF-CF file.</span>
+   <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">proxy-cfchecker</span>
+</pre></div>
+</div>
+<p>Next, we add the new process to the pygeoapi-config.yml configuration file under the <cite>resources</cite> element.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">resources</span><span class="p">:</span>
+     <span class="nt">proxy-cfchecker</span><span class="p">:</span>
+         <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">process</span>
+         <span class="nt">processor</span><span class="p">:</span>
+             <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ProxyCFChecker</span>
+</pre></div>
+</div>
+<p>Next, we add the new process to the plugin.py configuration file under the <cite>process</cite> element.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>&#39;process&#39;: {
+    &#39;ProxyCFChecker&#39;: &#39;pygeoapi.process.proxy_cfchecker.ProxyCFCheckerProcessor&#39;
+}
+</pre></div>
+</div>
+<p>Having completed the configuration, we next implement the process.</p>
 <p>TO BE COMPLETED</p>
+</div>
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>

@@ -25,7 +25,7 @@ Key differences between WPS and OGC API - Processes are in how the interfaces ar
 An Example of a WPS
 --------------------
 
-To explain how a WPS could be extended to support OGC API - Processes by deploying OGC API - Processes implementations alongside the WPS, we present this example which references the CF Checker process. The CF-checker was `developed <https://pavics-sdi.readthedocs.io/en/latest/notebooks/WPS_example.html>_` at the Hadley Centre for Climate Prediction and Research, UK Met Office. Development and maintenance for the CF-checker has now been taken over by the NCAS Computational Modelling Services (NCAS-CMS).
+To explain how a WPS could be extended to support OGC API - Processes by deploying OGC API - Processes implementations alongside the WPS, we present this example which references the CF Checker process. The CF-checker was `developed <https://pavics-sdi.readthedocs.io/en/latest/notebooks/WPS_example.html>`_ at the Hadley Centre for Climate Prediction and Research, UK Met Office. Development and maintenance for the CF-checker has now been taken over by the NCAS Computational Modelling Services (NCAS-CMS).
 
 An example DescribeProcess request, sent through an HTTP GET operation, for the `cfchecker` process is shown below.
 
@@ -179,6 +179,9 @@ Creating an OGC API - Processes proxy in front of the WPS
 
 To demonstrate how one could create a proxy that implements OGC API - Processes in front of a WPS, we use an instance of `pygeoapi <https://pygeoapi.io/>`_ - a Python server implementation of a number of OGC API Standards.
 
+Installing pygeoapi
+^^^^^^^^^^^^^^^^^^^
+
 First, install pygeoapi as described on the `pygeoapi <https://pygeoapi.io/>`_ homepage.
 
 Here are the series of steps.
@@ -236,7 +239,100 @@ For convenience, the payload of the request is provided below.
     }
   }
 
+Creating the Proxy cfchecker process
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now that we have installed pygeoapi, let's create the process in pygeoapi that will expose the cfchecker through an interface that implements OGC API - Processes.
+
+First, we add the new process to the example-config.yml configuration file under the `resources` element.
+
+.. code-block:: yaml
+
+  resources:
+       proxy-cfchecker:
+           type: process
+           processor:
+               name: ProxyCFChecker
+
+Then we add the new process to the example-openapi.yml configuration file.
+
+.. code-block:: yaml
+
+  /processes/proxy-cfchecker:
+       get:
+         description: An example process that checks the validity of a NetCDF-CF file.
+         operationId: describeProxy-cfcheckerProcess
+         parameters:
+         - $ref: '#/components/parameters/f'
+         responses:
+           '200':
+             $ref: '#/components/responses/200'
+           default:
+             $ref: '#/components/responses/default'
+         summary: Get process metadata
+         tags:
+         - proxy-cfchecker
+     /processes/proxy-cfchecker/execution:
+       post:
+         description: An example process that checks the validity of a NetCDF-CF file.
+         operationId: executeProxy-cfcheckerJob
+         requestBody:
+           content:
+             application/json:
+               example:
+                 inputs:
+                   dataset_opendap: http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis2.dailyavgs/surface/mslp.2016.nc
+               schema:
+                 $ref: http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/schemas/execute.yaml
+           description: Mandatory execute request JSON
+           required: true
+         responses:
+           '200':
+             $ref: '#/components/responses/200'
+           '201':
+             $ref: http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/ExecuteAsync.yaml
+           '404':
+             $ref: http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/NotFound.yaml
+           '500':
+             $ref: http://schemas.opengis.net/ogcapi/processes/part1/1.0/openapi/responses/ServerError.yaml
+           default:
+             $ref: '#/components/responses/default'
+         summary: Process Proxy CFChecker execution
+         tags:
+         - proxy-cfchecker
+
+We also add a tag for the new process to the example-openapi.yml configuration file.
+
+.. code-block:: yaml
+
+  tags:
+   - description: An example process that checks the validity of a NetCDF-CF file.
+     name: proxy-cfchecker
+
+
+
+Next, we add the new process to the pygeoapi-config.yml configuration file under the `resources` element.
+
+.. code-block:: yaml
+
+  resources:
+       proxy-cfchecker:
+           type: process
+           processor:
+               name: ProxyCFChecker
+
+Next, we add the new process to the plugin.py configuration file under the `process` element.
+
+.. code-block:: json
+
+  'process': {
+      'ProxyCFChecker': 'pygeoapi.process.proxy_cfchecker.ProxyCFCheckerProcessor'
+  }
+
+Having completed the configuration, we next implement the process.
+
 TO BE COMPLETED
+
 
 Acknowledgements
 ----------------
