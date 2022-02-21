@@ -594,6 +594,15 @@ curl http://localhost:5000  # or open in a web browser
 <p>A JSON encoding of the process description can be obtained at <a class="reference external" href="http://localhost:5000/processes/hello-world?f=json">http://localhost:5000/processes/hello-world?f=json</a></p>
 <p>Having reviewed the process description, we can then create a processing job using web tool such as curl or Postman. A screenshot of a request and response sent using Postman is shown below.</p>
 <a class="reference internal image-reference" href="../../images/pygeoapi_5.png"><img alt="../../images/pygeoapi_5.png" src="../../images/pygeoapi_5.png" style="height: 800px;" /></a>
+<p>For convenience, the payload of the request is provided below.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;An optional message.&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;World&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>TO BE COMPLETED</p>
 </div>
 <div class="section" id="acknowledgements">

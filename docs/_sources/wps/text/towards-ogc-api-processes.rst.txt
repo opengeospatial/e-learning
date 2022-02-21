@@ -225,6 +225,17 @@ Having reviewed the process description, we can then create a processing job usi
 .. image:: ../img/pygeoapi_5.png
       :height: 800
 
+For convenience, the payload of the request is provided below.
+
+.. code-block:: json
+
+  {
+    "inputs": {
+      "message": "An optional message.",
+      "name": "World"
+    }
+  }
+
 TO BE COMPLETED
 
 Acknowledgements
