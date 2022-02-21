@@ -350,6 +350,16 @@ We can now create a processing job by sending a request using a tool such as cur
 .. image:: ../img/cfcheckerapi_3.png
       :height: 800
 
+For convenience, the payload of the request is provided below.
+
+.. code-block:: json
+
+  {
+    "inputs": {
+      "dataset_opendap": "http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis2.dailyavgs/surface/mslp.2016.nc"
+    }
+  }
+
 Acknowledgements
 ----------------
 

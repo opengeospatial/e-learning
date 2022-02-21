@@ -691,6 +691,14 @@ curl http://localhost:5000  # or open in a web browser
 <a class="reference internal image-reference" href="../../images/cfcheckerapi_2.png"><img alt="../../images/cfcheckerapi_2.png" src="../../images/cfcheckerapi_2.png" style="height: 800px;" /></a>
 <p>We can now create a processing job by sending a request using a tool such as curl or Postman.</p>
 <a class="reference internal image-reference" href="../../images/cfcheckerapi_3.png"><img alt="../../images/cfcheckerapi_3.png" src="../../images/cfcheckerapi_3.png" style="height: 800px;" /></a>
+<p>For convenience, the payload of the request is provided below.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;inputs&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;dataset_opendap&quot;</span><span class="p">:</span> <span class="s2">&quot;http://www.esrl.noaa.gov/psd/thredds/dodsC/Datasets/ncep.reanalysis2.dailyavgs/surface/mslp.2016.nc&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="acknowledgements">
