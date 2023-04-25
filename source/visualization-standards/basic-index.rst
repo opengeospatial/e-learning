@@ -7,6 +7,7 @@ Contents:
    :maxdepth: 1
    :name: vis
    
+   ../ogcapi-features/text/basic-index.rst   
    ../wms/text/basic-index.rst
    ../wmts/text/index.rst
    ../kml/text/basic-index.rst
