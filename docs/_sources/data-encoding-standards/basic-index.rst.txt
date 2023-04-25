@@ -18,3 +18,4 @@ Contents:
 
    ../geopackage/text/basic-index.rst
    ../gml/text/index.rst
+   ../indoorgml/text/index.rst   
