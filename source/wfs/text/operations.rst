@@ -358,8 +358,8 @@ The response returned by the request above is shown below. The response is prese
   </wfs:member>
   </wfs:FeatureCollection>
 
-PropetyName parameter
-^^^^^^^^^^^^^^^^^^^^^
+PropertyName parameter
+^^^^^^^^^^^^^^^^^^^^^^
 
 
 Another parameter that can be added to a GetFeature request is the propertyName. This parameter returns feature instances with only the specified property included. This functionality is particularly useful in situations where feature types with several properties are being served over a network with limited bandwidth. The client application can pick and choose which properties they want returned within the feature instances. An example of the use of this parameter is shown below.
