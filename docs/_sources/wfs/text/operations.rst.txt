@@ -48,14 +48,14 @@ An example of a GetCapabilities request is:
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?
   SERVICE=WFS&
   REQUEST=GetCapabilities&
   VERSION=2.0.0
 
 
 
-`This is a link to a GetCapabilities request. <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0>`_
+`This is a link to a GetCapabilities request. <https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0>`_
 
 There are three parameters (and values) being passed to the WFS server, ``SERVICE=WFS``, ``VERSION=2.0.0``, and ``REQUEST=GetCapabilities``.
 
@@ -116,8 +116,8 @@ An example GetCapabilities response from a WFS is shown below, with some section
           <ows:Operation name="GetCapabilities">
             <ows:DCP>
               <ows:HTTP>
-                <ows:Get xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?"/>
-                <ows:Post xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200"/>
+                <ows:Get xlink:href="https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?"/>
+                <ows:Post xlink:href="https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200"/>
               </ows:HTTP>
             </ows:DCP>
             <ows:Parameter name="AcceptVersions">
@@ -129,8 +129,8 @@ An example GetCapabilities response from a WFS is shown below, with some section
           <ows:Operation name="GetFeature">
             <ows:DCP>
               <ows:HTTP>
-                <ows:Get xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?"/>
-                <ows:Post xlink:href="http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200"/>
+                <ows:Get xlink:href="https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?"/>
+                <ows:Post xlink:href="https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200"/>
               </ows:HTTP>
             </ows:DCP>
           </ows:Operation>
@@ -197,7 +197,7 @@ The most simple GetFeature request is one that downloads the feature collection 
 
 .. code-block:: properties
 
-      http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?
+      https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?
       SERVICE=WFS&
       VERSION=2.0.0&
       REQUEST=GetFeature&
@@ -205,7 +205,7 @@ The most simple GetFeature request is one that downloads the feature collection 
 
 
 
-`This is a link to an example of a simple GetFeature request. <hhttp://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ps:ProtectedSite>`_
+`This is a link to an example of a simple GetFeature request. <hhttps://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?SERVICE=WFS&VERSION=2.0.0&REQUEST=GetFeature&TYPENAMES=ps:ProtectedSite>`_
 
 Response
 ^^^^^^^^
@@ -342,9 +342,9 @@ Another parameter that can be added to a GetFeature request is that of the Bound
 
 .. code-block:: properties
 
-      http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&version=2.0.0&request=GetFeature&TypeNames=ps:ProtectedSite&BBOX=51.607317,5.106151,51.629884,5.228022
+      https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?service=WFS&version=2.0.0&request=GetFeature&TypeNames=ps:ProtectedSite&BBOX=51.607317,5.106151,51.629884,5.228022
 
-`This is a link to the request shown above. <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&version=2.0.0&request=GetFeature&TypeNames=ps:ProtectedSite&BBOX=51.607317,5.106151,51.629884,5.228022>`_
+`This is a link to the request shown above. <https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?service=WFS&version=2.0.0&request=GetFeature&TypeNames=ps:ProtectedSite&BBOX=51.607317,5.106151,51.629884,5.228022>`_
 
 The response returned by the request above is shown below. The response is presented here with some content missing for brevity.
 
@@ -358,7 +358,7 @@ The response returned by the request above is shown below. The response is prese
   </wfs:member>
   </wfs:FeatureCollection>
 
-PropetyName parameter
+PropertyName parameter
 ^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -1016,6 +1016,6 @@ The following exception report is an example of what is returned when a request 
 References
 -----------------
 
-- `Deegree WFS reference <http://download.deegree.org/documentation/3.3.20/html/>`_
+- `Deegree WFS reference <https://download.deegree.org/documentation/current/html/>`_
 - `GeoServer WFS reference <http://docs.geoserver.org/stable/en/user/services/wfs/reference.html>`_
 - `Creative Commons 3.0 <http://creativecommons.org/licenses/by/3.0/>`_

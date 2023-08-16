@@ -36,7 +36,7 @@ The URL of this link is composed of the following parameters and values:
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?
   SERVICE=WMTS&
   REQUEST=GetTile&
   VERSION=1.0.0&
@@ -48,7 +48,7 @@ The URL of this link is composed of the following parameters and values:
   TILEROW=431&
   TILECOL=2107
 
-`Link to the corresponding GetTile request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
+`Link to the corresponding GetTile request <https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
 
 Client Usage
 ------------
@@ -57,11 +57,11 @@ A client needs to know the web location of the WMTS service, typically called th
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?
   service=WMTS&
   request=GetCapabilities
 
-`Link to the corresponding GetCapabilities request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?service=WMTS&request=GetCapabilities>`_.
+`Link to the corresponding GetCapabilities request <https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?service=WMTS&request=GetCapabilities>`_.
 
 
 References

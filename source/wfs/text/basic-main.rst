@@ -69,19 +69,19 @@ DropStoredQuery
 Example
 -------
 
-This `WFS Demo server <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&request=GetCapabilities>`_ publishes some sample data on sites protected for archeological, environmental or other conservation purposes.
+This `WFS Demo server <https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?service=WFS&request=GetCapabilities>`_ publishes some sample data on sites protected for archeological, environmental or other conservation purposes.
 
 An example ``GetFeature`` request that can be used to retrieve data from the service is shown below.
 
 .. code-block:: properties
 
-      http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?
+      https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?
       SERVICE=WFS&
       VERSION=2.0.0&
       REQUEST=GetFeature&
       TYPENAMES=ps:ProtectedSite
 
-`Link to the GetFeature request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=ps:ProtectedSite>`_
+`Link to the GetFeature request <https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?SERVICE=WFS&REQUEST=GetFeature&VERSION=2.0.0&TYPENAMES=ps:ProtectedSite>`_
 
 The ``GetFeature`` request queries the server with a set of parameters describing the geographic features to return. The names and identifiers of the available geographic feature datasets are obtained from the capabilities document that is returned by a GetCapabilities response.
 
@@ -98,15 +98,15 @@ The URL of this link is composed of the following parameters and values:
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?
   SERVICE=WFS&
   REQUEST=GetCapabilities&
   VERSION=2.0.0
 
-`Link to the GetCapabilities request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0>`_
+`Link to the GetCapabilities request <https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?SERVICE=WFS&REQUEST=GetCapabilities&VERSION=2.0.0>`_
 
 
 References
 ----------
 
-`Deegree WFS reference <http://download.deegree.org/documentation/3.3.20/html/>`_
+`Deegree WFS reference <https://download.deegree.org/documentation/current/html/>`_

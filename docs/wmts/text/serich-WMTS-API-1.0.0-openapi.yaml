@@ -4,7 +4,7 @@ info:
   title: Draft WMTS API for Discussion Purposes Only
   description: >
     Draft (unofficial for discussion purposes only) WMTS API for retrieval of OGC WMTS resources. The design of this API roughly corresponds to the "resource-oriented style" described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.
-  termsOfService: http://cite.deegree.org/deegree-webservices-3.4-RC3/
+  termsOfService: https://cite.deegree.org/deegree-webservices-3.5.0/
   contact:
     name: OGC Tech Desk
     email: techdesk@opengeospatial.org
