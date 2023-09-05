@@ -74,7 +74,7 @@ Under the procedural-oriented style, a WMTS client can invoke a KVP ServiceMetad
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?
   service=WMTS&
   request=GetCapabilities
 
@@ -424,7 +424,7 @@ A procedural-oriented style would require the existence of a WMTS service that h
 
 .. code-block:: javascript
 
-  loadJSON("http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?request=GetCapabilities&service=WMTS&acceptsFormats=application/json",
+  loadJSON("https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?request=GetCapabilities&service=WMTS&acceptsFormats=application/json",
     ShowCapabilities,
     function(xhr) { alert(xhr); }
   )
@@ -511,7 +511,7 @@ Under the procedural-oriented style, a WMTS client can issue a KVP GetTile reque
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?
   service=WMTS&
   request=GetTile&
   version=1.0.0&
@@ -554,9 +554,9 @@ In response to a GetTile KVP request, or under a resource-oriented style, a Tile
 .. image:: ../img/wmts100.png
       :width: 50%
 
-Here is a `link to the corresponding GetTile request <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
+Here is a `link to the corresponding GetTile request <https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2107>`_.
 
-Here is a `link to a tile from the neighboring column <http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2108>`_.
+Here is a `link to a tile from the neighboring column <https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=cite&STYLE=default&FORMAT=image/png&TILEMATRIXSET=InspireCrs84Quad&TILEMATRIX=11&TILEROW=431&TILECOL=2108>`_.
 
 .. image:: ../img/wmts100b.png
       :width: 50%
@@ -601,7 +601,7 @@ A WMTS client can issue a GetFeatureInfo KVP request in the following manner.
 
 .. code-block:: properties
 
-  http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100?
+  https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100?
   service=WMTS&
   request=GetFeatureInfo&
   version=1.0.0&

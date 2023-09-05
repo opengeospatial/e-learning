@@ -4,7 +4,7 @@ info:
   title: Draft WMTS API KVP version for Discussion Purposes Only
   description: >
     Draft (unofficial for discussion purposes only) WMTS API for getting OGC WMTS resources under a key-value-pair (KVP) procedural-oriented architectural style described in version 1.0.0 of the OGC 07-057r7 OpenGIS Web Map Tile Service Implementation Standard at www.opengeospatial.org/standards/wmts.
-  termsOfService: http://cite.deegree.org/deegree-webservices-3.4-RC3/
+  termsOfService: https://cite.deegree.org/deegree-webservices-3.5.0/
   contact:
     name: OGC Tech Desk
     email: techdesk@opengeospatial.org
@@ -12,7 +12,7 @@ info:
     name: CC-BY 4.0 license
     url: https://creativecommons.org/licenses/by/4.0/
 servers:
-  - url: http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100
+  - url: https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100
 paths:
   /:
     get:
@@ -705,7 +705,7 @@ components:
       properties:
         xlink:href:
           type: string
-          example: 'http://cite.deegree.org/deegree-webservices-3.4-RC3/services/wmts100'
+          example: 'https://cite.deegree.org/deegree-webservices-3.5.0/services/wmts100'
         ows:AllowedValues:
           $ref: '#/components/schemas/ows:AllowedValues'
       xml:
