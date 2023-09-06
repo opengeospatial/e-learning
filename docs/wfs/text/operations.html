@@ -477,7 +477,7 @@
 <h3>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h3>
 <p>A WFS server responding to a <strong>GetCapabilities</strong> request returns metadata about the service, including supported operations and parameters, and a list of the available feature types.</p>
 <p>An example of a GetCapabilities request is:</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?</span>
 <span class="na">SERVICE</span><span class="o">=</span><span class="s">WFS&amp;</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetCapabilities&amp;</span>
 <span class="na">VERSION</span><span class="o">=</span><span class="s">2.0.0</span>
@@ -629,7 +629,7 @@ The table bellow summarizes the parameters and values required to perform the re
 <div class="section" id="id1">
 <h3>Request<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>The most simple GetFeature request is one that downloads the feature collection without any constraints to filter the content by. An example of this type of request is shown below. The <code class="docutils literal notranslate"><span class="pre">GetFeature</span></code> request queries the server with a set of parameters describing the geographic features to return. The TYPENAMES parameter determines the collection of feature instances to return.</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?</span>
 <span class="na">SERVICE</span><span class="o">=</span><span class="s">WFS&amp;</span>
 <span class="na">VERSION</span><span class="o">=</span><span class="s">2.0.0&amp;</span>
 <span class="na">REQUEST</span><span class="o">=</span><span class="s">GetFeature&amp;</span>
@@ -759,7 +759,7 @@ The table bellow summarizes the parameters and values required to perform the re
 <div class="section" id="bounding-box-bbox-parameter">
 <h3>Bounding Box (BBOX) parameter<a class="headerlink" href="#bounding-box-bbox-parameter" title="Permalink to this headline">¶</a></h3>
 <p>Another parameter that can be added to a GetFeature request is that of the Bounding Box (BBOX). This parameter is a comma-separated list of four numbers that indicate the minimum and maximum bounding coordinates of the feature instances that should be returned. An example of the use of the BBOX parameter is shown below.</p>
-<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">http</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.4-RC3/services/wfs200?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;BBOX=51.607317,5.106151,51.629884,5.228022</span>
+<div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;BBOX=51.607317,5.106151,51.629884,5.228022</span>
 </pre></div>
 </div>
 <p><a class="reference external" href="https://cite.deegree.org/deegree-webservices-3.5.0/services/wfs200?service=WFS&amp;version=2.0.0&amp;request=GetFeature&amp;TypeNames=ps:ProtectedSite&amp;BBOX=51.607317,5.106151,51.629884,5.228022">This is a link to the request shown above.</a></p>
@@ -775,7 +775,7 @@ The table bellow summarizes the parameters and values required to perform the re
 </div>
 </div>
 <div class="section" id="propertyname-parameter">
-<h3>PropertyName parameter<a class="headerlink" href="#Propertyname-parameter" title="Permalink to this headline">¶</a></h3>
+<h3>PropertyName parameter<a class="headerlink" href="#propertyname-parameter" title="Permalink to this headline">¶</a></h3>
 <p>Another parameter that can be added to a GetFeature request is the propertyName. This parameter returns feature instances with only the specified property included. This functionality is particularly useful in situations where feature types with several properties are being served over a network with limited bandwidth. The client application can pick and choose which properties they want returned within the feature instances. An example of the use of this parameter is shown below.</p>
 <div class="highlight-properties notranslate"><div class="highlight"><pre><span></span><span class="na">https</span><span class="o">:</span><span class="s">//services.interactive-instruments.de/ogc-reference/simple/wfs?version=2.0.0&amp;request=getfeature&amp;service=wfs&amp;typenames=ci:City&amp;count=3&amp;propertyName=inhabitants</span>
 </pre></div>
@@ -1351,7 +1351,7 @@ Where an exception occurs, the server will return a report containing details of
   <div role="contentinfo">
     <p>
         &copy; Copyright 2017, Open Geospatial Consortium. License: CC BY 3.0.
-      Last updated on Apr 26, 2023.
+      Last updated on Sep 06, 2023.
     </p>
   </div>
 
