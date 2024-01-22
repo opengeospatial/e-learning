@@ -1,4 +1,4 @@
-Basics of EO GeoJSON
+Basics of OGC EO Dataset Metadata GeoJSON
 ==============================================
 
 The metadata encoding defined in the OGC EO Dataset Metadata GeoJSON(-LD) standard satisfies the following design goals:
@@ -7,6 +7,7 @@ The metadata encoding defined in the OGC EO Dataset Metadata GeoJSON(-LD) standa
 * Simplicity: The standard provides a simpler, overarching exchange format integrating comments from the Committee on Earth Observation Satellites (CEOS) Working Group on Information Systems and Services (WGISS) community.
 * Multiple use cases: The metadata model supports metadata for an acquisition, for a simple product derived from one acquisition, or for a synthetic product.
 
+This tutorial focuses only on the EO GeoJSON encoding.
 
 Configuring GeoServer for EO-GeoJSON
 ------------------------------------

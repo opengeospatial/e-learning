@@ -1,4 +1,4 @@
-OGC EO Dataset Metadata GeoJSON(-LD)
+OGC EO Dataset Metadata GeoJSON
 ====================================
 
 Contents

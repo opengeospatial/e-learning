@@ -1,4 +1,4 @@
-EO GeoJSON - Overview
+OGC EO Dataset Metadata GeoJSON - Overview
 ==============
 
 Audience
@@ -10,7 +10,7 @@ Learning Objectives
 
 At completion of the module, trainees will be able to:
 
-- Summarize what the OGC EO Dataset Metadata GeoJSON(-LD) standard is
+- Summarize what the OGC EO Dataset Metadata GeoJSON encoding is
 - Identify example uses of metadata encoded as EO GeoJSON
 - Outline the benefits of documeting metadata according to this standard
 
